@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'core/init/initialize_app.dart';
 import 'core/router/router.dart';
 import 'features/note/domain/repositories/note_repository.dart';
-import 'features/note/presentation/bloc/bloc.dart';
+import 'features/note/presentation/bloc/note_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
 import 'features/setting/presentation/cubit/app_setting_cubit.dart';
 
@@ -37,7 +37,7 @@ void main() async {
           create: (context) {
             final noteRepository = getIt<NoteRepository>();
 
-            return NoteBloc(noteRepository);
+            return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
           },
         ),
       ],

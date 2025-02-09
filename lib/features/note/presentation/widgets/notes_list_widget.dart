@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:simple_note_app/features/note/presentation/bloc/bloc.dart';
+
+import '../bloc/note_bloc.dart';
 
 class NotesListWidget extends StatelessWidget {
   const NotesListWidget({super.key});

@@ -1,26 +1,26 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../domain/entities/note.dart';
 import '../../domain/repositories/note_repository.dart';
 
+part 'note_bloc.freezed.dart';
 part 'note_event.dart';
 part 'note_state.dart';
 
 class NoteBloc extends Bloc<NoteEvent, NoteState> {
+  NoteBloc(this._repository) : super(_Initial(notes: const <Note>[])) {
+    on<_CreateNote>(_onCreateNote);
+    on<_LoadNotes>(_onLoadNotes);
+    on<_UpdateNote>(_onUpdateNote);
+    on<_DeleteNote>(_onDeleteNote);
+  }
+
   final NoteRepository _repository;
   final Uuid _uuid = Uuid();
 
-  NoteBloc(this._repository) : super(NoteInitial()) {
-    on<NoteFetchRequested>(_onNoteFetchRequested);
-    on<NoteCreateRequested>(_onNoteCreateRequested);
-    on<NoteUpdateRequested>(_onNoteUpdateRequested);
-    on<NoteDeleteRequested>(_onNoteDeleteRequested);
-  }
-
-  Future<void> _onNoteCreateRequested(
-      NoteCreateRequested event, Emitter<NoteState> emit) async {
+  Future<void> _onCreateNote(_CreateNote event, Emitter<NoteState> emit) async {
     final id = _uuid.v4();
 
     final newNote = Note(
@@ -34,38 +34,41 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
     await _repository.addNote(newNote);
 
-    emit(NoteLoadSuccess(_repository.getNoteList()));
+    emit(_Loaded(notes: _repository.getNoteList()));
   }
 
-  void _onNoteFetchRequested(
-      NoteFetchRequested event, Emitter<NoteState> emit) {
+  void _onLoadNotes(_LoadNotes event, Emitter<NoteState> emit) {
     final notes = _repository.getNoteList();
 
-    emit(NoteLoadSuccess(notes));
+    emit(_Loaded(notes: notes));
   }
 
-  Future<void> _onNoteUpdateRequested(
-      NoteUpdateRequested event, Emitter<NoteState> emit) async {
+  Future<void> _onUpdateNote(_UpdateNote event, Emitter<NoteState> emit) async {
     final index = state.notes.indexWhere((note) => note.id == event.id);
-    final selectedNote = state.notes[index];
+    final currentNote = state.notes[index];
 
-    final updatedNote = selectedNote.copyWith(
-      title: event.title ?? selectedNote.title,
-      content: event.content ?? selectedNote.content,
-      createDate: event.createDate ?? selectedNote.createDate,
-      isPinned: event.isPinned ?? selectedNote.isPinned,
-      category: event.category ?? selectedNote.category,
+    final updatedNote = currentNote.copyWith(
+      title: event.title ?? currentNote.title,
+      content: event.content,
+      createDate: currentNote.createDate,
+      isPinned: event.isPinned ?? currentNote.isPinned,
+      category: event.category ?? currentNote.category,
     );
 
     await _repository.updateNote(updatedNote);
 
-    emit(NoteLoadSuccess(_repository.getNoteList()));
+    emit(_Loaded(notes: _repository.getNoteList()));
   }
 
-  Future<void> _onNoteDeleteRequested(
-      NoteDeleteRequested event, Emitter<NoteState> emit) async {
+  Future<void> _onDeleteNote(_DeleteNote event, Emitter<NoteState> emit) async {
     await _repository.deleteNote(event.id);
 
-    emit(NoteLoadSuccess(_repository.getNoteList()));
+    emit(_Loaded(notes: _repository.getNoteList()));
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    print('$error');
+    super.onError(error, stackTrace);
   }
 }
