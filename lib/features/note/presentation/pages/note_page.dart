@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../widgets/notes_list_widget.dart';
 
@@ -12,7 +13,6 @@ class NotePage extends StatelessWidget {
         title: Text('Note'),
         centerTitle: true,
       ),
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 8),
@@ -20,7 +20,7 @@ class NotePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => context.go('/create'),
         child: Icon(Icons.add),
       ),
     );

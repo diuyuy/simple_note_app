@@ -14,6 +14,7 @@ class NotesListWidget extends StatelessWidget {
 
         return ReorderableListView.builder(
           itemBuilder: (context, index) => ReorderableDelayedDragStartListener(
+            key: Key(notes[index].id),
             index: index,
             child: Card(
               child: ListTile(
