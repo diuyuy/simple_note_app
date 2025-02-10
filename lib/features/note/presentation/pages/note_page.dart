@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,7 +11,7 @@ class NotePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Note'),
+        title: Text('NotePage.note'.tr()),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -19,6 +20,7 @@ class NotePage extends StatelessWidget {
           child: NotesListWidget(),
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.go('/create'),
         child: Icon(Icons.add),

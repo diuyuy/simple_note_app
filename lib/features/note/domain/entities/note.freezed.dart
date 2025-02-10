@@ -22,6 +22,7 @@ mixin _$Note {
   String get createDate => throw _privateConstructorUsedError;
   bool get isPinned => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
+  String? get editDate => throw _privateConstructorUsedError;
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -40,7 +41,8 @@ abstract class $NoteCopyWith<$Res> {
       String? content,
       String createDate,
       bool isPinned,
-      String? category});
+      String? category,
+      String? editDate});
 }
 
 /// @nodoc
@@ -64,6 +66,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? createDate = null,
     Object? isPinned = null,
     Object? category = freezed,
+    Object? editDate = freezed,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -90,6 +93,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      editDate: freezed == editDate
+          ? _value.editDate
+          : editDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -107,7 +114,8 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       String? content,
       String createDate,
       bool isPinned,
-      String? category});
+      String? category,
+      String? editDate});
 }
 
 /// @nodoc
@@ -128,6 +136,7 @@ class __$$NoteImplCopyWithImpl<$Res>
     Object? createDate = null,
     Object? isPinned = null,
     Object? category = freezed,
+    Object? editDate = freezed,
   }) {
     return _then(_$NoteImpl(
       id: null == id
@@ -154,6 +163,10 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as String?,
+      editDate: freezed == editDate
+          ? _value.editDate
+          : editDate // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -167,7 +180,8 @@ class _$NoteImpl implements _Note {
       this.content,
       required this.createDate,
       this.isPinned = false,
-      this.category});
+      this.category,
+      this.editDate});
 
   @override
   final String id;
@@ -182,10 +196,12 @@ class _$NoteImpl implements _Note {
   final bool isPinned;
   @override
   final String? category;
+  @override
+  final String? editDate;
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, createDate: $createDate, isPinned: $isPinned, category: $category)';
+    return 'Note(id: $id, title: $title, content: $content, createDate: $createDate, isPinned: $isPinned, category: $category, editDate: $editDate)';
   }
 
   @override
@@ -201,12 +217,14 @@ class _$NoteImpl implements _Note {
             (identical(other.isPinned, isPinned) ||
                 other.isPinned == isPinned) &&
             (identical(other.category, category) ||
-                other.category == category));
+                other.category == category) &&
+            (identical(other.editDate, editDate) ||
+                other.editDate == editDate));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, content, createDate, isPinned, category);
+  int get hashCode => Object.hash(runtimeType, id, title, content, createDate,
+      isPinned, category, editDate);
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -224,7 +242,8 @@ abstract class _Note implements Note {
       final String? content,
       required final String createDate,
       final bool isPinned,
-      final String? category}) = _$NoteImpl;
+      final String? category,
+      final String? editDate}) = _$NoteImpl;
 
   @override
   String get id;
@@ -238,6 +257,8 @@ abstract class _Note implements Note {
   bool get isPinned;
   @override
   String? get category;
+  @override
+  String? get editDate;
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.

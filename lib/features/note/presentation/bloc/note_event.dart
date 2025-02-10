@@ -18,6 +18,7 @@ class NoteEvent with _$NoteEvent {
     required String id,
     String? title,
     String? content,
+    String? editDate,
     bool? isPinned,
     String? category,
   }) = _UpdateNote;
@@ -25,4 +26,9 @@ class NoteEvent with _$NoteEvent {
   const factory NoteEvent.deleteNote({
     required String id,
   }) = _DeleteNote;
+
+  const factory NoteEvent.reorderNotes({
+    required int oldIndex,
+    required int newIndex,
+  }) = _ReorderNotes;
 }

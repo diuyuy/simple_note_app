@@ -5,7 +5,7 @@ nextTypeId: 3
 types:
   NoteModel:
     typeId: 0
-    nextIndex: 6
+    nextIndex: 7
     fields:
       title:
         index: 0
@@ -19,6 +19,8 @@ types:
         index: 4
       id:
         index: 5
+      editDate:
+        index: 6
   AppSettingModel:
     typeId: 1
     nextIndex: 1

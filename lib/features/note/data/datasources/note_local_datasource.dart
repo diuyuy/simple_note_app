@@ -35,7 +35,28 @@ class NoteLocalDatasource {
 
   Future<void> deleteNote(String id) async {
     await _box.delete(id);
-    //TODO: orderBox 에서도 제거해야함함
+    final noteOrder = _orderBox.getAt(0);
+    if (noteOrder == null) throw Exception('open order box error');
+
+    List<String> order = noteOrder.order;
+    order.removeWhere((element) => element == id);
+
+    _orderBox.putAt(0, NoteOrder(order: order));
+  }
+
+  Future<void> reorderNotes(int oldIndex, int newIndex) async {
+    final noteOrder = _orderBox.getAt(0);
+
+    if (noteOrder == null) throw Exception('open order box error');
+
+    List<String> order = [...noteOrder.order];
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final String id = order.removeAt(oldIndex);
+    order.insert(newIndex, id);
+
+    await _orderBox.putAt(0, NoteOrder(order: order));
   }
 
   Future<void> insertOrder(int index, String id) async {

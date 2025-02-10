@@ -1,0 +1,10 @@
+{
+  "NotePage": {
+    "note": "Note"
+  },
+  "CreateNotePage": {
+    "save": "Save",
+    "title": "Title",
+    "inputContent": "Write something..."
+  }
+}

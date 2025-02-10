@@ -5,4 +5,5 @@ abstract interface class NoteRepository {
   Future<void> addNote(Note newNote);
   Future<void> updateNote(Note updatedNote);
   Future<void> deleteNote(String id);
+  Future<void> reorderNotes(int oldIndex, int newIndex);
 }

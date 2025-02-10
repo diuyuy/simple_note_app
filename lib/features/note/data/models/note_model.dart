@@ -9,6 +9,7 @@ class NoteModel with _$NoteModel {
     required String title,
     String? content,
     required String createDate,
+    String? editDate,
     @Default(false) bool isPinned,
     String? category,
   }) = _NoteModel;

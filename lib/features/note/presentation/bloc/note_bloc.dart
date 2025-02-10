@@ -15,6 +15,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     on<_LoadNotes>(_onLoadNotes);
     on<_UpdateNote>(_onUpdateNote);
     on<_DeleteNote>(_onDeleteNote);
+    on<_ReorderNotes>(_onReorderNotes);
   }
 
   final NoteRepository _repository;
@@ -64,6 +65,21 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     await _repository.deleteNote(event.id);
 
     emit(_Loaded(notes: _repository.getNoteList()));
+  }
+
+  Future<void> _onReorderNotes(
+      _ReorderNotes event, Emitter<NoteState> emit) async {
+    List<Note> orderdNotes = [...state.notes];
+    int oldIndex = event.oldIndex;
+    int newIndex = event.newIndex;
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
+    final Note note = orderdNotes.removeAt(oldIndex);
+    orderdNotes.insert(newIndex, note);
+
+    emit(_Loaded(notes: orderdNotes));
+    await _repository.reorderNotes(event.oldIndex, event.newIndex);
   }
 
   @override

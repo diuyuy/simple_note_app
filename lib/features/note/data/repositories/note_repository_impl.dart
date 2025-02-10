@@ -29,12 +29,18 @@ class NoteRepositoryImpl implements NoteRepository {
     await _localDatasource.deleteNote(id);
   }
 
+  @override
+  Future<void> reorderNotes(int oldIndex, int newIndex) async {
+    await _localDatasource.reorderNotes(oldIndex, newIndex);
+  }
+
   Note modelToEntity(NoteModel note) {
     return Note(
       id: note.id,
       title: note.title,
       content: note.content,
       createDate: note.createDate,
+      editDate: note.editDate,
       isPinned: note.isPinned,
       category: note.category,
     );
@@ -46,6 +52,7 @@ class NoteRepositoryImpl implements NoteRepository {
       title: note.title,
       content: note.content,
       createDate: note.createDate,
+      editDate: note.editDate,
       isPinned: note.isPinned,
       category: note.category,
     );
