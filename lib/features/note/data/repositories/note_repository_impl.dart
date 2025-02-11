@@ -40,7 +40,7 @@ class NoteRepositoryImpl implements NoteRepository {
       title: note.title,
       content: note.content,
       createDate: note.createDate,
-      editDate: note.editDate,
+      updateDate: note.updateDate,
       isPinned: note.isPinned,
       category: note.category,
     );
@@ -52,7 +52,7 @@ class NoteRepositoryImpl implements NoteRepository {
       title: note.title,
       content: note.content,
       createDate: note.createDate,
-      editDate: note.editDate,
+      updateDate: note.updateDate,
       isPinned: note.isPinned,
       category: note.category,
     );

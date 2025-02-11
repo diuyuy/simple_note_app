@@ -24,7 +24,7 @@ mixin _$NoteEvent {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -38,7 +38,7 @@ mixin _$NoteEvent {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -52,7 +52,7 @@ mixin _$NoteEvent {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -159,7 +159,7 @@ class _$StartedImpl implements _Started {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -176,7 +176,7 @@ class _$StartedImpl implements _Started {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -193,7 +193,7 @@ class _$StartedImpl implements _Started {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -373,7 +373,7 @@ class _$CreateNoteImpl implements _CreateNote {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -390,7 +390,7 @@ class _$CreateNoteImpl implements _CreateNote {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -407,7 +407,7 @@ class _$CreateNoteImpl implements _CreateNote {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -531,7 +531,7 @@ class _$LoadNotesImpl implements _LoadNotes {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -548,7 +548,7 @@ class _$LoadNotesImpl implements _LoadNotes {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -565,7 +565,7 @@ class _$LoadNotesImpl implements _LoadNotes {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -635,7 +635,7 @@ abstract class _$$UpdateNoteImplCopyWith<$Res> {
       {String id,
       String? title,
       String? content,
-      String? editDate,
+      String? updateDate,
       bool? isPinned,
       String? category});
 }
@@ -656,7 +656,7 @@ class __$$UpdateNoteImplCopyWithImpl<$Res>
     Object? id = null,
     Object? title = freezed,
     Object? content = freezed,
-    Object? editDate = freezed,
+    Object? updateDate = freezed,
     Object? isPinned = freezed,
     Object? category = freezed,
   }) {
@@ -673,9 +673,9 @@ class __$$UpdateNoteImplCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String?,
-      editDate: freezed == editDate
-          ? _value.editDate
-          : editDate // ignore: cast_nullable_to_non_nullable
+      updateDate: freezed == updateDate
+          ? _value.updateDate
+          : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
       isPinned: freezed == isPinned
           ? _value.isPinned
@@ -696,7 +696,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
       {required this.id,
       this.title,
       this.content,
-      this.editDate,
+      this.updateDate,
       this.isPinned,
       this.category});
 
@@ -707,7 +707,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
   @override
   final String? content;
   @override
-  final String? editDate;
+  final String? updateDate;
   @override
   final bool? isPinned;
   @override
@@ -715,7 +715,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
 
   @override
   String toString() {
-    return 'NoteEvent.updateNote(id: $id, title: $title, content: $content, editDate: $editDate, isPinned: $isPinned, category: $category)';
+    return 'NoteEvent.updateNote(id: $id, title: $title, content: $content, updateDate: $updateDate, isPinned: $isPinned, category: $category)';
   }
 
   @override
@@ -726,8 +726,8 @@ class _$UpdateNoteImpl implements _UpdateNote {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
-            (identical(other.editDate, editDate) ||
-                other.editDate == editDate) &&
+            (identical(other.updateDate, updateDate) ||
+                other.updateDate == updateDate) &&
             (identical(other.isPinned, isPinned) ||
                 other.isPinned == isPinned) &&
             (identical(other.category, category) ||
@@ -736,7 +736,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, title, content, editDate, isPinned, category);
+      runtimeType, id, title, content, updateDate, isPinned, category);
 
   /// Create a copy of NoteEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -755,12 +755,12 @@ class _$UpdateNoteImpl implements _UpdateNote {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
   }) {
-    return updateNote(id, title, content, editDate, isPinned, category);
+    return updateNote(id, title, content, updateDate, isPinned, category);
   }
 
   @override
@@ -772,12 +772,12 @@ class _$UpdateNoteImpl implements _UpdateNote {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
   }) {
-    return updateNote?.call(id, title, content, editDate, isPinned, category);
+    return updateNote?.call(id, title, content, updateDate, isPinned, category);
   }
 
   @override
@@ -789,14 +789,14 @@ class _$UpdateNoteImpl implements _UpdateNote {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
     required TResult orElse(),
   }) {
     if (updateNote != null) {
-      return updateNote(id, title, content, editDate, isPinned, category);
+      return updateNote(id, title, content, updateDate, isPinned, category);
     }
     return orElse();
   }
@@ -850,14 +850,14 @@ abstract class _UpdateNote implements NoteEvent {
       {required final String id,
       final String? title,
       final String? content,
-      final String? editDate,
+      final String? updateDate,
       final bool? isPinned,
       final String? category}) = _$UpdateNoteImpl;
 
   String get id;
   String? get title;
   String? get content;
-  String? get editDate;
+  String? get updateDate;
   bool? get isPinned;
   String? get category;
 
@@ -942,7 +942,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -959,7 +959,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -976,7 +976,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -1128,7 +1128,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)
+            String? updateDate, bool? isPinned, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -1145,7 +1145,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -1162,7 +1162,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? editDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isPinned, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,

@@ -6,5 +6,21 @@
     "save": "저장",
     "title": "제목",
     "inputContent": "내용을 입력하세요."
+  },
+  "NoteListWidget": {
+    "updateDate": "수정 날짜: {}"
+  },
+  "ReadNotePage": {
+    "cancel": "취소",
+    "delete": "삭제",
+    "deleteDialogConent": "정말로 삭제하시겠습니까?",
+    "edit": "편집",
+    "ok": "확인"
+  },
+  "UpdateNotePage": {
+    "edit": "편집",
+    "done": "완료",
+    "title": "제목",
+    "inputContent": "내용을 입력하세요."
   }
 }

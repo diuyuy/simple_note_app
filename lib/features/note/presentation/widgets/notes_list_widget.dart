@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/color_container_widget.dart';
 import '../bloc/note_bloc.dart';
 
 class NotesListWidget extends StatelessWidget {
@@ -9,6 +11,8 @@ class NotesListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor = Theme.of(context).colorScheme.primary;
+
     return BlocBuilder<NoteBloc, NoteState>(
       builder: (context, state) {
         final notes = state.notes;
@@ -35,9 +39,42 @@ class NotesListWidget extends StatelessWidget {
                   side: BorderSide(color: Colors.transparent),
                 ),
                 child: ListTile(
-                  leading: Icon(Icons.note_rounded),
-                  title: Text(notes[index].title),
-                  subtitle: Text(notes[index].createDate),
+                  leading: ColorContainerWidget(
+                    color: primaryColor,
+                    alpha: 80,
+                    width: 36,
+                    child: Icon(
+                      Icons.note_rounded,
+                      color: primaryColor,
+                    ),
+                  ),
+                  title: Text(
+                    notes[index].title,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  subtitle: Text(
+                    'NoteListWidget.updateDate'.tr(
+                      args: [
+                        notes[index].updateDate ?? notes[index].createDate
+                      ],
+                    ),
+                  ),
+                  trailing: GestureDetector(
+                    onTap: () {
+                      context.read<NoteBloc>().add(
+                            NoteEvent.updateNote(
+                              id: notes[index].id,
+                              isPinned: !notes[index].isPinned,
+                            ),
+                          );
+                    },
+                    child: Icon(
+                      notes[index].isPinned
+                          ? Icons.push_pin
+                          : Icons.push_pin_outlined,
+                      color: primaryColor,
+                    ),
+                  ),
                 ),
               ),
             ),

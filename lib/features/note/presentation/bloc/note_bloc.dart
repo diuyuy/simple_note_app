@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
@@ -50,7 +52,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
     final updatedNote = currentNote.copyWith(
       title: event.title ?? currentNote.title,
-      content: event.content,
+      content: event.content ?? currentNote.content,
       createDate: currentNote.createDate,
       isPinned: event.isPinned ?? currentNote.isPinned,
       category: event.category ?? currentNote.category,
@@ -86,5 +88,11 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
   void onError(Object error, StackTrace stackTrace) {
     print('$error');
     super.onError(error, stackTrace);
+  }
+
+  @override
+  void onChange(Change<NoteState> change) {
+    log('${DateTime.now()}');
+    super.onChange(change);
   }
 }

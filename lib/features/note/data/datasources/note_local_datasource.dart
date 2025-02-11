@@ -38,7 +38,7 @@ class NoteLocalDatasource {
     final noteOrder = _orderBox.getAt(0);
     if (noteOrder == null) throw Exception('open order box error');
 
-    List<String> order = noteOrder.order;
+    List<String> order = [...noteOrder.order];
     order.removeWhere((element) => element == id);
 
     _orderBox.putAt(0, NoteOrder(order: order));

@@ -18,7 +18,7 @@ class NoteEvent with _$NoteEvent {
     required String id,
     String? title,
     String? content,
-    String? editDate,
+    String? updateDate,
     bool? isPinned,
     String? category,
   }) = _UpdateNote;

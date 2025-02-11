@@ -7,14 +7,16 @@ import '../../../../core/utils/format_date.dart';
 import '../../../setting/presentation/cubit/app_setting_cubit.dart';
 import '../bloc/note_bloc.dart';
 
-class CreateNotePage extends StatefulWidget {
-  const CreateNotePage({super.key});
+class UpdateNotePage extends StatefulWidget {
+  const UpdateNotePage({super.key, required this.id});
+
+  final String id;
 
   @override
-  State<CreateNotePage> createState() => _CreateNotePageState();
+  State<UpdateNotePage> createState() => _UpdateNotePageState();
 }
 
-class _CreateNotePageState extends State<CreateNotePage> {
+class _UpdateNotePageState extends State<UpdateNotePage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
 
@@ -33,19 +35,24 @@ class _CreateNotePageState extends State<CreateNotePage> {
           onPressed: () => context.pop(),
           icon: Icon(Icons.arrow_back_ios),
         ),
+        title: Text('UpdateNotePage.edit'.tr()),
         actions: [
-          TextButton(
-            onPressed: () {
-              context.read<NoteBloc>().add(
-                    NoteEvent.createNote(
-                      title: _titleController.text,
-                      content: _contentController.text,
-                      createDate: formatDate(DateTime.now()),
-                    ),
-                  );
-              context.pop();
-            },
-            child: Text('CreateNotePage.save'.tr()),
+          Padding(
+            padding: const EdgeInsets.only(right: 4.0),
+            child: IconButton(
+              onPressed: () {
+                context.read<NoteBloc>().add(
+                      NoteEvent.updateNote(
+                        id: widget.id,
+                        title: _titleController.text,
+                        content: _contentController.text,
+                        updateDate: formatDate(DateTime.now()),
+                      ),
+                    );
+                context.pop();
+              },
+              icon: Icon(Icons.check, size: 28),
+            ),
           ),
         ],
       ),
@@ -53,11 +60,15 @@ class _CreateNotePageState extends State<CreateNotePage> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
           child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
             onTap: () => FocusScope.of(context).unfocus(),
             child: SingleChildScrollView(
               child: Builder(builder: (context) {
                 final appSetting = context.watch<AppSettingCubit>().state;
+                final selectedNote = context.select((NoteBloc bloc) => bloc
+                    .state.notes
+                    .firstWhere((note) => note.id == widget.id));
+                _titleController.text = selectedNote.title;
+                _contentController.text = selectedNote.content ?? '';
 
                 return Column(
                   children: [
@@ -69,7 +80,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
                       maxLength: 50,
                       onTap: () => FocusScope.of(context).unfocus(),
                       decoration: InputDecoration(
-                        hintText: 'CreateNotePage.title'.tr(),
+                        hintText: 'UpdateNotePage.title'.tr(),
                         border: InputBorder.none,
                         counterText: '',
                       ),
@@ -77,10 +88,10 @@ class _CreateNotePageState extends State<CreateNotePage> {
                     const Divider(),
                     TextField(
                       controller: _contentController,
-                      onTap: () => FocusScope.of(context).unfocus(),
                       maxLines: null,
+                      onTap: () => FocusScope.of(context).unfocus(),
                       decoration: InputDecoration(
-                        hintText: 'CreateNotePage.inputContent'.tr(),
+                        hintText: 'UpdateNotePage.inputContent'.tr(),
                         border: InputBorder.none,
                       ),
                     ),
