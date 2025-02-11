@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,8 @@ import 'features/setting/presentation/cubit/app_setting_cubit.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  await EasyLocalization.ensureInitialized();
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -24,24 +27,29 @@ void main() async {
   final GetIt getIt = GetIt.instance;
 
   runApp(
-    MultiBlocProvider(
-      providers: [
-        BlocProvider<AppSettingCubit>(
-          create: (context) {
-            final appSettingRepository = getIt<AppSettingRepository>();
+    EasyLocalization(
+      supportedLocales: [Locale('en', 'US'), Locale('ko', 'KR')],
+      path: 'lib/core/translations',
+      fallbackLocale: Locale('en'),
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<AppSettingCubit>(
+            create: (context) {
+              final appSettingRepository = getIt<AppSettingRepository>();
 
-            return AppSettingCubit(appSettingRepository);
-          },
-        ),
-        BlocProvider<NoteBloc>(
-          create: (context) {
-            final noteRepository = getIt<NoteRepository>();
+              return AppSettingCubit(appSettingRepository);
+            },
+          ),
+          BlocProvider<NoteBloc>(
+            create: (context) {
+              final noteRepository = getIt<NoteRepository>();
 
-            return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
-          },
-        ),
-      ],
-      child: MyApp(),
+              return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
+            },
+          ),
+        ],
+        child: MyApp(),
+      ),
     ),
   );
 }
@@ -61,10 +69,13 @@ class MyApp extends StatelessWidget {
           return MaterialApp.router(
             routerConfig: router,
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
               textTheme: TextTheme(
-                bodyMedium: TextStyle(fontSize: 10.0 + appSetting.fontSize),
+                bodyMedium: TextStyle(fontSize: 12.0 + appSetting.fontSize),
               ),
               useMaterial3: true,
             ),

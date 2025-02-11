@@ -21,7 +21,8 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       title: fields[0] as String,
       content: fields[1] as String?,
       createDate: fields[2] as String,
-      isPinned: fields[3] as bool,
+      updateDate: fields[7] as String?,
+      isFavorite: fields[8] as bool,
       category: fields[4] as String?,
     );
   }
@@ -29,19 +30,21 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
   @override
   void write(BinaryWriter writer, NoteModel obj) {
     writer
-      ..writeByte(6)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
       ..write(obj.content)
       ..writeByte(2)
       ..write(obj.createDate)
-      ..writeByte(3)
-      ..write(obj.isPinned)
       ..writeByte(4)
       ..write(obj.category)
       ..writeByte(5)
-      ..write(obj.id);
+      ..write(obj.id)
+      ..writeByte(7)
+      ..write(obj.updateDate)
+      ..writeByte(8)
+      ..write(obj.isFavorite);
   }
 
   @override

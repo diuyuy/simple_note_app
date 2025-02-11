@@ -20,7 +20,8 @@ mixin _$NoteModel {
   String get title => throw _privateConstructorUsedError;
   String? get content => throw _privateConstructorUsedError;
   String get createDate => throw _privateConstructorUsedError;
-  bool get isPinned => throw _privateConstructorUsedError;
+  String? get updateDate => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
 
   /// Create a copy of NoteModel
@@ -40,7 +41,8 @@ abstract class $NoteModelCopyWith<$Res> {
       String title,
       String? content,
       String createDate,
-      bool isPinned,
+      String? updateDate,
+      bool isFavorite,
       String? category});
 }
 
@@ -63,7 +65,8 @@ class _$NoteModelCopyWithImpl<$Res, $Val extends NoteModel>
     Object? title = null,
     Object? content = freezed,
     Object? createDate = null,
-    Object? isPinned = null,
+    Object? updateDate = freezed,
+    Object? isFavorite = null,
     Object? category = freezed,
   }) {
     return _then(_value.copyWith(
@@ -83,9 +86,13 @@ class _$NoteModelCopyWithImpl<$Res, $Val extends NoteModel>
           ? _value.createDate
           : createDate // ignore: cast_nullable_to_non_nullable
               as String,
-      isPinned: null == isPinned
-          ? _value.isPinned
-          : isPinned // ignore: cast_nullable_to_non_nullable
+      updateDate: freezed == updateDate
+          ? _value.updateDate
+          : updateDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       category: freezed == category
           ? _value.category
@@ -108,7 +115,8 @@ abstract class _$$NoteModelImplCopyWith<$Res>
       String title,
       String? content,
       String createDate,
-      bool isPinned,
+      String? updateDate,
+      bool isFavorite,
       String? category});
 }
 
@@ -129,7 +137,8 @@ class __$$NoteModelImplCopyWithImpl<$Res>
     Object? title = null,
     Object? content = freezed,
     Object? createDate = null,
-    Object? isPinned = null,
+    Object? updateDate = freezed,
+    Object? isFavorite = null,
     Object? category = freezed,
   }) {
     return _then(_$NoteModelImpl(
@@ -149,9 +158,13 @@ class __$$NoteModelImplCopyWithImpl<$Res>
           ? _value.createDate
           : createDate // ignore: cast_nullable_to_non_nullable
               as String,
-      isPinned: null == isPinned
-          ? _value.isPinned
-          : isPinned // ignore: cast_nullable_to_non_nullable
+      updateDate: freezed == updateDate
+          ? _value.updateDate
+          : updateDate // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       category: freezed == category
           ? _value.category
@@ -169,7 +182,8 @@ class _$NoteModelImpl implements _NoteModel {
       required this.title,
       this.content,
       required this.createDate,
-      this.isPinned = false,
+      this.updateDate,
+      this.isFavorite = false,
       this.category});
 
   @override
@@ -181,14 +195,16 @@ class _$NoteModelImpl implements _NoteModel {
   @override
   final String createDate;
   @override
+  final String? updateDate;
+  @override
   @JsonKey()
-  final bool isPinned;
+  final bool isFavorite;
   @override
   final String? category;
 
   @override
   String toString() {
-    return 'NoteModel(id: $id, title: $title, content: $content, createDate: $createDate, isPinned: $isPinned, category: $category)';
+    return 'NoteModel(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, isFavorite: $isFavorite, category: $category)';
   }
 
   @override
@@ -201,15 +217,17 @@ class _$NoteModelImpl implements _NoteModel {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.createDate, createDate) ||
                 other.createDate == createDate) &&
-            (identical(other.isPinned, isPinned) ||
-                other.isPinned == isPinned) &&
+            (identical(other.updateDate, updateDate) ||
+                other.updateDate == updateDate) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
             (identical(other.category, category) ||
                 other.category == category));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, title, content, createDate, isPinned, category);
+  int get hashCode => Object.hash(runtimeType, id, title, content, createDate,
+      updateDate, isFavorite, category);
 
   /// Create a copy of NoteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -226,7 +244,8 @@ abstract class _NoteModel implements NoteModel {
       required final String title,
       final String? content,
       required final String createDate,
-      final bool isPinned,
+      final String? updateDate,
+      final bool isFavorite,
       final String? category}) = _$NoteModelImpl;
 
   @override
@@ -238,7 +257,9 @@ abstract class _NoteModel implements NoteModel {
   @override
   String get createDate;
   @override
-  bool get isPinned;
+  String? get updateDate;
+  @override
+  bool get isFavorite;
   @override
   String? get category;
 

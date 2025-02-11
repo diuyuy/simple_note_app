@@ -8,7 +8,7 @@ class NoteEvent with _$NoteEvent {
     required String title,
     String? content,
     required String createDate,
-    bool? isPinned,
+    bool? isFavorite,
     String? category,
   }) = _CreateNote;
 
@@ -18,11 +18,17 @@ class NoteEvent with _$NoteEvent {
     required String id,
     String? title,
     String? content,
-    bool? isPinned,
+    String? updateDate,
+    bool? isFavorite,
     String? category,
   }) = _UpdateNote;
 
   const factory NoteEvent.deleteNote({
     required String id,
   }) = _DeleteNote;
+
+  const factory NoteEvent.reorderNotes({
+    required int oldIndex,
+    required int newIndex,
+  }) = _ReorderNotes;
 }
