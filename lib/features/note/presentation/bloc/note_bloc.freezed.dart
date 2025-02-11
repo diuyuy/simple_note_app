@@ -20,11 +20,11 @@ mixin _$NoteEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -34,11 +34,11 @@ mixin _$NoteEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -48,11 +48,11 @@ mixin _$NoteEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -155,11 +155,11 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -172,11 +172,11 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -189,11 +189,11 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -263,7 +263,7 @@ abstract class _$$CreateNoteImplCopyWith<$Res> {
       {String title,
       String? content,
       String createDate,
-      bool? isPinned,
+      bool? isFavorite,
       String? category});
 }
 
@@ -283,7 +283,7 @@ class __$$CreateNoteImplCopyWithImpl<$Res>
     Object? title = null,
     Object? content = freezed,
     Object? createDate = null,
-    Object? isPinned = freezed,
+    Object? isFavorite = freezed,
     Object? category = freezed,
   }) {
     return _then(_$CreateNoteImpl(
@@ -299,9 +299,9 @@ class __$$CreateNoteImplCopyWithImpl<$Res>
           ? _value.createDate
           : createDate // ignore: cast_nullable_to_non_nullable
               as String,
-      isPinned: freezed == isPinned
-          ? _value.isPinned
-          : isPinned // ignore: cast_nullable_to_non_nullable
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool?,
       category: freezed == category
           ? _value.category
@@ -318,7 +318,7 @@ class _$CreateNoteImpl implements _CreateNote {
       {required this.title,
       this.content,
       required this.createDate,
-      this.isPinned,
+      this.isFavorite,
       this.category});
 
   @override
@@ -328,13 +328,13 @@ class _$CreateNoteImpl implements _CreateNote {
   @override
   final String createDate;
   @override
-  final bool? isPinned;
+  final bool? isFavorite;
   @override
   final String? category;
 
   @override
   String toString() {
-    return 'NoteEvent.createNote(title: $title, content: $content, createDate: $createDate, isPinned: $isPinned, category: $category)';
+    return 'NoteEvent.createNote(title: $title, content: $content, createDate: $createDate, isFavorite: $isFavorite, category: $category)';
   }
 
   @override
@@ -346,15 +346,15 @@ class _$CreateNoteImpl implements _CreateNote {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.createDate, createDate) ||
                 other.createDate == createDate) &&
-            (identical(other.isPinned, isPinned) ||
-                other.isPinned == isPinned) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
             (identical(other.category, category) ||
                 other.category == category));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, title, content, createDate, isPinned, category);
+  int get hashCode => Object.hash(
+      runtimeType, title, content, createDate, isFavorite, category);
 
   /// Create a copy of NoteEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -369,16 +369,16 @@ class _$CreateNoteImpl implements _CreateNote {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
   }) {
-    return createNote(title, content, createDate, isPinned, category);
+    return createNote(title, content, createDate, isFavorite, category);
   }
 
   @override
@@ -386,16 +386,16 @@ class _$CreateNoteImpl implements _CreateNote {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
   }) {
-    return createNote?.call(title, content, createDate, isPinned, category);
+    return createNote?.call(title, content, createDate, isFavorite, category);
   }
 
   @override
@@ -403,18 +403,18 @@ class _$CreateNoteImpl implements _CreateNote {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
     required TResult orElse(),
   }) {
     if (createNote != null) {
-      return createNote(title, content, createDate, isPinned, category);
+      return createNote(title, content, createDate, isFavorite, category);
     }
     return orElse();
   }
@@ -468,13 +468,13 @@ abstract class _CreateNote implements NoteEvent {
       {required final String title,
       final String? content,
       required final String createDate,
-      final bool? isPinned,
+      final bool? isFavorite,
       final String? category}) = _$CreateNoteImpl;
 
   String get title;
   String? get content;
   String get createDate;
-  bool? get isPinned;
+  bool? get isFavorite;
   String? get category;
 
   /// Create a copy of NoteEvent
@@ -527,11 +527,11 @@ class _$LoadNotesImpl implements _LoadNotes {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -544,11 +544,11 @@ class _$LoadNotesImpl implements _LoadNotes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -561,11 +561,11 @@ class _$LoadNotesImpl implements _LoadNotes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -636,7 +636,7 @@ abstract class _$$UpdateNoteImplCopyWith<$Res> {
       String? title,
       String? content,
       String? updateDate,
-      bool? isPinned,
+      bool? isFavorite,
       String? category});
 }
 
@@ -657,7 +657,7 @@ class __$$UpdateNoteImplCopyWithImpl<$Res>
     Object? title = freezed,
     Object? content = freezed,
     Object? updateDate = freezed,
-    Object? isPinned = freezed,
+    Object? isFavorite = freezed,
     Object? category = freezed,
   }) {
     return _then(_$UpdateNoteImpl(
@@ -677,9 +677,9 @@ class __$$UpdateNoteImplCopyWithImpl<$Res>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPinned: freezed == isPinned
-          ? _value.isPinned
-          : isPinned // ignore: cast_nullable_to_non_nullable
+      isFavorite: freezed == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool?,
       category: freezed == category
           ? _value.category
@@ -697,7 +697,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
       this.title,
       this.content,
       this.updateDate,
-      this.isPinned,
+      this.isFavorite,
       this.category});
 
   @override
@@ -709,13 +709,13 @@ class _$UpdateNoteImpl implements _UpdateNote {
   @override
   final String? updateDate;
   @override
-  final bool? isPinned;
+  final bool? isFavorite;
   @override
   final String? category;
 
   @override
   String toString() {
-    return 'NoteEvent.updateNote(id: $id, title: $title, content: $content, updateDate: $updateDate, isPinned: $isPinned, category: $category)';
+    return 'NoteEvent.updateNote(id: $id, title: $title, content: $content, updateDate: $updateDate, isFavorite: $isFavorite, category: $category)';
   }
 
   @override
@@ -728,15 +728,15 @@ class _$UpdateNoteImpl implements _UpdateNote {
             (identical(other.content, content) || other.content == content) &&
             (identical(other.updateDate, updateDate) ||
                 other.updateDate == updateDate) &&
-            (identical(other.isPinned, isPinned) ||
-                other.isPinned == isPinned) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
             (identical(other.category, category) ||
                 other.category == category));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, title, content, updateDate, isPinned, category);
+      runtimeType, id, title, content, updateDate, isFavorite, category);
 
   /// Create a copy of NoteEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -751,16 +751,16 @@ class _$UpdateNoteImpl implements _UpdateNote {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
   }) {
-    return updateNote(id, title, content, updateDate, isPinned, category);
+    return updateNote(id, title, content, updateDate, isFavorite, category);
   }
 
   @override
@@ -768,16 +768,17 @@ class _$UpdateNoteImpl implements _UpdateNote {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
   }) {
-    return updateNote?.call(id, title, content, updateDate, isPinned, category);
+    return updateNote?.call(
+        id, title, content, updateDate, isFavorite, category);
   }
 
   @override
@@ -785,18 +786,18 @@ class _$UpdateNoteImpl implements _UpdateNote {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
     required TResult orElse(),
   }) {
     if (updateNote != null) {
-      return updateNote(id, title, content, updateDate, isPinned, category);
+      return updateNote(id, title, content, updateDate, isFavorite, category);
     }
     return orElse();
   }
@@ -851,14 +852,14 @@ abstract class _UpdateNote implements NoteEvent {
       final String? title,
       final String? content,
       final String? updateDate,
-      final bool? isPinned,
+      final bool? isFavorite,
       final String? category}) = _$UpdateNoteImpl;
 
   String get id;
   String? get title;
   String? get content;
   String? get updateDate;
-  bool? get isPinned;
+  bool? get isFavorite;
   String? get category;
 
   /// Create a copy of NoteEvent
@@ -938,11 +939,11 @@ class _$DeleteNoteImpl implements _DeleteNote {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -955,11 +956,11 @@ class _$DeleteNoteImpl implements _DeleteNote {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -972,11 +973,11 @@ class _$DeleteNoteImpl implements _DeleteNote {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,
@@ -1124,11 +1125,11 @@ class _$ReorderNotesImpl implements _ReorderNotes {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)
+            bool? isFavorite, String? category)
         createNote,
     required TResult Function() loadNotes,
     required TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)
+            String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(String id) deleteNote,
     required TResult Function(int oldIndex, int newIndex) reorderNotes,
@@ -1141,11 +1142,11 @@ class _$ReorderNotesImpl implements _ReorderNotes {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult? Function()? loadNotes,
     TResult? Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(String id)? deleteNote,
     TResult? Function(int oldIndex, int newIndex)? reorderNotes,
@@ -1158,11 +1159,11 @@ class _$ReorderNotesImpl implements _ReorderNotes {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(String title, String? content, String createDate,
-            bool? isPinned, String? category)?
+            bool? isFavorite, String? category)?
         createNote,
     TResult Function()? loadNotes,
     TResult Function(String id, String? title, String? content,
-            String? updateDate, bool? isPinned, String? category)?
+            String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(String id)? deleteNote,
     TResult Function(int oldIndex, int newIndex)? reorderNotes,

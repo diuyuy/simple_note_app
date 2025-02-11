@@ -37,14 +37,12 @@ class ReadNotePage extends StatelessWidget {
                   context.read<NoteBloc>().add(
                         NoteEvent.updateNote(
                           id: noteId,
-                          isPinned: !selectedNote.isPinned,
+                          isFavorite: !selectedNote.isFavorite,
                         ),
                       );
                 },
                 icon: Icon(
-                  selectedNote.isPinned
-                      ? Icons.push_pin
-                      : Icons.push_pin_outlined,
+                  selectedNote.isFavorite ? Icons.star : Icons.star_border,
                   color: Theme.of(context).colorScheme.primary,
                 ),
               );
@@ -69,26 +67,6 @@ class ReadNotePage extends StatelessWidget {
               );
             },
           ),
-          // IconButton(
-          //   onPressed: () {
-          //     context.go('$currentPath/update', extra: noteId);
-          //   },
-          //   icon: Icon(Icons.edit),
-          // ),
-          // IconButton(
-          //   onPressed: () async {
-          //     final isConfirm = await showDeleteDialog(context);
-          //     if (isConfirm == true) {
-          //       if (context.mounted) {
-          //         context.pop();
-          //         context
-          //             .read<NoteBloc>()
-          //             .add(NoteEvent.deleteNote(id: noteId));
-          //       }
-          //     }
-          //   },
-          //   icon: Icon(Icons.delete),
-          // )
         ],
       ),
       body: SafeArea(
@@ -165,10 +143,6 @@ class ReadNotePage extends StatelessWidget {
           context.go('$currentPath/update', extra: noteId);
         },
         child: Text('ReadNotePage.edit'.tr()),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: Divider(height: 2),
       ),
       MenuItemButton(
         onPressed: () async {

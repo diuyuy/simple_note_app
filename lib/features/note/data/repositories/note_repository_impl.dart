@@ -41,7 +41,7 @@ class NoteRepositoryImpl implements NoteRepository {
       content: note.content,
       createDate: note.createDate,
       updateDate: note.updateDate,
-      isPinned: note.isPinned,
+      isFavorite: note.isFavorite,
       category: note.category,
     );
   }
@@ -53,7 +53,7 @@ class NoteRepositoryImpl implements NoteRepository {
       content: note.content,
       createDate: note.createDate,
       updateDate: note.updateDate,
-      isPinned: note.isPinned,
+      isFavorite: note.isFavorite,
       category: note.category,
     );
   }

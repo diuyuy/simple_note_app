@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/const_values.dart';
 import '../../../../core/utils/format_date.dart';
 import '../../../setting/presentation/cubit/app_setting_cubit.dart';
+import '../../domain/entities/note.dart';
 import '../bloc/note_bloc.dart';
+import '../widgets/my_text_field.dart';
 
 class UpdateNotePage extends StatefulWidget {
   const UpdateNotePage({super.key, required this.id});
@@ -32,7 +35,9 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => context.pop(),
+          onPressed: () {
+            context.pop();
+          },
           icon: Icon(Icons.arrow_back_ios),
         ),
         title: Text('UpdateNotePage.edit'.tr()),
@@ -59,46 +64,45 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: GestureDetector(
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: SingleChildScrollView(
-              child: Builder(builder: (context) {
-                final appSetting = context.watch<AppSettingCubit>().state;
-                final selectedNote = context.select((NoteBloc bloc) => bloc
-                    .state.notes
-                    .firstWhere((note) => note.id == widget.id));
-                _titleController.text = selectedNote.title;
-                _contentController.text = selectedNote.content ?? '';
+          child: SingleChildScrollView(
+            child: Builder(builder: (context) {
+              final appSetting = context.watch<AppSettingCubit>().state;
+              final selectedNote = context.select(
+                (NoteBloc bloc) => bloc.state.notes.firstWhere(
+                  (note) => note.id == widget.id,
+                  orElse: () => Note(
+                    id: '',
+                    title: '',
+                    createDate: '',
+                  ),
+                ),
+              );
 
-                return Column(
-                  children: [
-                    TextField(
-                      controller: _titleController,
-                      style: TextStyle(
-                        fontSize: 16.0 + appSetting.fontSize,
-                      ),
-                      maxLength: 50,
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      decoration: InputDecoration(
-                        hintText: 'UpdateNotePage.title'.tr(),
-                        border: InputBorder.none,
-                        counterText: '',
-                      ),
+              _titleController.text = selectedNote.title;
+              _contentController.text = selectedNote.content ?? '';
+
+              return Column(
+                children: [
+                  MyTextField(
+                    controller: _titleController,
+                    maxLines: 1,
+                    maxLength: ConstValues.titleMaxLength,
+                    hintText: 'UpdateNotePage.title'.tr(),
+                    textStyle: TextStyle(
+                      fontSize:
+                          ConstValues.titleDefaulFontSize + appSetting.fontSize,
                     ),
-                    const Divider(),
-                    TextField(
-                      controller: _contentController,
-                      maxLines: null,
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      decoration: InputDecoration(
-                        hintText: 'UpdateNotePage.inputContent'.tr(),
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ],
-                );
-              }),
-            ),
+                  ),
+                  const Divider(),
+                  MyTextField(
+                    controller: _contentController,
+                    hintText: 'UpdateNotePage.inputContent'.tr(),
+                    maxLines: null,
+                    textStyle: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
+              );
+            }),
           ),
         ),
       ),

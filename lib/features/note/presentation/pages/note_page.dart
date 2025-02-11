@@ -10,6 +10,9 @@ class NotePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(),
+      ),
       appBar: AppBar(
         title: Text('NotePage.note'.tr()),
         centerTitle: true,

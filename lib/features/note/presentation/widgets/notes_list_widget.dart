@@ -64,14 +64,12 @@ class NotesListWidget extends StatelessWidget {
                       context.read<NoteBloc>().add(
                             NoteEvent.updateNote(
                               id: notes[index].id,
-                              isPinned: !notes[index].isPinned,
+                              isFavorite: !notes[index].isFavorite,
                             ),
                           );
                     },
                     child: Icon(
-                      notes[index].isPinned
-                          ? Icons.push_pin
-                          : Icons.push_pin_outlined,
+                      notes[index].isFavorite ? Icons.star : Icons.star_border,
                       color: primaryColor,
                     ),
                   ),

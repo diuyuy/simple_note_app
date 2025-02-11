@@ -10,7 +10,7 @@ class Note with _$Note {
     String? content,
     required String createDate,
     String? updateDate,
-    @Default(false) bool isPinned,
+    @Default(false) bool isFavorite,
     String? category,
   }) = _Note;
 }

@@ -8,7 +8,7 @@ class NoteEvent with _$NoteEvent {
     required String title,
     String? content,
     required String createDate,
-    bool? isPinned,
+    bool? isFavorite,
     String? category,
   }) = _CreateNote;
 
@@ -19,7 +19,7 @@ class NoteEvent with _$NoteEvent {
     String? title,
     String? content,
     String? updateDate,
-    bool? isPinned,
+    bool? isFavorite,
     String? category,
   }) = _UpdateNote;
 

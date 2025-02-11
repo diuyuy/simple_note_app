@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
               textTheme: TextTheme(
-                bodyMedium: TextStyle(fontSize: 10.0 + appSetting.fontSize),
+                bodyMedium: TextStyle(fontSize: 12.0 + appSetting.fontSize),
               ),
               useMaterial3: true,
             ),

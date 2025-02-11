@@ -31,7 +31,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       title: event.title,
       content: event.content,
       createDate: event.createDate,
-      isPinned: event.isPinned ?? false,
+      isFavorite: event.isFavorite ?? false,
       category: event.category,
     );
 
@@ -54,7 +54,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       title: event.title ?? currentNote.title,
       content: event.content ?? currentNote.content,
       createDate: currentNote.createDate,
-      isPinned: event.isPinned ?? currentNote.isPinned,
+      isFavorite: event.isFavorite ?? currentNote.isFavorite,
       category: event.category ?? currentNote.category,
     );
 
@@ -86,7 +86,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
   @override
   void onError(Object error, StackTrace stackTrace) {
-    print('$error');
+    log('$error');
     super.onError(error, stackTrace);
   }
 

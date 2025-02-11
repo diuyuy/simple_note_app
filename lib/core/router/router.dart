@@ -38,16 +38,17 @@ final router = GoRouter(
           },
           routes: [
             GoRoute(
-                path: 'update',
-                pageBuilder: (context, state) {
-                  final noteId = state.extra as String;
+              path: 'update',
+              pageBuilder: (context, state) {
+                final noteId = state.extra as String;
 
-                  return buildFadeTransitionPage(
-                    context: context,
-                    state: state,
-                    child: UpdateNotePage(id: noteId),
-                  );
-                }),
+                return buildFadeTransitionPage(
+                  context: context,
+                  state: state,
+                  child: UpdateNotePage(id: noteId),
+                );
+              },
+            ),
           ],
         ),
       ],

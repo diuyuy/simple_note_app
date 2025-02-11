@@ -22,7 +22,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       content: fields[1] as String?,
       createDate: fields[2] as String,
       updateDate: fields[7] as String?,
-      isPinned: fields[3] as bool,
+      isFavorite: fields[8] as bool,
       category: fields[4] as String?,
     );
   }
@@ -37,14 +37,14 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..write(obj.content)
       ..writeByte(2)
       ..write(obj.createDate)
-      ..writeByte(3)
-      ..write(obj.isPinned)
       ..writeByte(4)
       ..write(obj.category)
       ..writeByte(5)
       ..write(obj.id)
       ..writeByte(7)
-      ..write(obj.updateDate);
+      ..write(obj.updateDate)
+      ..writeByte(8)
+      ..write(obj.isFavorite);
   }
 
   @override

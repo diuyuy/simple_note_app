@@ -21,7 +21,7 @@ mixin _$Note {
   String? get content => throw _privateConstructorUsedError;
   String get createDate => throw _privateConstructorUsedError;
   String? get updateDate => throw _privateConstructorUsedError;
-  bool get isPinned => throw _privateConstructorUsedError;
+  bool get isFavorite => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
 
   /// Create a copy of Note
@@ -41,7 +41,7 @@ abstract class $NoteCopyWith<$Res> {
       String? content,
       String createDate,
       String? updateDate,
-      bool isPinned,
+      bool isFavorite,
       String? category});
 }
 
@@ -65,7 +65,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? content = freezed,
     Object? createDate = null,
     Object? updateDate = freezed,
-    Object? isPinned = null,
+    Object? isFavorite = null,
     Object? category = freezed,
   }) {
     return _then(_value.copyWith(
@@ -89,9 +89,9 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPinned: null == isPinned
-          ? _value.isPinned
-          : isPinned // ignore: cast_nullable_to_non_nullable
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       category: freezed == category
           ? _value.category
@@ -114,7 +114,7 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       String? content,
       String createDate,
       String? updateDate,
-      bool isPinned,
+      bool isFavorite,
       String? category});
 }
 
@@ -135,7 +135,7 @@ class __$$NoteImplCopyWithImpl<$Res>
     Object? content = freezed,
     Object? createDate = null,
     Object? updateDate = freezed,
-    Object? isPinned = null,
+    Object? isFavorite = null,
     Object? category = freezed,
   }) {
     return _then(_$NoteImpl(
@@ -159,9 +159,9 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      isPinned: null == isPinned
-          ? _value.isPinned
-          : isPinned // ignore: cast_nullable_to_non_nullable
+      isFavorite: null == isFavorite
+          ? _value.isFavorite
+          : isFavorite // ignore: cast_nullable_to_non_nullable
               as bool,
       category: freezed == category
           ? _value.category
@@ -180,7 +180,7 @@ class _$NoteImpl implements _Note {
       this.content,
       required this.createDate,
       this.updateDate,
-      this.isPinned = false,
+      this.isFavorite = false,
       this.category});
 
   @override
@@ -195,13 +195,13 @@ class _$NoteImpl implements _Note {
   final String? updateDate;
   @override
   @JsonKey()
-  final bool isPinned;
+  final bool isFavorite;
   @override
   final String? category;
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, isPinned: $isPinned, category: $category)';
+    return 'Note(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, isFavorite: $isFavorite, category: $category)';
   }
 
   @override
@@ -216,15 +216,15 @@ class _$NoteImpl implements _Note {
                 other.createDate == createDate) &&
             (identical(other.updateDate, updateDate) ||
                 other.updateDate == updateDate) &&
-            (identical(other.isPinned, isPinned) ||
-                other.isPinned == isPinned) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
             (identical(other.category, category) ||
                 other.category == category));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, createDate,
-      updateDate, isPinned, category);
+      updateDate, isFavorite, category);
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -242,7 +242,7 @@ abstract class _Note implements Note {
       final String? content,
       required final String createDate,
       final String? updateDate,
-      final bool isPinned,
+      final bool isFavorite,
       final String? category}) = _$NoteImpl;
 
   @override
@@ -256,7 +256,7 @@ abstract class _Note implements Note {
   @override
   String? get updateDate;
   @override
-  bool get isPinned;
+  bool get isFavorite;
   @override
   String? get category;
 

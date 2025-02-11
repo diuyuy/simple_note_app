@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/const_values.dart';
 import '../../../../core/utils/format_date.dart';
 import '../../../setting/presentation/cubit/app_setting_cubit.dart';
 import '../bloc/note_bloc.dart';
+import '../widgets/my_text_field.dart';
 
 class CreateNotePage extends StatefulWidget {
   const CreateNotePage({super.key});
@@ -52,42 +54,32 @@ class _CreateNotePageState extends State<CreateNotePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () => FocusScope.of(context).unfocus(),
-            child: SingleChildScrollView(
-              child: Builder(builder: (context) {
-                final appSetting = context.watch<AppSettingCubit>().state;
+          child: SingleChildScrollView(
+            child: Builder(builder: (context) {
+              final appSetting = context.watch<AppSettingCubit>().state;
 
-                return Column(
-                  children: [
-                    TextField(
-                      controller: _titleController,
-                      style: TextStyle(
-                        fontSize: 16.0 + appSetting.fontSize,
-                      ),
-                      maxLength: 50,
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      decoration: InputDecoration(
-                        hintText: 'CreateNotePage.title'.tr(),
-                        border: InputBorder.none,
-                        counterText: '',
-                      ),
+              return Column(
+                children: [
+                  MyTextField(
+                    controller: _titleController,
+                    maxLines: 1,
+                    maxLength: ConstValues.titleMaxLength,
+                    hintText: 'CreateNotePage.title'.tr(),
+                    textStyle: TextStyle(
+                      fontSize:
+                          ConstValues.titleDefaulFontSize + appSetting.fontSize,
                     ),
-                    const Divider(),
-                    TextField(
-                      controller: _contentController,
-                      onTap: () => FocusScope.of(context).unfocus(),
-                      maxLines: null,
-                      decoration: InputDecoration(
-                        hintText: 'CreateNotePage.inputContent'.tr(),
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ],
-                );
-              }),
-            ),
+                  ),
+                  const Divider(),
+                  MyTextField(
+                    controller: _contentController,
+                    hintText: 'CreateNotePage.inputContent'.tr(),
+                    maxLines: null,
+                    textStyle: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
+              );
+            }),
           ),
         ),
       ),
