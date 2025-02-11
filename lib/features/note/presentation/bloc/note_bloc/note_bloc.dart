@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
-import '../../domain/entities/note.dart';
-import '../../domain/repositories/note_repository.dart';
+import '../../../domain/entities/note.dart';
+import '../../../domain/repositories/note_repository.dart';
 
 part 'note_bloc.freezed.dart';
 part 'note_event.dart';

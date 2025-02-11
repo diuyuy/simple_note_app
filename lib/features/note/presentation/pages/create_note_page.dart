@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/constants/const_values.dart';
 import '../../../../core/utils/format_date.dart';
 import '../../../setting/presentation/cubit/app_setting_cubit.dart';
-import '../bloc/note_bloc.dart';
+import '../bloc/note_bloc/note_bloc.dart';
 import '../widgets/my_text_field.dart';
 
 class CreateNotePage extends StatefulWidget {

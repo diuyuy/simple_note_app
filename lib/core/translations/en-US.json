@@ -8,6 +8,23 @@
     "title": "Title",
     "inputContent": "Write something..."
   },
+  "Drawer": {
+    "appReview": "App Review",
+    "category": "Category",
+    "favorites": "Favorites",
+    "menu": "menu",
+    "openSourceLicence": "Open Source License",
+    "privacyPolicy": "Privacy Policy",
+    "settings": "Settings",
+    "trash": "Trash"
+  },
+  "FavoritesPage": {
+    "favorites": "Favorites",
+    "updateDate": "Last modified time: {}"
+  },
+  "NoteCardWidget": {
+    "updateDate":"Last modified time: {}"
+  },
   "NoteListWidget": {
     "updateDate": "Last modified time: {}"
   },

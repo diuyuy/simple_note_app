@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/widgets/note_drawer.dart';
 import '../widgets/notes_list_widget.dart';
 
 class NotePage extends StatelessWidget {
@@ -10,12 +11,16 @@ class NotePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(),
-      ),
+      drawer: NoteDrawer(),
       appBar: AppBar(
         title: Text('NotePage.note'.tr()),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.search),
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(

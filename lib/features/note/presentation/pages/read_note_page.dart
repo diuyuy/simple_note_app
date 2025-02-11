@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../setting/presentation/cubit/app_setting_cubit.dart';
 import '../../domain/entities/note.dart';
-import '../bloc/note_bloc.dart';
+import '../bloc/note_bloc/note_bloc.dart';
 
 class ReadNotePage extends StatelessWidget {
   const ReadNotePage({super.key, required this.noteId});
