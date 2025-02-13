@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../setting/presentation/cubit/app_setting_cubit.dart';
 import '../../domain/entities/note.dart';
-import '../bloc/note_bloc.dart';
+import '../bloc/note_bloc/note_bloc.dart';
 
 class ReadNotePage extends StatelessWidget {
   const ReadNotePage({super.key, required this.noteId});
@@ -75,7 +74,6 @@ class ReadNotePage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Builder(
               builder: (context) {
-                final appSetting = context.watch<AppSettingCubit>().state;
                 final noteState = context.watch<NoteBloc>().state;
 
                 final Note selectedNote = noteState.notes.firstWhere(
@@ -90,7 +88,7 @@ class ReadNotePage extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Text(
                         selectedNote.title,
-                        style: TextStyle(fontSize: 16.0 + appSetting.fontSize),
+                        style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
                     const Divider(),

@@ -8,8 +8,25 @@
     "title": "Title",
     "inputContent": "Write something..."
   },
+  "Drawer": {
+    "appReview": "App Review",
+    "category": "Category",
+    "favorites": "Favorites",
+    "menu": "Menu",
+    "openSourceLicence": "Open Source License",
+    "privacyPolicy": "Privacy Policy",
+    "settings": "Settings",
+    "trash": "Trash"
+  },
+  "FavoritesPage": {
+    "favorites": "Favorites",
+    "updateDate": "Last modified: {}"
+  },
+  "NoteCardWidget": {
+    "updateDate":"Last modified: {}"
+  },
   "NoteListWidget": {
-    "updateDate": "Last modified time: {}"
+    "updateDate": "Last modified: {}"
   },
   "ReadNotePage": {
     "delete": "Delete",
@@ -17,6 +34,9 @@
     "deleteDialogConent": "Are you sure you want to delete this?",
     "edit": "Edit",
     "ok": "Ok"
+  },
+  "SearchNotePage": {
+    "search": "Search"
   },
   "UpdateNotePage": {
     "edit": "Edit",

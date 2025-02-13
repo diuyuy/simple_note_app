@@ -5,9 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/const_values.dart';
 import '../../../../core/utils/format_date.dart';
-import '../../../setting/presentation/cubit/app_setting_cubit.dart';
 import '../../domain/entities/note.dart';
-import '../bloc/note_bloc.dart';
+import '../bloc/note_bloc/note_bloc.dart';
 import '../widgets/my_text_field.dart';
 
 class UpdateNotePage extends StatefulWidget {
@@ -38,9 +37,10 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
           onPressed: () {
             context.pop();
           },
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.close, size: 28),
         ),
         title: Text('UpdateNotePage.edit'.tr()),
+        centerTitle: true,
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 4.0),
@@ -66,7 +66,6 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
           child: SingleChildScrollView(
             child: Builder(builder: (context) {
-              final appSetting = context.watch<AppSettingCubit>().state;
               final selectedNote = context.select(
                 (NoteBloc bloc) => bloc.state.notes.firstWhere(
                   (note) => note.id == widget.id,
@@ -88,10 +87,7 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
                     maxLines: 1,
                     maxLength: ConstValues.titleMaxLength,
                     hintText: 'UpdateNotePage.title'.tr(),
-                    textStyle: TextStyle(
-                      fontSize:
-                          ConstValues.titleDefaulFontSize + appSetting.fontSize,
-                    ),
+                    textStyle: Theme.of(context).textTheme.bodyLarge,
                   ),
                   const Divider(),
                   MyTextField(

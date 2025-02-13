@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 import 'core/init/initialize_app.dart';
 import 'core/router/router.dart';
 import 'features/note/domain/repositories/note_repository.dart';
-import 'features/note/presentation/bloc/note_bloc.dart';
+import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
 import 'features/setting/presentation/cubit/app_setting_cubit.dart';
 
@@ -75,7 +75,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
               textTheme: TextTheme(
-                bodyMedium: TextStyle(fontSize: 12.0 + appSetting.fontSize),
+                bodyLarge: TextStyle(fontSize: (16 + appSetting.fontSize).sp),
+                bodyMedium: TextStyle(fontSize: (12 + appSetting.fontSize).sp),
+                bodySmall: TextStyle(fontSize: (10.0 + appSetting.fontSize).sp),
               ),
               useMaterial3: true,
             ),
