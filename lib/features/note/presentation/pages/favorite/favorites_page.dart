@@ -21,12 +21,6 @@ class FavoritesPage extends StatelessWidget {
         ),
         title: Text('FavoritesPage.favorites'.tr()),
         centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Padding(

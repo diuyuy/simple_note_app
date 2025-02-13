@@ -34,6 +34,9 @@
     "edit": "편집",
     "ok": "확인"
   },
+  "SearchNotePage": {
+    "search": "검색"
+  },
   "UpdateNotePage": {
     "edit": "편집",
     "done": "완료",

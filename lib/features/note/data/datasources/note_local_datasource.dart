@@ -4,9 +4,10 @@ import '../models/note_model.dart';
 import '../models/note_order.dart';
 
 class NoteLocalDatasource {
-  NoteLocalDatasource(this._box, this._orderBox);
+  NoteLocalDatasource(this._box, this._trashBox, this._orderBox);
 
   final Box<NoteModel> _box;
+  final Box<NoteModel> _trashBox;
   final Box<NoteOrder> _orderBox;
 
   Future<void> addNote(NoteModel newNote) async {

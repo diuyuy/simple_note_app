@@ -16,9 +16,14 @@ class NotePage extends StatelessWidget {
         title: Text('NotePage.note'.tr()),
         centerTitle: true,
         actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.search),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              onPressed: () {
+                context.go('/search');
+              },
+              icon: Icon(Icons.search),
+            ),
           ),
         ],
       ),

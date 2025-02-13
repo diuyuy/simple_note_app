@@ -17,6 +17,7 @@ class DrawerTile extends StatelessWidget {
     return ListTile(
       leading: leading,
       title: title,
+      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
       trailing: Icon(Icons.keyboard_arrow_right),
       onTap: onTap,
     );

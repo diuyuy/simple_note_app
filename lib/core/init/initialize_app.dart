@@ -21,7 +21,8 @@ Future<void> initializeApp() async {
     ..init(directory.path)
     ..registerAdapters();
 
-  final noteModel = await Hive.openBox<NoteModel>(BoxName.noteBoxName);
+  final noteBox = await Hive.openBox<NoteModel>(BoxName.noteBoxName);
+  final trashBox = await Hive.openBox<NoteModel>(BoxName.trashBoxName);
   final noteOrder = await Hive.openBox<NoteOrder>(BoxName.noteOrderBoxName);
   final appSettingModel =
       await Hive.openBox<AppSettingModel>(BoxName.appSettingBoxName);
@@ -30,7 +31,8 @@ Future<void> initializeApp() async {
 
   getIt.registerLazySingleton<NoteRepository>(
     () {
-      final noteLocalDatasource = NoteLocalDatasource(noteModel, noteOrder);
+      final noteLocalDatasource =
+          NoteLocalDatasource(noteBox, trashBox, noteOrder);
 
       return NoteRepositoryImpl(noteLocalDatasource);
     },
