@@ -2,11 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:simple_note_app/features/note/domain/usecases/note/load_notes_use_case.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/contain_query.dart';
 import '../../../domain/entities/note.dart';
+import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 
 part 'search_notes_bloc.freezed.dart';
 part 'search_notes_bloc_event.dart';

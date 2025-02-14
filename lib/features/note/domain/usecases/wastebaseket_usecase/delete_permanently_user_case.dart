@@ -5,5 +5,7 @@ class DeletePermanentlyUserCase {
 
   final WastebasketRepository wastebasketRepository;
 
-  Future<void> execute() async {}
+  Future<void> execute(String id) async {
+    await wastebasketRepository.deleteNotePermanently(id);
+  }
 }

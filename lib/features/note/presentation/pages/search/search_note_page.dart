@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
-import '../../../domain/usecases/note/load_notes_use_case.dart';
+import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../widgets/search/filtered_note_card_widget.dart';

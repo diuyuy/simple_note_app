@@ -7,9 +7,9 @@ import 'package:get_it/get_it.dart';
 
 import 'core/init/initialize_app.dart';
 import 'core/router/router.dart';
-import 'features/note/domain/usecases/note/delete_note_use_case.dart';
-import 'features/note/domain/usecases/note/load_notes_use_case.dart';
 import 'features/note/domain/usecases/note_usecase/create_note_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/delete_note_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/load_notes_use_case.dart';
 import 'features/note/domain/usecases/note_usecase/reorder_notes_use_case.dart';
 import 'features/note/domain/usecases/note_usecase/update_note_use_case.dart';
 import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';

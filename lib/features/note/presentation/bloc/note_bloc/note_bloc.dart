@@ -2,13 +2,13 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:simple_note_app/features/note/domain/usecases/note/delete_note_use_case.dart';
-import 'package:simple_note_app/features/note/domain/usecases/note/load_notes_use_case.dart';
-import 'package:simple_note_app/features/note/domain/usecases/note_usecase/create_note_use_case.dart';
-import 'package:simple_note_app/features/note/domain/usecases/note_usecase/reorder_notes_use_case.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../domain/entities/note.dart';
+import '../../../domain/usecases/note_usecase/create_note_use_case.dart';
+import '../../../domain/usecases/note_usecase/delete_note_use_case.dart';
+import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
+import '../../../domain/usecases/note_usecase/reorder_notes_use_case.dart';
 import '../../../domain/usecases/note_usecase/update_note_use_case.dart';
 
 part 'note_bloc.freezed.dart';
