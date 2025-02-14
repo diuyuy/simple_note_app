@@ -7,7 +7,11 @@ import 'package:get_it/get_it.dart';
 
 import 'core/init/initialize_app.dart';
 import 'core/router/router.dart';
-import 'features/note/domain/repositories/note_repository.dart';
+import 'features/note/domain/usecases/note/delete_note_use_case.dart';
+import 'features/note/domain/usecases/note/load_notes_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/create_note_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/reorder_notes_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/update_note_use_case.dart';
 import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
 import 'features/setting/presentation/cubit/app_setting_cubit.dart';
@@ -42,9 +46,19 @@ void main() async {
           ),
           BlocProvider<NoteBloc>(
             create: (context) {
-              final noteRepository = getIt<NoteRepository>();
+              final createNoteUseCase = getIt<CreateNoteUseCase>();
+              final loadNotesUseCase = getIt<LoadNotesUseCase>();
+              final updateNoteUseCase = getIt<UpdateNoteUseCase>();
+              final deleteNoteUseCase = getIt<DeleteNoteUseCase>();
+              final reorderNotesUseCase = getIt<ReorderNotesUseCase>();
 
-              return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
+              return NoteBloc(
+                createNoteUseCase: createNoteUseCase,
+                loadNotesUseCase: loadNotesUseCase,
+                updateNoteUseCase: updateNoteUseCase,
+                deleteNoteUseCase: deleteNoteUseCase,
+                reorderNotesUseCase: reorderNotesUseCase,
+              )..add(NoteEvent.loadNotes());
             },
           ),
         ],
