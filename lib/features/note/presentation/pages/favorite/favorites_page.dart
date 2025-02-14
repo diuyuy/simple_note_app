@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/widgets/note_card_widget.dart';
+import '../../../../../core/widgets/my_menu_anchor.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
+import '../../widgets/empty_note_text_widget.dart';
+import '../../widgets/note_card_widget.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -21,6 +23,11 @@ class FavoritesPage extends StatelessWidget {
         ),
         title: Text('FavoritesPage.favorites'.tr()),
         centerTitle: true,
+        actions: [
+          MyMenuAnchor(
+            menuChildren: <MenuItemButton>[],
+          ),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -30,33 +37,37 @@ class FavoritesPage extends StatelessWidget {
               final favortes =
                   state.notes.where((note) => note.isFavorite).toList();
 
-              return ListView.builder(
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      context.push(
-                        '/read',
-                        extra: favortes[index].id,
-                      );
-                    },
-                    child: NoteCardWidget(
-                      title: favortes[index].title,
-                      date: favortes[index].updateDate ??
-                          favortes[index].createDate,
-                      isFavorite: favortes[index].isFavorite,
-                      onTapTrailing: () {
-                        context.read<NoteBloc>().add(
-                              NoteEvent.updateNote(
-                                id: favortes[index].id,
-                                isFavorite: !favortes[index].isFavorite,
-                              ),
+              return favortes.isNotEmpty
+                  ? ListView.builder(
+                      itemBuilder: (context, index) {
+                        return GestureDetector(
+                          onTap: () {
+                            context.push(
+                              '/read',
+                              extra: favortes[index].id,
                             );
+                          },
+                          child: NoteCardWidget(
+                            title: favortes[index].title,
+                            date: favortes[index].updateDate ??
+                                favortes[index].createDate,
+                            isFavorite: favortes[index].isFavorite,
+                            onTapTrailing: () {
+                              context.read<NoteBloc>().add(
+                                    NoteEvent.updateNote(
+                                      id: favortes[index].id,
+                                      isFavorite: !favortes[index].isFavorite,
+                                    ),
+                                  );
+                            },
+                          ),
+                        );
                       },
-                    ),
-                  );
-                },
-                itemCount: favortes.length,
-              );
+                      itemCount: favortes.length,
+                    )
+                  : EmptyNoteTextWidget(
+                      content: 'FavoritesPage.addFavoriteNote'.tr(),
+                    );
             },
           ),
         ),

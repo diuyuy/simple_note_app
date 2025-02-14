@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/widgets/my_menu_anchor.dart';
 import '../../../../core/widgets/note_drawer.dart';
 import '../widgets/notes_list_widget.dart';
 
@@ -16,15 +17,13 @@ class NotePage extends StatelessWidget {
         title: Text('NotePage.note'.tr()),
         centerTitle: true,
         actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              onPressed: () {
-                context.go('/search');
-              },
-              icon: Icon(Icons.search),
-            ),
+          IconButton(
+            onPressed: () {
+              context.go('/search');
+            },
+            icon: Icon(Icons.search),
           ),
+          MyMenuAnchor(menuChildren: <MenuItemButton>[]),
         ],
       ),
       body: SafeArea(

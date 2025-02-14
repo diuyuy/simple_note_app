@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
@@ -20,6 +21,8 @@ class ReadNotePage extends StatelessWidget {
           onPressed: () => context.pop(),
           icon: Icon(Icons.arrow_back_ios),
         ),
+        title: Text('ReadNotePage.note'.tr()),
+        centerTitle: true,
         actions: [
           BlocBuilder<NoteBloc, NoteState>(
             builder: (context, state) {
@@ -48,22 +51,31 @@ class ReadNotePage extends StatelessWidget {
               );
             },
           ),
-          MenuAnchor(
-            //alignmentOffset: Offset(, 0),
-            style: MenuStyle(
-              padding: WidgetStatePropertyAll(EdgeInsets.only(right: 8)),
-            ),
-            menuChildren: getMenuItemButtonList(context),
-            builder: (context, controller, child) {
-              return IconButton(
-                onPressed: () {
-                  if (controller.isOpen) {
-                    controller.close();
-                  } else {
-                    controller.open();
-                  }
+          BlocBuilder<NoteBloc, NoteState>(
+            builder: (context, state) {
+              final selectedNote = state.notes.firstWhere(
+                (note) => note.id == noteId,
+                orElse: () => Note(
+                  id: '',
+                  title: '',
+                  createDate: '',
+                ),
+              );
+
+              return MenuAnchor(
+                menuChildren: getMenuItemButtonList(context, selectedNote),
+                builder: (context, controller, child) {
+                  return IconButton(
+                    onPressed: () {
+                      if (controller.isOpen) {
+                        controller.close();
+                      } else {
+                        controller.open();
+                      }
+                    },
+                    icon: Icon(Icons.more_vert),
+                  );
                 },
-                icon: Icon(Icons.more_vert),
               );
             },
           ),
@@ -135,11 +147,14 @@ class ReadNotePage extends StatelessWidget {
     );
   }
 
-  List<Widget> getMenuItemButtonList(BuildContext context) {
+  List<Widget> getMenuItemButtonList(BuildContext context, Note deletedNote) {
     final currentPath = GoRouterState.of(context).uri.path;
 
     return [
       MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(64.w, 40.w),
+        ),
         onPressed: () {
           context.go('$currentPath/update', extra: noteId);
         },
@@ -150,7 +165,9 @@ class ReadNotePage extends StatelessWidget {
           final isConfirm = await showDeleteDialog(context);
           if (isConfirm == true) {
             if (context.mounted) {
-              context.read<NoteBloc>().add(NoteEvent.deleteNote(id: noteId));
+              context
+                  .read<NoteBloc>()
+                  .add(NoteEvent.deleteNote(deletedNote: deletedNote));
               context.pop();
             }
           }

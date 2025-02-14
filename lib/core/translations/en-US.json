@@ -23,13 +23,15 @@
     "trash": "Trash"
   },
   "FavoritesPage": {
+    "addFavoriteNote": "Add your favorite note\nto Favorites!",
     "favorites": "Favorites",
     "updateDate": "Last modified: {}"
   },
   "NoteCardWidget": {
     "updateDate":"Last modified: {}"
   },
-  "NoteListWidget": {
+  "NotesListWidget": {
+    "tryCreateNote": "Try creating a new note!",
     "updateDate": "Last modified: {}"
   },
   "ReadNotePage": {
@@ -37,10 +39,12 @@
     "cancel": "Cancel", 
     "deleteDialogConent": "Are you sure you want to delete this?",
     "edit": "Edit",
+    "note": "Note",
     "ok": "Ok"
   },
   "SearchNotePage": {
-    "hintText": "Search notes..."
+    "hintText": "Search notes...",
+    "noResultsFound": "No results found."
   },
   "UpdateNotePage": {
     "edit": "Edit",

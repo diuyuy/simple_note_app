@@ -5,8 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/format_date.dart';
+import '../../../../core/widgets/my_text_field.dart';
 import '../bloc/note_bloc/note_bloc.dart';
-import '../widgets/my_text_field.dart';
 
 class CreateNotePage extends StatefulWidget {
   const CreateNotePage({super.key});
@@ -34,6 +34,8 @@ class _CreateNotePageState extends State<CreateNotePage> {
           onPressed: () => context.pop(),
           icon: Icon(Icons.arrow_back_ios),
         ),
+        title: Text('CreateNotePage.newNote'.tr()),
+        centerTitle: true,
         actions: [
           TextButton(
             style: TextButton.styleFrom(

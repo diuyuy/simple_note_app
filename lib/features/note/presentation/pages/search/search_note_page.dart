@@ -4,10 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/widgets/filtered_note_card_widget.dart';
-import '../../../domain/repositories/note_repository.dart';
+import '../../../../../core/color/app_colors.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../domain/usecases/note/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
+import '../../widgets/search/filtered_note_card_widget.dart';
 
 class SearchNotePage extends StatelessWidget {
   const SearchNotePage({super.key});
@@ -16,9 +19,9 @@ class SearchNotePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        final repository = GetIt.I<NoteRepository>();
+        final loadNotesUseCase = GetIt.I<LoadNotesUseCase>();
 
-        return SearchNotesBloc(repository)
+        return SearchNotesBloc(loadNotesUseCase: loadNotesUseCase)
           ..add(SearchNotesBlocEvent.loadAllNotes());
       },
       child: SearchNoteView(),
@@ -54,7 +57,7 @@ class _SearchNoteViewState extends State<SearchNoteView> {
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: TextField(
             controller: _searchController,
-            maxLength: 100, //TODO: AppConstants 로 옮기기.
+            maxLength: AppConstants.searchMaxLength,
             onChanged: (value) {
               context
                   .read<SearchNotesBloc>()
@@ -93,6 +96,9 @@ class _SearchNoteViewState extends State<SearchNoteView> {
           ),
         ),
         centerTitle: true,
+        actions: [
+          MyMenuAnchor(menuChildren: <MenuItemButton>[]),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -144,8 +150,8 @@ class _SearchNoteViewState extends State<SearchNoteView> {
                           child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
-                              '일치하는 검색 결과가 없습니다.', //TODO: translations 파일로 옮기기
-                              style: TextStyle(color: Colors.grey[800]),
+                              'SearchNotePage.noResultsFound'.tr(),
+                              style: TextStyle(color: AppColors.darkGrey),
                             ),
                           ),
                         );

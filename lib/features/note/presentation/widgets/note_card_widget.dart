@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-import '../color/app_colors.dart';
-import '../constants/app_constants.dart';
-import '../utils/color_container_widget.dart';
+import '../../../../core/color/app_colors.dart';
+import '../../../../core/constants/app_constants.dart';
+import '../../../../core/widgets/color_container_widget.dart';
 
 class NoteCardWidget extends StatelessWidget {
   const NoteCardWidget({
@@ -40,7 +40,7 @@ class NoteCardWidget extends StatelessWidget {
               width: 36,
               alpha: 80,
               child: Icon(
-                Icons.note_rounded,
+                Icons.sticky_note_2,
                 color: primaryColor,
               ),
             ),
@@ -57,8 +57,9 @@ class NoteCardWidget extends StatelessWidget {
                 Text(
                   'NoteCardWidget.updateDate'.tr(args: [date]),
                   style: TextStyle(
-                    color: AppColors.darkGrey,
+                    color: AppColors.midDarkGrey,
                     fontSize: AppConstants.noteCardDateFontSize,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
               ],

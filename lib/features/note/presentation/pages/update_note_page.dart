@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/utils/format_date.dart';
+import '../../../../core/widgets/my_text_field.dart';
 import '../../domain/entities/note.dart';
 import '../bloc/note_bloc/note_bloc.dart';
-import '../widgets/my_text_field.dart';
 
 class UpdateNotePage extends StatefulWidget {
   const UpdateNotePage({super.key, required this.id});
