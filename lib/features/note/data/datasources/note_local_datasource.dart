@@ -67,4 +67,8 @@ class NoteLocalDatasource {
     orderList.insert(index, id);
     await _orderBox.putAt(0, NoteOrder(order: orderList));
   }
+
+  Future<void> restoreNote(NoteModel restoredNote) async {
+    await addNote(restoredNote);
+  }
 }

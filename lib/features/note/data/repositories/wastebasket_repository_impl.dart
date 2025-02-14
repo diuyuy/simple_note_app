@@ -1,6 +1,5 @@
-import 'package:simple_note_app/core/utils/note_to_model.dart';
-
 import '../../../../core/utils/note_model_to_entity.dart';
+import '../../../../core/utils/note_to_model.dart';
 import '../../domain/entities/note.dart';
 import '../../domain/repositories/wastebasket_repository.dart';
 import '../datasources/wastebasket_local_datasource.dart';

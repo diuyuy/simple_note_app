@@ -11,5 +11,8 @@ class RestoreNoteUserCase {
   final NoteRepository noteRepository;
   final WastebasketRepository wastebasketRepository;
 
-  Future<void> execute(Note resotredNote) async {}
+  Future<void> execute(Note restoredNote) async {
+    await noteRepository.restoreNote(restoredNote);
+    await wastebasketRepository.restoreNote(restoredNote.id);
+  }
 }
