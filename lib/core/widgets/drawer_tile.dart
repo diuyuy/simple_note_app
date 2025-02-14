@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants/app_constants.dart';
+
 class DrawerTile extends StatelessWidget {
   const DrawerTile({
     super.key,
@@ -17,7 +19,10 @@ class DrawerTile extends StatelessWidget {
     return ListTile(
       leading: leading,
       title: title,
-      titleTextStyle: Theme.of(context).textTheme.bodyMedium,
+      titleTextStyle: Theme.of(context)
+          .textTheme
+          .bodyMedium
+          ?.copyWith(fontSize: AppConstants.drawerTileFontSize),
       trailing: Icon(Icons.keyboard_arrow_right),
       onTap: onTap,
     );

@@ -2,7 +2,11 @@
   "NotePage": {
     "note": "노트"
   },
+  "AppConstants": {
+    "untitled": "제목 없음"
+  },
   "CreateNotePage": {
+    "newNote": "새 노트",
     "save": "저장",
     "title": "제목",
     "inputContent": "내용을 입력하세요."
@@ -35,7 +39,7 @@
     "ok": "확인"
   },
   "SearchNotePage": {
-    "search": "검색"
+    "hintText": "검색어를 입력하세요"
   },
   "UpdateNotePage": {
     "edit": "편집",

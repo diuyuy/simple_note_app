@@ -1,10 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:simple_note_app/features/note/data/models/note_order.dart';
 
 import '../../features/note/data/datasources/note_local_datasource.dart';
 import '../../features/note/data/models/note_model.dart';
+import '../../features/note/data/models/note_order.dart';
 import '../../features/note/data/repositories/note_repository_impl.dart';
 import '../../features/note/domain/repositories/note_repository.dart';
 import '../../features/setting/data/datasources/app_setting_local_datasource.dart';

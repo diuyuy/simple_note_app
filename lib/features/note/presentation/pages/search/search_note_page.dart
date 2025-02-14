@@ -1,10 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/widgets/note_card_widget.dart';
+import '../../../../../core/widgets/filtered_note_card_widget.dart';
 import '../../../domain/repositories/note_repository.dart';
+import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
 
 class SearchNotePage extends StatelessWidget {
@@ -52,7 +54,7 @@ class _SearchNoteViewState extends State<SearchNoteView> {
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: TextField(
             controller: _searchController,
-            maxLength: 100,
+            maxLength: 100, //TODO: AppConstants 로 옮기기.
             onChanged: (value) {
               context
                   .read<SearchNotesBloc>()
@@ -68,22 +70,29 @@ class _SearchNoteViewState extends State<SearchNoteView> {
                   color: Theme.of(context).colorScheme.outline,
                 ),
               ),
+              hintText: 'SearchNotePage.hintText'.tr(),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8.0),
                 borderSide: BorderSide(
                   color: Theme.of(context).colorScheme.outline,
                 ),
               ),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  _searchController.clear();
+                  context
+                      .read<SearchNotesBloc>()
+                      .add(SearchNotesBlocEvent.loadAllNotes());
+                },
+                icon: Icon(
+                  Icons.cancel,
+                  color: Colors.grey,
+                ),
+              ),
             ),
           ),
         ),
         centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 12.0),
-            child: Icon(Icons.search),
-          ),
-        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -104,13 +113,21 @@ class _SearchNoteViewState extends State<SearchNoteView> {
                                 onTap: () {
                                   context.push('/read', extra: note.id);
                                 },
-                                child: NoteCardWidget(
+                                child: FilteredNoteCardWidget(
                                   title: note.title,
+                                  content: note.content ?? '',
+                                  query: _searchController.text,
                                   date: note.updateDate ?? note.createDate,
                                   isFavorite: note.isFavorite,
                                   onTapTrailing: () {
                                     context.read<SearchNotesBloc>().add(
                                           SearchNotesBlocEvent.tapFavorite(
+                                            id: note.id,
+                                            isFavorite: !note.isFavorite,
+                                          ),
+                                        );
+                                    context.read<NoteBloc>().add(
+                                          NoteEvent.updateNote(
                                             id: note.id,
                                             isFavorite: !note.isFavorite,
                                           ),
@@ -127,7 +144,7 @@ class _SearchNoteViewState extends State<SearchNoteView> {
                           child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
-                              '일치하는 검색 결과가 없습니다.',
+                              '일치하는 검색 결과가 없습니다.', //TODO: translations 파일로 옮기기
                               style: TextStyle(color: Colors.grey[800]),
                             ),
                           ),

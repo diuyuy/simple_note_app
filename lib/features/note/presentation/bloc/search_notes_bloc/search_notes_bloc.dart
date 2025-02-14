@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:simple_note_app/core/utils/contain_query.dart';
 
+import '../../../../../core/constants/app_constants.dart';
 import '../../../domain/entities/note.dart';
 import '../../../domain/repositories/note_repository.dart';
 
@@ -35,11 +38,17 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
     final notes = _repository.getNoteList();
 
     final filteredNotes = notes.where((note) {
+      String title =
+          note.title.isNotEmpty ? note.title : AppConstants.untitled.tr();
+
       if (note.content == null) {
-        return note.title.toLowerCase().contains(event.query.toLowerCase());
+        return containQuery(target: title, query: event.query);
+        //return title.toLowerCase().contains(event.query.toLowerCase());
       }
-      return note.content!.toLowerCase().contains(event.query.toLowerCase()) ||
-          note.title.toLowerCase().contains(event.query.toLowerCase());
+      return containQuery(target: note.content!, query: event.query) ||
+          containQuery(target: title, query: event.query);
+      // return note.content!.toLowerCase().contains(event.query.toLowerCase()) ||
+      // title.toLowerCase().contains(event.query.toLowerCase());
     }).toList();
 
     emit(_Loaded(notes: filteredNotes));
@@ -56,7 +65,5 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
     notes[index] = updatedNote;
 
     emit(_Loaded(notes: notes));
-
-    _repository.updateNote(updatedNote);
   }
 }

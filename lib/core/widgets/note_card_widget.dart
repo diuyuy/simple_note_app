@@ -1,7 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
+import '../color/app_colors.dart';
+import '../constants/app_constants.dart';
 import '../utils/color_container_widget.dart';
 
 class NoteCardWidget extends StatelessWidget {
@@ -41,59 +44,36 @@ class NoteCardWidget extends StatelessWidget {
                 color: primaryColor,
               ),
             ),
-            Gap(16),
+            Gap(12.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(title),
+                Text(
+                  title.isNotEmpty ? title : AppConstants.untitled.tr(),
+                  style:
+                      TextStyle(fontSize: AppConstants.noteCardTitleFontSize),
+                ),
                 Text(
                   'NoteCardWidget.updateDate'.tr(args: [date]),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(color: Colors.grey[700]),
+                  style: TextStyle(
+                    color: AppColors.darkGrey,
+                    fontSize: AppConstants.noteCardDateFontSize,
+                  ),
                 ),
               ],
             ),
             const Spacer(),
-            GestureDetector(
-              onTap: onTapTrailing,
-              child: Icon(
+            IconButton(
+              onPressed: onTapTrailing,
+              icon: Icon(
                 isFavorite ? Icons.star : Icons.star_border,
                 color: primaryColor,
               ),
-            )
+            ),
           ],
         ),
       ),
-      // child: ListTile(
-      //   leading: ColorContainerWidget(
-      //     color: primaryColor,
-      //     alpha: 80,
-      //     width: 36,
-      //     child: Icon(
-      //       Icons.note_rounded,
-      //       color: primaryColor,
-      //     ),
-      //   ),
-      //   title: Text(
-      //     title,
-      //     overflow: TextOverflow.ellipsis,
-      //   ),
-      //   subtitle: Text(
-      //     'NoteCardWidget.updateDate'.tr(
-      //       args: [date],
-      //     ),
-      //   ),
-      //   trailing: GestureDetector(
-      //     onTap: onTapTrailing,
-      //     child: Icon(
-      //       isFavorite ? Icons.star : Icons.star_border,
-      //       color: primaryColor,
-      //     ),
-      //   ),
-      // ),
     );
   }
 }

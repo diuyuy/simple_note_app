@@ -3,7 +3,11 @@
     "note": "Note"
     
   },
+  "AppConstants": {
+    "untitled": "Untitled"
+  },
   "CreateNotePage": {
+    "newNote": "New Note",
     "save": "Save",
     "title": "Title",
     "inputContent": "Write something..."
@@ -36,7 +40,7 @@
     "ok": "Ok"
   },
   "SearchNotePage": {
-    "search": "Search"
+    "hintText": "Search notes..."
   },
   "UpdateNotePage": {
     "edit": "Edit",

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../domain/entities/note.dart';
 import '../bloc/note_bloc/note_bloc.dart';
 
@@ -87,7 +88,9 @@ class ReadNotePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Text(
-                        selectedNote.title,
+                        selectedNote.title.isNotEmpty
+                            ? selectedNote.title
+                            : AppConstants.untitled.tr(),
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),

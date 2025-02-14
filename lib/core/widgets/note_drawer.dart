@@ -41,7 +41,7 @@ class NoteDrawer extends StatelessWidget {
             ),
           ),
           DrawerTile(
-            leading: Icon(Icons.star),
+            leading: Icon(Icons.star_outline),
             title: Text('Drawer.favorites'.tr()),
             onTap: () {
               context.go('/favorites');
@@ -62,15 +62,15 @@ class NoteDrawer extends StatelessWidget {
             title: Text('Drawer.settings'.tr()),
           ),
           DrawerTile(
-            leading: Icon(Icons.description),
+            leading: Icon(Icons.description_outlined),
             title: Text('Drawer.openSourceLicence'.tr()),
           ),
           DrawerTile(
-            leading: Icon(Icons.privacy_tip),
+            leading: Icon(Icons.privacy_tip_outlined),
             title: Text('Drawer.privacyPolicy'.tr()),
           ),
           DrawerTile(
-            leading: Icon(Icons.rate_review),
+            leading: Icon(Icons.rate_review_outlined),
             title: Text('Drawer.appReview'.tr()),
           ),
         ],
