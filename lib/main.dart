@@ -12,7 +12,12 @@ import 'features/note/domain/usecases/note_usecase/delete_note_use_case.dart';
 import 'features/note/domain/usecases/note_usecase/load_notes_use_case.dart';
 import 'features/note/domain/usecases/note_usecase/reorder_notes_use_case.dart';
 import 'features/note/domain/usecases/note_usecase/update_note_use_case.dart';
+import 'features/note/domain/usecases/wastebaseket_usecase/delete_permanently_user_case.dart';
+import 'features/note/domain/usecases/wastebaseket_usecase/load_wastes_use_case.dart';
+import 'features/note/domain/usecases/wastebaseket_usecase/restore_note_user_case.dart';
 import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';
+import 'features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
+import 'features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
 import 'features/setting/presentation/cubit/app_setting_cubit.dart';
 
@@ -45,6 +50,7 @@ void main() async {
             },
           ),
           BlocProvider<NoteBloc>(
+            lazy: false,
             create: (context) {
               final createNoteUseCase = getIt<CreateNoteUseCase>();
               final loadNotesUseCase = getIt<LoadNotesUseCase>();
@@ -61,6 +67,30 @@ void main() async {
               )..add(NoteEvent.loadNotes());
             },
           ),
+          BlocProvider(
+            create: (context) {
+              final loadNotesUseCase = GetIt.I<LoadNotesUseCase>();
+
+              return SearchNotesBloc(loadNotesUseCase: loadNotesUseCase)
+                ..add(SearchNotesBlocEvent.loadAllNotes());
+            },
+          ),
+          BlocProvider(
+            create: (context) {
+              final getIt = GetIt.instance;
+
+              final loadWastesUseCase = getIt<LoadWastesUseCase>();
+              final restoreNoteUseCase = getIt<RestoreNoteUserCase>();
+              final deletePermanentlyUseCase =
+                  getIt<DeletePermanentlyUserCase>();
+
+              return WasteBasketBloc(
+                loadWastesUseCase: loadWastesUseCase,
+                restoreNoteUseCase: restoreNoteUseCase,
+                deletePermanentlyUseCase: deletePermanentlyUseCase,
+              )..add(WasteBasketEvent.loadWastes());
+            },
+          )
         ],
         child: MyApp(),
       ),

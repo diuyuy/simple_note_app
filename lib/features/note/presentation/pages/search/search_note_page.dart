@@ -1,43 +1,26 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
-import '../../../../../core/constants/router_path.dart';
+import '../../../../../core/enum/previous_page.dart';
+import '../../../../../core/router/note_selection_args.dart';
+import '../../../../../core/router/router_path.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
-import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../widgets/search/filtered_note_card_widget.dart';
 
-class SearchNotePage extends StatelessWidget {
+class SearchNotePage extends StatefulWidget {
   const SearchNotePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        final loadNotesUseCase = GetIt.I<LoadNotesUseCase>();
-
-        return SearchNotesBloc(loadNotesUseCase: loadNotesUseCase)
-          ..add(SearchNotesBlocEvent.loadAllNotes());
-      },
-      child: SearchNoteView(),
-    );
-  }
+  State<SearchNotePage> createState() => _SearchNotePageState();
 }
 
-class SearchNoteView extends StatefulWidget {
-  const SearchNoteView({super.key});
-
-  @override
-  State<SearchNoteView> createState() => _SearchNoteViewState();
-}
-
-class _SearchNoteViewState extends State<SearchNoteView> {
+class _SearchNotePageState extends State<SearchNotePage> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -117,9 +100,20 @@ class _SearchNoteViewState extends State<SearchNoteView> {
                               final note = filteredNotes[index];
 
                               return GestureDetector(
+                                onLongPress: () {
+                                  context.push(
+                                    RouterPath.noteSelectionPage,
+                                    extra: NoteSelectionArgs(
+                                      selectedNotes: [note.id],
+                                      previousPage: PreviousPage.search,
+                                    ),
+                                  );
+                                },
                                 onTap: () {
-                                  context.push('/${RouterPath.readNotePage}',
-                                      extra: note.id);
+                                  context.push(
+                                    '/${RouterPath.readNotePage}',
+                                    extra: note.id,
+                                  );
                                 },
                                 child: FilteredNoteCardWidget(
                                   title: note.title,

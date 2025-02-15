@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/constants/router_path.dart';
+import '../../../../../core/enum/previous_page.dart';
+import '../../../../../core/router/note_selection_args.dart';
+import '../../../../../core/router/router_path.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../widgets/empty_note_text_widget.dart';
@@ -41,7 +43,18 @@ class FavoritesPage extends StatelessWidget {
               return favortes.isNotEmpty
                   ? ListView.builder(
                       itemBuilder: (context, index) {
+                        final note = favortes[index];
+
                         return GestureDetector(
+                          onLongPress: () {
+                            context.push(
+                              RouterPath.noteSelectionPage,
+                              extra: NoteSelectionArgs(
+                                selectedNotes: [note.id],
+                                previousPage: PreviousPage.favorite,
+                              ),
+                            );
+                          },
                           onTap: () {
                             context.push(
                               '/${RouterPath.readNotePage}',

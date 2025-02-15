@@ -11,7 +11,13 @@ class MyMenuAnchor extends StatelessWidget {
       menuChildren: menuChildren,
       builder: (context, controller, child) {
         return IconButton(
-          onPressed: () {},
+          onPressed: () {
+            if (controller.isOpen) {
+              controller.close();
+            } else {
+              controller.open();
+            }
+          },
           icon: Icon(Icons.more_vert),
         );
       },
