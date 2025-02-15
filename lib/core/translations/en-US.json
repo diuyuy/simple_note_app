@@ -1,7 +1,8 @@
 {
-  "NotePage": {
-    "note": "Note"
-    
+  "HomePage": {
+    "note": "Note",
+    "select": "Select",
+    "selectAll": "Select All"
   },
   "AppConstants": {
     "untitled": "Untitled"
@@ -33,6 +34,11 @@
   "NotesListWidget": {
     "tryCreateNote": "Try creating a new note!",
     "updateDate": "Last modified: {}"
+  },
+  "NoteSelectionPage": {
+    "deselectAll": "Deselect All",
+    "select": "Select",
+    "selectAll": "Select All"
   },
   "ReadNotePage": {
     "delete": "Delete",

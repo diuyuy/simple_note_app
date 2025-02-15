@@ -1,6 +1,8 @@
 {
-  "NotePage": {
-    "note": "노트"
+  "HomePage": {
+    "note": "노트",
+    "select": "선택",
+    "selectAll": "모두 선택"
   },
   "AppConstants": {
     "untitled": "제목 없음"
@@ -32,6 +34,11 @@
   "NotesListWidget": {
     "tryCreateNote": "새 노트를 작성해보세요!",
     "updateDate": "수정 날짜: {}"
+  },
+  "NoteSelectionPage": {
+    "deselectAll": "선택 해제",
+    "select": "선택",
+    "selectAll": "모두 선택"
   },
   "ReadNotePage": {
     "cancel": "취소",

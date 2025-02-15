@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/note/presentation/pages/favorite/favorites_page.dart';
+import '../../features/note/presentation/pages/home_page.dart';
 import '../../features/note/presentation/pages/note/create_note_page.dart';
 import '../../features/note/presentation/pages/note/read_note_page.dart';
 import '../../features/note/presentation/pages/note/update_note_page.dart';
-import '../../features/note/presentation/pages/note_page.dart';
 import '../../features/note/presentation/pages/search/search_note_page.dart';
+import '../../features/note/presentation/pages/selection/note_selection_page.dart';
 import '../../features/note/presentation/pages/wastebasket/wastebasket_page.dart';
-import '../constants/router_path.dart';
+import 'note_selection_args.dart';
+import 'router_path.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -18,7 +20,7 @@ final router = GoRouter(
       pageBuilder: (context, state) => buildFadeTransitionPage(
         context: context,
         state: state,
-        child: const NotePage(),
+        child: const HomePage(),
       ),
       routes: [
         GoRoute(
@@ -82,6 +84,41 @@ final router = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      path: RouterPath.noteSelectionPage,
+      pageBuilder: (context, state) {
+        final args = state.extra as NoteSelectionArgs;
+
+        return NoTransitionPage(
+          child: NoteSelectionPage(
+            selectedNotes: args.selectedNotes,
+            previousPage: args.previousPage,
+          ),
+        );
+
+        // return NoTransitionPage(
+        //   child: BlocProvider.value(
+        //     value: switch (args.previousPage) {
+        //       PreviousPage.search => BlocProvider.of<SearchNotesBloc>(context),
+        //       PreviousPage.trash => BlocProvider.of<WasteBasketBloc>(context),
+        //       _ => BlocProvider.of<NoteBloc>(context),
+        //     },
+        //     child: NoteSelectionPage(
+        //         selectedNotes: args.selectedNotes,
+        //         previousPage: args.previousPage),
+        //   ),
+        // );
+
+        // return buildFadeTransitionPage(
+        //   context: context,
+        //   state: state,
+        //   child: NoteSelectionPage(
+        //     selectedNotes: args.selectedNotes,
+        //     previousPage: args.previousPage,
+        //   ),
+        // );
+      },
     ),
   ],
 );

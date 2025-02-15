@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_constants.dart';
-import '../../../../../core/constants/router_path.dart';
+import '../../../../../core/router/router_path.dart';
 import '../../../domain/entities/note.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 
