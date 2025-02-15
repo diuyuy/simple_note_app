@@ -50,5 +50,8 @@
     "done": "완료",
     "title": "제목",
     "inputContent": "내용을 입력하세요."
+  },
+  "WastebasketPage": {
+    "trash": "휴지통"
   }
 }

@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/constants/router_path.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
 import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
@@ -117,7 +118,8 @@ class _SearchNoteViewState extends State<SearchNoteView> {
 
                               return GestureDetector(
                                 onTap: () {
-                                  context.push('/read', extra: note.id);
+                                  context.push('/${RouterPath.readNotePage}',
+                                      extra: note.id);
                                 },
                                 child: FilteredNoteCardWidget(
                                   title: note.title,

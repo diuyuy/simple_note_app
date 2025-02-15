@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/constants/router_path.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../widgets/empty_note_text_widget.dart';
@@ -43,7 +44,7 @@ class FavoritesPage extends StatelessWidget {
                         return GestureDetector(
                           onTap: () {
                             context.push(
-                              '/read',
+                              '/${RouterPath.readNotePage}',
                               extra: favortes[index].id,
                             );
                           },

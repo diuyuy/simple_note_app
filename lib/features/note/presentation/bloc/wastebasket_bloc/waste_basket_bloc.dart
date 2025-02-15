@@ -13,8 +13,8 @@ part 'waste_basket_state.dart';
 class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
   WasteBasketBloc({
     required this.loadWastesUseCase,
-    required this.restoreNoteUserCase,
-    required this.deletePermanentlyUserCase,
+    required this.restoreNoteUseCase,
+    required this.deletePermanentlyUseCase,
   }) : super(_Initial(wastes: <Note>[])) {
     on<_LoadWastes>(_onLoadWastes);
     on<_RestoreNote>(_onRestoreNote);
@@ -22,8 +22,8 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
   }
 
   final LoadWastesUseCase loadWastesUseCase;
-  final RestoreNoteUserCase restoreNoteUserCase;
-  final DeletePermanentlyUserCase deletePermanentlyUserCase;
+  final RestoreNoteUserCase restoreNoteUseCase;
+  final DeletePermanentlyUserCase deletePermanentlyUseCase;
 
   void _onLoadWastes(_LoadWastes event, Emitter<WasteBasketState> emit) {
     final wastes = loadWastesUseCase.execute();
@@ -33,14 +33,14 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
 
   Future<void> _onRestoreNote(
       _RestoreNote event, Emitter<WasteBasketState> emit) async {
-    await restoreNoteUserCase.execute(event.restoredNote);
+    await restoreNoteUseCase.execute(event.restoredNote);
 
     emit(_Loaded(wastes: loadWastesUseCase.execute()));
   }
 
   Future<void> _onDeletePermanently(
       _DeletePermanently event, Emitter<WasteBasketState> emit) async {
-    await deletePermanentlyUserCase.execute(event.id);
+    await deletePermanentlyUseCase.execute(event.id);
 
     emit(_Loaded(wastes: loadWastesUseCase.execute()));
   }

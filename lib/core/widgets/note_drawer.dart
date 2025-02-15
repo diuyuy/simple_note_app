@@ -44,8 +44,8 @@ class NoteDrawer extends StatelessWidget {
             leading: Icon(Icons.star_outline),
             title: Text('Drawer.favorites'.tr()),
             onTap: () {
-              context.go('/favorites');
               Navigator.pop(context);
+              context.go('/favorites');
             },
           ),
           DrawerTile(
@@ -55,6 +55,10 @@ class NoteDrawer extends StatelessWidget {
           DrawerTile(
             leading: Icon(Icons.delete_outline),
             title: Text('Drawer.trash'.tr()),
+            onTap: () {
+              Navigator.pop(context);
+              context.go('/trash');
+            },
           ),
           const Divider(),
           DrawerTile(

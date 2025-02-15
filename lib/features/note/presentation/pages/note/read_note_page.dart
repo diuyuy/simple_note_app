@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/app_constants.dart';
-import '../../domain/entities/note.dart';
-import '../bloc/note_bloc/note_bloc.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/constants/router_path.dart';
+import '../../../domain/entities/note.dart';
+import '../../bloc/note_bloc/note_bloc.dart';
 
 class ReadNotePage extends StatelessWidget {
   const ReadNotePage({super.key, required this.noteId});
@@ -156,7 +157,10 @@ class ReadNotePage extends StatelessWidget {
           minimumSize: Size(64.w, 40.w),
         ),
         onPressed: () {
-          context.go('$currentPath/update', extra: noteId);
+          context.go(
+            '$currentPath/${RouterPath.updateNotePage}',
+            extra: noteId,
+          );
         },
         child: Text('ReadNotePage.edit'.tr()),
       ),

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/note/presentation/pages/create_note_page.dart';
 import '../../features/note/presentation/pages/favorite/favorites_page.dart';
+import '../../features/note/presentation/pages/note/create_note_page.dart';
+import '../../features/note/presentation/pages/note/read_note_page.dart';
+import '../../features/note/presentation/pages/note/update_note_page.dart';
 import '../../features/note/presentation/pages/note_page.dart';
-import '../../features/note/presentation/pages/read_note_page.dart';
 import '../../features/note/presentation/pages/search/search_note_page.dart';
-import '../../features/note/presentation/pages/update_note_page.dart';
+import '../../features/note/presentation/pages/wastebasket/wastebasket_page.dart';
+import '../constants/router_path.dart';
 
 final router = GoRouter(
   initialLocation: '/',
@@ -20,7 +22,7 @@ final router = GoRouter(
       ),
       routes: [
         GoRoute(
-          path: 'create',
+          path: RouterPath.createNotePage,
           pageBuilder: (context, state) => buildFadeTransitionPage(
             context: context,
             state: state,
@@ -28,7 +30,7 @@ final router = GoRouter(
           ),
         ),
         GoRoute(
-          path: 'favorites',
+          path: RouterPath.favoritesPage,
           pageBuilder: (context, state) {
             return buildFadeTransitionPage(
               context: context,
@@ -38,7 +40,7 @@ final router = GoRouter(
           },
         ),
         GoRoute(
-          path: 'read',
+          path: RouterPath.readNotePage,
           pageBuilder: (context, state) {
             final noteId = state.extra as String;
 
@@ -50,7 +52,7 @@ final router = GoRouter(
           },
           routes: [
             GoRoute(
-              path: 'update',
+              path: RouterPath.updateNotePage,
               pageBuilder: (context, state) {
                 final noteId = state.extra as String;
 
@@ -64,13 +66,21 @@ final router = GoRouter(
           ],
         ),
         GoRoute(
-          path: 'search',
+          path: RouterPath.searchNotePage,
           pageBuilder: (context, state) => buildFadeTransitionPage(
             context: context,
             state: state,
             child: const SearchNotePage(),
           ),
-        )
+        ),
+        GoRoute(
+          path: RouterPath.wastebasketPage,
+          pageBuilder: (context, state) => buildFadeTransitionPage(
+            context: context,
+            state: state,
+            child: WastebasketPage(),
+          ),
+        ),
       ],
     ),
   ],

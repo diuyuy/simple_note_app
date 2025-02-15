@@ -45,20 +45,20 @@ class FilteredNoteCardWidget extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.only(
-            top: 12.0, bottom: 12.0, left: 12.0, right: 8.0),
+            top: 12.0, bottom: 12.0, left: 12.0, right: 16.0),
         child: containQuery(target: content, query: query)
             ? Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildNoteTile(context),
-                  const Padding(
-                    padding: EdgeInsets.only(right: 4.0),
-                    child: Divider(),
-                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: buildContentRichText(context),
                   ),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 4.0),
+                    child: Divider(),
+                  ),
+                  buildNoteTile(context),
                 ],
               )
             : buildNoteTile(context),
@@ -97,9 +97,9 @@ class FilteredNoteCardWidget extends StatelessWidget {
           ],
         ),
         const Spacer(),
-        IconButton(
-          onPressed: onTapTrailing,
-          icon: Icon(
+        GestureDetector(
+          onTap: onTapTrailing,
+          child: Icon(
             isFavorite ? Icons.star : Icons.star_border,
             color: primaryColor,
           ),
@@ -217,6 +217,6 @@ class FilteredNoteCardWidget extends StatelessWidget {
 
   TextStyle get contentTextStyle => TextStyle(
         color: AppColors.midDarkGrey,
-        fontSize: AppConstants.noteCardDateFontSize,
+        fontSize: AppConstants.noteCardTitleFontSize,
       );
 }

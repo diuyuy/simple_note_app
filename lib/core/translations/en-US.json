@@ -51,5 +51,8 @@
     "done": "Done",
     "title": "title",
     "inputContent": "Write something..."
+  },
+  "WastebasketPage": {
+    "trash": "Trash"
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/router_path.dart';
 import '../bloc/note_bloc/note_bloc.dart';
 import 'empty_note_text_widget.dart';
 import 'note_card_widget.dart';
@@ -34,7 +35,10 @@ class NotesListWidget extends StatelessWidget {
                     index: index,
                     child: GestureDetector(
                       onTap: () {
-                        context.go('/read', extra: notes[index].id);
+                        context.go(
+                          '/${RouterPath.readNotePage}',
+                          extra: notes[index].id,
+                        );
                       },
                       child: NoteCardWidget(
                         title: note.title,
