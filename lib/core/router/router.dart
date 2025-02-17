@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/note/presentation/pages/reorder/reorder_note_page.dart';
 
 import '../../features/note/presentation/pages/favorite/favorites_page.dart';
 import '../../features/note/presentation/pages/home_page.dart';
@@ -83,6 +84,18 @@ final router = GoRouter(
             child: WastebasketPage(),
           ),
         ),
+        GoRoute(
+          path: RouterPath.reorderNotePage,
+          pageBuilder: (context, state) {
+            final currentOrder = state.extra as List<String>;
+
+            return buildFadeTransitionPage(
+              context: context,
+              state: state,
+              child: ReorderNotePage(currentOrder: currentOrder),
+            );
+          },
+        )
       ],
     ),
     GoRoute(
@@ -96,28 +109,6 @@ final router = GoRouter(
             previousPage: args.previousPage,
           ),
         );
-
-        // return NoTransitionPage(
-        //   child: BlocProvider.value(
-        //     value: switch (args.previousPage) {
-        //       PreviousPage.search => BlocProvider.of<SearchNotesBloc>(context),
-        //       PreviousPage.trash => BlocProvider.of<WasteBasketBloc>(context),
-        //       _ => BlocProvider.of<NoteBloc>(context),
-        //     },
-        //     child: NoteSelectionPage(
-        //         selectedNotes: args.selectedNotes,
-        //         previousPage: args.previousPage),
-        //   ),
-        // );
-
-        // return buildFadeTransitionPage(
-        //   context: context,
-        //   state: state,
-        //   child: NoteSelectionPage(
-        //     selectedNotes: args.selectedNotes,
-        //     previousPage: args.previousPage,
-        //   ),
-        // );
       },
     ),
   ],

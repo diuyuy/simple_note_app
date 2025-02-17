@@ -1,6 +1,7 @@
 {
   "HomePage": {
     "note": "Note",
+    "reorderNotes": "Reorder notes",
     "select": "Select",
     "selectAll": "Select All"
   },
@@ -24,7 +25,7 @@
     "trash": "Trash"
   },
   "FavoritesPage": {
-    "addFavoriteNote": "Add your favorite note\nto Favorites!",
+    "addFavoriteNote": "Add your favorite note\n\nto Favorites!",
     "favorites": "Favorites",
     "updateDate": "Last modified: {}"
   },
@@ -40,6 +41,8 @@
     "deselectAll": "Deselect All",
     "noNotesSelected": "No notes selected.",
     "ok": "OK",
+    "permanentlyDelete": "Permanently Delete",
+    "restore": "Restore",
     "select": "Select",
     "selectAll": "Select All"
   },
@@ -52,6 +55,10 @@
     "ok": "OK",
     "share": "Share"
   },
+  "ReorderNotePage": {
+    "done": "Done",
+    "reorderNotes": "Reorder Notes"
+  },
   "SearchNotePage": {
     "hintText": "Search notes...",
     "noResultsFound": "No results found."
@@ -60,6 +67,10 @@
     "cancel": "Cancel",
     "ok": "OK"
   },
+  "showEmptyDialog": {
+    "noNoteToSelect": "There are no notes to select.",
+    "ok": "확인"
+  },
   "UpdateNotePage": {
     "edit": "Edit",
     "done": "Done",
@@ -67,6 +78,13 @@
     "inputContent": "Write something..."
   },
   "WastebasketPage": {
+    "emptyTrash": "Empty Trash",
+    "emptyTrashDialogContent": "Are you sure you want to permanently delete all items in the trash?\n\nThis action cannot be undone.",
+    "ok": "OK",
+    "trashIsAlreadyEmpty": "Trash is already empty",
+    "trashIsEmpty": "The trash is empty.",
+    "select": "Select",
+    "selectAll": "Select All",
     "trash": "Trash"
   }
 }

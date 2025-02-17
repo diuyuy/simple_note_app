@@ -26,7 +26,6 @@ class NoteEvent with _$NoteEvent {
   }) = _DeleteNote;
 
   const factory NoteEvent.reorderNotes({
-    required int oldIndex,
-    required int newIndex,
+    required List<String> newOrder,
   }) = _ReorderNotes;
 }

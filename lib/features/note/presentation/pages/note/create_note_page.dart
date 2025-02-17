@@ -38,12 +38,6 @@ class _CreateNotePageState extends State<CreateNotePage> {
         centerTitle: true,
         actions: [
           TextButton(
-            style: TextButton.styleFrom(
-              textStyle: TextStyle(
-                fontSize: AppConstants.appBarTextButtonFontSize,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
             onPressed: () {
               context.read<NoteBloc>().add(
                     NoteEvent.createNote(

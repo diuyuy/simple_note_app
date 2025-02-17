@@ -44,19 +44,12 @@ class NoteLocalDatasource {
     _orderBox.putAt(0, NoteOrder(order: order));
   }
 
-  Future<void> reorderNotes(int oldIndex, int newIndex) async {
+  Future<void> reorderNotes(List<String> newOrder) async {
     final noteOrder = _orderBox.getAt(0);
 
     if (noteOrder == null) throw Exception('open order box error');
 
-    List<String> order = [...noteOrder.order];
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final String id = order.removeAt(oldIndex);
-    order.insert(newIndex, id);
-
-    await _orderBox.putAt(0, NoteOrder(order: order));
+    await _orderBox.putAt(0, NoteOrder(order: newOrder));
   }
 
   Future<void> insertOrder(int index, String id) async {

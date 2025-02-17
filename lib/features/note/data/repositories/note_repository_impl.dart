@@ -31,8 +31,8 @@ class NoteRepositoryImpl implements NoteRepository {
   }
 
   @override
-  Future<void> reorderNotes(int oldIndex, int newIndex) async {
-    await _localDatasource.reorderNotes(oldIndex, newIndex);
+  Future<void> reorderNotes(List<String> newOrder) async {
+    await _localDatasource.reorderNotes(newOrder);
   }
 
   @override

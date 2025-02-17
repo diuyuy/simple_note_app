@@ -5,7 +5,7 @@ class ReorderNotesUseCase {
 
   ReorderNotesUseCase({required this.noteRepository});
 
-  Future<void> execute(int oldIndex, int newIndex) async {
-    await noteRepository.reorderNotes(oldIndex, newIndex);
+  Future<void> execute(List<String> newOrder) async {
+    await noteRepository.reorderNotes(newOrder);
   }
 }

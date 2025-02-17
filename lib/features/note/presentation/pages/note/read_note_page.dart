@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/router/router_path.dart';
@@ -162,7 +163,7 @@ class ReadNotePage extends StatelessWidget {
     );
   }
 
-  List<Widget> getMenuItemButtonList(BuildContext context, Note deletedNote) {
+  List<Widget> getMenuItemButtonList(BuildContext context, Note selectedNote) {
     return [
       MenuItemButton(
         style: MenuItemButton.styleFrom(
@@ -171,7 +172,9 @@ class ReadNotePage extends StatelessWidget {
             AppConstants.menuAnchorMinHeight.w,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Share.share('${selectedNote.title}\n\n${selectedNote.content}');
+        },
         child: Text('ReadNotePage.share'.tr()),
       ),
       MenuItemButton(
@@ -181,7 +184,7 @@ class ReadNotePage extends StatelessWidget {
             if (context.mounted) {
               context
                   .read<NoteBloc>()
-                  .add(NoteEvent.deleteNote(deletedNote: deletedNote));
+                  .add(NoteEvent.deleteNote(deletedNote: selectedNote));
               context.pop();
             }
           }

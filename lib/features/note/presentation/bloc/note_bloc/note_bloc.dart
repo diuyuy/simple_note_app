@@ -86,17 +86,14 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
   Future<void> _onReorderNotes(
       _ReorderNotes event, Emitter<NoteState> emit) async {
-    List<Note> orderdNotes = [...state.notes];
-    int oldIndex = event.oldIndex;
-    int newIndex = event.newIndex;
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final Note note = orderdNotes.removeAt(oldIndex);
-    orderdNotes.insert(newIndex, note);
+    List<Note> orderdNotes = event.newOrder.map((id) {
+      final note = state.notes.firstWhere((note) => note.id == id);
+
+      return note;
+    }).toList();
 
     emit(_Loaded(notes: orderdNotes));
-    await reorderNotesUseCase.execute(event.oldIndex, event.newIndex);
+    await reorderNotesUseCase.execute(event.newOrder);
   }
 
   @override

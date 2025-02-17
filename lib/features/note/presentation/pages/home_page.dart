@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
             RouterPath.noteSelectionPage,
             extra: NoteSelectionArgs(
               selectedNotes: <String>[],
-              previousPage: PreviousPage.note,
+              previousPage: PreviousPage.home,
             ),
           );
         },
@@ -75,11 +75,20 @@ class HomePage extends StatelessWidget {
             RouterPath.noteSelectionPage,
             extra: NoteSelectionArgs(
               selectedNotes: notes.map((note) => note.id).toList(),
-              previousPage: PreviousPage.note,
+              previousPage: PreviousPage.home,
             ),
           );
         },
         child: Text('HomePage.selectAll'.tr()),
+      ),
+      MenuItemButton(
+        onPressed: () {
+          context.go(
+            '/${RouterPath.reorderNotePage}',
+            extra: notes.map((note) => note.id).toList(),
+          );
+        },
+        child: Text('HomePage.reorderNotes'.tr()),
       ),
     ];
   }

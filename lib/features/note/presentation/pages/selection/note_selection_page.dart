@@ -74,7 +74,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
           TextButton(
             onPressed: () {
               final notes = switch (widget.previousPage) {
-                PreviousPage.note => context.read<NoteBloc>().state.notes,
+                PreviousPage.home => context.read<NoteBloc>().state.notes,
                 PreviousPage.favorite => context
                     .read<NoteBloc>()
                     .state
@@ -100,7 +100,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
           Builder(
             builder: (context) {
               final notes = switch (widget.previousPage) {
-                PreviousPage.note => context.watch<NoteBloc>().state.notes,
+                PreviousPage.home => context.watch<NoteBloc>().state.notes,
                 PreviousPage.favorite => context
                     .watch<NoteBloc>()
                     .state
@@ -129,7 +129,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
           child: Builder(
             builder: (context) {
               final notes = switch (widget.previousPage) {
-                PreviousPage.note => context.watch<NoteBloc>().state.notes,
+                PreviousPage.home => context.watch<NoteBloc>().state.notes,
                 PreviousPage.favorite => context
                     .watch<NoteBloc>()
                     .state
@@ -171,7 +171,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
     List<Note> selectedNotes,
   ) {
     return switch (widget.previousPage) {
-      PreviousPage.note => [
+      PreviousPage.home => [
           MenuItemButton(
             style: MenuItemButton.styleFrom(
               minimumSize: Size(

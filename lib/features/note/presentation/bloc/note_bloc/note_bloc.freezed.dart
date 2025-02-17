@@ -26,7 +26,7 @@ mixin _$NoteEvent {
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
-    required TResult Function(int oldIndex, int newIndex) reorderNotes,
+    required TResult Function(List<String> newOrder) reorderNotes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +39,7 @@ mixin _$NoteEvent {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
-    TResult? Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult? Function(List<String> newOrder)? reorderNotes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -52,7 +52,7 @@ mixin _$NoteEvent {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
-    TResult Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult Function(List<String> newOrder)? reorderNotes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -228,7 +228,7 @@ class _$CreateNoteImpl implements _CreateNote {
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
-    required TResult Function(int oldIndex, int newIndex) reorderNotes,
+    required TResult Function(List<String> newOrder) reorderNotes,
   }) {
     return createNote(title, content, createDate, isFavorite, category);
   }
@@ -244,7 +244,7 @@ class _$CreateNoteImpl implements _CreateNote {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
-    TResult? Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult? Function(List<String> newOrder)? reorderNotes,
   }) {
     return createNote?.call(title, content, createDate, isFavorite, category);
   }
@@ -260,7 +260,7 @@ class _$CreateNoteImpl implements _CreateNote {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
-    TResult Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult Function(List<String> newOrder)? reorderNotes,
     required TResult orElse(),
   }) {
     if (createNote != null) {
@@ -380,7 +380,7 @@ class _$LoadNotesImpl implements _LoadNotes {
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
-    required TResult Function(int oldIndex, int newIndex) reorderNotes,
+    required TResult Function(List<String> newOrder) reorderNotes,
   }) {
     return loadNotes();
   }
@@ -396,7 +396,7 @@ class _$LoadNotesImpl implements _LoadNotes {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
-    TResult? Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult? Function(List<String> newOrder)? reorderNotes,
   }) {
     return loadNotes?.call();
   }
@@ -412,7 +412,7 @@ class _$LoadNotesImpl implements _LoadNotes {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
-    TResult Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult Function(List<String> newOrder)? reorderNotes,
     required TResult orElse(),
   }) {
     if (loadNotes != null) {
@@ -598,7 +598,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
-    required TResult Function(int oldIndex, int newIndex) reorderNotes,
+    required TResult Function(List<String> newOrder) reorderNotes,
   }) {
     return updateNote(id, title, content, updateDate, isFavorite, category);
   }
@@ -614,7 +614,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
-    TResult? Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult? Function(List<String> newOrder)? reorderNotes,
   }) {
     return updateNote?.call(
         id, title, content, updateDate, isFavorite, category);
@@ -631,7 +631,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
-    TResult Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult Function(List<String> newOrder)? reorderNotes,
     required TResult orElse(),
   }) {
     if (updateNote != null) {
@@ -793,7 +793,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
-    required TResult Function(int oldIndex, int newIndex) reorderNotes,
+    required TResult Function(List<String> newOrder) reorderNotes,
   }) {
     return deleteNote(deletedNote);
   }
@@ -809,7 +809,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
-    TResult? Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult? Function(List<String> newOrder)? reorderNotes,
   }) {
     return deleteNote?.call(deletedNote);
   }
@@ -825,7 +825,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
-    TResult Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult Function(List<String> newOrder)? reorderNotes,
     required TResult orElse(),
   }) {
     if (deleteNote != null) {
@@ -894,7 +894,7 @@ abstract class _$$ReorderNotesImplCopyWith<$Res> {
           _$ReorderNotesImpl value, $Res Function(_$ReorderNotesImpl) then) =
       __$$ReorderNotesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int oldIndex, int newIndex});
+  $Res call({List<String> newOrder});
 }
 
 /// @nodoc
@@ -910,18 +910,13 @@ class __$$ReorderNotesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? oldIndex = null,
-    Object? newIndex = null,
+    Object? newOrder = null,
   }) {
     return _then(_$ReorderNotesImpl(
-      oldIndex: null == oldIndex
-          ? _value.oldIndex
-          : oldIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      newIndex: null == newIndex
-          ? _value.newIndex
-          : newIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      newOrder: null == newOrder
+          ? _value._newOrder
+          : newOrder // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -929,16 +924,20 @@ class __$$ReorderNotesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ReorderNotesImpl implements _ReorderNotes {
-  const _$ReorderNotesImpl({required this.oldIndex, required this.newIndex});
+  const _$ReorderNotesImpl({required final List<String> newOrder})
+      : _newOrder = newOrder;
 
+  final List<String> _newOrder;
   @override
-  final int oldIndex;
-  @override
-  final int newIndex;
+  List<String> get newOrder {
+    if (_newOrder is EqualUnmodifiableListView) return _newOrder;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_newOrder);
+  }
 
   @override
   String toString() {
-    return 'NoteEvent.reorderNotes(oldIndex: $oldIndex, newIndex: $newIndex)';
+    return 'NoteEvent.reorderNotes(newOrder: $newOrder)';
   }
 
   @override
@@ -946,14 +945,12 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReorderNotesImpl &&
-            (identical(other.oldIndex, oldIndex) ||
-                other.oldIndex == oldIndex) &&
-            (identical(other.newIndex, newIndex) ||
-                other.newIndex == newIndex));
+            const DeepCollectionEquality().equals(other._newOrder, _newOrder));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, oldIndex, newIndex);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_newOrder));
 
   /// Create a copy of NoteEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -974,9 +971,9 @@ class _$ReorderNotesImpl implements _ReorderNotes {
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
-    required TResult Function(int oldIndex, int newIndex) reorderNotes,
+    required TResult Function(List<String> newOrder) reorderNotes,
   }) {
-    return reorderNotes(oldIndex, newIndex);
+    return reorderNotes(newOrder);
   }
 
   @override
@@ -990,9 +987,9 @@ class _$ReorderNotesImpl implements _ReorderNotes {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
-    TResult? Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult? Function(List<String> newOrder)? reorderNotes,
   }) {
-    return reorderNotes?.call(oldIndex, newIndex);
+    return reorderNotes?.call(newOrder);
   }
 
   @override
@@ -1006,11 +1003,11 @@ class _$ReorderNotesImpl implements _ReorderNotes {
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
-    TResult Function(int oldIndex, int newIndex)? reorderNotes,
+    TResult Function(List<String> newOrder)? reorderNotes,
     required TResult orElse(),
   }) {
     if (reorderNotes != null) {
-      return reorderNotes(oldIndex, newIndex);
+      return reorderNotes(newOrder);
     }
     return orElse();
   }
@@ -1057,12 +1054,10 @@ class _$ReorderNotesImpl implements _ReorderNotes {
 }
 
 abstract class _ReorderNotes implements NoteEvent {
-  const factory _ReorderNotes(
-      {required final int oldIndex,
-      required final int newIndex}) = _$ReorderNotesImpl;
+  const factory _ReorderNotes({required final List<String> newOrder}) =
+      _$ReorderNotesImpl;
 
-  int get oldIndex;
-  int get newIndex;
+  List<String> get newOrder;
 
   /// Create a copy of NoteEvent
   /// with the given fields replaced by the non-null parameter values.

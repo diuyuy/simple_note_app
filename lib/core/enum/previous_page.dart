@@ -1,1 +1,1 @@
-enum PreviousPage { note, search, favorite, trash }
+enum PreviousPage { home, search, favorite, trash }
