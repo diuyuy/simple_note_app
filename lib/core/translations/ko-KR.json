@@ -36,7 +36,11 @@
     "updateDate": "수정 날짜: {}"
   },
   "NoteSelectionPage": {
+    "delete": "삭제",
+    "deleteDialogContent": "선택한 {}개의 항목을 삭제하시겠습니까?",
     "deselectAll": "선택 해제",
+    "noNotesSelected": "선택된 노트가 없습니다.",
+    "ok": "확인",
     "select": "선택",
     "selectAll": "모두 선택"
   },
@@ -46,11 +50,16 @@
     "deleteDialogConent": "정말로 삭제하시겠습니까?",
     "edit": "편집",
     "note": "노트",
-    "ok": "확인"
+    "ok": "확인",
+    "share": "공유"
   },
   "SearchNotePage": {
     "hintText": "검색어를 입력하세요",
     "noResultsFound": "입력된 검색결과가 없습니다."
+  },
+  "showAlertDialog": {
+    "cancel": "취소",
+    "ok": "확인"
   },
   "UpdateNotePage": {
     "edit": "편집",

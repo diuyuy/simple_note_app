@@ -8,7 +8,7 @@ class WastebasketLocalDatasource {
   final Box<NoteModel> _wasteBasketBox;
 
   List<NoteModel> loadAllWastes() {
-    return _wasteBasketBox.values.toList();
+    return _wasteBasketBox.values.toList().reversed.toList();
   }
 
   Future<void> addDeletedNote(NoteModel deletedNote) async {

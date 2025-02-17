@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/enum/previous_page.dart';
 import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
@@ -28,7 +30,7 @@ class HomePage extends StatelessWidget {
             },
             icon: Icon(Icons.search),
           ),
-          MyMenuAnchor(menuChildren: buildMenuitemButtonList(context)),
+          MyMenuAnchor(menuChildren: buildMenuItemButtonList(context)),
         ],
       ),
       body: SafeArea(
@@ -45,11 +47,17 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  List<MenuItemButton> buildMenuitemButtonList(BuildContext context) {
+  List<MenuItemButton> buildMenuItemButtonList(BuildContext context) {
     final notes = context.watch<NoteBloc>().state.notes;
 
     return [
       MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
         onPressed: () {
           context.push(
             RouterPath.noteSelectionPage,

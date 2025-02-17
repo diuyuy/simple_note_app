@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/previous_page.dart';
+import '../../../../../core/utils/show_alert_dialog.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../domain/entities/note.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../bloc/wastebasket_bloc/waste_basket_bloc.dart';
@@ -93,7 +97,30 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             },
             child: Text('NoteSelectionPage.deselectAll'.tr()),
           ),
-          MyMenuAnchor(menuChildren: []),
+          Builder(
+            builder: (context) {
+              final notes = switch (widget.previousPage) {
+                PreviousPage.note => context.watch<NoteBloc>().state.notes,
+                PreviousPage.favorite => context
+                    .watch<NoteBloc>()
+                    .state
+                    .notes
+                    .where((note) => note.isFavorite)
+                    .toList(),
+                PreviousPage.search =>
+                  context.watch<SearchNotesBloc>().state.notes,
+                PreviousPage.trash =>
+                  context.watch<WasteBasketBloc>().state.wastes,
+              };
+
+              final selectedNotes =
+                  notes.where((note) => selected.contains(note.id)).toList();
+
+              return MyMenuAnchor(
+                menuChildren: buildMenuitemButtonList(context, selectedNotes),
+              );
+            },
+          ),
         ],
       ),
       body: SafeArea(
@@ -115,24 +142,154 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
                   context.watch<WasteBasketBloc>().state.wastes,
               };
 
-              return SingleChildScrollView(
-                child: Column(
-                  children: notes.map((note) {
-                    return SelectNoteWidget(
-                      isSelected: selected.contains(note.id),
-                      id: note.id,
-                      title: note.title,
-                      date: note.updateDate ?? note.createDate,
-                      isFavorite: note.isFavorite,
-                      onTapCheckIcon: onTapCheckIcon,
-                    );
-                  }).toList(),
-                ),
+              return ListView(
+                children: notes.map((note) {
+                  return SelectNoteWidget(
+                    isSelected: selected.contains(note.id),
+                    id: note.id,
+                    title: note.title,
+                    content: note.content ?? '',
+                    query: widget.previousPage == PreviousPage.search
+                        ? context.watch<SearchNotesBloc>().state.query
+                        : '',
+                    date: note.updateDate ?? note.createDate,
+                    isFavorite: note.isFavorite,
+                    previousPage: widget.previousPage,
+                    onTapCheckIcon: onTapCheckIcon,
+                  );
+                }).toList(),
               );
             },
           ),
         ),
       ),
+    );
+  }
+
+  List<MenuItemButton> buildMenuitemButtonList(
+    BuildContext context,
+    List<Note> selectedNotes,
+  ) {
+    return switch (widget.previousPage) {
+      PreviousPage.note => [
+          MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showDeleteEmptyDialog(context);
+                return;
+              }
+
+              final isConfirm = await showAlertDialog(
+                    context: context,
+                    title: 'NoteSelectionPage.delete'.tr(),
+                    content: 'NoteSelectionPage.deleteDialogContent'
+                        .tr(args: [selectedNotes.length.toString()]),
+                  ) ??
+                  false;
+
+              if (isConfirm) {
+                if (context.mounted) {
+                  for (var deletedNote in selectedNotes) {
+                    context
+                        .read<NoteBloc>()
+                        .add(NoteEvent.deleteNote(deletedNote: deletedNote));
+                  }
+                  context.pop();
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.delete'.tr()),
+          ),
+        ],
+      PreviousPage.favorite => [
+          MenuItemButton(
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showDeleteEmptyDialog(context);
+                return;
+              }
+
+              final isConfirm = await showAlertDialog(
+                    context: context,
+                    title: 'NoteSelectionPage.delete'.tr(),
+                    content: 'NoteSelectionPage.deleteDialogContent'
+                        .tr(args: [selectedNotes.length.toString()]),
+                  ) ??
+                  false;
+
+              if (isConfirm) {
+                if (context.mounted) {
+                  for (var deletedNote in selectedNotes) {
+                    context
+                        .read<NoteBloc>()
+                        .add(NoteEvent.deleteNote(deletedNote: deletedNote));
+                  }
+                  context.pop();
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.delete'.tr()),
+          ),
+        ],
+      PreviousPage.search => [
+          MenuItemButton(
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showDeleteEmptyDialog(context);
+                return;
+              }
+
+              final isConfirm = await showAlertDialog(
+                    context: context,
+                    title: 'NoteSelectionPage.delete'.tr(),
+                    content: 'NoteSelectionPage.deleteDialogContent'
+                        .tr(args: [selectedNotes.length.toString()]),
+                  ) ??
+                  false;
+
+              if (isConfirm) {
+                if (context.mounted) {
+                  for (var deletedNote in selectedNotes) {
+                    context.read<SearchNotesBloc>().add(
+                        SearchNotesBlocEvent.deleteNote(
+                            deletedNote: deletedNote));
+
+                    context
+                        .read<NoteBloc>()
+                        .add(NoteEvent.deleteNote(deletedNote: deletedNote));
+                  }
+                  context.pop();
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.delete'.tr()),
+          ),
+        ],
+      PreviousPage.trash => [],
+    };
+  }
+
+  void showDeleteEmptyDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('NoteSelectionPage.delete'.tr()),
+          content: Text('NoteSelectionPage.noNotesSelected'.tr()),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: Text('NoteSelectionPage.ok'.tr()),
+            ),
+          ],
+        );
+      },
     );
   }
 }

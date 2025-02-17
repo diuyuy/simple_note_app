@@ -16,6 +16,8 @@ class ReadNotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentPath = GoRouterState.of(context).uri.path;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -23,7 +25,7 @@ class ReadNotePage extends StatelessWidget {
           icon: Icon(Icons.arrow_back_ios),
         ),
         title: Text('ReadNotePage.note'.tr()),
-        centerTitle: true,
+        //centerTitle: true,
         actions: [
           BlocBuilder<NoteBloc, NoteState>(
             builder: (context, state) {
@@ -51,6 +53,18 @@ class ReadNotePage extends StatelessWidget {
                 ),
               );
             },
+          ),
+          IconButton(
+            onPressed: () {
+              context.go(
+                '$currentPath/${RouterPath.updateNotePage}',
+                extra: noteId,
+              );
+            },
+            icon: Icon(
+              Icons.edit,
+              color: Theme.of(context).colorScheme.primary,
+            ),
           ),
           BlocBuilder<NoteBloc, NoteState>(
             builder: (context, state) {
@@ -149,20 +163,16 @@ class ReadNotePage extends StatelessWidget {
   }
 
   List<Widget> getMenuItemButtonList(BuildContext context, Note deletedNote) {
-    final currentPath = GoRouterState.of(context).uri.path;
-
     return [
       MenuItemButton(
         style: MenuItemButton.styleFrom(
-          minimumSize: Size(64.w, 40.w),
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
         ),
-        onPressed: () {
-          context.go(
-            '$currentPath/${RouterPath.updateNotePage}',
-            extra: noteId,
-          );
-        },
-        child: Text('ReadNotePage.edit'.tr()),
+        onPressed: () {},
+        child: Text('ReadNotePage.share'.tr()),
       ),
       MenuItemButton(
         onPressed: () async {

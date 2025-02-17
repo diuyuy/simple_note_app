@@ -36,7 +36,10 @@
     "updateDate": "Last modified: {}"
   },
   "NoteSelectionPage": {
+    "delete": "Delete",
     "deselectAll": "Deselect All",
+    "noNotesSelected": "No notes selected.",
+    "ok": "OK",
     "select": "Select",
     "selectAll": "Select All"
   },
@@ -46,11 +49,16 @@
     "deleteDialogConent": "Are you sure you want to delete this?",
     "edit": "Edit",
     "note": "Note",
-    "ok": "Ok"
+    "ok": "OK",
+    "share": "Share"
   },
   "SearchNotePage": {
     "hintText": "Search notes...",
     "noResultsFound": "No results found."
+  },
+  "showAlertDialog": {
+    "cancel": "Cancel",
+    "ok": "OK"
   },
   "UpdateNotePage": {
     "edit": "Edit",

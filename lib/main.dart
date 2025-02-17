@@ -119,9 +119,9 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
               textTheme: TextTheme(
-                bodyLarge: TextStyle(fontSize: (16 + appSetting.fontSize).sp),
-                bodyMedium: TextStyle(fontSize: (10 + appSetting.fontSize).sp),
-                bodySmall: TextStyle(fontSize: (8 + appSetting.fontSize).sp),
+                bodyLarge: TextStyle(fontSize: (16.0 + appSetting.fontSize)),
+                bodyMedium: TextStyle(fontSize: (12.0 + appSetting.fontSize)),
+                bodySmall: TextStyle(fontSize: (8.0 + appSetting.fontSize)),
               ),
               useMaterial3: true,
             ),

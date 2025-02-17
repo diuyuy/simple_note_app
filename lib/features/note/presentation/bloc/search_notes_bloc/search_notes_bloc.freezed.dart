@@ -21,6 +21,7 @@ mixin _$SearchNotesBlocEvent {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
+    required TResult Function(Note deletedNote) deleteNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -28,6 +29,7 @@ mixin _$SearchNotesBlocEvent {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
+    TResult? Function(Note deletedNote)? deleteNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,6 +37,7 @@ mixin _$SearchNotesBlocEvent {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
+    TResult Function(Note deletedNote)? deleteNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +46,7 @@ mixin _$SearchNotesBlocEvent {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
+    required TResult Function(_DeleteNote value) deleteNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,6 +54,7 @@ mixin _$SearchNotesBlocEvent {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
+    TResult? Function(_DeleteNote value)? deleteNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -57,6 +62,7 @@ mixin _$SearchNotesBlocEvent {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
+    TResult Function(_DeleteNote value)? deleteNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -128,6 +134,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
+    required TResult Function(Note deletedNote) deleteNote,
   }) {
     return loadAllNotes();
   }
@@ -138,6 +145,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
+    TResult? Function(Note deletedNote)? deleteNote,
   }) {
     return loadAllNotes?.call();
   }
@@ -148,6 +156,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
+    TResult Function(Note deletedNote)? deleteNote,
     required TResult orElse(),
   }) {
     if (loadAllNotes != null) {
@@ -162,6 +171,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
+    required TResult Function(_DeleteNote value) deleteNote,
   }) {
     return loadAllNotes(this);
   }
@@ -172,6 +182,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
+    TResult? Function(_DeleteNote value)? deleteNote,
   }) {
     return loadAllNotes?.call(this);
   }
@@ -182,6 +193,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
+    TResult Function(_DeleteNote value)? deleteNote,
     required TResult orElse(),
   }) {
     if (loadAllNotes != null) {
@@ -266,6 +278,7 @@ class _$SearchedImpl implements _Searched {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
+    required TResult Function(Note deletedNote) deleteNote,
   }) {
     return searched(query);
   }
@@ -276,6 +289,7 @@ class _$SearchedImpl implements _Searched {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
+    TResult? Function(Note deletedNote)? deleteNote,
   }) {
     return searched?.call(query);
   }
@@ -286,6 +300,7 @@ class _$SearchedImpl implements _Searched {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
+    TResult Function(Note deletedNote)? deleteNote,
     required TResult orElse(),
   }) {
     if (searched != null) {
@@ -300,6 +315,7 @@ class _$SearchedImpl implements _Searched {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
+    required TResult Function(_DeleteNote value) deleteNote,
   }) {
     return searched(this);
   }
@@ -310,6 +326,7 @@ class _$SearchedImpl implements _Searched {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
+    TResult? Function(_DeleteNote value)? deleteNote,
   }) {
     return searched?.call(this);
   }
@@ -320,6 +337,7 @@ class _$SearchedImpl implements _Searched {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
+    TResult Function(_DeleteNote value)? deleteNote,
     required TResult orElse(),
   }) {
     if (searched != null) {
@@ -421,6 +439,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
+    required TResult Function(Note deletedNote) deleteNote,
   }) {
     return tapFavorite(id, isFavorite);
   }
@@ -431,6 +450,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
+    TResult? Function(Note deletedNote)? deleteNote,
   }) {
     return tapFavorite?.call(id, isFavorite);
   }
@@ -441,6 +461,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
+    TResult Function(Note deletedNote)? deleteNote,
     required TResult orElse(),
   }) {
     if (tapFavorite != null) {
@@ -455,6 +476,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
+    required TResult Function(_DeleteNote value) deleteNote,
   }) {
     return tapFavorite(this);
   }
@@ -465,6 +487,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
+    TResult? Function(_DeleteNote value)? deleteNote,
   }) {
     return tapFavorite?.call(this);
   }
@@ -475,6 +498,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
+    TResult Function(_DeleteNote value)? deleteNote,
     required TResult orElse(),
   }) {
     if (tapFavorite != null) {
@@ -500,24 +524,191 @@ abstract class _TapFavorite implements SearchNotesBlocEvent {
 }
 
 /// @nodoc
+abstract class _$$DeleteNoteImplCopyWith<$Res> {
+  factory _$$DeleteNoteImplCopyWith(
+          _$DeleteNoteImpl value, $Res Function(_$DeleteNoteImpl) then) =
+      __$$DeleteNoteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Note deletedNote});
+
+  $NoteCopyWith<$Res> get deletedNote;
+}
+
+/// @nodoc
+class __$$DeleteNoteImplCopyWithImpl<$Res>
+    extends _$SearchNotesBlocEventCopyWithImpl<$Res, _$DeleteNoteImpl>
+    implements _$$DeleteNoteImplCopyWith<$Res> {
+  __$$DeleteNoteImplCopyWithImpl(
+      _$DeleteNoteImpl _value, $Res Function(_$DeleteNoteImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchNotesBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? deletedNote = null,
+  }) {
+    return _then(_$DeleteNoteImpl(
+      deletedNote: null == deletedNote
+          ? _value.deletedNote
+          : deletedNote // ignore: cast_nullable_to_non_nullable
+              as Note,
+    ));
+  }
+
+  /// Create a copy of SearchNotesBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoteCopyWith<$Res> get deletedNote {
+    return $NoteCopyWith<$Res>(_value.deletedNote, (value) {
+      return _then(_value.copyWith(deletedNote: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$DeleteNoteImpl implements _DeleteNote {
+  const _$DeleteNoteImpl({required this.deletedNote});
+
+  @override
+  final Note deletedNote;
+
+  @override
+  String toString() {
+    return 'SearchNotesBlocEvent.deleteNote(deletedNote: $deletedNote)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeleteNoteImpl &&
+            (identical(other.deletedNote, deletedNote) ||
+                other.deletedNote == deletedNote));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, deletedNote);
+
+  /// Create a copy of SearchNotesBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeleteNoteImplCopyWith<_$DeleteNoteImpl> get copyWith =>
+      __$$DeleteNoteImplCopyWithImpl<_$DeleteNoteImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadAllNotes,
+    required TResult Function(String query) searched,
+    required TResult Function(String id, bool isFavorite) tapFavorite,
+    required TResult Function(Note deletedNote) deleteNote,
+  }) {
+    return deleteNote(deletedNote);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loadAllNotes,
+    TResult? Function(String query)? searched,
+    TResult? Function(String id, bool isFavorite)? tapFavorite,
+    TResult? Function(Note deletedNote)? deleteNote,
+  }) {
+    return deleteNote?.call(deletedNote);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadAllNotes,
+    TResult Function(String query)? searched,
+    TResult Function(String id, bool isFavorite)? tapFavorite,
+    TResult Function(Note deletedNote)? deleteNote,
+    required TResult orElse(),
+  }) {
+    if (deleteNote != null) {
+      return deleteNote(deletedNote);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadAllNotes value) loadAllNotes,
+    required TResult Function(_Searched value) searched,
+    required TResult Function(_TapFavorite value) tapFavorite,
+    required TResult Function(_DeleteNote value) deleteNote,
+  }) {
+    return deleteNote(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_LoadAllNotes value)? loadAllNotes,
+    TResult? Function(_Searched value)? searched,
+    TResult? Function(_TapFavorite value)? tapFavorite,
+    TResult? Function(_DeleteNote value)? deleteNote,
+  }) {
+    return deleteNote?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadAllNotes value)? loadAllNotes,
+    TResult Function(_Searched value)? searched,
+    TResult Function(_TapFavorite value)? tapFavorite,
+    TResult Function(_DeleteNote value)? deleteNote,
+    required TResult orElse(),
+  }) {
+    if (deleteNote != null) {
+      return deleteNote(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DeleteNote implements SearchNotesBlocEvent {
+  const factory _DeleteNote({required final Note deletedNote}) =
+      _$DeleteNoteImpl;
+
+  Note get deletedNote;
+
+  /// Create a copy of SearchNotesBlocEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeleteNoteImplCopyWith<_$DeleteNoteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$SearchNotesState {
+  String get query => throw _privateConstructorUsedError;
   List<Note> get notes => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> notes) initial,
-    required TResult Function(List<Note> notes) loaded,
+    required TResult Function(String query, List<Note> notes) initial,
+    required TResult Function(String query, List<Note> notes) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> notes)? initial,
-    TResult? Function(List<Note> notes)? loaded,
+    TResult? Function(String query, List<Note> notes)? initial,
+    TResult? Function(String query, List<Note> notes)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> notes)? initial,
-    TResult Function(List<Note> notes)? loaded,
+    TResult Function(String query, List<Note> notes)? initial,
+    TResult Function(String query, List<Note> notes)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -554,7 +745,7 @@ abstract class $SearchNotesStateCopyWith<$Res> {
           SearchNotesState value, $Res Function(SearchNotesState) then) =
       _$SearchNotesStateCopyWithImpl<$Res, SearchNotesState>;
   @useResult
-  $Res call({List<Note> notes});
+  $Res call({String query, List<Note> notes});
 }
 
 /// @nodoc
@@ -572,9 +763,14 @@ class _$SearchNotesStateCopyWithImpl<$Res, $Val extends SearchNotesState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? query = null,
     Object? notes = null,
   }) {
     return _then(_value.copyWith(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
       notes: null == notes
           ? _value.notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -591,7 +787,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> notes});
+  $Res call({String query, List<Note> notes});
 }
 
 /// @nodoc
@@ -607,9 +803,14 @@ class __$$InitialImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? query = null,
     Object? notes = null,
   }) {
     return _then(_$InitialImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
       notes: null == notes
           ? _value._notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -621,8 +822,11 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required final List<Note> notes}) : _notes = notes;
+  const _$InitialImpl({required this.query, required final List<Note> notes})
+      : _notes = notes;
 
+  @override
+  final String query;
   final List<Note> _notes;
   @override
   List<Note> get notes {
@@ -633,7 +837,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'SearchNotesState.initial(notes: $notes)';
+    return 'SearchNotesState.initial(query: $query, notes: $notes)';
   }
 
   @override
@@ -641,12 +845,13 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
+            (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality().equals(other._notes, _notes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_notes));
+  int get hashCode => Object.hash(
+      runtimeType, query, const DeepCollectionEquality().hash(_notes));
 
   /// Create a copy of SearchNotesState
   /// with the given fields replaced by the non-null parameter values.
@@ -659,30 +864,30 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> notes) initial,
-    required TResult Function(List<Note> notes) loaded,
+    required TResult Function(String query, List<Note> notes) initial,
+    required TResult Function(String query, List<Note> notes) loaded,
   }) {
-    return initial(notes);
+    return initial(query, notes);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> notes)? initial,
-    TResult? Function(List<Note> notes)? loaded,
+    TResult? Function(String query, List<Note> notes)? initial,
+    TResult? Function(String query, List<Note> notes)? loaded,
   }) {
-    return initial?.call(notes);
+    return initial?.call(query, notes);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> notes)? initial,
-    TResult Function(List<Note> notes)? loaded,
+    TResult Function(String query, List<Note> notes)? initial,
+    TResult Function(String query, List<Note> notes)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(notes);
+      return initial(query, notes);
     }
     return orElse();
   }
@@ -720,8 +925,12 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements SearchNotesState {
-  const factory _Initial({required final List<Note> notes}) = _$InitialImpl;
+  const factory _Initial(
+      {required final String query,
+      required final List<Note> notes}) = _$InitialImpl;
 
+  @override
+  String get query;
   @override
   List<Note> get notes;
 
@@ -741,7 +950,7 @@ abstract class _$$LoadedImplCopyWith<$Res>
       __$$LoadedImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> notes});
+  $Res call({String query, List<Note> notes});
 }
 
 /// @nodoc
@@ -757,9 +966,14 @@ class __$$LoadedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? query = null,
     Object? notes = null,
   }) {
     return _then(_$LoadedImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
       notes: null == notes
           ? _value._notes
           : notes // ignore: cast_nullable_to_non_nullable
@@ -771,8 +985,11 @@ class __$$LoadedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required final List<Note> notes}) : _notes = notes;
+  const _$LoadedImpl({required this.query, required final List<Note> notes})
+      : _notes = notes;
 
+  @override
+  final String query;
   final List<Note> _notes;
   @override
   List<Note> get notes {
@@ -783,7 +1000,7 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'SearchNotesState.loaded(notes: $notes)';
+    return 'SearchNotesState.loaded(query: $query, notes: $notes)';
   }
 
   @override
@@ -791,12 +1008,13 @@ class _$LoadedImpl implements _Loaded {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoadedImpl &&
+            (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality().equals(other._notes, _notes));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_notes));
+  int get hashCode => Object.hash(
+      runtimeType, query, const DeepCollectionEquality().hash(_notes));
 
   /// Create a copy of SearchNotesState
   /// with the given fields replaced by the non-null parameter values.
@@ -809,30 +1027,30 @@ class _$LoadedImpl implements _Loaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> notes) initial,
-    required TResult Function(List<Note> notes) loaded,
+    required TResult Function(String query, List<Note> notes) initial,
+    required TResult Function(String query, List<Note> notes) loaded,
   }) {
-    return loaded(notes);
+    return loaded(query, notes);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> notes)? initial,
-    TResult? Function(List<Note> notes)? loaded,
+    TResult? Function(String query, List<Note> notes)? initial,
+    TResult? Function(String query, List<Note> notes)? loaded,
   }) {
-    return loaded?.call(notes);
+    return loaded?.call(query, notes);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> notes)? initial,
-    TResult Function(List<Note> notes)? loaded,
+    TResult Function(String query, List<Note> notes)? initial,
+    TResult Function(String query, List<Note> notes)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(notes);
+      return loaded(query, notes);
     }
     return orElse();
   }
@@ -870,8 +1088,12 @@ class _$LoadedImpl implements _Loaded {
 }
 
 abstract class _Loaded implements SearchNotesState {
-  const factory _Loaded({required final List<Note> notes}) = _$LoadedImpl;
+  const factory _Loaded(
+      {required final String query,
+      required final List<Note> notes}) = _$LoadedImpl;
 
+  @override
+  String get query;
   @override
   List<Note> get notes;
 

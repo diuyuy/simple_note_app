@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -20,19 +22,20 @@ EventTransformer<E> debounce<E>(Duration duration) {
 
 class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
   SearchNotesBloc({required this.loadNotesUseCase})
-      : super(_Initial(notes: <Note>[])) {
-    on<_LoadAllNotes>(_onStarted);
+      : super(_Initial(query: '', notes: <Note>[])) {
+    on<_LoadAllNotes>(_onLoadAllNotes);
     on<_Searched>(_onSearched,
         transformer: debounce(const Duration(milliseconds: 300)));
     on<_TapFavorite>(_onTapFavorite);
+    on<_DeleteNote>(_onDeleteNote);
   }
 
   final LoadNotesUseCase loadNotesUseCase;
 
-  void _onStarted(_LoadAllNotes event, Emitter<SearchNotesState> emit) {
+  void _onLoadAllNotes(_LoadAllNotes event, Emitter<SearchNotesState> emit) {
     final notes = loadNotesUseCase.execute();
 
-    emit(_Loaded(notes: notes));
+    emit(_Loaded(query: '', notes: notes));
   }
 
   void _onSearched(_Searched event, Emitter<SearchNotesState> emit) {
@@ -49,7 +52,7 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
           containQuery(target: title, query: event.query);
     }).toList();
 
-    emit(_Loaded(notes: filteredNotes));
+    emit(_Loaded(query: event.query, notes: filteredNotes));
   }
 
   void _onTapFavorite(_TapFavorite event, Emitter<SearchNotesState> emit) {
@@ -62,6 +65,26 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
     List<Note> notes = [...state.notes];
     notes[index] = updatedNote;
 
-    emit(_Loaded(notes: notes));
+    emit(state.copyWith(notes: notes));
+  }
+
+  void _onDeleteNote(_DeleteNote event, Emitter<SearchNotesState> emit) {
+    List<Note> notes = [...state.notes];
+
+    notes.removeWhere((note) => note.id == event.deletedNote.id);
+
+    emit(state.copyWith(notes: notes));
+  }
+
+  @override
+  void onEvent(SearchNotesBlocEvent event) {
+    log('Search event: $event');
+    super.onEvent(event);
+  }
+
+  @override
+  void onChange(Change<SearchNotesState> change) {
+    log('On change: $change');
+    super.onChange(change);
   }
 }
