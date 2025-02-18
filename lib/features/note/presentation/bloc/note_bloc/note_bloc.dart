@@ -28,6 +28,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     on<_UpdateNote>(_onUpdateNote);
     on<_DeleteNote>(_onDeleteNote);
     on<_ReorderNotes>(_onReorderNotes);
+    on<_RestoreNote>(_onRestoreNote);
   }
 
   final CreateNoteUseCase createNoteUseCase;
@@ -94,6 +95,13 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
     emit(_Loaded(notes: orderdNotes));
     await reorderNotesUseCase.execute(event.newOrder);
+  }
+
+  void _onRestoreNote(_RestoreNote event, Emitter<NoteState> emit) {
+    var notes = [...state.notes];
+    notes.insert(0, event.restoredNote);
+
+    emit(_Loaded(notes: notes));
   }
 
   @override

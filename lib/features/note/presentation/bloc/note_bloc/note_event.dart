@@ -28,4 +28,8 @@ class NoteEvent with _$NoteEvent {
   const factory NoteEvent.reorderNotes({
     required List<String> newOrder,
   }) = _ReorderNotes;
+
+  const factory NoteEvent.restoreNote({
+    required Note restoredNote,
+  }) = _RestoreNote;
 }

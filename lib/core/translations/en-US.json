@@ -38,10 +38,12 @@
   },
   "NoteSelectionPage": {
     "delete": "Delete",
+    "deleteDialogContent": "Are you sure you want to delete {} selected notes?",
     "deselectAll": "Deselect All",
     "noNotesSelected": "No notes selected.",
     "ok": "OK",
     "permanentlyDelete": "Permanently Delete",
+    "permanentlyDeleteDialogContent": "Are you sure you want to permanently delete {} selected notes?\n\nThis action cannot be undone.",
     "restore": "Restore",
     "select": "Select",
     "selectAll": "Select All"

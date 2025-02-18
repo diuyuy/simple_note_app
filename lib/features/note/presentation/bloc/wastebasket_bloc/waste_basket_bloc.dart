@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -43,5 +45,11 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
     await deletePermanentlyUseCase.execute(event.id);
 
     emit(_Loaded(wastes: loadWastesUseCase.execute()));
+  }
+
+  @override
+  void onChange(Change<WasteBasketState> change) {
+    log(change.toString());
+    super.onChange(change);
   }
 }

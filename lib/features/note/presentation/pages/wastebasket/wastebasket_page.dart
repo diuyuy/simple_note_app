@@ -2,21 +2,48 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/utils/show_empty_dialog.dart';
-import 'package:simple_note_app/features/note/presentation/widgets/empty_note_text_widget.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/previous_page.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/show_alert_dialog.dart';
+import '../../../../../core/utils/show_empty_dialog.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../domain/usecases/wastebaseket_usecase/delete_permanently_user_case.dart';
+import '../../../domain/usecases/wastebaseket_usecase/load_wastes_use_case.dart';
+import '../../../domain/usecases/wastebaseket_usecase/restore_note_user_case.dart';
 import '../../bloc/wastebasket_bloc/waste_basket_bloc.dart';
+import '../../widgets/empty_note_text_widget.dart';
 import '../../widgets/note_card_widget.dart';
 
 class WastebasketPage extends StatelessWidget {
   const WastebasketPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        final getIt = GetIt.instance;
+        final loadWastesUseCase = getIt<LoadWastesUseCase>();
+        final restoreNoteUseCase = getIt<RestoreNoteUserCase>();
+        final deletePermanentlyUseCase = getIt<DeletePermanentlyUserCase>();
+
+        return WasteBasketBloc(
+          loadWastesUseCase: loadWastesUseCase,
+          restoreNoteUseCase: restoreNoteUseCase,
+          deletePermanentlyUseCase: deletePermanentlyUseCase,
+        )..add(WasteBasketEvent.loadWastes());
+      },
+      child: WastebasketView(),
+    );
+  }
+}
+
+class WastebasketView extends StatelessWidget {
+  const WastebasketView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +80,7 @@ class WastebasketPage extends StatelessWidget {
                               extra: NoteSelectionArgs(
                                 selectedNotes: [waste.id],
                                 previousPage: PreviousPage.trash,
+                                bloc: context.read<WasteBasketBloc>(),
                               ),
                             );
                           },
@@ -96,6 +124,7 @@ class WastebasketPage extends StatelessWidget {
             extra: NoteSelectionArgs(
               selectedNotes: <String>[],
               previousPage: PreviousPage.trash,
+              bloc: context.read<WasteBasketBloc>(),
             ),
           );
         },
@@ -113,6 +142,7 @@ class WastebasketPage extends StatelessWidget {
             extra: NoteSelectionArgs(
               selectedNotes: wastes.map((waste) => waste.id).toList(),
               previousPage: PreviousPage.trash,
+              bloc: context.read<WasteBasketBloc>(),
             ),
           );
         },

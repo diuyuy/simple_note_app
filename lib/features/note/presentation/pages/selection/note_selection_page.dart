@@ -181,7 +181,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             ),
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showDeleteEmptyDialog(context);
+                showSelectedEmptyDialog(context);
                 return;
               }
 
@@ -211,7 +211,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
           MenuItemButton(
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showDeleteEmptyDialog(context);
+                showSelectedEmptyDialog(context);
                 return;
               }
 
@@ -241,7 +241,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
           MenuItemButton(
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showDeleteEmptyDialog(context);
+                showSelectedEmptyDialog(context);
                 return;
               }
 
@@ -271,16 +271,64 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             child: Text('NoteSelectionPage.delete'.tr()),
           ),
         ],
-      PreviousPage.trash => [],
+      PreviousPage.trash => [
+          MenuItemButton(
+            onPressed: () {
+              if (selectedNotes.isEmpty) {
+                showSelectedEmptyDialog(context);
+                return;
+              }
+              for (var selectedNote in selectedNotes) {
+                context.read<WasteBasketBloc>().add(
+                    WasteBasketEvent.restoreNote(restoredNote: selectedNote));
+                context
+                    .read<NoteBloc>()
+                    .add(NoteEvent.restoreNote(restoredNote: selectedNote));
+              }
+
+              context.pop();
+            },
+            child: Text('NoteSelectionPage.restore'.tr()),
+          ),
+          MenuItemButton(
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showSelectedEmptyDialog(context);
+                return;
+              }
+              final isConfirm = await showAlertDialog(
+                    context: context,
+                    title: 'NoteSelectionPage.permanentlyDelete'.tr(),
+                    content: 'NoteSelectionPage.permanentlyDeleteDialogContent'
+                        .tr(args: [selectedNotes.length.toString()]),
+                  ) ??
+                  false;
+              if (isConfirm) {
+                if (context.mounted) {
+                  for (var selectedNote in selectedNotes) {
+                    context.read<WasteBasketBloc>().add(
+                          WasteBasketEvent.deletePermanently(
+                            id: selectedNote.id,
+                          ),
+                        );
+
+                    context.pop();
+                  }
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.permanentlyDelete'.tr()),
+          ),
+        ],
     };
   }
 
-  void showDeleteEmptyDialog(BuildContext context) {
+  void showSelectedEmptyDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('NoteSelectionPage.delete'.tr()),
+          //title: Text('NoteSelectionPage.delete'.tr()),
           content: Text('NoteSelectionPage.noNotesSelected'.tr()),
           actions: [
             TextButton(

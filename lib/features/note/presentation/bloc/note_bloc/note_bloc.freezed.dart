@@ -27,6 +27,7 @@ mixin _$NoteEvent {
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
     required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,6 +41,7 @@ mixin _$NoteEvent {
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
     TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +55,7 @@ mixin _$NoteEvent {
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
     TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +66,7 @@ mixin _$NoteEvent {
     required TResult Function(_UpdateNote value) updateNote,
     required TResult Function(_DeleteNote value) deleteNote,
     required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +76,7 @@ mixin _$NoteEvent {
     TResult? Function(_UpdateNote value)? updateNote,
     TResult? Function(_DeleteNote value)? deleteNote,
     TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +86,7 @@ mixin _$NoteEvent {
     TResult Function(_UpdateNote value)? updateNote,
     TResult Function(_DeleteNote value)? deleteNote,
     TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -229,6 +235,7 @@ class _$CreateNoteImpl implements _CreateNote {
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
     required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
   }) {
     return createNote(title, content, createDate, isFavorite, category);
   }
@@ -245,6 +252,7 @@ class _$CreateNoteImpl implements _CreateNote {
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
     TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
   }) {
     return createNote?.call(title, content, createDate, isFavorite, category);
   }
@@ -261,6 +269,7 @@ class _$CreateNoteImpl implements _CreateNote {
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
     TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
     required TResult orElse(),
   }) {
     if (createNote != null) {
@@ -277,6 +286,7 @@ class _$CreateNoteImpl implements _CreateNote {
     required TResult Function(_UpdateNote value) updateNote,
     required TResult Function(_DeleteNote value) deleteNote,
     required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
   }) {
     return createNote(this);
   }
@@ -289,6 +299,7 @@ class _$CreateNoteImpl implements _CreateNote {
     TResult? Function(_UpdateNote value)? updateNote,
     TResult? Function(_DeleteNote value)? deleteNote,
     TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
   }) {
     return createNote?.call(this);
   }
@@ -301,6 +312,7 @@ class _$CreateNoteImpl implements _CreateNote {
     TResult Function(_UpdateNote value)? updateNote,
     TResult Function(_DeleteNote value)? deleteNote,
     TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
     required TResult orElse(),
   }) {
     if (createNote != null) {
@@ -381,6 +393,7 @@ class _$LoadNotesImpl implements _LoadNotes {
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
     required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
   }) {
     return loadNotes();
   }
@@ -397,6 +410,7 @@ class _$LoadNotesImpl implements _LoadNotes {
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
     TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
   }) {
     return loadNotes?.call();
   }
@@ -413,6 +427,7 @@ class _$LoadNotesImpl implements _LoadNotes {
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
     TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
     required TResult orElse(),
   }) {
     if (loadNotes != null) {
@@ -429,6 +444,7 @@ class _$LoadNotesImpl implements _LoadNotes {
     required TResult Function(_UpdateNote value) updateNote,
     required TResult Function(_DeleteNote value) deleteNote,
     required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
   }) {
     return loadNotes(this);
   }
@@ -441,6 +457,7 @@ class _$LoadNotesImpl implements _LoadNotes {
     TResult? Function(_UpdateNote value)? updateNote,
     TResult? Function(_DeleteNote value)? deleteNote,
     TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
   }) {
     return loadNotes?.call(this);
   }
@@ -453,6 +470,7 @@ class _$LoadNotesImpl implements _LoadNotes {
     TResult Function(_UpdateNote value)? updateNote,
     TResult Function(_DeleteNote value)? deleteNote,
     TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
     required TResult orElse(),
   }) {
     if (loadNotes != null) {
@@ -599,6 +617,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
     required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
   }) {
     return updateNote(id, title, content, updateDate, isFavorite, category);
   }
@@ -615,6 +634,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
     TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
   }) {
     return updateNote?.call(
         id, title, content, updateDate, isFavorite, category);
@@ -632,6 +652,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
     TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
     required TResult orElse(),
   }) {
     if (updateNote != null) {
@@ -648,6 +669,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
     required TResult Function(_UpdateNote value) updateNote,
     required TResult Function(_DeleteNote value) deleteNote,
     required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
   }) {
     return updateNote(this);
   }
@@ -660,6 +682,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
     TResult? Function(_UpdateNote value)? updateNote,
     TResult? Function(_DeleteNote value)? deleteNote,
     TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
   }) {
     return updateNote?.call(this);
   }
@@ -672,6 +695,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
     TResult Function(_UpdateNote value)? updateNote,
     TResult Function(_DeleteNote value)? deleteNote,
     TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
     required TResult orElse(),
   }) {
     if (updateNote != null) {
@@ -794,6 +818,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
     required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
   }) {
     return deleteNote(deletedNote);
   }
@@ -810,6 +835,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
     TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
   }) {
     return deleteNote?.call(deletedNote);
   }
@@ -826,6 +852,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
     TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
     required TResult orElse(),
   }) {
     if (deleteNote != null) {
@@ -842,6 +869,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
     required TResult Function(_UpdateNote value) updateNote,
     required TResult Function(_DeleteNote value) deleteNote,
     required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
   }) {
     return deleteNote(this);
   }
@@ -854,6 +882,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult? Function(_UpdateNote value)? updateNote,
     TResult? Function(_DeleteNote value)? deleteNote,
     TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
   }) {
     return deleteNote?.call(this);
   }
@@ -866,6 +895,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult Function(_UpdateNote value)? updateNote,
     TResult Function(_DeleteNote value)? deleteNote,
     TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
     required TResult orElse(),
   }) {
     if (deleteNote != null) {
@@ -972,6 +1002,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
         updateNote,
     required TResult Function(Note deletedNote) deleteNote,
     required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
   }) {
     return reorderNotes(newOrder);
   }
@@ -988,6 +1019,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
         updateNote,
     TResult? Function(Note deletedNote)? deleteNote,
     TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
   }) {
     return reorderNotes?.call(newOrder);
   }
@@ -1004,6 +1036,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
         updateNote,
     TResult Function(Note deletedNote)? deleteNote,
     TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
     required TResult orElse(),
   }) {
     if (reorderNotes != null) {
@@ -1020,6 +1053,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     required TResult Function(_UpdateNote value) updateNote,
     required TResult Function(_DeleteNote value) deleteNote,
     required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
   }) {
     return reorderNotes(this);
   }
@@ -1032,6 +1066,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     TResult? Function(_UpdateNote value)? updateNote,
     TResult? Function(_DeleteNote value)? deleteNote,
     TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
   }) {
     return reorderNotes?.call(this);
   }
@@ -1044,6 +1079,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     TResult Function(_UpdateNote value)? updateNote,
     TResult Function(_DeleteNote value)? deleteNote,
     TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
     required TResult orElse(),
   }) {
     if (reorderNotes != null) {
@@ -1063,6 +1099,196 @@ abstract class _ReorderNotes implements NoteEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ReorderNotesImplCopyWith<_$ReorderNotesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RestoreNoteImplCopyWith<$Res> {
+  factory _$$RestoreNoteImplCopyWith(
+          _$RestoreNoteImpl value, $Res Function(_$RestoreNoteImpl) then) =
+      __$$RestoreNoteImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Note restoredNote});
+
+  $NoteCopyWith<$Res> get restoredNote;
+}
+
+/// @nodoc
+class __$$RestoreNoteImplCopyWithImpl<$Res>
+    extends _$NoteEventCopyWithImpl<$Res, _$RestoreNoteImpl>
+    implements _$$RestoreNoteImplCopyWith<$Res> {
+  __$$RestoreNoteImplCopyWithImpl(
+      _$RestoreNoteImpl _value, $Res Function(_$RestoreNoteImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of NoteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? restoredNote = null,
+  }) {
+    return _then(_$RestoreNoteImpl(
+      restoredNote: null == restoredNote
+          ? _value.restoredNote
+          : restoredNote // ignore: cast_nullable_to_non_nullable
+              as Note,
+    ));
+  }
+
+  /// Create a copy of NoteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NoteCopyWith<$Res> get restoredNote {
+    return $NoteCopyWith<$Res>(_value.restoredNote, (value) {
+      return _then(_value.copyWith(restoredNote: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$RestoreNoteImpl implements _RestoreNote {
+  const _$RestoreNoteImpl({required this.restoredNote});
+
+  @override
+  final Note restoredNote;
+
+  @override
+  String toString() {
+    return 'NoteEvent.restoreNote(restoredNote: $restoredNote)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RestoreNoteImpl &&
+            (identical(other.restoredNote, restoredNote) ||
+                other.restoredNote == restoredNote));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, restoredNote);
+
+  /// Create a copy of NoteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RestoreNoteImplCopyWith<_$RestoreNoteImpl> get copyWith =>
+      __$$RestoreNoteImplCopyWithImpl<_$RestoreNoteImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String title, String? content, String createDate,
+            bool? isFavorite, String? category)
+        createNote,
+    required TResult Function() loadNotes,
+    required TResult Function(String id, String? title, String? content,
+            String? updateDate, bool? isFavorite, String? category)
+        updateNote,
+    required TResult Function(Note deletedNote) deleteNote,
+    required TResult Function(List<String> newOrder) reorderNotes,
+    required TResult Function(Note restoredNote) restoreNote,
+  }) {
+    return restoreNote(restoredNote);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String title, String? content, String createDate,
+            bool? isFavorite, String? category)?
+        createNote,
+    TResult? Function()? loadNotes,
+    TResult? Function(String id, String? title, String? content,
+            String? updateDate, bool? isFavorite, String? category)?
+        updateNote,
+    TResult? Function(Note deletedNote)? deleteNote,
+    TResult? Function(List<String> newOrder)? reorderNotes,
+    TResult? Function(Note restoredNote)? restoreNote,
+  }) {
+    return restoreNote?.call(restoredNote);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String title, String? content, String createDate,
+            bool? isFavorite, String? category)?
+        createNote,
+    TResult Function()? loadNotes,
+    TResult Function(String id, String? title, String? content,
+            String? updateDate, bool? isFavorite, String? category)?
+        updateNote,
+    TResult Function(Note deletedNote)? deleteNote,
+    TResult Function(List<String> newOrder)? reorderNotes,
+    TResult Function(Note restoredNote)? restoreNote,
+    required TResult orElse(),
+  }) {
+    if (restoreNote != null) {
+      return restoreNote(restoredNote);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CreateNote value) createNote,
+    required TResult Function(_LoadNotes value) loadNotes,
+    required TResult Function(_UpdateNote value) updateNote,
+    required TResult Function(_DeleteNote value) deleteNote,
+    required TResult Function(_ReorderNotes value) reorderNotes,
+    required TResult Function(_RestoreNote value) restoreNote,
+  }) {
+    return restoreNote(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CreateNote value)? createNote,
+    TResult? Function(_LoadNotes value)? loadNotes,
+    TResult? Function(_UpdateNote value)? updateNote,
+    TResult? Function(_DeleteNote value)? deleteNote,
+    TResult? Function(_ReorderNotes value)? reorderNotes,
+    TResult? Function(_RestoreNote value)? restoreNote,
+  }) {
+    return restoreNote?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CreateNote value)? createNote,
+    TResult Function(_LoadNotes value)? loadNotes,
+    TResult Function(_UpdateNote value)? updateNote,
+    TResult Function(_DeleteNote value)? deleteNote,
+    TResult Function(_ReorderNotes value)? reorderNotes,
+    TResult Function(_RestoreNote value)? restoreNote,
+    required TResult orElse(),
+  }) {
+    if (restoreNote != null) {
+      return restoreNote(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RestoreNote implements NoteEvent {
+  const factory _RestoreNote({required final Note restoredNote}) =
+      _$RestoreNoteImpl;
+
+  Note get restoredNote;
+
+  /// Create a copy of NoteEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RestoreNoteImplCopyWith<_$RestoreNoteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

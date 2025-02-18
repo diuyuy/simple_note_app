@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/color/app_colors.dart';
@@ -9,18 +10,36 @@ import '../../../../../core/enum/previous_page.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../widgets/search/filtered_note_card_widget.dart';
 
-class SearchNotePage extends StatefulWidget {
+class SearchNotePage extends StatelessWidget {
   const SearchNotePage({super.key});
 
   @override
-  State<SearchNotePage> createState() => _SearchNotePageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        final loadNotesUseCase = GetIt.I<LoadNotesUseCase>();
+
+        return SearchNotesBloc(loadNotesUseCase: loadNotesUseCase)
+          ..add(SearchNotesBlocEvent.loadAllNotes());
+      },
+      child: SearchNoteView(),
+    );
+  }
 }
 
-class _SearchNotePageState extends State<SearchNotePage> {
+class SearchNoteView extends StatefulWidget {
+  const SearchNoteView({super.key});
+
+  @override
+  State<SearchNoteView> createState() => _SearchNotePageState();
+}
+
+class _SearchNotePageState extends State<SearchNoteView> {
   final TextEditingController _searchController = TextEditingController();
 
   @override
@@ -106,6 +125,7 @@ class _SearchNotePageState extends State<SearchNotePage> {
                                     extra: NoteSelectionArgs(
                                       selectedNotes: [note.id],
                                       previousPage: PreviousPage.search,
+                                      bloc: context.read<SearchNotesBloc>(),
                                     ),
                                   );
                                 },

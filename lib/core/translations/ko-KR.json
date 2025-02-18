@@ -43,6 +43,7 @@
     "noNotesSelected": "선택된 노트가 없습니다.",
     "ok": "확인",
     "permanentlyDelete": "영구 삭제",
+    "permanentlyDeleteDialogContent": "선택한 {}개의 노트를 영구적으로 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.",
     "restore": "복원",
     "select": "선택",
     "selectAll": "모두 선택"

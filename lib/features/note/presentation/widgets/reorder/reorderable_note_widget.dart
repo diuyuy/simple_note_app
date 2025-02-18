@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:simple_note_app/features/note/presentation/bloc/note_bloc/note_bloc.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/widgets/color_container_widget.dart';
+import '../../bloc/note_bloc/note_bloc.dart';
 
 class ReorderableNoteWidget extends StatelessWidget {
   const ReorderableNoteWidget({
