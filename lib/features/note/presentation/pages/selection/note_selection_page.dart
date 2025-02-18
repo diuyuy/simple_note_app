@@ -209,6 +209,12 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
         ],
       PreviousPage.favorite => [
           MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
             onPressed: () async {
               if (selectedNotes.isEmpty) {
                 showSelectedEmptyDialog(context);
@@ -239,6 +245,12 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
         ],
       PreviousPage.search => [
           MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
             onPressed: () async {
               if (selectedNotes.isEmpty) {
                 showSelectedEmptyDialog(context);
@@ -273,6 +285,12 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
         ],
       PreviousPage.trash => [
           MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
             onPressed: () {
               if (selectedNotes.isEmpty) {
                 showSelectedEmptyDialog(context);

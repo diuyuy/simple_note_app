@@ -8,6 +8,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/enum/previous_page.dart';
 import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
+import '../../../../core/utils/show_no_note_to_select_dialog.dart';
 import '../../../../core/widgets/my_menu_anchor.dart';
 import '../../../../core/widgets/note_drawer.dart';
 import '../bloc/note_bloc/note_bloc.dart';
@@ -59,6 +60,10 @@ class HomePage extends StatelessWidget {
           ),
         ),
         onPressed: () {
+          if (notes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
           context.push(
             RouterPath.noteSelectionPage,
             extra: NoteSelectionArgs(
@@ -71,6 +76,10 @@ class HomePage extends StatelessWidget {
       ),
       MenuItemButton(
         onPressed: () {
+          if (notes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
           context.push(
             RouterPath.noteSelectionPage,
             extra: NoteSelectionArgs(
@@ -83,6 +92,10 @@ class HomePage extends StatelessWidget {
       ),
       MenuItemButton(
         onPressed: () {
+          if (notes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
           context.go(
             '/${RouterPath.reorderNotePage}',
             extra: notes.map((note) => note.id).toList(),

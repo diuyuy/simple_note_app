@@ -63,13 +63,16 @@
   },
   "SearchNotePage": {
     "hintText": "Search notes...",
-    "noResultsFound": "No results found."
+    "noNoteToSearch": "You don’t have any notes yet.",
+    "noResultsFound": "No results found.",
+    "select": "Select",
+    "selectAll": "Select All"
   },
   "showAlertDialog": {
     "cancel": "Cancel",
     "ok": "OK"
   },
-  "showEmptyDialog": {
+  "showNoNoteToSelectDialog": {
     "noNoteToSelect": "There are no notes to select.",
     "ok": "확인"
   },

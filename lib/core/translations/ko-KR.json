@@ -63,13 +63,16 @@
   },
   "SearchNotePage": {
     "hintText": "검색어를 입력하세요",
-    "noResultsFound": "입력된 검색결과가 없습니다."
+    "noResultsFound": "입력된 검색결과가 없습니다.",
+    "noNoteToSearch": "작성된 노트가 없습니다.",
+    "select": "선택",
+    "selectAll": "모두 선택"
   },
   "showAlertDialog": {
     "cancel": "취소",
     "ok": "확인"
   },
-  "showEmptyDialog": {
+  "showNoNoteToSelectDialog": {
     "noNoteToSelect": "선택할 수 있는 노트가 없습니다.",
     "ok": "확인"
   },

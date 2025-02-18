@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/utils/show_no_note_to_select_dialog.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
@@ -100,7 +102,7 @@ class _SearchNotePageState extends State<SearchNoteView> {
         ),
         centerTitle: true,
         actions: [
-          MyMenuAnchor(menuChildren: <MenuItemButton>[]),
+          MyMenuAnchor(menuChildren: buildMenuItemButtonList(context)),
         ],
       ),
       body: SafeArea(
@@ -166,7 +168,9 @@ class _SearchNotePageState extends State<SearchNoteView> {
                           child: Align(
                             alignment: Alignment.topCenter,
                             child: Text(
-                              'SearchNotePage.noResultsFound'.tr(),
+                              _searchController.text.isEmpty
+                                  ? 'SearchNotePage.noNoteToSearch'.tr()
+                                  : 'SearchNotePage.noResultsFound'.tr(),
                               style: TextStyle(color: AppColors.darkGrey),
                             ),
                           ),
@@ -178,5 +182,54 @@ class _SearchNotePageState extends State<SearchNoteView> {
         ),
       ),
     );
+  }
+
+  List<MenuItemButton> buildMenuItemButtonList(BuildContext context) {
+    final filteredNotes = context.watch<SearchNotesBloc>().state.notes;
+
+    return [
+      MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
+        onPressed: () {
+          if (filteredNotes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
+
+          context.push(
+            RouterPath.noteSelectionPage,
+            extra: NoteSelectionArgs(
+              selectedNotes: <String>[],
+              previousPage: PreviousPage.search,
+              bloc: context.read<SearchNotesBloc>(),
+            ),
+          );
+        },
+        child: Text('SearchNotePage.select'.tr()),
+      ),
+      MenuItemButton(
+        onPressed: () {
+          if (filteredNotes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
+
+          context.push(
+            RouterPath.noteSelectionPage,
+            extra: NoteSelectionArgs(
+              selectedNotes: filteredNotes.map((note) => note.id).toList(),
+              previousPage: PreviousPage.search,
+              bloc: context.read<SearchNotesBloc>(),
+            ),
+          );
+        },
+        child: Text('SearchNotePage.selectAll'.tr()),
+      ),
+    ];
   }
 }
