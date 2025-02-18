@@ -1,8 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/utils/show_no_note_to_select_dialog.dart';
 
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/previous_page.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
@@ -28,7 +31,7 @@ class FavoritesPage extends StatelessWidget {
         centerTitle: true,
         actions: [
           MyMenuAnchor(
-            menuChildren: <MenuItemButton>[],
+            menuChildren: buildMenuItemButtonList(context),
           ),
         ],
       ),
@@ -87,5 +90,55 @@ class FavoritesPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<MenuItemButton> buildMenuItemButtonList(BuildContext context) {
+    final notes = context.watch<NoteBloc>().state.notes;
+
+    final favoritesNotes = notes.where((note) => note.isFavorite).toList();
+
+    return [
+      MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
+        onPressed: () {
+          if (favoritesNotes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
+
+          context.push(
+            RouterPath.noteSelectionPage,
+            extra: NoteSelectionArgs(
+              selectedNotes: <String>[],
+              previousPage: PreviousPage.favorite,
+            ),
+          );
+        },
+        child: Text('FavoritesPage.select'.tr()),
+      ),
+      MenuItemButton(
+        onPressed: () {
+          if (favoritesNotes.isEmpty) {
+            showNoNoteToSelectDialog(context);
+            return;
+          }
+
+          context.push(
+            RouterPath.noteSelectionPage,
+            extra: NoteSelectionArgs(
+              selectedNotes:
+                  favoritesNotes.map((favorite) => favorite.id).toList(),
+              previousPage: PreviousPage.favorite,
+            ),
+          );
+        },
+        child: Text('FavoritesPage.selectAll'.tr()),
+      ),
+    ];
   }
 }
