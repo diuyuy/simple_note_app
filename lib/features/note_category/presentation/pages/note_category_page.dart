@@ -64,8 +64,6 @@ class NoteCategoryPage extends StatelessWidget {
                 ),
               );
 
-              // final noteCategories =
-              //     context.watch<NoteCategoryBloc>().state.categories;
               // return GridView(
               //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               //     crossAxisCount: 3,

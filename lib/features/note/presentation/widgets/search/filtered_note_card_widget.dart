@@ -100,22 +100,6 @@ class FilteredNoteCardWidget extends StatelessWidget {
           ),
         ),
         Gap(8.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            buildTitleRichText(context),
-            Text(
-              'NoteCardWidget.updateDate'.tr(args: [date]),
-              style: TextStyle(
-                color: AppColors.midDarkGrey,
-                fontSize: AppConstants.noteCardDateFontSize,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-        const Spacer(),
         GestureDetector(
           onTap: onTapTrailing,
           child: Icon(

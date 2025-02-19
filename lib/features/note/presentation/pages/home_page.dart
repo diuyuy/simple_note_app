@@ -9,8 +9,8 @@ import '../../../../core/enum/previous_page.dart';
 import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
 import '../../../../core/utils/show_no_note_to_select_dialog.dart';
+import '../../../../core/widgets/drawer/note_drawer.dart';
 import '../../../../core/widgets/my_menu_anchor.dart';
-import '../../../../core/widgets/note_drawer.dart';
 import '../bloc/note_bloc/note_bloc.dart';
 import '../widgets/notes_list_widget.dart';
 
