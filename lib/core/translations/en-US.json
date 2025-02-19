@@ -1,0 +1,111 @@
+{
+  "HomePage": {
+    "note": "Note",
+    "reorderNotes": "Reorder notes",
+    "select": "Select",
+    "selectAll": "Select All"
+  },
+  "AppConstants": {
+    "untitled": "Untitled"
+  },
+  "CreateNoteCategoryPage": {
+    "fillInAllFields": "Please fill in all fields.",
+    "newCategory": "New Category",
+    "save": "Save"
+  },
+  "CreateNotePage": {
+    "newNote": "New Note",
+    "save": "Save",
+    "title": "Title",
+    "inputContent": "Write something..."
+  },
+  "Drawer": {
+    "appReview": "App Review",
+    "category": "Category",
+    "favorites": "Favorites",
+    "home": "Home",
+    "manageCategory": "Manage Category",
+    "menu": "Menu",
+    "openSourceLicence": "Open Source License",
+    "privacyPolicy": "Privacy Policy",
+    "settings": "Settings",
+    "trash": "Trash"
+  },
+  "FavoritesPage": {
+    "addFavoriteNote": "Add your favorite note\n\nto Favorites!",
+    "favorites": "Favorites",
+    "select": "Select",
+    "selectAll": "Select All",
+    "updateDate": "Last modified: {}"
+  },
+  "NoteCardWidget": {
+    "updateDate":"Last modified: {}"
+  },
+  "NoteCategoryCardWidget": {
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "NoteCategoryPage": {
+    "category": "Category"
+  },
+  "NotesListWidget": {
+    "tryCreateNote": "Try creating a new note!",
+    "updateDate": "Last modified: {}"
+  },
+  "NoteSelectionPage": {
+    "delete": "Delete",
+    "deleteDialogContent": "Are you sure you want to delete {} selected notes?",
+    "deselectAll": "Deselect All",
+    "noNotesSelected": "No notes selected.",
+    "ok": "OK",
+    "permanentlyDelete": "Permanently Delete",
+    "permanentlyDeleteDialogContent": "Are you sure you want to permanently delete {} selected notes?\n\nThis action cannot be undone.",
+    "restore": "Restore",
+    "select": "Select",
+    "selectAll": "Select All"
+  },
+  "ReadNotePage": {
+    "delete": "Delete",
+    "cancel": "Cancel", 
+    "deleteDialogConent": "Are you sure you want to delete this?",
+    "edit": "Edit",
+    "note": "Note",
+    "ok": "OK",
+    "share": "Share"
+  },
+  "ReorderNotePage": {
+    "done": "Done",
+    "reorderNotes": "Reorder Notes"
+  },
+  "SearchNotePage": {
+    "hintText": "Search notes...",
+    "noNoteToSearch": "You don’t have any notes yet.",
+    "noResultsFound": "No results found.",
+    "select": "Select",
+    "selectAll": "Select All"
+  },
+  "showAlertDialog": {
+    "cancel": "Cancel",
+    "ok": "OK"
+  },
+  "showNoNoteToSelectDialog": {
+    "noNoteToSelect": "There are no notes to select.",
+    "ok": "확인"
+  },
+  "UpdateNotePage": {
+    "edit": "Edit",
+    "done": "Done",
+    "title": "title",
+    "inputContent": "Write something..."
+  },
+  "WastebasketPage": {
+    "emptyTrash": "Empty Trash",
+    "emptyTrashDialogContent": "Are you sure you want to permanently delete all items in the trash?\n\nThis action cannot be undone.",
+    "ok": "OK",
+    "trashIsAlreadyEmpty": "Trash is already empty",
+    "trashIsEmpty": "The trash is empty.",
+    "select": "Select",
+    "selectAll": "Select All",
+    "trash": "Trash"
+  }
+}
