@@ -22,11 +22,14 @@ class NoteEvent with _$NoteEvent {
   }) = _UpdateNote;
 
   const factory NoteEvent.deleteNote({
-    required String id,
+    required Note deletedNote,
   }) = _DeleteNote;
 
   const factory NoteEvent.reorderNotes({
-    required int oldIndex,
-    required int newIndex,
+    required List<String> newOrder,
   }) = _ReorderNotes;
+
+  const factory NoteEvent.restoreNote({
+    required Note restoredNote,
+  }) = _RestoreNote;
 }

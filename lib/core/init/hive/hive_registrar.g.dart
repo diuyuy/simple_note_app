@@ -8,6 +8,7 @@ import 'package:simple_note_app/core/init/hive/hive_adapters.dart';
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
     registerAdapter(AppSettingModelAdapter());
+    registerAdapter(NoteCategoryModelAdapter());
     registerAdapter(NoteModelAdapter());
     registerAdapter(NoteOrderAdapter());
   }

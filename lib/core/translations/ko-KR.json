@@ -1,8 +1,20 @@
 {
-  "NotePage": {
-    "note": "노트"
+  "HomePage": {
+    "note": "노트",
+    "reorderNotes": "순서 변경",
+    "select": "선택",
+    "selectAll": "모두 선택"
+  },
+  "AppConstants": {
+    "untitled": "제목 없음"
+  },
+  "CreateNoteCategoryPage": {
+    "fillInAllFields": "모든 항목을 입력해 주세요.",
+    "newCategory": "새 카테고리",
+    "save": "저장"
   },
   "CreateNotePage": {
+    "newNote": "새 노트",
     "save": "저장",
     "title": "제목",
     "inputContent": "내용을 입력하세요."
@@ -11,6 +23,8 @@
     "appReview": "앱 평가",
     "category": "카테고리",
     "favorites": "즐겨찾기",
+    "home": "홈",
+    "manageCategory": "카테고리 설정",
     "menu": "메뉴",
     "openSourceLicence": "라이선스 정보",
     "privacyPolicy": "개인정보 처리 방침",
@@ -18,29 +32,80 @@
     "trash": "휴지통"
   },
   "FavoritesPage": {
+    "addFavoriteNote": "즐겨찾기에 원하는 노트를\n\n추가해 보세요!",
     "favorites": "즐겨찾기",
+    "select" :"선택",
+    "selectAll": "모두 선택",
     "updateDate": "수정 날짜: {}"
   },
   "NoteCardWidget": {
     "updateDate":"수정 날짜: {}"
   },
-  "NoteListWidget": {
+  "NoteCategoryCardWidget": {
+    "edit": "편집",
+    "delete": "삭제"
+  },
+  "NoteCategoryPage": {
+    "category": "카테고리"
+  },
+  "NotesListWidget": {
+    "tryCreateNote": "새 노트를 작성해보세요!",
     "updateDate": "수정 날짜: {}"
+  },
+  "NoteSelectionPage": {
+    "delete": "삭제",
+    "deleteDialogContent": "선택한 {}개의 노트를 삭제하시겠습니까?",
+    "deselectAll": "선택 해제",
+    "noNotesSelected": "선택된 노트가 없습니다.",
+    "ok": "확인",
+    "permanentlyDelete": "영구 삭제",
+    "permanentlyDeleteDialogContent": "선택한 {}개의 노트를 영구적으로 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.",
+    "restore": "복원",
+    "select": "선택",
+    "selectAll": "모두 선택"
   },
   "ReadNotePage": {
     "cancel": "취소",
     "delete": "삭제",
     "deleteDialogConent": "정말로 삭제하시겠습니까?",
     "edit": "편집",
-    "ok": "확인"
+    "note": "노트",
+    "ok": "확인",
+    "share": "공유"
+  },
+  "ReorderNotePage": {
+    "done": "완료",
+    "reorderNotes": "순서 변경"
   },
   "SearchNotePage": {
-    "search": "검색"
+    "hintText": "검색어를 입력하세요",
+    "noResultsFound": "입력된 검색결과가 없습니다.",
+    "noNoteToSearch": "작성된 노트가 없습니다.",
+    "select": "선택",
+    "selectAll": "모두 선택"
+  },
+  "showAlertDialog": {
+    "cancel": "취소",
+    "ok": "확인"
+  },
+  "showNoNoteToSelectDialog": {
+    "noNoteToSelect": "선택할 수 있는 노트가 없습니다.",
+    "ok": "확인"
   },
   "UpdateNotePage": {
     "edit": "편집",
     "done": "완료",
     "title": "제목",
     "inputContent": "내용을 입력하세요."
+  },
+  "WastebasketPage": {
+    "emptyTrash": "휴지통 비우기",
+    "emptyTrashDialogContent": "휴지통의 모든 노트를 영구적으로 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.",
+    "ok": "확인",
+    "trashIsAlreadyEmpty": "휴지통이 이미 비워져 있습니다.",
+    "trashIsEmpty": "휴지통이 비었습니다.",
+    "select": "선택",
+    "selectAll": "모두 선택",
+    "trash": "휴지통"
   }
 }

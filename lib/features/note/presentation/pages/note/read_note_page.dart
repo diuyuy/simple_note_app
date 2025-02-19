@@ -1,10 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
-import '../../domain/entities/note.dart';
-import '../bloc/note_bloc/note_bloc.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/router/router_path.dart';
+import '../../../domain/entities/note.dart';
+import '../../bloc/note_bloc/note_bloc.dart';
 
 class ReadNotePage extends StatelessWidget {
   const ReadNotePage({super.key, required this.noteId});
@@ -13,12 +17,16 @@ class ReadNotePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentPath = GoRouterState.of(context).uri.path;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => context.pop(),
           icon: Icon(Icons.arrow_back_ios),
         ),
+        title: Text('ReadNotePage.note'.tr()),
+        //centerTitle: true,
         actions: [
           BlocBuilder<NoteBloc, NoteState>(
             builder: (context, state) {
@@ -47,22 +55,43 @@ class ReadNotePage extends StatelessWidget {
               );
             },
           ),
-          MenuAnchor(
-            //alignmentOffset: Offset(, 0),
-            style: MenuStyle(
-              padding: WidgetStatePropertyAll(EdgeInsets.only(right: 8)),
+          IconButton(
+            onPressed: () {
+              context.go(
+                '$currentPath/${RouterPath.updateNotePage}',
+                extra: noteId,
+              );
+            },
+            icon: Icon(
+              Icons.edit,
+              color: Theme.of(context).colorScheme.primary,
             ),
-            menuChildren: getMenuItemButtonList(context),
-            builder: (context, controller, child) {
-              return IconButton(
-                onPressed: () {
-                  if (controller.isOpen) {
-                    controller.close();
-                  } else {
-                    controller.open();
-                  }
+          ),
+          BlocBuilder<NoteBloc, NoteState>(
+            builder: (context, state) {
+              final selectedNote = state.notes.firstWhere(
+                (note) => note.id == noteId,
+                orElse: () => Note(
+                  id: '',
+                  title: '',
+                  createDate: '',
+                ),
+              );
+
+              return MenuAnchor(
+                menuChildren: getMenuItemButtonList(context, selectedNote),
+                builder: (context, controller, child) {
+                  return IconButton(
+                    onPressed: () {
+                      if (controller.isOpen) {
+                        controller.close();
+                      } else {
+                        controller.open();
+                      }
+                    },
+                    icon: Icon(Icons.more_vert),
+                  );
                 },
-                icon: Icon(Icons.more_vert),
               );
             },
           ),
@@ -87,7 +116,9 @@ class ReadNotePage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 4.0),
                       child: Text(
-                        selectedNote.title,
+                        selectedNote.title.isNotEmpty
+                            ? selectedNote.title
+                            : AppConstants.untitled.tr(),
                         style: Theme.of(context).textTheme.bodyLarge,
                       ),
                     ),
@@ -132,22 +163,29 @@ class ReadNotePage extends StatelessWidget {
     );
   }
 
-  List<Widget> getMenuItemButtonList(BuildContext context) {
-    final currentPath = GoRouterState.of(context).uri.path;
-
+  List<Widget> getMenuItemButtonList(BuildContext context, Note selectedNote) {
     return [
       MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
         onPressed: () {
-          context.go('$currentPath/update', extra: noteId);
+          Share.share('${selectedNote.title}\n\n${selectedNote.content}');
         },
-        child: Text('ReadNotePage.edit'.tr()),
+        child: Text('ReadNotePage.share'.tr()),
       ),
       MenuItemButton(
         onPressed: () async {
           final isConfirm = await showDeleteDialog(context);
           if (isConfirm == true) {
             if (context.mounted) {
-              context.read<NoteBloc>().add(NoteEvent.deleteNote(id: noteId));
+              context
+                  .read<NoteBloc>()
+                  .add(NoteEvent.deleteNote(deletedNote: selectedNote));
+
               context.pop();
             }
           }

@@ -4,10 +4,9 @@ import '../models/note_model.dart';
 import '../models/note_order.dart';
 
 class NoteLocalDatasource {
-  NoteLocalDatasource(this._box, this._trashBox, this._orderBox);
+  NoteLocalDatasource(this._box, this._orderBox);
 
   final Box<NoteModel> _box;
-  final Box<NoteModel> _trashBox;
   final Box<NoteOrder> _orderBox;
 
   Future<void> addNote(NoteModel newNote) async {
@@ -45,19 +44,12 @@ class NoteLocalDatasource {
     _orderBox.putAt(0, NoteOrder(order: order));
   }
 
-  Future<void> reorderNotes(int oldIndex, int newIndex) async {
+  Future<void> reorderNotes(List<String> newOrder) async {
     final noteOrder = _orderBox.getAt(0);
 
     if (noteOrder == null) throw Exception('open order box error');
 
-    List<String> order = [...noteOrder.order];
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final String id = order.removeAt(oldIndex);
-    order.insert(newIndex, id);
-
-    await _orderBox.putAt(0, NoteOrder(order: order));
+    await _orderBox.putAt(0, NoteOrder(order: newOrder));
   }
 
   Future<void> insertOrder(int index, String id) async {
@@ -67,5 +59,9 @@ class NoteLocalDatasource {
 
     orderList.insert(index, id);
     await _orderBox.putAt(0, NoteOrder(order: orderList));
+  }
+
+  Future<void> restoreNote(NoteModel restoredNote) async {
+    await addNote(restoredNote);
   }
 }

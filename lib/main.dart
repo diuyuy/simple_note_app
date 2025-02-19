@@ -7,8 +7,17 @@ import 'package:get_it/get_it.dart';
 
 import 'core/init/initialize_app.dart';
 import 'core/router/router.dart';
-import 'features/note/domain/repositories/note_repository.dart';
+import 'features/note/domain/usecases/note_usecase/create_note_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/delete_note_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/load_notes_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/reorder_notes_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/update_note_use_case.dart';
 import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';
+import 'features/note_category/domain/usecases/create_note_category_use_case.dart';
+import 'features/note_category/domain/usecases/delete_note_category_use_case.dart';
+import 'features/note_category/domain/usecases/get_all_note_categories_use_case.dart';
+import 'features/note_category/domain/usecases/update_note_category_use_case.dart';
+import 'features/note_category/presentation/bloc/note_category_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
 import 'features/setting/presentation/cubit/app_setting_cubit.dart';
 
@@ -34,6 +43,7 @@ void main() async {
       child: MultiBlocProvider(
         providers: [
           BlocProvider<AppSettingCubit>(
+            lazy: false,
             create: (context) {
               final appSettingRepository = getIt<AppSettingRepository>();
 
@@ -41,12 +51,43 @@ void main() async {
             },
           ),
           BlocProvider<NoteBloc>(
+            lazy: false,
             create: (context) {
-              final noteRepository = getIt<NoteRepository>();
+              final createNoteUseCase = getIt<CreateNoteUseCase>();
+              final loadNotesUseCase = getIt<LoadNotesUseCase>();
+              final updateNoteUseCase = getIt<UpdateNoteUseCase>();
+              final deleteNoteUseCase = getIt<DeleteNoteUseCase>();
+              final reorderNotesUseCase = getIt<ReorderNotesUseCase>();
+              //final noteRepository = getIt<NoteRepository>();
+              //return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
 
-              return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
+              return NoteBloc(
+                createNoteUseCase: createNoteUseCase,
+                loadNotesUseCase: loadNotesUseCase,
+                updateNoteUseCase: updateNoteUseCase,
+                deleteNoteUseCase: deleteNoteUseCase,
+                reorderNotesUseCase: reorderNotesUseCase,
+              )..add(NoteEvent.loadNotes());
             },
           ),
+          BlocProvider(
+            create: (context) {
+              final createCategoryUseCase = getIt<CreateNoteCategoryUseCase>();
+              final getAllNoteCategoriesUseCase =
+                  getIt<GetAllNoteCategoriesUseCase>();
+              final updateNoteCategoryUseCase =
+                  getIt<UpdateNoteCategoryUseCase>();
+              final deleteNoteCategoryUseCase =
+                  getIt<DeleteNoteCategoryUseCase>();
+
+              return NoteCategoryBloc(
+                getAllNoteCategoriesUseCase: getAllNoteCategoriesUseCase,
+                createNoteCategoryUseCase: createCategoryUseCase,
+                updateNoteCategoryUseCase: updateNoteCategoryUseCase,
+                deleteNoteCategoryUseCase: deleteNoteCategoryUseCase,
+              );
+            },
+          )
         ],
         child: MyApp(),
       ),
@@ -60,28 +101,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: const Size(360, 690),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          final appSetting = context.watch<AppSettingCubit>().state;
-
-          return MaterialApp.router(
-            routerConfig: router,
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-              textTheme: TextTheme(
-                bodyLarge: TextStyle(fontSize: (16 + appSetting.fontSize).sp),
-                bodyMedium: TextStyle(fontSize: (12 + appSetting.fontSize).sp),
-                bodySmall: TextStyle(fontSize: (10.0 + appSetting.fontSize).sp),
-              ),
-              useMaterial3: true,
-            ),
-          );
-        });
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp.router(
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            useMaterial3: true,
+          ),
+        );
+      },
+    );
   }
 }

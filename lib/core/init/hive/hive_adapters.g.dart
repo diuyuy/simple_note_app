@@ -17,13 +17,13 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return NoteModel(
-      id: fields[5] as String,
-      title: fields[0] as String,
-      content: fields[1] as String?,
-      createDate: fields[2] as String,
-      updateDate: fields[7] as String?,
-      isFavorite: fields[8] as bool,
-      category: fields[4] as String?,
+      id: fields[0] as String,
+      title: fields[1] as String,
+      content: fields[2] as String?,
+      createDate: fields[3] as String,
+      updateDate: fields[4] as String?,
+      isFavorite: fields[5] as bool,
+      category: fields[6] as String?,
     );
   }
 
@@ -32,19 +32,19 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
     writer
       ..writeByte(7)
       ..writeByte(0)
-      ..write(obj.title)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.content)
+      ..write(obj.title)
       ..writeByte(2)
+      ..write(obj.content)
+      ..writeByte(3)
       ..write(obj.createDate)
       ..writeByte(4)
-      ..write(obj.category)
-      ..writeByte(5)
-      ..write(obj.id)
-      ..writeByte(7)
       ..write(obj.updateDate)
-      ..writeByte(8)
-      ..write(obj.isFavorite);
+      ..writeByte(5)
+      ..write(obj.isFavorite)
+      ..writeByte(6)
+      ..write(obj.category);
   }
 
   @override
@@ -58,9 +58,43 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
           typeId == other.typeId;
 }
 
-class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
+class NoteOrderAdapter extends TypeAdapter<NoteOrder> {
   @override
   final int typeId = 1;
+
+  @override
+  NoteOrder read(BinaryReader reader) {
+    final numOfFields = reader.readByte();
+    final fields = <int, dynamic>{
+      for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
+    };
+    return NoteOrder(
+      order: (fields[0] as List).cast<String>(),
+    );
+  }
+
+  @override
+  void write(BinaryWriter writer, NoteOrder obj) {
+    writer
+      ..writeByte(1)
+      ..writeByte(0)
+      ..write(obj.order);
+  }
+
+  @override
+  int get hashCode => typeId.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NoteOrderAdapter &&
+          runtimeType == other.runtimeType &&
+          typeId == other.typeId;
+}
+
+class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
+  @override
+  final int typeId = 2;
 
   @override
   AppSettingModel read(BinaryReader reader) {
@@ -92,27 +126,36 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
           typeId == other.typeId;
 }
 
-class NoteOrderAdapter extends TypeAdapter<NoteOrder> {
+class NoteCategoryModelAdapter extends TypeAdapter<NoteCategoryModel> {
   @override
-  final int typeId = 2;
+  final int typeId = 3;
 
   @override
-  NoteOrder read(BinaryReader reader) {
+  NoteCategoryModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return NoteOrder(
-      order: (fields[0] as List).cast<String>(),
+    return NoteCategoryModel(
+      id: fields[0] as String,
+      categoryName: fields[1] as String,
+      iconCode: (fields[2] as num).toInt(),
+      categoryColor: (fields[3] as num).toInt(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, NoteOrder obj) {
+  void write(BinaryWriter writer, NoteCategoryModel obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.order);
+      ..write(obj.id)
+      ..writeByte(1)
+      ..write(obj.categoryName)
+      ..writeByte(2)
+      ..write(obj.iconCode)
+      ..writeByte(3)
+      ..write(obj.categoryColor);
   }
 
   @override
@@ -121,7 +164,7 @@ class NoteOrderAdapter extends TypeAdapter<NoteOrder> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is NoteOrderAdapter &&
+      other is NoteCategoryModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

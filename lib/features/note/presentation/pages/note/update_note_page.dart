@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/constants/const_values.dart';
-import '../../../../core/utils/format_date.dart';
-import '../../domain/entities/note.dart';
-import '../bloc/note_bloc/note_bloc.dart';
-import '../widgets/my_text_field.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/utils/format_date.dart';
+import '../../../../../core/widgets/my_text_field.dart';
+import '../../../domain/entities/note.dart';
+import '../../bloc/note_bloc/note_bloc.dart';
 
 class UpdateNotePage extends StatefulWidget {
   const UpdateNotePage({super.key, required this.id});
@@ -77,7 +77,9 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
                 ),
               );
 
-              _titleController.text = selectedNote.title;
+              _titleController.text = selectedNote.title.isNotEmpty
+                  ? selectedNote.title
+                  : AppConstants.untitled.tr();
               _contentController.text = selectedNote.content ?? '';
 
               return Column(
@@ -85,7 +87,7 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
                   MyTextField(
                     controller: _titleController,
                     maxLines: 1,
-                    maxLength: ConstValues.titleMaxLength,
+                    maxLength: AppConstants.titleMaxLength,
                     hintText: 'UpdateNotePage.title'.tr(),
                     textStyle: Theme.of(context).textTheme.bodyLarge,
                   ),

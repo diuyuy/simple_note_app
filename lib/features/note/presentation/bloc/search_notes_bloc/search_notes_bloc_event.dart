@@ -7,4 +7,6 @@ class SearchNotesBlocEvent with _$SearchNotesBlocEvent {
       _Searched;
   const factory SearchNotesBlocEvent.tapFavorite(
       {required String id, required bool isFavorite}) = _TapFavorite;
+  const factory SearchNotesBlocEvent.deleteNote({required Note deletedNote}) =
+      _DeleteNote;
 }

@@ -5,22 +5,38 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../domain/entities/note.dart';
-import '../../../domain/repositories/note_repository.dart';
+import '../../../domain/usecases/note_usecase/create_note_use_case.dart';
+import '../../../domain/usecases/note_usecase/delete_note_use_case.dart';
+import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
+import '../../../domain/usecases/note_usecase/reorder_notes_use_case.dart';
+import '../../../domain/usecases/note_usecase/update_note_use_case.dart';
 
 part 'note_bloc.freezed.dart';
 part 'note_event.dart';
 part 'note_state.dart';
 
 class NoteBloc extends Bloc<NoteEvent, NoteState> {
-  NoteBloc(this._repository) : super(_Initial(notes: const <Note>[])) {
+  NoteBloc({
+    required this.createNoteUseCase,
+    required this.loadNotesUseCase,
+    required this.updateNoteUseCase,
+    required this.deleteNoteUseCase,
+    required this.reorderNotesUseCase,
+  }) : super(_Initial(notes: const <Note>[])) {
     on<_CreateNote>(_onCreateNote);
     on<_LoadNotes>(_onLoadNotes);
     on<_UpdateNote>(_onUpdateNote);
     on<_DeleteNote>(_onDeleteNote);
     on<_ReorderNotes>(_onReorderNotes);
+    on<_RestoreNote>(_onRestoreNote);
   }
 
-  final NoteRepository _repository;
+  final CreateNoteUseCase createNoteUseCase;
+  final LoadNotesUseCase loadNotesUseCase;
+  final UpdateNoteUseCase updateNoteUseCase;
+  final DeleteNoteUseCase deleteNoteUseCase;
+  final ReorderNotesUseCase reorderNotesUseCase;
+
   final Uuid _uuid = Uuid();
 
   Future<void> _onCreateNote(_CreateNote event, Emitter<NoteState> emit) async {
@@ -35,13 +51,13 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       category: event.category,
     );
 
-    await _repository.addNote(newNote);
+    await createNoteUseCase.execute(newNote);
 
-    emit(_Loaded(notes: _repository.getNoteList()));
+    emit(_Loaded(notes: loadNotesUseCase.execute()));
   }
 
   void _onLoadNotes(_LoadNotes event, Emitter<NoteState> emit) {
-    final notes = _repository.getNoteList();
+    final notes = loadNotesUseCase.execute();
 
     emit(_Loaded(notes: notes));
   }
@@ -58,30 +74,34 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
       category: event.category ?? currentNote.category,
     );
 
-    await _repository.updateNote(updatedNote);
+    await updateNoteUseCase.execute(updatedNote);
 
-    emit(_Loaded(notes: _repository.getNoteList()));
+    emit(_Loaded(notes: loadNotesUseCase.execute()));
   }
 
   Future<void> _onDeleteNote(_DeleteNote event, Emitter<NoteState> emit) async {
-    await _repository.deleteNote(event.id);
+    await deleteNoteUseCase.execute(event.deletedNote);
 
-    emit(_Loaded(notes: _repository.getNoteList()));
+    emit(_Loaded(notes: loadNotesUseCase.execute()));
   }
 
   Future<void> _onReorderNotes(
       _ReorderNotes event, Emitter<NoteState> emit) async {
-    List<Note> orderdNotes = [...state.notes];
-    int oldIndex = event.oldIndex;
-    int newIndex = event.newIndex;
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final Note note = orderdNotes.removeAt(oldIndex);
-    orderdNotes.insert(newIndex, note);
+    List<Note> orderdNotes = event.newOrder.map((id) {
+      final note = state.notes.firstWhere((note) => note.id == id);
+
+      return note;
+    }).toList();
 
     emit(_Loaded(notes: orderdNotes));
-    await _repository.reorderNotes(event.oldIndex, event.newIndex);
+    await reorderNotesUseCase.execute(event.newOrder);
+  }
+
+  void _onRestoreNote(_RestoreNote event, Emitter<NoteState> emit) {
+    var notes = [...state.notes];
+    notes.insert(0, event.restoredNote);
+
+    emit(_Loaded(notes: notes));
   }
 
   @override
