@@ -35,7 +35,7 @@ types:
         index: 0
   NoteCategoryModel:
     typeId: 3
-    nextIndex: 4
+    nextIndex: 8
     fields:
       id:
         index: 0
@@ -43,5 +43,11 @@ types:
         index: 1
       iconCode:
         index: 2
-      categoryColor:
-        index: 3
+      categoryColorA:
+        index: 4
+      categoryColorR:
+        index: 5
+      categoryColorG:
+        index: 6
+      categoryColorB:
+        index: 7

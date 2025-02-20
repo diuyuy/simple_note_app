@@ -140,22 +140,31 @@ class NoteCategoryModelAdapter extends TypeAdapter<NoteCategoryModel> {
       id: fields[0] as String,
       categoryName: fields[1] as String,
       iconCode: (fields[2] as num).toInt(),
-      categoryColor: (fields[3] as num).toInt(),
+      categoryColorA: (fields[4] as num).toDouble(),
+      categoryColorR: (fields[5] as num).toDouble(),
+      categoryColorG: (fields[6] as num).toDouble(),
+      categoryColorB: (fields[7] as num).toDouble(),
     );
   }
 
   @override
   void write(BinaryWriter writer, NoteCategoryModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.categoryName)
       ..writeByte(2)
       ..write(obj.iconCode)
-      ..writeByte(3)
-      ..write(obj.categoryColor);
+      ..writeByte(4)
+      ..write(obj.categoryColorA)
+      ..writeByte(5)
+      ..write(obj.categoryColorR)
+      ..writeByte(6)
+      ..write(obj.categoryColorG)
+      ..writeByte(7)
+      ..write(obj.categoryColorB);
   }
 
   @override

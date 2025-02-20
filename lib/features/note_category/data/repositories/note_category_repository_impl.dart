@@ -30,12 +30,20 @@ class NoteCategoryRepositoryImpl implements NoteCategoryRepository {
     await _localDatasource.deleteNoteCategory(deletedNoteCategory.id);
   }
 
+  @override
+  Future<void> reorderNoteCategory(int oldIndex, int newIndex) async {
+    await _localDatasource.reorderCategory(oldIndex, newIndex);
+  }
+
   NoteCategory modelToEntity(NoteCategoryModel noteCategory) {
     return NoteCategory(
       id: noteCategory.id,
       categoryName: noteCategory.categoryName,
       iconCode: noteCategory.iconCode,
-      categoryColor: noteCategory.categoryColor,
+      categoryColorA: noteCategory.categoryColorA,
+      categoryColorR: noteCategory.categoryColorR,
+      categoryColorG: noteCategory.categoryColorG,
+      categoryColorB: noteCategory.categoryColorB,
     );
   }
 
@@ -44,7 +52,10 @@ class NoteCategoryRepositoryImpl implements NoteCategoryRepository {
       id: noteCategory.id,
       categoryName: noteCategory.categoryName,
       iconCode: noteCategory.iconCode,
-      categoryColor: noteCategory.categoryColor,
+      categoryColorA: noteCategory.categoryColorA,
+      categoryColorR: noteCategory.categoryColorR,
+      categoryColorG: noteCategory.categoryColorG,
+      categoryColorB: noteCategory.categoryColorB,
     );
   }
 }

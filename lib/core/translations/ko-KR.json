@@ -8,8 +8,19 @@
   "AppConstants": {
     "untitled": "제목 없음"
   },
+  "CategorySelectionPage": {
+    "delete": "삭제",
+    "deleteDialogContent": "선택한 {}개의 카테고리를 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.",
+    "deselectAll": "선택 해제",
+    "noNotesSelected": "선택된 카테고리가 없습니다.",
+    "select": "선택",
+    "selectAll": "모두 선택"
+  },
   "CreateNoteCategoryPage": {
+    "categoryName": "카테고리 이름",
+    "categoryIcon": "카테고리 아이콘",
     "fillInAllFields": "모든 항목을 입력해 주세요.",
+    "iconColor": "아이콘 색상",
     "newCategory": "새 카테고리",
     "save": "저장"
   },
@@ -38,15 +49,24 @@
     "selectAll": "모두 선택",
     "updateDate": "수정 날짜: {}"
   },
+  "InputCategoryInfoWidget": {
+    "categoryIcon": "카테고리 아이콘",
+    "categoryName": "카테고리 이름",
+    "iconColor": "아이콘 색상"
+  },
   "NoteCardWidget": {
     "updateDate":"수정 날짜: {}"
   },
   "NoteCategoryCardWidget": {
+    "noteCount": "개",
+    "notesCount": "개",
     "edit": "편집",
     "delete": "삭제"
   },
   "NoteCategoryPage": {
-    "category": "카테고리"
+    "category": "카테고리",
+    "select": "선택",
+    "selectAll": "모두 선택"
   },
   "NotesListWidget": {
     "tryCreateNote": "새 노트를 작성해보세요!",
@@ -76,6 +96,9 @@
   "ReorderNotePage": {
     "done": "완료",
     "reorderNotes": "순서 변경"
+  },
+  "SaveButton": {
+    "save": "저장"
   },
   "SearchNotePage": {
     "hintText": "검색어를 입력하세요",

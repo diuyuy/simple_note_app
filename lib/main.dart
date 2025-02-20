@@ -16,6 +16,7 @@ import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';
 import 'features/note_category/domain/usecases/create_note_category_use_case.dart';
 import 'features/note_category/domain/usecases/delete_note_category_use_case.dart';
 import 'features/note_category/domain/usecases/get_all_note_categories_use_case.dart';
+import 'features/note_category/domain/usecases/reorder_note_category_use_case.dart';
 import 'features/note_category/domain/usecases/update_note_category_use_case.dart';
 import 'features/note_category/presentation/bloc/note_category_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
@@ -79,13 +80,16 @@ void main() async {
                   getIt<UpdateNoteCategoryUseCase>();
               final deleteNoteCategoryUseCase =
                   getIt<DeleteNoteCategoryUseCase>();
+              final reorderNoteCategoryUseCase =
+                  getIt<ReorderNoteCategoryUseCase>();
 
               return NoteCategoryBloc(
                 getAllNoteCategoriesUseCase: getAllNoteCategoriesUseCase,
                 createNoteCategoryUseCase: createCategoryUseCase,
                 updateNoteCategoryUseCase: updateNoteCategoryUseCase,
                 deleteNoteCategoryUseCase: deleteNoteCategoryUseCase,
-              );
+                reorderNoteCategoryUseCase: reorderNoteCategoryUseCase,
+              )..add(NoteCategoryEvent.categoryLoaded());
             },
           )
         ],

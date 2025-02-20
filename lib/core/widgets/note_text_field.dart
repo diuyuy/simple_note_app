@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MyTextField extends StatelessWidget {
-  const MyTextField({
+class NoteTextField extends StatelessWidget {
+  const NoteTextField({
     super.key,
     required this.controller,
     this.maxLength,

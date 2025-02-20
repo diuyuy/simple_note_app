@@ -8,6 +8,9 @@ class NoteCategoryModel with _$NoteCategoryModel {
     required String id,
     required String categoryName,
     required int iconCode,
-    required int categoryColor,
+    required double categoryColorA,
+    required double categoryColorR,
+    required double categoryColorG,
+    required double categoryColorB,
   }) = _NoteCategoryModel;
 }

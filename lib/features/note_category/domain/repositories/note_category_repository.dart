@@ -5,4 +5,5 @@ abstract interface class NoteCategoryRepository {
   List<NoteCategory> getAllNoteCategories();
   Future<void> updateNoteCategory(NoteCategory updatedNoteCategory);
   Future<void> deleteNoteCategory(NoteCategory deletedNoteCategory);
+  Future<void> reorderNoteCategory(int oldIndex, int newIndex);
 }

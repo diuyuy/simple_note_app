@@ -8,8 +8,19 @@
   "AppConstants": {
     "untitled": "Untitled"
   },
+  "CategorySelectionPage": {
+    "delete": "Delete",
+    "deleteDialogContent": "Are you sure you want to delete {} selected categories?\n\nThis action cannot be undone.",
+    "deselectAll": "Deselect All",
+    "noNotesSelected": "No notes selected.",
+    "select": "Select",
+    "selectAll": "Select All"
+  },
   "CreateNoteCategoryPage": {
+    "categoryName": "Category Name",
+    "categoryIcon": "Category Icon",
     "fillInAllFields": "Please fill in all fields.",
+    "iconColor": "Icon Color",
     "newCategory": "New Category",
     "save": "Save"
   },
@@ -38,15 +49,24 @@
     "selectAll": "Select All",
     "updateDate": "Last modified: {}"
   },
+  "InputCategoryInfoWidget": {
+    "categoryIcon":"Category Icon",
+    "categoryName":"Category Name",
+    "iconColor":"Icon Color"
+  },
   "NoteCardWidget": {
     "updateDate":"Last modified: {}"
   },
   "NoteCategoryCardWidget": {
+    "noteCount": "note",
+    "notesCount": "notes",
     "edit": "Edit",
     "delete": "Delete"
   },
   "NoteCategoryPage": {
-    "category": "Category"
+    "category": "Category",
+    "select": "Select",
+    "selectAll":"Select All"
   },
   "NotesListWidget": {
     "tryCreateNote": "Try creating a new note!",
@@ -76,6 +96,9 @@
   "ReorderNotePage": {
     "done": "Done",
     "reorderNotes": "Reorder Notes"
+  },
+  "SaveButton": {
+    "save": "Save"
   },
   "SearchNotePage": {
     "hintText": "Search notes...",

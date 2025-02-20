@@ -6,14 +6,22 @@ class NoteCategoryEvent with _$NoteCategoryEvent {
   const factory NoteCategoryEvent.categoryCreated({
     required String categoryName,
     required int iconCode,
-    required int categoryColor,
+    required double categoryColorA,
+    required double categoryColorR,
+    required double categoryColorG,
+    required double categoryColorB,
   }) = _CategoryCreated;
   const factory NoteCategoryEvent.categoryUpdated({
     required String id,
     String? categoryName,
     int? iconCode,
-    int? categoryColor,
+    double? categoryColorA,
+    double? categoryColorR,
+    double? categoryColorG,
+    double? categoryColorB,
   }) = _CategoryUpdated;
   const factory NoteCategoryEvent.categoryDeleted(
       {required NoteCategory deletedNoteCategory}) = _CategoryDeleted;
+  const factory NoteCategoryEvent.categoryReordered(
+      {required int oldIndex, required int newIndex}) = _CategoryReordered;
 }
