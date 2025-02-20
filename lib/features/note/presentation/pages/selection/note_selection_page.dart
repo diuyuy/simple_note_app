@@ -53,7 +53,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
     });
   }
 
-  void slectAll(Iterable<String> allNotes) {
+  void selectAll(Iterable<String> allNotes) {
     setState(() {
       selected.addAll(allNotes);
     });
@@ -87,7 +87,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
                   context.read<WasteBasketBloc>().state.wastes,
               };
 
-              slectAll(notes.map((note) => note.id));
+              selectAll(notes.map((note) => note.id));
             },
             child: Text('NoteSelectionPage.selectAll'.tr()),
           ),

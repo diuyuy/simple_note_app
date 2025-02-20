@@ -4,4 +4,5 @@ class BoxName {
   static const String noteOrderBoxName = 'noteOrder';
   static const String appSettingBoxName = 'setting';
   static const String noteCategoryBoxName = 'noteCategory';
+  static const String noteCategoryOrderBoxName = 'noteCategoryOrder';
 }

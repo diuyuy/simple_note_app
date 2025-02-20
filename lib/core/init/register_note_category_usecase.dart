@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:simple_note_app/features/note_category/domain/usecases/reorder_note_category_use_case.dart';
 
 import '../../features/note_category/domain/repositories/note_category_repository.dart';
 import '../../features/note_category/domain/usecases/create_note_category_use_case.dart';
@@ -41,6 +42,15 @@ void registerNoteCategoryUseCase() {
       final noteCategoryRepository = getIt<NoteCategoryRepository>();
 
       return DeleteNoteCategoryUseCase(
+          noteCategoryRepository: noteCategoryRepository);
+    },
+  );
+
+  getIt.registerLazySingleton<ReorderNoteCategoryUseCase>(
+    () {
+      final noteCategoryRepository = getIt<NoteCategoryRepository>();
+
+      return ReorderNoteCategoryUseCase(
           noteCategoryRepository: noteCategoryRepository);
     },
   );

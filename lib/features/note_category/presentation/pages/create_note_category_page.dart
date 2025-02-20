@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/features/note_category/presentation/bloc/note_category_bloc.dart';
 
-import '../widgets/input_category_info_widget.dart';
+import '../bloc/note_category_bloc.dart';
+import '../widgets/note_category/input_category_info_widget.dart';
 
 class CreateNoteCategoryPage extends StatelessWidget {
   const CreateNoteCategoryPage({super.key});
@@ -40,6 +40,7 @@ class CreateNoteCategoryPage extends StatelessWidget {
             ),
           ),
         ),
+        resizeToAvoidBottomInset: false,
       ),
     );
   }

@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color midDarkGrey = Color.fromARGB(255, 97, 97, 97);
   static const Color darkGrey = Color.fromARGB(255, 66, 66, 66);
-  static const List<Color> colors = [
-    Colors.red,
-    Colors.orange,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.indigo,
-    Colors.purple,
+  static List<Color> colors300 = [
+    Colors.red[300]!,
+    Colors.orange[300]!,
+    Colors.yellow[300]!,
+    Colors.green[300]!,
+    Colors.blue[300]!,
+    Colors.indigo[300]!,
+    Colors.purple[300]!,
   ];
 
   static const List<int> colorPalette = [

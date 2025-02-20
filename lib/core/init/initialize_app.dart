@@ -42,6 +42,8 @@ Future<void> initializeApp() async {
 
   final noteCategoryBox =
       await Hive.openBox<NoteCategoryModel>(BoxName.noteCategoryBoxName);
+  final noteCategoryOrderBox =
+      await Hive.openBox<List<String>>(BoxName.noteCategoryOrderBoxName);
 
   // Register repositories
   final GetIt getIt = GetIt.instance;
@@ -74,7 +76,7 @@ Future<void> initializeApp() async {
   getIt.registerLazySingleton<NoteCategoryRepository>(
     () {
       final noteCategoryLocalDatasource =
-          NoteCategoryLocalDatasource(noteCategoryBox);
+          NoteCategoryLocalDatasource(noteCategoryBox, noteCategoryOrderBox);
 
       return NoteCategoryRepositoryImpl(noteCategoryLocalDatasource);
     },

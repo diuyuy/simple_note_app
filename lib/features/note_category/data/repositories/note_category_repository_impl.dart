@@ -30,6 +30,11 @@ class NoteCategoryRepositoryImpl implements NoteCategoryRepository {
     await _localDatasource.deleteNoteCategory(deletedNoteCategory.id);
   }
 
+  @override
+  Future<void> reorderNoteCategory(int oldIndex, int newIndex) async {
+    await _localDatasource.reorderCategory(oldIndex, newIndex);
+  }
+
   NoteCategory modelToEntity(NoteCategoryModel noteCategory) {
     return NoteCategory(
       id: noteCategory.id,

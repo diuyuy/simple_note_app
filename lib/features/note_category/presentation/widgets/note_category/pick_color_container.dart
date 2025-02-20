@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/color/app_colors.dart';
+import '../../../../../core/color/app_colors.dart';
 
 class PickColorContainer extends StatelessWidget {
   const PickColorContainer({
@@ -35,7 +35,7 @@ class PickColorContainer extends StatelessWidget {
   Widget buildColorsRow(int start, int end) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: AppColors.colors
+      children: AppColors.colors300
           .sublist(start, end)
           .map((color) => GestureDetector(
                 onTap: () => selectColor(color),

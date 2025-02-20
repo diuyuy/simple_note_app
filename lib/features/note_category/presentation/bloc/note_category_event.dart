@@ -22,4 +22,6 @@ class NoteCategoryEvent with _$NoteCategoryEvent {
   }) = _CategoryUpdated;
   const factory NoteCategoryEvent.categoryDeleted(
       {required NoteCategory deletedNoteCategory}) = _CategoryDeleted;
+  const factory NoteCategoryEvent.categoryReordered(
+      {required int oldIndex, required int newIndex}) = _CategoryReordered;
 }

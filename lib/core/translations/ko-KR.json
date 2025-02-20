@@ -8,6 +8,14 @@
   "AppConstants": {
     "untitled": "제목 없음"
   },
+  "CategorySelectionPage": {
+    "delete": "삭제",
+    "deleteDialogContent": "선택한 {}개의 카테고리를 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.",
+    "deselectAll": "선택 해제",
+    "noNotesSelected": "선택된 카테고리가 없습니다.",
+    "select": "선택",
+    "selectAll": "모두 선택"
+  },
   "CreateNoteCategoryPage": {
     "categoryName": "카테고리 이름",
     "categoryIcon": "카테고리 아이콘",
@@ -50,11 +58,15 @@
     "updateDate":"수정 날짜: {}"
   },
   "NoteCategoryCardWidget": {
+    "noteCount": "개",
+    "notesCount": "개",
     "edit": "편집",
     "delete": "삭제"
   },
   "NoteCategoryPage": {
-    "category": "카테고리"
+    "category": "카테고리",
+    "select": "선택",
+    "selectAll": "모두 선택"
   },
   "NotesListWidget": {
     "tryCreateNote": "새 노트를 작성해보세요!",

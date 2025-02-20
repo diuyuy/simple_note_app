@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/note_category/presentation/pages/selection/category_selection_page.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
@@ -122,6 +123,19 @@ final router = GoRouter(
                 state: state,
                 child: const CreateNoteCategoryPage(),
               ),
+            ),
+            GoRoute(
+              path: RouterPath.noteCategorySelectionPage,
+              pageBuilder: (context, state) {
+                final List<String> selectedCategories =
+                    state.extra as List<String>;
+
+                return NoTransitionPage(
+                  child: CategorySelectionPage(
+                    selectedCategories: selectedCategories,
+                  ),
+                );
+              },
             ),
           ],
         ),
