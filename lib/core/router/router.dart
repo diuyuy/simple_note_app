@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/note_category/presentation/pages/create_note_category_page.dart';
 import 'package:simple_note_app/features/note_category/presentation/pages/note_category_page.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
@@ -145,16 +146,6 @@ final router = GoRouter(
             previousPage: args.previousPage,
           ),
         );
-
-        // return NoTransitionPage(
-        //   child: BlocProvider.value(
-        //     value: context.read<WasteBasketBloc>(),
-        //     child: NoteSelectionPage(
-        //       selectedNotes: args.selectedNotes,
-        //       previousPage: args.previousPage,
-        //     ),
-        //   ),
-        // );
       },
     ),
     GoRoute(
@@ -166,6 +157,16 @@ final router = GoRouter(
           child: const NoteCategoryPage(),
         );
       },
+      routes: [
+        GoRoute(
+          path: RouterPath.createNoteCategoryPage,
+          pageBuilder: (context, state) => buildFadeTransitionPage(
+            context: context,
+            state: state,
+            child: const CreateNoteCategoryPage(),
+          ),
+        ),
+      ],
     )
   ],
 );

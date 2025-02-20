@@ -9,7 +9,10 @@
     "untitled": "제목 없음"
   },
   "CreateNoteCategoryPage": {
+    "categoryName": "카테고리 이름",
+    "categoryIcon": "카테고리 아이콘",
     "fillInAllFields": "모든 항목을 입력해 주세요.",
+    "iconColor": "아이콘 색상",
     "newCategory": "새 카테고리",
     "save": "저장"
   },

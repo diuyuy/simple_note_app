@@ -9,7 +9,10 @@
     "untitled": "Untitled"
   },
   "CreateNoteCategoryPage": {
+    "categoryName": "Category Name",
+    "categoryIcon": "Category Icon",
     "fillInAllFields": "Please fill in all fields.",
+    "iconColor": "Icon Color",
     "newCategory": "New Category",
     "save": "Save"
   },

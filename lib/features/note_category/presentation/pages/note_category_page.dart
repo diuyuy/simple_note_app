@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/router/router_path.dart';
 import '../bloc/note_category_bloc.dart';
 import '../widgets/note_category_card_widget.dart';
 
@@ -12,6 +13,8 @@ class NoteCategoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final currentPath = GoRouterState.of(context).uri.path;
+
     return Scaffold(
       //drawer: const NoteDrawer(),
       appBar: AppBar(
@@ -25,7 +28,9 @@ class NoteCategoryPage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.go('$currentPath/${RouterPath.createNoteCategoryPage}');
+            },
             icon: Icon(
               Icons.create_new_folder_outlined,
               color: Theme.of(context).colorScheme.primary,
@@ -48,13 +53,14 @@ class NoteCategoryPage extends StatelessWidget {
                   return GridView(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3,
+                      crossAxisSpacing: 4,
                     ),
                     children: categories.map((category) {
                       return NoteCategoryCardWidget(
                         categoryName: category.categoryName,
                         categoryIconCodePoint: category.iconCode,
                         width: 0.25.sw,
-                        color: Colors.blue,
+                        color: Color(category.categoryColor),
                       );
                     }).toList(),
                   );
