@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/note_category/presentation/bloc/note_category_bloc.dart';
 
-import '../../../../core/widgets/app_bar_back_button.dart';
 import '../widgets/input_category_info_widget.dart';
 
 class CreateNoteCategoryPage extends StatelessWidget {
@@ -16,7 +18,12 @@ class CreateNoteCategoryPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: AppBarBackButton(),
+          leading: IconButton(
+            onPressed: () => context.pop(),
+            icon: Icon(
+              Icons.arrow_back_ios,
+            ),
+          ),
           title: Text('CreateNoteCategoryPage.newCategory'.tr()),
           centerTitle: true,
           actions: [],
@@ -25,7 +32,12 @@ class CreateNoteCategoryPage extends StatelessWidget {
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            child: const InputCategoryInfoWidget(),
+            child: BlocListener<NoteCategoryBloc, NoteCategoryState>(
+              listener: (context, state) {
+                context.pop();
+              },
+              child: const InputCategoryInfoWidget(),
+            ),
           ),
         ),
       ),

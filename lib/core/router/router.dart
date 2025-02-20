@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/features/note_category/presentation/pages/create_note_category_page.dart';
-import 'package:simple_note_app/features/note_category/presentation/pages/note_category_page.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
@@ -15,6 +13,8 @@ import '../../features/note/presentation/pages/reorder/reorder_note_page.dart';
 import '../../features/note/presentation/pages/search/search_note_page.dart';
 import '../../features/note/presentation/pages/selection/note_selection_page.dart';
 import '../../features/note/presentation/pages/wastebasket/wastebasket_page.dart';
+import '../../features/note_category/presentation/pages/create_note_category_page.dart';
+import '../../features/note_category/presentation/pages/note_category_page.dart';
 import '../enum/previous_page.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
@@ -104,7 +104,27 @@ final router = GoRouter(
               child: ReorderNotePage(currentOrder: currentOrder),
             );
           },
-        )
+        ),
+        GoRoute(
+          path: RouterPath.noteCategoryPage,
+          pageBuilder: (context, state) {
+            return buildFadeTransitionPage(
+              context: context,
+              state: state,
+              child: const NoteCategoryPage(),
+            );
+          },
+          routes: [
+            GoRoute(
+              path: RouterPath.createNoteCategoryPage,
+              pageBuilder: (context, state) => buildFadeTransitionPage(
+                context: context,
+                state: state,
+                child: const CreateNoteCategoryPage(),
+              ),
+            ),
+          ],
+        ),
       ],
     ),
     GoRoute(
@@ -148,26 +168,6 @@ final router = GoRouter(
         );
       },
     ),
-    GoRoute(
-      path: RouterPath.noteCategoryPage,
-      pageBuilder: (context, state) {
-        return buildFadeTransitionPage(
-          context: context,
-          state: state,
-          child: const NoteCategoryPage(),
-        );
-      },
-      routes: [
-        GoRoute(
-          path: RouterPath.createNoteCategoryPage,
-          pageBuilder: (context, state) => buildFadeTransitionPage(
-            context: context,
-            state: state,
-            child: const CreateNoteCategoryPage(),
-          ),
-        ),
-      ],
-    )
   ],
 );
 

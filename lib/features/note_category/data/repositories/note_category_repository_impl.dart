@@ -35,7 +35,10 @@ class NoteCategoryRepositoryImpl implements NoteCategoryRepository {
       id: noteCategory.id,
       categoryName: noteCategory.categoryName,
       iconCode: noteCategory.iconCode,
-      categoryColor: noteCategory.categoryColor,
+      categoryColorA: noteCategory.categoryColorA,
+      categoryColorR: noteCategory.categoryColorR,
+      categoryColorG: noteCategory.categoryColorG,
+      categoryColorB: noteCategory.categoryColorB,
     );
   }
 
@@ -44,7 +47,10 @@ class NoteCategoryRepositoryImpl implements NoteCategoryRepository {
       id: noteCategory.id,
       categoryName: noteCategory.categoryName,
       iconCode: noteCategory.iconCode,
-      categoryColor: noteCategory.categoryColor,
+      categoryColorA: noteCategory.categoryColorA,
+      categoryColorR: noteCategory.categoryColorR,
+      categoryColorG: noteCategory.categoryColorG,
+      categoryColorB: noteCategory.categoryColorB,
     );
   }
 }

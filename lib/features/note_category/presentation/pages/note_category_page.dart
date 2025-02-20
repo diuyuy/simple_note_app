@@ -60,7 +60,12 @@ class NoteCategoryPage extends StatelessWidget {
                         categoryName: category.categoryName,
                         categoryIconCodePoint: category.iconCode,
                         width: 0.25.sw,
-                        color: Color(category.categoryColor),
+                        color: Color.from(
+                          alpha: category.categoryColorA,
+                          red: category.categoryColorR,
+                          green: category.categoryColorG,
+                          blue: category.categoryColorB,
+                        ),
                       );
                     }).toList(),
                   );

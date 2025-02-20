@@ -55,7 +55,10 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
         id: id,
         categoryName: event.categoryName,
         iconCode: event.iconCode,
-        categoryColor: event.categoryColor,
+        categoryColorA: event.categoryColorA,
+        categoryColorR: event.categoryColorR,
+        categoryColorG: event.categoryColorG,
+        categoryColorB: event.categoryColorB,
       );
 
       await createNoteCategoryUseCase.execute(newCategory);
@@ -81,7 +84,10 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
       final updatedNoteCategory = currentCategory.copyWith(
         categoryName: event.categoryName ?? currentCategory.categoryName,
         iconCode: event.iconCode ?? currentCategory.iconCode,
-        categoryColor: event.categoryColor ?? currentCategory.categoryColor,
+        categoryColorA: event.categoryColorA ?? currentCategory.categoryColorA,
+        categoryColorR: event.categoryColorR ?? currentCategory.categoryColorR,
+        categoryColorG: event.categoryColorG ?? currentCategory.categoryColorG,
+        categoryColorB: event.categoryColorB ?? currentCategory.categoryColorB,
       );
 
       await updateNoteCategoryUseCase.execute(updatedNoteCategory);

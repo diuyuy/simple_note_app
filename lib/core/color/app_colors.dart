@@ -3,21 +3,34 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color midDarkGrey = Color.fromARGB(255, 97, 97, 97);
   static const Color darkGrey = Color.fromARGB(255, 66, 66, 66);
-  static const List<int> colorPalette = [
-    0xFF2095F3,
-    0xFF1B44EB,
-    0xFF3715E3,
-    0xFF7B10DC,
-    0xFFBC0BD4,
-    0xFFCC079C,
-    0xFFC50350,
-    0xFFBD0007,
-    0xFFB53A00,
-    0xFFAE7600,
-    0xFF9FA600,
-    0xFF5E9E00,
-    0xFF239700,
-    0xFF008F11,
-    0xFF008741
+  static const List<Color> colors = [
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.blue,
+    Colors.indigo,
+    Colors.purple,
   ];
+
+  static const List<int> colorPalette = [
+    0xFFF44336, //red
+    0xFFFF9800, //orange
+    0xFFFFEB3B, //yellow
+    0xFF4CAF50, //green
+    0xFF2095F3, //blue
+    0xFF3F51B5, //
+    0xFF5B2A86, //purple
+    0xFF9C27B0, //midDarkGrey
+  ];
+  // static const List<int> colorPalette = [
+  //   0xFFEF233C, //red
+  //   0xFFEFA00B, //orange
+  //   0xFFFFE347, //yellow
+  //   0xFF7AE582, //green
+  //   0xFF2095F3, //blue
+  //   0xFF1D3461, //
+  //   0xFF5B2A86, //purple
+  //   0xFF616161, //midDarkGrey
+  // ];
 }

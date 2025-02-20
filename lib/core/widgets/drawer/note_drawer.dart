@@ -1,8 +1,8 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/router/router_path.dart';
 
+import '../../router/router_path.dart';
 import 'drawer_tile.dart';
 
 class NoteDrawer extends StatelessWidget {
@@ -62,7 +62,7 @@ class NoteDrawer extends StatelessWidget {
             title: Text('Drawer.category'.tr()),
             onTap: () {
               Navigator.pop(context);
-              context.push(RouterPath.noteCategoryPage);
+              context.go('/${RouterPath.noteCategoryPage}');
             },
           ),
           DrawerTile(

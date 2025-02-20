@@ -1,7 +1,7 @@
 class RouterPath {
   static const String createNotePage = 'create';
   static const String createNoteCategoryPage = 'createCategory';
-  static const String noteCategoryPage = '/noteCategory';
+  static const String noteCategoryPage = 'noteCategory';
   static const String favoritesPage = 'favorites';
   static const String noteSelectionPage = '/selection';
   static const String readNotePage = 'read';

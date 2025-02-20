@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
-import '../../../../../core/widgets/my_text_field.dart';
+import '../../../../../core/widgets/note_text_field.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 
 class CreateNotePage extends StatefulWidget {
@@ -58,7 +58,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                MyTextField(
+                NoteTextField(
                   controller: _titleController,
                   maxLines: 1,
                   maxLength: AppConstants.titleMaxLength,
@@ -66,7 +66,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
                   textStyle: Theme.of(context).textTheme.bodyLarge,
                 ),
                 const Divider(),
-                MyTextField(
+                NoteTextField(
                   controller: _contentController,
                   hintText: 'CreateNotePage.inputContent'.tr(),
                   maxLines: null,

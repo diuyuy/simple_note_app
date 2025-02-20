@@ -41,6 +41,11 @@
     "selectAll": "Select All",
     "updateDate": "Last modified: {}"
   },
+  "InputCategoryInfoWidget": {
+    "categoryIcon":"Category Icon",
+    "categoryName":"Category Name",
+    "iconColor":"Icon Color"
+  },
   "NoteCardWidget": {
     "updateDate":"Last modified: {}"
   },
@@ -79,6 +84,9 @@
   "ReorderNotePage": {
     "done": "Done",
     "reorderNotes": "Reorder Notes"
+  },
+  "SaveButton": {
+    "save": "Save"
   },
   "SearchNotePage": {
     "hintText": "Search notes...",

@@ -41,6 +41,11 @@
     "selectAll": "모두 선택",
     "updateDate": "수정 날짜: {}"
   },
+  "InputCategoryInfoWidget": {
+    "categoryIcon": "카테고리 아이콘",
+    "categoryName": "카테고리 이름",
+    "iconColor": "아이콘 색상"
+  },
   "NoteCardWidget": {
     "updateDate":"수정 날짜: {}"
   },
@@ -79,6 +84,9 @@
   "ReorderNotePage": {
     "done": "완료",
     "reorderNotes": "순서 변경"
+  },
+  "SaveButton": {
+    "save": "저장"
   },
   "SearchNotePage": {
     "hintText": "검색어를 입력하세요",

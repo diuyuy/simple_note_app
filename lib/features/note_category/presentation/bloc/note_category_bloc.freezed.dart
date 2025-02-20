@@ -20,10 +20,21 @@ mixin _$NoteCategoryEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() categoryLoaded,
     required TResult Function(
-            String categoryName, int iconCode, int categoryColor)
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)
         categoryCreated,
     required TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)
         categoryUpdated,
     required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
   }) =>
@@ -31,10 +42,22 @@ mixin _$NoteCategoryEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? categoryLoaded,
-    TResult? Function(String categoryName, int iconCode, int categoryColor)?
+    TResult? Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult? Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
   }) =>
@@ -42,10 +65,22 @@ mixin _$NoteCategoryEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? categoryLoaded,
-    TResult Function(String categoryName, int iconCode, int categoryColor)?
+    TResult Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
     required TResult orElse(),
@@ -142,10 +177,21 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
   TResult when<TResult extends Object?>({
     required TResult Function() categoryLoaded,
     required TResult Function(
-            String categoryName, int iconCode, int categoryColor)
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)
         categoryCreated,
     required TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)
         categoryUpdated,
     required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
   }) {
@@ -156,10 +202,22 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? categoryLoaded,
-    TResult? Function(String categoryName, int iconCode, int categoryColor)?
+    TResult? Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult? Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
   }) {
@@ -170,10 +228,22 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? categoryLoaded,
-    TResult Function(String categoryName, int iconCode, int categoryColor)?
+    TResult Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
     required TResult orElse(),
@@ -232,7 +302,13 @@ abstract class _$$CategoryCreatedImplCopyWith<$Res> {
           $Res Function(_$CategoryCreatedImpl) then) =
       __$$CategoryCreatedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String categoryName, int iconCode, int categoryColor});
+  $Res call(
+      {String categoryName,
+      int iconCode,
+      double categoryColorA,
+      double categoryColorR,
+      double categoryColorG,
+      double categoryColorB});
 }
 
 /// @nodoc
@@ -250,7 +326,10 @@ class __$$CategoryCreatedImplCopyWithImpl<$Res>
   $Res call({
     Object? categoryName = null,
     Object? iconCode = null,
-    Object? categoryColor = null,
+    Object? categoryColorA = null,
+    Object? categoryColorR = null,
+    Object? categoryColorG = null,
+    Object? categoryColorB = null,
   }) {
     return _then(_$CategoryCreatedImpl(
       categoryName: null == categoryName
@@ -261,10 +340,22 @@ class __$$CategoryCreatedImplCopyWithImpl<$Res>
           ? _value.iconCode
           : iconCode // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryColor: null == categoryColor
-          ? _value.categoryColor
-          : categoryColor // ignore: cast_nullable_to_non_nullable
-              as int,
+      categoryColorA: null == categoryColorA
+          ? _value.categoryColorA
+          : categoryColorA // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorR: null == categoryColorR
+          ? _value.categoryColorR
+          : categoryColorR // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorG: null == categoryColorG
+          ? _value.categoryColorG
+          : categoryColorG // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorB: null == categoryColorB
+          ? _value.categoryColorB
+          : categoryColorB // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -275,18 +366,27 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
   const _$CategoryCreatedImpl(
       {required this.categoryName,
       required this.iconCode,
-      required this.categoryColor});
+      required this.categoryColorA,
+      required this.categoryColorR,
+      required this.categoryColorG,
+      required this.categoryColorB});
 
   @override
   final String categoryName;
   @override
   final int iconCode;
   @override
-  final int categoryColor;
+  final double categoryColorA;
+  @override
+  final double categoryColorR;
+  @override
+  final double categoryColorG;
+  @override
+  final double categoryColorB;
 
   @override
   String toString() {
-    return 'NoteCategoryEvent.categoryCreated(categoryName: $categoryName, iconCode: $iconCode, categoryColor: $categoryColor)';
+    return 'NoteCategoryEvent.categoryCreated(categoryName: $categoryName, iconCode: $iconCode, categoryColorA: $categoryColorA, categoryColorR: $categoryColorR, categoryColorG: $categoryColorG, categoryColorB: $categoryColorB)';
   }
 
   @override
@@ -298,13 +398,19 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
                 other.categoryName == categoryName) &&
             (identical(other.iconCode, iconCode) ||
                 other.iconCode == iconCode) &&
-            (identical(other.categoryColor, categoryColor) ||
-                other.categoryColor == categoryColor));
+            (identical(other.categoryColorA, categoryColorA) ||
+                other.categoryColorA == categoryColorA) &&
+            (identical(other.categoryColorR, categoryColorR) ||
+                other.categoryColorR == categoryColorR) &&
+            (identical(other.categoryColorG, categoryColorG) ||
+                other.categoryColorG == categoryColorG) &&
+            (identical(other.categoryColorB, categoryColorB) ||
+                other.categoryColorB == categoryColorB));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, categoryName, iconCode, categoryColor);
+  int get hashCode => Object.hash(runtimeType, categoryName, iconCode,
+      categoryColorA, categoryColorR, categoryColorG, categoryColorB);
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -320,44 +426,82 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
   TResult when<TResult extends Object?>({
     required TResult Function() categoryLoaded,
     required TResult Function(
-            String categoryName, int iconCode, int categoryColor)
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)
         categoryCreated,
     required TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)
         categoryUpdated,
     required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
   }) {
-    return categoryCreated(categoryName, iconCode, categoryColor);
+    return categoryCreated(categoryName, iconCode, categoryColorA,
+        categoryColorR, categoryColorG, categoryColorB);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? categoryLoaded,
-    TResult? Function(String categoryName, int iconCode, int categoryColor)?
+    TResult? Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult? Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
   }) {
-    return categoryCreated?.call(categoryName, iconCode, categoryColor);
+    return categoryCreated?.call(categoryName, iconCode, categoryColorA,
+        categoryColorR, categoryColorG, categoryColorB);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? categoryLoaded,
-    TResult Function(String categoryName, int iconCode, int categoryColor)?
+    TResult Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
     required TResult orElse(),
   }) {
     if (categoryCreated != null) {
-      return categoryCreated(categoryName, iconCode, categoryColor);
+      return categoryCreated(categoryName, iconCode, categoryColorA,
+          categoryColorR, categoryColorG, categoryColorB);
     }
     return orElse();
   }
@@ -404,11 +548,17 @@ abstract class _CategoryCreated implements NoteCategoryEvent {
   const factory _CategoryCreated(
       {required final String categoryName,
       required final int iconCode,
-      required final int categoryColor}) = _$CategoryCreatedImpl;
+      required final double categoryColorA,
+      required final double categoryColorR,
+      required final double categoryColorG,
+      required final double categoryColorB}) = _$CategoryCreatedImpl;
 
   String get categoryName;
   int get iconCode;
-  int get categoryColor;
+  double get categoryColorA;
+  double get categoryColorR;
+  double get categoryColorG;
+  double get categoryColorB;
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -424,7 +574,13 @@ abstract class _$$CategoryUpdatedImplCopyWith<$Res> {
       __$$CategoryUpdatedImplCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {String id, String? categoryName, int? iconCode, int? categoryColor});
+      {String id,
+      String? categoryName,
+      int? iconCode,
+      double? categoryColorA,
+      double? categoryColorR,
+      double? categoryColorG,
+      double? categoryColorB});
 }
 
 /// @nodoc
@@ -443,7 +599,10 @@ class __$$CategoryUpdatedImplCopyWithImpl<$Res>
     Object? id = null,
     Object? categoryName = freezed,
     Object? iconCode = freezed,
-    Object? categoryColor = freezed,
+    Object? categoryColorA = freezed,
+    Object? categoryColorR = freezed,
+    Object? categoryColorG = freezed,
+    Object? categoryColorB = freezed,
   }) {
     return _then(_$CategoryUpdatedImpl(
       id: null == id
@@ -458,10 +617,22 @@ class __$$CategoryUpdatedImplCopyWithImpl<$Res>
           ? _value.iconCode
           : iconCode // ignore: cast_nullable_to_non_nullable
               as int?,
-      categoryColor: freezed == categoryColor
-          ? _value.categoryColor
-          : categoryColor // ignore: cast_nullable_to_non_nullable
-              as int?,
+      categoryColorA: freezed == categoryColorA
+          ? _value.categoryColorA
+          : categoryColorA // ignore: cast_nullable_to_non_nullable
+              as double?,
+      categoryColorR: freezed == categoryColorR
+          ? _value.categoryColorR
+          : categoryColorR // ignore: cast_nullable_to_non_nullable
+              as double?,
+      categoryColorG: freezed == categoryColorG
+          ? _value.categoryColorG
+          : categoryColorG // ignore: cast_nullable_to_non_nullable
+              as double?,
+      categoryColorB: freezed == categoryColorB
+          ? _value.categoryColorB
+          : categoryColorB // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -470,7 +641,13 @@ class __$$CategoryUpdatedImplCopyWithImpl<$Res>
 
 class _$CategoryUpdatedImpl implements _CategoryUpdated {
   const _$CategoryUpdatedImpl(
-      {required this.id, this.categoryName, this.iconCode, this.categoryColor});
+      {required this.id,
+      this.categoryName,
+      this.iconCode,
+      this.categoryColorA,
+      this.categoryColorR,
+      this.categoryColorG,
+      this.categoryColorB});
 
   @override
   final String id;
@@ -479,11 +656,17 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
   @override
   final int? iconCode;
   @override
-  final int? categoryColor;
+  final double? categoryColorA;
+  @override
+  final double? categoryColorR;
+  @override
+  final double? categoryColorG;
+  @override
+  final double? categoryColorB;
 
   @override
   String toString() {
-    return 'NoteCategoryEvent.categoryUpdated(id: $id, categoryName: $categoryName, iconCode: $iconCode, categoryColor: $categoryColor)';
+    return 'NoteCategoryEvent.categoryUpdated(id: $id, categoryName: $categoryName, iconCode: $iconCode, categoryColorA: $categoryColorA, categoryColorR: $categoryColorR, categoryColorG: $categoryColorG, categoryColorB: $categoryColorB)';
   }
 
   @override
@@ -496,13 +679,19 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
                 other.categoryName == categoryName) &&
             (identical(other.iconCode, iconCode) ||
                 other.iconCode == iconCode) &&
-            (identical(other.categoryColor, categoryColor) ||
-                other.categoryColor == categoryColor));
+            (identical(other.categoryColorA, categoryColorA) ||
+                other.categoryColorA == categoryColorA) &&
+            (identical(other.categoryColorR, categoryColorR) ||
+                other.categoryColorR == categoryColorR) &&
+            (identical(other.categoryColorG, categoryColorG) ||
+                other.categoryColorG == categoryColorG) &&
+            (identical(other.categoryColorB, categoryColorB) ||
+                other.categoryColorB == categoryColorB));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, categoryName, iconCode, categoryColor);
+  int get hashCode => Object.hash(runtimeType, id, categoryName, iconCode,
+      categoryColorA, categoryColorR, categoryColorG, categoryColorB);
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -518,44 +707,82 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
   TResult when<TResult extends Object?>({
     required TResult Function() categoryLoaded,
     required TResult Function(
-            String categoryName, int iconCode, int categoryColor)
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)
         categoryCreated,
     required TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)
         categoryUpdated,
     required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
   }) {
-    return categoryUpdated(id, categoryName, iconCode, categoryColor);
+    return categoryUpdated(id, categoryName, iconCode, categoryColorA,
+        categoryColorR, categoryColorG, categoryColorB);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? categoryLoaded,
-    TResult? Function(String categoryName, int iconCode, int categoryColor)?
+    TResult? Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult? Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
   }) {
-    return categoryUpdated?.call(id, categoryName, iconCode, categoryColor);
+    return categoryUpdated?.call(id, categoryName, iconCode, categoryColorA,
+        categoryColorR, categoryColorG, categoryColorB);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? categoryLoaded,
-    TResult Function(String categoryName, int iconCode, int categoryColor)?
+    TResult Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
     required TResult orElse(),
   }) {
     if (categoryUpdated != null) {
-      return categoryUpdated(id, categoryName, iconCode, categoryColor);
+      return categoryUpdated(id, categoryName, iconCode, categoryColorA,
+          categoryColorR, categoryColorG, categoryColorB);
     }
     return orElse();
   }
@@ -603,12 +830,18 @@ abstract class _CategoryUpdated implements NoteCategoryEvent {
       {required final String id,
       final String? categoryName,
       final int? iconCode,
-      final int? categoryColor}) = _$CategoryUpdatedImpl;
+      final double? categoryColorA,
+      final double? categoryColorR,
+      final double? categoryColorG,
+      final double? categoryColorB}) = _$CategoryUpdatedImpl;
 
   String get id;
   String? get categoryName;
   int? get iconCode;
-  int? get categoryColor;
+  double? get categoryColorA;
+  double? get categoryColorR;
+  double? get categoryColorG;
+  double? get categoryColorB;
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -701,10 +934,21 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
   TResult when<TResult extends Object?>({
     required TResult Function() categoryLoaded,
     required TResult Function(
-            String categoryName, int iconCode, int categoryColor)
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)
         categoryCreated,
     required TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)
         categoryUpdated,
     required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
   }) {
@@ -715,10 +959,22 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? categoryLoaded,
-    TResult? Function(String categoryName, int iconCode, int categoryColor)?
+    TResult? Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult? Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
   }) {
@@ -729,10 +985,22 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? categoryLoaded,
-    TResult Function(String categoryName, int iconCode, int categoryColor)?
+    TResult Function(
+            String categoryName,
+            int iconCode,
+            double categoryColorA,
+            double categoryColorR,
+            double categoryColorG,
+            double categoryColorB)?
         categoryCreated,
     TResult Function(
-            String id, String? categoryName, int? iconCode, int? categoryColor)?
+            String id,
+            String? categoryName,
+            int? iconCode,
+            double? categoryColorA,
+            double? categoryColorR,
+            double? categoryColorG,
+            double? categoryColorB)?
         categoryUpdated,
     TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
     required TResult orElse(),

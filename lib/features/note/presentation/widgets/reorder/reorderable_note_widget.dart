@@ -79,26 +79,6 @@ class ReorderableNoteWidget extends StatelessWidget {
                     ),
                   ),
                   Gap(8.w),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        title.isNotEmpty ? title : AppConstants.untitled.tr(),
-                        style: TextStyle(
-                            fontSize: AppConstants.noteCardTitleFontSize),
-                      ),
-                      Text(
-                        'NoteCardWidget.updateDate'.tr(args: [date]),
-                        style: TextStyle(
-                          color: AppColors.midDarkGrey,
-                          fontSize: AppConstants.noteCardDateFontSize,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Spacer(),
                   GestureDetector(
                     onTap: () {
                       context.read<NoteBloc>().add(
@@ -116,7 +96,6 @@ class ReorderableNoteWidget extends StatelessWidget {
                 ],
               ),
             ),
-            //const Spacer(flex: 1),
             Flexible(
               flex: 1,
               child: ReorderableDragStartListener(

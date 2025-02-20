@@ -19,7 +19,10 @@ mixin _$NoteCategory {
   String get id => throw _privateConstructorUsedError;
   String get categoryName => throw _privateConstructorUsedError;
   int get iconCode => throw _privateConstructorUsedError;
-  int get categoryColor => throw _privateConstructorUsedError;
+  double get categoryColorA => throw _privateConstructorUsedError;
+  double get categoryColorR => throw _privateConstructorUsedError;
+  double get categoryColorG => throw _privateConstructorUsedError;
+  double get categoryColorB => throw _privateConstructorUsedError;
 
   /// Create a copy of NoteCategory
   /// with the given fields replaced by the non-null parameter values.
@@ -34,7 +37,14 @@ abstract class $NoteCategoryCopyWith<$Res> {
           NoteCategory value, $Res Function(NoteCategory) then) =
       _$NoteCategoryCopyWithImpl<$Res, NoteCategory>;
   @useResult
-  $Res call({String id, String categoryName, int iconCode, int categoryColor});
+  $Res call(
+      {String id,
+      String categoryName,
+      int iconCode,
+      double categoryColorA,
+      double categoryColorR,
+      double categoryColorG,
+      double categoryColorB});
 }
 
 /// @nodoc
@@ -55,7 +65,10 @@ class _$NoteCategoryCopyWithImpl<$Res, $Val extends NoteCategory>
     Object? id = null,
     Object? categoryName = null,
     Object? iconCode = null,
-    Object? categoryColor = null,
+    Object? categoryColorA = null,
+    Object? categoryColorR = null,
+    Object? categoryColorG = null,
+    Object? categoryColorB = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -70,10 +83,22 @@ class _$NoteCategoryCopyWithImpl<$Res, $Val extends NoteCategory>
           ? _value.iconCode
           : iconCode // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryColor: null == categoryColor
-          ? _value.categoryColor
-          : categoryColor // ignore: cast_nullable_to_non_nullable
-              as int,
+      categoryColorA: null == categoryColorA
+          ? _value.categoryColorA
+          : categoryColorA // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorR: null == categoryColorR
+          ? _value.categoryColorR
+          : categoryColorR // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorG: null == categoryColorG
+          ? _value.categoryColorG
+          : categoryColorG // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorB: null == categoryColorB
+          ? _value.categoryColorB
+          : categoryColorB // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -86,7 +111,14 @@ abstract class _$$NoteCategoryImplCopyWith<$Res>
       __$$NoteCategoryImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String categoryName, int iconCode, int categoryColor});
+  $Res call(
+      {String id,
+      String categoryName,
+      int iconCode,
+      double categoryColorA,
+      double categoryColorR,
+      double categoryColorG,
+      double categoryColorB});
 }
 
 /// @nodoc
@@ -105,7 +137,10 @@ class __$$NoteCategoryImplCopyWithImpl<$Res>
     Object? id = null,
     Object? categoryName = null,
     Object? iconCode = null,
-    Object? categoryColor = null,
+    Object? categoryColorA = null,
+    Object? categoryColorR = null,
+    Object? categoryColorG = null,
+    Object? categoryColorB = null,
   }) {
     return _then(_$NoteCategoryImpl(
       id: null == id
@@ -120,10 +155,22 @@ class __$$NoteCategoryImplCopyWithImpl<$Res>
           ? _value.iconCode
           : iconCode // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryColor: null == categoryColor
-          ? _value.categoryColor
-          : categoryColor // ignore: cast_nullable_to_non_nullable
-              as int,
+      categoryColorA: null == categoryColorA
+          ? _value.categoryColorA
+          : categoryColorA // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorR: null == categoryColorR
+          ? _value.categoryColorR
+          : categoryColorR // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorG: null == categoryColorG
+          ? _value.categoryColorG
+          : categoryColorG // ignore: cast_nullable_to_non_nullable
+              as double,
+      categoryColorB: null == categoryColorB
+          ? _value.categoryColorB
+          : categoryColorB // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -135,7 +182,10 @@ class _$NoteCategoryImpl implements _NoteCategory {
       {required this.id,
       required this.categoryName,
       required this.iconCode,
-      required this.categoryColor});
+      required this.categoryColorA,
+      required this.categoryColorR,
+      required this.categoryColorG,
+      required this.categoryColorB});
 
   @override
   final String id;
@@ -144,11 +194,17 @@ class _$NoteCategoryImpl implements _NoteCategory {
   @override
   final int iconCode;
   @override
-  final int categoryColor;
+  final double categoryColorA;
+  @override
+  final double categoryColorR;
+  @override
+  final double categoryColorG;
+  @override
+  final double categoryColorB;
 
   @override
   String toString() {
-    return 'NoteCategory(id: $id, categoryName: $categoryName, iconCode: $iconCode, categoryColor: $categoryColor)';
+    return 'NoteCategory(id: $id, categoryName: $categoryName, iconCode: $iconCode, categoryColorA: $categoryColorA, categoryColorR: $categoryColorR, categoryColorG: $categoryColorG, categoryColorB: $categoryColorB)';
   }
 
   @override
@@ -161,13 +217,19 @@ class _$NoteCategoryImpl implements _NoteCategory {
                 other.categoryName == categoryName) &&
             (identical(other.iconCode, iconCode) ||
                 other.iconCode == iconCode) &&
-            (identical(other.categoryColor, categoryColor) ||
-                other.categoryColor == categoryColor));
+            (identical(other.categoryColorA, categoryColorA) ||
+                other.categoryColorA == categoryColorA) &&
+            (identical(other.categoryColorR, categoryColorR) ||
+                other.categoryColorR == categoryColorR) &&
+            (identical(other.categoryColorG, categoryColorG) ||
+                other.categoryColorG == categoryColorG) &&
+            (identical(other.categoryColorB, categoryColorB) ||
+                other.categoryColorB == categoryColorB));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, categoryName, iconCode, categoryColor);
+  int get hashCode => Object.hash(runtimeType, id, categoryName, iconCode,
+      categoryColorA, categoryColorR, categoryColorG, categoryColorB);
 
   /// Create a copy of NoteCategory
   /// with the given fields replaced by the non-null parameter values.
@@ -183,7 +245,10 @@ abstract class _NoteCategory implements NoteCategory {
       {required final String id,
       required final String categoryName,
       required final int iconCode,
-      required final int categoryColor}) = _$NoteCategoryImpl;
+      required final double categoryColorA,
+      required final double categoryColorR,
+      required final double categoryColorG,
+      required final double categoryColorB}) = _$NoteCategoryImpl;
 
   @override
   String get id;
@@ -192,7 +257,13 @@ abstract class _NoteCategory implements NoteCategory {
   @override
   int get iconCode;
   @override
-  int get categoryColor;
+  double get categoryColorA;
+  @override
+  double get categoryColorR;
+  @override
+  double get categoryColorG;
+  @override
+  double get categoryColorB;
 
   /// Create a copy of NoteCategory
   /// with the given fields replaced by the non-null parameter values.

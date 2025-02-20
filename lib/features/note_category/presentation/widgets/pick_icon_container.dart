@@ -9,10 +9,12 @@ class PickIconContainer extends StatelessWidget {
   const PickIconContainer({
     super.key,
     this.selectedCode,
+    required this.color,
     required this.selectIcon,
   });
 
   final int? selectedCode;
+  final Color color;
   final void Function(int codePoint) selectIcon;
 
   @override
@@ -28,20 +30,15 @@ class PickIconContainer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          buildIconsRow(context: context, start: 0, end: 8),
+          buildIconsRow(start: 0, end: 8),
           Gap(8),
-          buildIconsRow(
-            context: context,
-            start: 8,
-            end: CategoryIcons.categoryIcons.length,
-          ),
+          buildIconsRow(start: 8, end: CategoryIcons.categoryIcons.length),
         ],
       ),
     );
   }
 
   Widget buildIconsRow({
-    required BuildContext context,
     required int start,
     required int end,
   }) {
@@ -57,9 +54,7 @@ class PickIconContainer extends StatelessWidget {
                 child: CodePointIcon(
                   codePoint: codePoint,
                   size: selectedCode == codePoint ? 28.w : 24.w,
-                  color: selectedCode == codePoint
-                      ? Theme.of(context).colorScheme.primary
-                      : Colors.grey,
+                  color: selectedCode == codePoint ? color : Colors.grey,
                 ),
               ),
             )
