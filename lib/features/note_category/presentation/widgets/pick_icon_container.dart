@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 
-import '../img/icon/category_icons.dart';
-import 'code_point_icon.dart';
+import '../../../../core/img/icon/category_icons.dart';
+import '../../../../core/widgets/code_point_icon.dart';
 
 class PickIconContainer extends StatelessWidget {
   const PickIconContainer({

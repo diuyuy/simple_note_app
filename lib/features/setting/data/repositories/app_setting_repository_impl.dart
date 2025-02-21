@@ -21,12 +21,16 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
 
   AppSetting modelToEntity(AppSettingModel appSetting) {
     return AppSetting(
+      isExitOnHome: appSetting.isExitOnHome,
+      themeColor: appSetting.themeColor,
       fontSize: appSetting.fontSize,
     );
   }
 
   AppSettingModel entityToModel(AppSetting appSetting) {
     return AppSettingModel(
+      isExitOnHome: appSetting.isExitOnHome,
+      themeColor: appSetting.themeColor,
       fontSize: appSetting.fontSize,
     );
   }

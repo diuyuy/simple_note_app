@@ -6,9 +6,9 @@ import 'package:rxdart/rxdart.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/widgets/pick_color_container.dart';
-import '../../../../../core/widgets/pick_icon_container.dart';
-import '../../../../../core/widgets/save_button.dart';
 import '../../bloc/note_category_bloc.dart';
+import '../pick_icon_container.dart';
+import '../save_button.dart';
 
 class InputCategoryInfoWidget extends StatefulWidget {
   const InputCategoryInfoWidget({super.key, this.id});

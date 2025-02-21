@@ -14,7 +14,7 @@
   },
   "CategorySelectionPage": {
     "delete": "Delete",
-    "deleteDialogContent": "Are you sure you want to delete {} selected categories?\n\nThis action cannot be undone.",
+    "deleteDialogContent": "Are you sure you want to delete {} selected categories? This action cannot be undone.",
     "deselectAll": "Deselect All",
     "noCategoriesSelected": "No categories selected.",
     "select": "Select",
@@ -62,10 +62,11 @@
     "updateDate":"Last modified: {}"
   },
   "NoteCategoryCardWidget": {
-    "noteCount": "note",
-    "notesCount": "notes",
+    "delete": "Delete",
+    "deleteDialogConent": "Are you sure you want to delete this? This action cannot be undone.",
     "edit": "Edit",
-    "delete": "Delete"
+    "noteCount": "note",
+    "notesCount": "notes"
   },
   "NoteCategoryPage": {
     "category": "Category",
@@ -84,7 +85,7 @@
     "noNotesSelected": "No notes selected.",
     "ok": "OK",
     "permanentlyDelete": "Permanently Delete",
-    "permanentlyDeleteDialogContent": "Are you sure you want to permanently delete {} selected notes?\n\nThis action cannot be undone.",
+    "permanentlyDeleteDialogContent": "Are you sure you want to permanently delete {} selected notes? This action cannot be undone.",
     "restore": "Restore",
     "select": "Select",
     "selectAll": "Select All"
@@ -142,7 +143,7 @@
   },
   "WastebasketPage": {
     "emptyTrash": "Empty Trash",
-    "emptyTrashDialogContent": "Are you sure you want to permanently delete all items in the trash?\n\nThis action cannot be undone.",
+    "emptyTrashDialogContent": "Are you sure you want to permanently delete all items in the trash? This action cannot be undone.",
     "ok": "OK",
     "trashIsAlreadyEmpty": "Trash is already empty",
     "trashIsEmpty": "The trash is empty.",

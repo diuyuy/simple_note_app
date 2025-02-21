@@ -109,6 +109,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
+        final appSetting = context.watch<AppSettingCubit>().state;
+        final themeColor = Color(appSetting.themeColor);
+
         return MaterialApp.router(
           routerConfig: router,
           debugShowCheckedModeBanner: false,
@@ -116,7 +119,7 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+            colorScheme: ColorScheme.fromSeed(seedColor: themeColor),
             useMaterial3: true,
           ),
         );

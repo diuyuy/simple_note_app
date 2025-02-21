@@ -16,6 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AppSettingModel {
+  bool get isExitOnHome => throw _privateConstructorUsedError;
+  int get themeColor => throw _privateConstructorUsedError;
   int get fontSize => throw _privateConstructorUsedError;
 
   /// Create a copy of AppSettingModel
@@ -31,7 +33,7 @@ abstract class $AppSettingModelCopyWith<$Res> {
           AppSettingModel value, $Res Function(AppSettingModel) then) =
       _$AppSettingModelCopyWithImpl<$Res, AppSettingModel>;
   @useResult
-  $Res call({int fontSize});
+  $Res call({bool isExitOnHome, int themeColor, int fontSize});
 }
 
 /// @nodoc
@@ -49,9 +51,19 @@ class _$AppSettingModelCopyWithImpl<$Res, $Val extends AppSettingModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isExitOnHome = null,
+    Object? themeColor = null,
     Object? fontSize = null,
   }) {
     return _then(_value.copyWith(
+      isExitOnHome: null == isExitOnHome
+          ? _value.isExitOnHome
+          : isExitOnHome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      themeColor: null == themeColor
+          ? _value.themeColor
+          : themeColor // ignore: cast_nullable_to_non_nullable
+              as int,
       fontSize: null == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
@@ -68,7 +80,7 @@ abstract class _$$AppSettingModelImplCopyWith<$Res>
       __$$AppSettingModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int fontSize});
+  $Res call({bool isExitOnHome, int themeColor, int fontSize});
 }
 
 /// @nodoc
@@ -84,9 +96,19 @@ class __$$AppSettingModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isExitOnHome = null,
+    Object? themeColor = null,
     Object? fontSize = null,
   }) {
     return _then(_$AppSettingModelImpl(
+      isExitOnHome: null == isExitOnHome
+          ? _value.isExitOnHome
+          : isExitOnHome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      themeColor: null == themeColor
+          ? _value.themeColor
+          : themeColor // ignore: cast_nullable_to_non_nullable
+              as int,
       fontSize: null == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
@@ -98,15 +120,24 @@ class __$$AppSettingModelImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AppSettingModelImpl implements _AppSettingModel {
-  const _$AppSettingModelImpl({this.fontSize = 4});
+  const _$AppSettingModelImpl(
+      {this.isExitOnHome = true,
+      this.themeColor = 0xFF2196F3,
+      this.fontSize = 4});
 
+  @override
+  @JsonKey()
+  final bool isExitOnHome;
+  @override
+  @JsonKey()
+  final int themeColor;
   @override
   @JsonKey()
   final int fontSize;
 
   @override
   String toString() {
-    return 'AppSettingModel(fontSize: $fontSize)';
+    return 'AppSettingModel(isExitOnHome: $isExitOnHome, themeColor: $themeColor, fontSize: $fontSize)';
   }
 
   @override
@@ -114,12 +145,17 @@ class _$AppSettingModelImpl implements _AppSettingModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppSettingModelImpl &&
+            (identical(other.isExitOnHome, isExitOnHome) ||
+                other.isExitOnHome == isExitOnHome) &&
+            (identical(other.themeColor, themeColor) ||
+                other.themeColor == themeColor) &&
             (identical(other.fontSize, fontSize) ||
                 other.fontSize == fontSize));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, fontSize);
+  int get hashCode =>
+      Object.hash(runtimeType, isExitOnHome, themeColor, fontSize);
 
   /// Create a copy of AppSettingModel
   /// with the given fields replaced by the non-null parameter values.
@@ -132,8 +168,15 @@ class _$AppSettingModelImpl implements _AppSettingModel {
 }
 
 abstract class _AppSettingModel implements AppSettingModel {
-  const factory _AppSettingModel({final int fontSize}) = _$AppSettingModelImpl;
+  const factory _AppSettingModel(
+      {final bool isExitOnHome,
+      final int themeColor,
+      final int fontSize}) = _$AppSettingModelImpl;
 
+  @override
+  bool get isExitOnHome;
+  @override
+  int get themeColor;
   @override
   int get fontSize;
 

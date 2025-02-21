@@ -6,8 +6,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
 import '../../../../../core/widgets/app_bar_back_button.dart';
-import '../../../../../core/widgets/note_text_field.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
+import '../../widgets/note_text_field.dart';
 
 class CreateNotePage extends StatefulWidget {
   const CreateNotePage({super.key});

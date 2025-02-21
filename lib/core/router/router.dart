@@ -13,22 +13,35 @@ import '../../features/note/presentation/pages/reorder/reorder_note_page.dart';
 import '../../features/note/presentation/pages/search/search_note_page.dart';
 import '../../features/note/presentation/pages/selection/note_selection_page.dart';
 import '../../features/note/presentation/pages/wastebasket/wastebasket_page.dart';
-import '../../features/note_category/presentation/pages/category_notes_page.dart';
+import '../../features/note_category/presentation/pages/category_notes/category_notes_page.dart';
 import '../../features/note_category/presentation/pages/create_note_category_page.dart';
 import '../../features/note_category/presentation/pages/note_category_page.dart';
 import '../../features/note_category/presentation/pages/reorder/reorder_category_page.dart';
 import '../../features/note_category/presentation/pages/selection/category_selection_page.dart';
 import '../../features/note_category/presentation/pages/update_note_category_page.dart';
+import '../../features/setting/presentation/cubit/app_setting_cubit.dart';
 import '../enum/previous_page.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+bool _isFirstRun = true;
 
 final router = GoRouter(
   initialLocation: '/',
   navigatorKey: navigatorKey,
   redirect: (context, state) {
+    if (!_isFirstRun) {
+      return null;
+    }
+    final isExitOnHome =
+        BlocProvider.of<AppSettingCubit>(context).state.isExitOnHome;
+    if (!isExitOnHome) {
+      _isFirstRun = false;
+      return RouterPath.noteCategoryPage;
+    }
+    _isFirstRun = false;
+
     return null;
   },
   routes: [

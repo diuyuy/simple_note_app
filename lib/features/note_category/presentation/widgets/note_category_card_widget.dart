@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/router/router_path.dart';
+import '../../../../core/utils/show_alert_dialog.dart';
 import '../../../../core/widgets/code_point_icon.dart';
+import '../bloc/note_category_bloc.dart';
 
 class NoteCategoryCardWidget extends StatelessWidget {
   const NoteCategoryCardWidget({
@@ -128,7 +131,24 @@ class NoteCategoryCardWidget extends StatelessWidget {
             AppConstants.menuAnchorMinHeight.w,
           ),
         ),
-        onPressed: () {},
+        onPressed: () async {
+          final confirm = await showAlertDialog(
+                context: context,
+                title: 'NoteCategoryCardWidget.delete'.tr(),
+                content: 'NoteCategoryCardWidget.deleteDialogConent'.tr(),
+              ) ??
+              false;
+
+          if (confirm) {
+            if (context.mounted) {
+              context.read<NoteCategoryBloc>().add(
+                    NoteCategoryEvent.categoryDeleted(
+                      deletedNoteCategoryId: id,
+                    ),
+                  );
+            }
+          }
+        },
         child: Text('NoteCategoryCardWidget.delete'.tr()),
       ),
     ];

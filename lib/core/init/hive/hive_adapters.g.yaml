@@ -29,10 +29,14 @@ types:
         index: 0
   AppSettingModel:
     typeId: 2
-    nextIndex: 1
+    nextIndex: 3
     fields:
       fontSize:
         index: 0
+      isExitOnHome:
+        index: 1
+      themeColor:
+        index: 2
   NoteCategoryModel:
     typeId: 3
     nextIndex: 8

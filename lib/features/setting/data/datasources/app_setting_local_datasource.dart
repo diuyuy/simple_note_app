@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:hive_ce/hive.dart';
 
 import '../models/app_setting_model.dart';
@@ -10,10 +12,12 @@ class AppSettingLocalDatasource {
   String get _boxKey => 'appSetting';
 
   AppSettingModel getAppSetting() {
-    return _box.get(_boxKey) ?? AppSettingModel();
+    final appSetting = _box.get(_boxKey) ?? AppSettingModel();
+    log(appSetting.toString());
+    return appSetting;
   }
 
   Future<void> updateAppSetting(AppSettingModel updatedAppSetting) async {
-    _box.put(_boxKey, updatedAppSetting);
+    await _box.put(_boxKey, updatedAppSetting);
   }
 }

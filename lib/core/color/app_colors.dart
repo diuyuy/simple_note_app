@@ -13,6 +13,16 @@ class AppColors {
     Colors.purple[300]!,
   ];
 
+  static const List<int> colors = [
+    0xFFFF0000, // Colors.red
+    0xFFFF9800, // Colors.orange
+    0xFFFFEB3B, // Colors.yellow
+    0xFF4CAF50, // Colors.green
+    0xFF2196F3, // Colors.blue
+    0xFF3F51B5, // Colors.indigo
+    0xFF9C27B0, // Colors.purple
+  ];
+
   static const List<int> colorPalette = [
     0xFFF44336, //red
     0xFFFF9800, //orange

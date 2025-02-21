@@ -103,6 +103,8 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return AppSettingModel(
+      isExitOnHome: fields[1] as bool,
+      themeColor: (fields[2] as num).toInt(),
       fontSize: (fields[0] as num).toInt(),
     );
   }
@@ -110,9 +112,13 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
   @override
   void write(BinaryWriter writer, AppSettingModel obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.fontSize);
+      ..write(obj.fontSize)
+      ..writeByte(1)
+      ..write(obj.isExitOnHome)
+      ..writeByte(2)
+      ..write(obj.themeColor);
   }
 
   @override

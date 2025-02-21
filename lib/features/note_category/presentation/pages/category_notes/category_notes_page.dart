@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/widgets/app_bar_back_button.dart';
-import '../../../../core/widgets/my_menu_anchor.dart';
-import '../../../note/presentation/bloc/note_bloc/note_bloc.dart';
-import '../../../note/presentation/widgets/note_card_widget.dart';
+import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/widgets/app_bar_back_button.dart';
+import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
+import '../../../../note/presentation/widgets/note_card_widget.dart';
 
 class CategoryNotesPage extends StatelessWidget {
   const CategoryNotesPage({
