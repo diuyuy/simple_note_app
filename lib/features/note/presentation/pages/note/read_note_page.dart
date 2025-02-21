@@ -7,6 +7,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/router/router_path.dart';
+import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../domain/entities/note.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 
@@ -21,10 +22,7 @@ class ReadNotePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(Icons.arrow_back_ios),
-        ),
+        leading: const AppBarBackButton(),
         title: Text('ReadNotePage.note'.tr()),
         //centerTitle: true,
         actions: [

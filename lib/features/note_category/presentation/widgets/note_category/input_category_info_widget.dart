@@ -11,7 +11,9 @@ import '../../../../../core/widgets/save_button.dart';
 import '../../bloc/note_category_bloc.dart';
 
 class InputCategoryInfoWidget extends StatefulWidget {
-  const InputCategoryInfoWidget({super.key});
+  const InputCategoryInfoWidget({super.key, this.id});
+
+  final String? id;
 
   @override
   State<InputCategoryInfoWidget> createState() =>
@@ -19,7 +21,7 @@ class InputCategoryInfoWidget extends StatefulWidget {
 }
 
 class _InputCategoryInfoWidgetState extends State<InputCategoryInfoWidget> {
-  final TextEditingController _categoryNameController = TextEditingController();
+  late final TextEditingController _categoryNameController;
   final BehaviorSubject<String> _categoryNameSubect = BehaviorSubject<String>();
   int? iconCode;
   late Color categoryColor;
@@ -27,7 +29,27 @@ class _InputCategoryInfoWidgetState extends State<InputCategoryInfoWidget> {
   @override
   void initState() {
     super.initState();
-    categoryColor = AppColors.colors300[0];
+    if (widget.id != null) {
+      final selectedCategory = context
+          .read<NoteCategoryBloc>()
+          .state
+          .categories
+          .firstWhere((category) => category.id == widget.id);
+
+      _categoryNameController =
+          TextEditingController(text: selectedCategory.categoryName);
+      iconCode = selectedCategory.iconCode;
+      categoryColor = Color.from(
+        alpha: selectedCategory.categoryColorA,
+        red: selectedCategory.categoryColorR,
+        green: selectedCategory.categoryColorG,
+        blue: selectedCategory.categoryColorB,
+      );
+    } else {
+      _categoryNameController = TextEditingController();
+      categoryColor = AppColors.colors300[0];
+    }
+
     _categoryNameSubect
         .debounceTime(const Duration(milliseconds: 100))
         .switchMap(Stream.value)
@@ -124,19 +146,33 @@ class _InputCategoryInfoWidgetState extends State<InputCategoryInfoWidget> {
             enabled:
                 _categoryNameController.text.isNotEmpty && iconCode != null,
             onTap: () {
-              if (_categoryNameController.text.isEmpty || iconCode == null) {
-                return;
+              if (widget.id == null) {
+                if (_categoryNameController.text.isEmpty || iconCode == null) {
+                  return;
+                }
+                context.read<NoteCategoryBloc>().add(
+                      NoteCategoryEvent.categoryCreated(
+                        categoryName: _categoryNameController.text,
+                        iconCode: iconCode!,
+                        categoryColorA: categoryColor.a,
+                        categoryColorR: categoryColor.r,
+                        categoryColorG: categoryColor.g,
+                        categoryColorB: categoryColor.b,
+                      ),
+                    );
+              } else {
+                context.read<NoteCategoryBloc>().add(
+                      NoteCategoryEvent.categoryUpdated(
+                        id: widget.id!,
+                        categoryName: _categoryNameController.text,
+                        iconCode: iconCode,
+                        categoryColorA: categoryColor.a,
+                        categoryColorR: categoryColor.r,
+                        categoryColorG: categoryColor.g,
+                        categoryColorB: categoryColor.b,
+                      ),
+                    );
               }
-              context.read<NoteCategoryBloc>().add(
-                    NoteCategoryEvent.categoryCreated(
-                      categoryName: _categoryNameController.text,
-                      iconCode: iconCode!,
-                      categoryColorA: categoryColor.a,
-                      categoryColorR: categoryColor.r,
-                      categoryColorG: categoryColor.g,
-                      categoryColorB: categoryColor.b,
-                    ),
-                  );
             },
           ),
         ),

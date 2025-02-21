@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../core/widgets/app_bar_back_button.dart';
 import '../bloc/note_category_bloc.dart';
 import '../widgets/note_category/input_category_info_widget.dart';
 
@@ -18,12 +19,7 @@ class CreateNoteCategoryPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: () => context.pop(),
-            icon: Icon(
-              Icons.arrow_back_ios,
-            ),
-          ),
+          leading: const AppBarBackButton(),
           title: Text('CreateNoteCategoryPage.newCategory'.tr()),
           centerTitle: true,
           actions: [],

@@ -40,15 +40,7 @@ class NoteCategoryPage extends StatelessWidget {
               return noteCategoryStatus.when(
                 initial: (categories) => SizedBox.shrink(),
                 loadSuccess: (categories) {
-                  return ReorderableListView.builder(
-                    proxyDecorator: (child, index, animation) {
-                      return Material(
-                        elevation: 4,
-                        borderRadius: BorderRadius.circular(8),
-                        color: Colors.transparent,
-                        child: child,
-                      );
-                    },
+                  return ListView.builder(
                     itemCount: categories.length,
                     itemBuilder: (context, index) {
                       final noteCategory = categories[index];
@@ -77,6 +69,7 @@ class NoteCategoryPage extends StatelessWidget {
                           );
                         },
                         child: NoteCategoryCardWidget(
+                          id: noteCategory.id,
                           categoryName: noteCategory.categoryName,
                           categoryIconCodePoint: noteCategory.iconCode,
                           noteCount: noteCount,
@@ -89,14 +82,6 @@ class NoteCategoryPage extends StatelessWidget {
                           ),
                         ),
                       );
-                    },
-                    onReorder: (oldIndex, newIndex) {
-                      context.read<NoteCategoryBloc>().add(
-                            NoteCategoryEvent.categoryReordered(
-                              oldIndex: oldIndex,
-                              newIndex: newIndex,
-                            ),
-                          );
                     },
                   );
                 },
@@ -155,6 +140,21 @@ class NoteCategoryPage extends StatelessWidget {
           );
         },
         child: Text('NoteCategoryPage.selectAll'.tr()),
+      ),
+      MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
+        onPressed: () {
+          context.go(
+            '$currentPath/${RouterPath.reorderNoteCategoryPage}',
+            extra: categories.map((category) => category.id).toList(),
+          );
+        },
+        child: Text('NoteCategoryPage.reorderCategories'.tr()),
       ),
     ];
   }

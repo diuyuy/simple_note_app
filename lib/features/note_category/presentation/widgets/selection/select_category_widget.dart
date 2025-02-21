@@ -34,6 +34,7 @@ class SelectCategoryWidget extends StatelessWidget {
           Flexible(
             flex: 12,
             child: NoteCategoryCardWidget(
+              id: id,
               categoryName: categoryName,
               categoryIconCodePoint: categoryIconCodePoint,
               noteCount: noteCount,

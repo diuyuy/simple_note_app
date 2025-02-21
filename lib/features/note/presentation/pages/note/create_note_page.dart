@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
+import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/note_text_field.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 
@@ -30,10 +31,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(Icons.arrow_back_ios),
-        ),
+        leading: const AppBarBackButton(),
         title: Text('CreateNotePage.newNote'.tr()),
         centerTitle: true,
         actions: [

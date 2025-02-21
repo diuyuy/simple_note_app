@@ -21,7 +21,7 @@ class NoteCategoryEvent with _$NoteCategoryEvent {
     double? categoryColorB,
   }) = _CategoryUpdated;
   const factory NoteCategoryEvent.categoryDeleted(
-      {required NoteCategory deletedNoteCategory}) = _CategoryDeleted;
+      {required String deletedNoteCategoryId}) = _CategoryDeleted;
   const factory NoteCategoryEvent.categoryReordered(
-      {required int oldIndex, required int newIndex}) = _CategoryReordered;
+      {required List<String> newOrders}) = _CategoryReordered;
 }

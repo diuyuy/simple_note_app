@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:simple_note_app/features/note_category/domain/usecases/reorder_note_category_use_case.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../domain/entities/note_category.dart';
 import '../../domain/usecases/create_note_category_use_case.dart';
 import '../../domain/usecases/delete_note_category_use_case.dart';
 import '../../domain/usecases/get_all_note_categories_use_case.dart';
+import '../../domain/usecases/reorder_note_category_use_case.dart';
 import '../../domain/usecases/update_note_category_use_case.dart';
 
 part 'note_category_bloc.freezed.dart';
@@ -111,7 +111,7 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
   void _onCategoryDeleted(
       _CategoryDeleted event, Emitter<NoteCategoryState> emit) async {
     try {
-      await deleteNoteCategoryUseCase.execute(event.deletedNoteCategory);
+      await deleteNoteCategoryUseCase.execute(event.deletedNoteCategoryId);
 
       emit(_NoteCategoryLoadSuccess(
           categories: getAllNoteCategoriesUseCase.execute()));
@@ -128,16 +128,10 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
   void _onCategoryReordered(
       _CategoryReordered event, Emitter<NoteCategoryState> emit) async {
     try {
-      var categories = [...state.categories];
-      int oldIndex = event.oldIndex;
-      int newIndex = event.newIndex;
-      if (event.oldIndex < event.newIndex) {
-        newIndex -= 1;
-      }
-      final category = categories.removeAt(oldIndex);
-      categories.insert(newIndex, category);
-      emit(_NoteCategoryLoadSuccess(categories: categories));
-      await reorderNoteCategoryUseCase.execute(oldIndex, newIndex);
+      await reorderNoteCategoryUseCase.execute(event.newOrders);
+
+      emit(_NoteCategoryLoadSuccess(
+          categories: getAllNoteCategoriesUseCase.execute()));
     } catch (e) {
       emit(
         _NoteCategoryLoadFailure(

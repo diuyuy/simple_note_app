@@ -5,7 +5,7 @@ class ReorderNoteCategoryUseCase {
 
   ReorderNoteCategoryUseCase({required this.noteCategoryRepository});
 
-  Future<void> execute(int oldIndex, int newIndex) async {
-    await noteCategoryRepository.reorderNoteCategory(oldIndex, newIndex);
+  Future<void> execute(List<String> newOrders) async {
+    await noteCategoryRepository.reorderNoteCategory(newOrders);
   }
 }

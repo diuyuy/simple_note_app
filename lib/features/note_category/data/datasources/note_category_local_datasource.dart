@@ -48,15 +48,7 @@ class NoteCategoryLocalDatasource {
     await _orderBox.put(_orderBoxKey, orders);
   }
 
-  Future<void> reorderCategory(int oldIndex, int newIndex) async {
-    var orders = _orderBox.get(_orderBoxKey) ?? <String>[];
-
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final category = orders.removeAt(oldIndex);
-    orders.insert(newIndex, category);
-
-    await _orderBox.put(_orderBoxKey, orders);
+  Future<void> reorderCategory(List<String> newOrders) async {
+    await _orderBox.put(_orderBoxKey, newOrders);
   }
 }

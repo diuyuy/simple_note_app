@@ -16,7 +16,9 @@ import '../../features/note/presentation/pages/wastebasket/wastebasket_page.dart
 import '../../features/note_category/presentation/pages/category_notes_page.dart';
 import '../../features/note_category/presentation/pages/create_note_category_page.dart';
 import '../../features/note_category/presentation/pages/note_category_page.dart';
+import '../../features/note_category/presentation/pages/reorder/reorder_category_page.dart';
 import '../../features/note_category/presentation/pages/selection/category_selection_page.dart';
+import '../../features/note_category/presentation/pages/update_note_category_page.dart';
 import '../enum/previous_page.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
@@ -26,6 +28,9 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 final router = GoRouter(
   initialLocation: '/',
   navigatorKey: navigatorKey,
+  redirect: (context, state) {
+    return null;
+  },
   routes: [
     GoRoute(
       path: '/',
@@ -187,6 +192,18 @@ final router = GoRouter(
           ),
         ),
         GoRoute(
+          path: RouterPath.updateNoteCategoryPage,
+          pageBuilder: (context, state) {
+            final id = state.extra as String;
+
+            return buildFadeTransitionPage(
+              context: context,
+              state: state,
+              child: UpdateNoteCategoryPage(id: id),
+            );
+          },
+        ),
+        GoRoute(
           path: RouterPath.noteCategorySelectionPage,
           pageBuilder: (context, state) {
             final List<String> selectedCategories = state.extra as List<String>;
@@ -198,6 +215,18 @@ final router = GoRouter(
             );
           },
         ),
+        GoRoute(
+          path: RouterPath.reorderNoteCategoryPage,
+          pageBuilder: (context, state) {
+            final currentOrders = state.extra as List<String>;
+
+            return buildFadeTransitionPage(
+              context: context,
+              state: state,
+              child: ReorderCategoryPage(currentOrders: currentOrders),
+            );
+          },
+        )
       ],
     ),
   ],

@@ -4,13 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/utils/show_no_note_to_select_dialog.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/previous_page.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
+import '../../../../../core/utils/show_no_note_to_select_dialog.dart';
+import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
 import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
@@ -54,10 +55,7 @@ class _SearchNotePageState extends State<SearchNoteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(Icons.arrow_back_ios),
-        ),
+        leading: const AppBarBackButton(),
         title: Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: TextField(

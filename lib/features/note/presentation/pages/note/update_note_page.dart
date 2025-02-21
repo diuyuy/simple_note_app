@@ -34,10 +34,11 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: Icon(Icons.close, size: 28),
+          onPressed: () => context.pop(),
+          icon: Icon(
+            Icons.close,
+            size: 28,
+          ),
         ),
         title: Text('UpdateNotePage.edit'.tr()),
         centerTitle: true,

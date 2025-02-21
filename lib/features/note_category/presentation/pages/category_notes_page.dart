@@ -1,7 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/widgets/app_bar_back_button.dart';
+import '../../../../core/widgets/my_menu_anchor.dart';
 import '../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../../../note/presentation/widgets/note_card_widget.dart';
 
@@ -24,6 +28,9 @@ class CategoryNotesPage extends StatelessWidget {
           categoryName,
           overflow: TextOverflow.ellipsis,
         ),
+        actions: [
+          MyMenuAnchor(menuChildren: []),
+        ],
       ),
       body: SafeArea(
         child: Padding(
@@ -60,5 +67,30 @@ class CategoryNotesPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<Widget> buildMenuItemButtonList(BuildContext context, String id) {
+    return [
+      MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
+        onPressed: () {},
+        child: Text('CategoryNotesPage.editCategory'.tr()),
+      ),
+      MenuItemButton(
+        style: MenuItemButton.styleFrom(
+          minimumSize: Size(
+            AppConstants.menuAnchorMinWidth.w,
+            AppConstants.menuAnchorMinHeight.w,
+          ),
+        ),
+        onPressed: () async {},
+        child: Text('CategoryNotesPage.delete'.tr()),
+      ),
+    ];
   }
 }

@@ -2,10 +2,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/features/note_category/presentation/widgets/selection/select_category_widget.dart';
 
+import '../../../../../core/enum/selected_item.dart';
+import '../../../../../core/utils/show_alert_dialog.dart';
+import '../../../../../core/utils/show_selected_empty_dialog.dart';
+import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../../bloc/note_category_bloc.dart';
+import '../../widgets/selection/select_category_widget.dart';
 
 class CategorySelectionPage extends StatefulWidget {
   const CategorySelectionPage({super.key, required this.selectedCategories});
@@ -51,14 +55,7 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {
-            context.pop();
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-          ),
-        ),
+        leading: const AppBarBackButton(),
         title: Text('CategorySelectionPage.select'.tr()),
         actions: [
           TextButton(
@@ -80,7 +77,33 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              if (selectedCategories.isEmpty) {
+                showSelectedEmptyDialog(context, SelectedItem.category);
+                return;
+              }
+              final confirm = await showAlertDialog(
+                    context: context,
+                    title: 'CategorySelectionPage.delete'.tr(),
+                    content: 'CategorySelectionPage.deleteDialogContent'
+                        .tr(args: [selectedCategories.length.toString()]),
+                  ) ??
+                  false;
+
+              if (confirm) {
+                if (context.mounted) {
+                  for (var id in selectedCategories) {
+                    context.read<NoteCategoryBloc>().add(
+                          NoteCategoryEvent.categoryDeleted(
+                            deletedNoteCategoryId: id,
+                          ),
+                        );
+                  }
+
+                  context.pop();
+                }
+              }
+            },
             icon: Icon(
               Icons.delete_forever,
               color: Theme.of(context).colorScheme.error,

@@ -8,6 +8,10 @@
   "AppConstants": {
     "untitled": "제목 없음"
   },
+  "CategoryNotesPage": {
+    "delete": "삭제",
+    "editCategory": "카테고리 수정"
+  },
   "CategorySelectionPage": {
     "delete": "삭제",
     "deleteDialogContent": "선택한 {}개의 카테고리를 삭제하시겠습니까?\n\n이 작업은 되돌릴 수 없습니다.",
@@ -65,6 +69,7 @@
   },
   "NoteCategoryPage": {
     "category": "카테고리",
+    "reorderCategories": "순서 변경",
     "select": "선택",
     "selectAll": "모두 선택"
   },
@@ -93,6 +98,10 @@
     "ok": "확인",
     "share": "공유"
   },
+  "ReorderCategoryPage": {
+    "done": "완료",
+    "reorderCategories": "순서 변경"
+  },
   "ReorderNotePage": {
     "done": "완료",
     "reorderNotes": "순서 변경"
@@ -114,6 +123,15 @@
   "showNoNoteToSelectDialog": {
     "noNoteToSelect": "선택할 수 있는 노트가 없습니다.",
     "ok": "확인"
+  },
+  "showSelectedEmptyDialog": {
+    "categories": "카테고리",
+    "noItemsSelected": "선택된 {}가 없습니다.",
+    "notes": "노트",
+    "ok": "확인"
+  },
+  "UpdateNoteCategoryPage": {
+    "editCategory": "카테고리 수정"
   },
   "UpdateNotePage": {
     "edit": "편집",

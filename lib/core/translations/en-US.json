@@ -8,11 +8,15 @@
   "AppConstants": {
     "untitled": "Untitled"
   },
+  "CategoryNotesPage": {
+    "delete": "Delete",
+    "editCategory": "Edit Category"
+  },
   "CategorySelectionPage": {
     "delete": "Delete",
     "deleteDialogContent": "Are you sure you want to delete {} selected categories?\n\nThis action cannot be undone.",
     "deselectAll": "Deselect All",
-    "noNotesSelected": "No notes selected.",
+    "noCategoriesSelected": "No categories selected.",
     "select": "Select",
     "selectAll": "Select All"
   },
@@ -65,6 +69,7 @@
   },
   "NoteCategoryPage": {
     "category": "Category",
+    "reorderCategories": "Reorder Categories",
     "select": "Select",
     "selectAll":"Select All"
   },
@@ -84,6 +89,7 @@
     "select": "Select",
     "selectAll": "Select All"
   },
+
   "ReadNotePage": {
     "delete": "Delete",
     "cancel": "Cancel", 
@@ -92,6 +98,10 @@
     "note": "Note",
     "ok": "OK",
     "share": "Share"
+  },
+  "ReorderCategoryPage": {
+    "done": "Done",
+    "reorderCategories": "Reorder Categories"
   },
   "ReorderNotePage": {
     "done": "Done",
@@ -114,6 +124,15 @@
   "showNoNoteToSelectDialog": {
     "noNoteToSelect": "There are no notes to select.",
     "ok": "확인"
+  },
+  "showSelectedEmptyDialog": {
+    "categories": "categories",
+    "noItemsSelected": "No {} selected.",
+    "notes": "notes",
+    "ok": "OK"
+  },
+  "UpdateNoteCategoryPage": {
+    "editCategory": "Edit Category"
   },
   "UpdateNotePage": {
     "edit": "Edit",

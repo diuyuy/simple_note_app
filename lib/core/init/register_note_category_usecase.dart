@@ -1,10 +1,10 @@
 import 'package:get_it/get_it.dart';
-import 'package:simple_note_app/features/note_category/domain/usecases/reorder_note_category_use_case.dart';
 
 import '../../features/note_category/domain/repositories/note_category_repository.dart';
 import '../../features/note_category/domain/usecases/create_note_category_use_case.dart';
 import '../../features/note_category/domain/usecases/delete_note_category_use_case.dart';
 import '../../features/note_category/domain/usecases/get_all_note_categories_use_case.dart';
+import '../../features/note_category/domain/usecases/reorder_note_category_use_case.dart';
 import '../../features/note_category/domain/usecases/update_note_category_use_case.dart';
 
 void registerNoteCategoryUseCase() {

@@ -1,4 +1,3 @@
-import '../entities/note_category.dart';
 import '../repositories/note_category_repository.dart';
 
 class DeleteNoteCategoryUseCase {
@@ -6,7 +5,7 @@ class DeleteNoteCategoryUseCase {
 
   DeleteNoteCategoryUseCase({required this.noteCategoryRepository});
 
-  Future<void> execute(NoteCategory deletedCategory) async {
-    await noteCategoryRepository.deleteNoteCategory(deletedCategory);
+  Future<void> execute(String deletedCategoryId) async {
+    await noteCategoryRepository.deleteNoteCategory(deletedCategoryId);
   }
 }

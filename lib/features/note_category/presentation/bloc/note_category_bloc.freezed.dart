@@ -36,8 +36,8 @@ mixin _$NoteCategoryEvent {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
-    required TResult Function(int oldIndex, int newIndex) categoryReordered,
+    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> newOrders) categoryReordered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,8 +60,8 @@ mixin _$NoteCategoryEvent {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult? Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> newOrders)? categoryReordered,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,8 +84,8 @@ mixin _$NoteCategoryEvent {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -199,8 +199,8 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
-    required TResult Function(int oldIndex, int newIndex) categoryReordered,
+    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryLoaded();
   }
@@ -226,8 +226,8 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult? Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryLoaded?.call();
   }
@@ -253,8 +253,8 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
     if (categoryLoaded != null) {
@@ -454,8 +454,8 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
-    required TResult Function(int oldIndex, int newIndex) categoryReordered,
+    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryCreated(categoryName, iconCode, categoryColorA,
         categoryColorR, categoryColorG, categoryColorB);
@@ -482,8 +482,8 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult? Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryCreated?.call(categoryName, iconCode, categoryColorA,
         categoryColorR, categoryColorG, categoryColorB);
@@ -510,8 +510,8 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
     if (categoryCreated != null) {
@@ -741,8 +741,8 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
-    required TResult Function(int oldIndex, int newIndex) categoryReordered,
+    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryUpdated(id, categoryName, iconCode, categoryColorA,
         categoryColorR, categoryColorG, categoryColorB);
@@ -769,8 +769,8 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult? Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryUpdated?.call(id, categoryName, iconCode, categoryColorA,
         categoryColorR, categoryColorG, categoryColorB);
@@ -797,8 +797,8 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
     if (categoryUpdated != null) {
@@ -880,9 +880,7 @@ abstract class _$$CategoryDeletedImplCopyWith<$Res> {
           $Res Function(_$CategoryDeletedImpl) then) =
       __$$CategoryDeletedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({NoteCategory deletedNoteCategory});
-
-  $NoteCategoryCopyWith<$Res> get deletedNoteCategory;
+  $Res call({String deletedNoteCategoryId});
 }
 
 /// @nodoc
@@ -898,38 +896,28 @@ class __$$CategoryDeletedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? deletedNoteCategory = null,
+    Object? deletedNoteCategoryId = null,
   }) {
     return _then(_$CategoryDeletedImpl(
-      deletedNoteCategory: null == deletedNoteCategory
-          ? _value.deletedNoteCategory
-          : deletedNoteCategory // ignore: cast_nullable_to_non_nullable
-              as NoteCategory,
+      deletedNoteCategoryId: null == deletedNoteCategoryId
+          ? _value.deletedNoteCategoryId
+          : deletedNoteCategoryId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
-  }
-
-  /// Create a copy of NoteCategoryEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $NoteCategoryCopyWith<$Res> get deletedNoteCategory {
-    return $NoteCategoryCopyWith<$Res>(_value.deletedNoteCategory, (value) {
-      return _then(_value.copyWith(deletedNoteCategory: value));
-    });
   }
 }
 
 /// @nodoc
 
 class _$CategoryDeletedImpl implements _CategoryDeleted {
-  const _$CategoryDeletedImpl({required this.deletedNoteCategory});
+  const _$CategoryDeletedImpl({required this.deletedNoteCategoryId});
 
   @override
-  final NoteCategory deletedNoteCategory;
+  final String deletedNoteCategoryId;
 
   @override
   String toString() {
-    return 'NoteCategoryEvent.categoryDeleted(deletedNoteCategory: $deletedNoteCategory)';
+    return 'NoteCategoryEvent.categoryDeleted(deletedNoteCategoryId: $deletedNoteCategoryId)';
   }
 
   @override
@@ -937,12 +925,12 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryDeletedImpl &&
-            (identical(other.deletedNoteCategory, deletedNoteCategory) ||
-                other.deletedNoteCategory == deletedNoteCategory));
+            (identical(other.deletedNoteCategoryId, deletedNoteCategoryId) ||
+                other.deletedNoteCategoryId == deletedNoteCategoryId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deletedNoteCategory);
+  int get hashCode => Object.hash(runtimeType, deletedNoteCategoryId);
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -974,10 +962,10 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
-    required TResult Function(int oldIndex, int newIndex) categoryReordered,
+    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> newOrders) categoryReordered,
   }) {
-    return categoryDeleted(deletedNoteCategory);
+    return categoryDeleted(deletedNoteCategoryId);
   }
 
   @override
@@ -1001,10 +989,10 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult? Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
-    return categoryDeleted?.call(deletedNoteCategory);
+    return categoryDeleted?.call(deletedNoteCategoryId);
   }
 
   @override
@@ -1028,12 +1016,12 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
     if (categoryDeleted != null) {
-      return categoryDeleted(deletedNoteCategory);
+      return categoryDeleted(deletedNoteCategoryId);
     }
     return orElse();
   }
@@ -1081,10 +1069,9 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
 
 abstract class _CategoryDeleted implements NoteCategoryEvent {
   const factory _CategoryDeleted(
-          {required final NoteCategory deletedNoteCategory}) =
-      _$CategoryDeletedImpl;
+      {required final String deletedNoteCategoryId}) = _$CategoryDeletedImpl;
 
-  NoteCategory get deletedNoteCategory;
+  String get deletedNoteCategoryId;
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1099,7 +1086,7 @@ abstract class _$$CategoryReorderedImplCopyWith<$Res> {
           $Res Function(_$CategoryReorderedImpl) then) =
       __$$CategoryReorderedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int oldIndex, int newIndex});
+  $Res call({List<String> newOrders});
 }
 
 /// @nodoc
@@ -1115,18 +1102,13 @@ class __$$CategoryReorderedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? oldIndex = null,
-    Object? newIndex = null,
+    Object? newOrders = null,
   }) {
     return _then(_$CategoryReorderedImpl(
-      oldIndex: null == oldIndex
-          ? _value.oldIndex
-          : oldIndex // ignore: cast_nullable_to_non_nullable
-              as int,
-      newIndex: null == newIndex
-          ? _value.newIndex
-          : newIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      newOrders: null == newOrders
+          ? _value._newOrders
+          : newOrders // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -1134,17 +1116,20 @@ class __$$CategoryReorderedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$CategoryReorderedImpl implements _CategoryReordered {
-  const _$CategoryReorderedImpl(
-      {required this.oldIndex, required this.newIndex});
+  const _$CategoryReorderedImpl({required final List<String> newOrders})
+      : _newOrders = newOrders;
 
+  final List<String> _newOrders;
   @override
-  final int oldIndex;
-  @override
-  final int newIndex;
+  List<String> get newOrders {
+    if (_newOrders is EqualUnmodifiableListView) return _newOrders;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_newOrders);
+  }
 
   @override
   String toString() {
-    return 'NoteCategoryEvent.categoryReordered(oldIndex: $oldIndex, newIndex: $newIndex)';
+    return 'NoteCategoryEvent.categoryReordered(newOrders: $newOrders)';
   }
 
   @override
@@ -1152,14 +1137,13 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CategoryReorderedImpl &&
-            (identical(other.oldIndex, oldIndex) ||
-                other.oldIndex == oldIndex) &&
-            (identical(other.newIndex, newIndex) ||
-                other.newIndex == newIndex));
+            const DeepCollectionEquality()
+                .equals(other._newOrders, _newOrders));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, oldIndex, newIndex);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_newOrders));
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1191,10 +1175,10 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(NoteCategory deletedNoteCategory) categoryDeleted,
-    required TResult Function(int oldIndex, int newIndex) categoryReordered,
+    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> newOrders) categoryReordered,
   }) {
-    return categoryReordered(oldIndex, newIndex);
+    return categoryReordered(newOrders);
   }
 
   @override
@@ -1218,10 +1202,10 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult? Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
-    return categoryReordered?.call(oldIndex, newIndex);
+    return categoryReordered?.call(newOrders);
   }
 
   @override
@@ -1245,12 +1229,12 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(NoteCategory deletedNoteCategory)? categoryDeleted,
-    TResult Function(int oldIndex, int newIndex)? categoryReordered,
+    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
     if (categoryReordered != null) {
-      return categoryReordered(oldIndex, newIndex);
+      return categoryReordered(newOrders);
     }
     return orElse();
   }
@@ -1297,12 +1281,10 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
 }
 
 abstract class _CategoryReordered implements NoteCategoryEvent {
-  const factory _CategoryReordered(
-      {required final int oldIndex,
-      required final int newIndex}) = _$CategoryReorderedImpl;
+  const factory _CategoryReordered({required final List<String> newOrders}) =
+      _$CategoryReorderedImpl;
 
-  int get oldIndex;
-  int get newIndex;
+  List<String> get newOrders;
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
