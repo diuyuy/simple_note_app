@@ -26,6 +26,7 @@ class SelectCategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+      behavior: HitTestBehavior.opaque,
       onTap: () => onTap(id),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

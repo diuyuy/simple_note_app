@@ -41,20 +41,20 @@ class NoteDrawer extends StatelessWidget {
               ),
             ),
           ),
-          // DrawerTile(
-          //   leading: Icon(Icons.home_outlined),
-          //   title: Text('Drawer.home'.tr()),
-          //   onTap: () {
-          //     Navigator.pop(context);
-          //     context.go('/');
-          //   },
-          // ),
+          DrawerTile(
+            leading: Icon(Icons.home_outlined),
+            title: Text('Drawer.home'.tr()),
+            onTap: () {
+              Navigator.pop(context);
+              context.go('/');
+            },
+          ),
           DrawerTile(
             leading: Icon(Icons.star_outline),
             title: Text('Drawer.favorites'.tr()),
             onTap: () {
               Navigator.pop(context);
-              context.go('/favorites');
+              context.push('/favorites');
             },
           ),
           DrawerTile(
@@ -62,7 +62,7 @@ class NoteDrawer extends StatelessWidget {
             title: Text('Drawer.category'.tr()),
             onTap: () {
               Navigator.pop(context);
-              context.go('/${RouterPath.noteCategoryPage}');
+              context.go(RouterPath.noteCategoryPage);
             },
           ),
           DrawerTile(
@@ -70,7 +70,7 @@ class NoteDrawer extends StatelessWidget {
             title: Text('Drawer.trash'.tr()),
             onTap: () {
               Navigator.pop(context);
-              context.go('/trash');
+              context.push('/trash');
             },
           ),
           const Divider(),

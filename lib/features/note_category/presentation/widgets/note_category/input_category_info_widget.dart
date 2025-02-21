@@ -1,15 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:rxdart/rxdart.dart';
 
 import '../../../../../core/color/app_colors.dart';
+import '../../../../../core/widgets/pick_color_container.dart';
+import '../../../../../core/widgets/pick_icon_container.dart';
+import '../../../../../core/widgets/save_button.dart';
 import '../../bloc/note_category_bloc.dart';
-import 'pick_color_container.dart';
-import 'pick_icon_container.dart';
-import 'save_button.dart';
 
 class InputCategoryInfoWidget extends StatefulWidget {
   const InputCategoryInfoWidget({super.key});
@@ -60,90 +59,88 @@ class _InputCategoryInfoWidgetState extends State<InputCategoryInfoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 1.sh,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Gap(12),
-              Text(
-                'InputCategoryInfoWidget.categoryName'.tr(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Gap(12),
+            Text(
+              'InputCategoryInfoWidget.categoryName'.tr(),
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
               ),
-              Gap(8),
-              TextField(
-                controller: _categoryNameController,
-                cursorColor: AppColors.midDarkGrey,
-                onChanged: (value) {
-                  _categoryNameSubect.add(value);
-                },
-                decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.outline,
-                    ),
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                ),
-              ),
-              Gap(20),
-              Text(
-                'InputCategoryInfoWidget.categoryIcon'.tr(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              Gap(8),
-              PickIconContainer(
-                selectedCode: iconCode,
-                color: categoryColor,
-                selectIcon: selectIcon,
-              ),
-              Gap(20),
-              Text(
-                'InputCategoryInfoWidget.iconColor'.tr(),
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              Gap(8),
-              PickColorContainer(
-                selectedColor: categoryColor,
-                selectColor: selectColor,
-              ),
-            ],
-          ),
-
-          //Gap(200),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 12.0),
-            child: SaveButton(
-              enabled:
-                  _categoryNameController.text.isNotEmpty && iconCode != null,
-              onTap: () {
-                context.read<NoteCategoryBloc>().add(
-                      NoteCategoryEvent.categoryCreated(
-                        categoryName: _categoryNameController.text,
-                        iconCode: iconCode!,
-                        categoryColorA: categoryColor.a,
-                        categoryColorR: categoryColor.r,
-                        categoryColorG: categoryColor.g,
-                        categoryColorB: categoryColor.b,
-                      ),
-                    );
-              },
             ),
+            Gap(8),
+            TextField(
+              controller: _categoryNameController,
+              cursorColor: AppColors.midDarkGrey,
+              onChanged: (value) {
+                _categoryNameSubect.add(value);
+              },
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                  borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+            ),
+            Gap(20),
+            Text(
+              'InputCategoryInfoWidget.categoryIcon'.tr(),
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Gap(8),
+            PickIconContainer(
+              selectedCode: iconCode,
+              color: categoryColor,
+              selectIcon: selectIcon,
+            ),
+            Gap(20),
+            Text(
+              'InputCategoryInfoWidget.iconColor'.tr(),
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            Gap(8),
+            PickColorContainer(
+              selectedColor: categoryColor,
+              selectColor: selectColor,
+            ),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(bottom: 12.0),
+          child: SaveButton(
+            enabled:
+                _categoryNameController.text.isNotEmpty && iconCode != null,
+            onTap: () {
+              if (_categoryNameController.text.isEmpty || iconCode == null) {
+                return;
+              }
+              context.read<NoteCategoryBloc>().add(
+                    NoteCategoryEvent.categoryCreated(
+                      categoryName: _categoryNameController.text,
+                      iconCode: iconCode!,
+                      categoryColorA: categoryColor.a,
+                      categoryColorR: categoryColor.r,
+                      categoryColorG: categoryColor.g,
+                      categoryColorB: categoryColor.b,
+                    ),
+                  );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/constants/app_constants.dart';
 
+import '../../../../core/constants/app_constants.dart';
 import '../../../../core/router/router_path.dart';
+import '../../../../core/widgets/drawer/note_drawer.dart';
 import '../../../../core/widgets/my_menu_anchor.dart';
 import '../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../bloc/note_category_bloc.dart';
@@ -19,14 +20,8 @@ class NoteCategoryPage extends StatelessWidget {
     final currentPath = GoRouterState.of(context).uri.path;
 
     return Scaffold(
-      //drawer: const NoteDrawer(),
+      drawer: const NoteDrawer(),
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(
-            Icons.arrow_back_ios,
-          ),
-        ),
         title: Text('NoteCategoryPage.category'.tr()),
         centerTitle: true,
         actions: [
@@ -70,6 +65,15 @@ class NoteCategoryPage extends StatelessWidget {
                           context.go(
                             '$currentPath/${RouterPath.noteCategorySelectionPage}',
                             extra: [noteCategory.id],
+                          );
+                        },
+                        onTap: () {
+                          context.go(
+                            '$currentPath/${RouterPath.categoryNotesPage}',
+                            extra: {
+                              'id': noteCategory.id,
+                              'categoryName': noteCategory.categoryName
+                            },
                           );
                         },
                         child: NoteCategoryCardWidget(

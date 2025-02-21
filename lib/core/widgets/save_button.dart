@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/color/app_colors.dart';
+import '../color/app_colors.dart';
 
 class SaveButton extends StatelessWidget {
   const SaveButton({
@@ -17,7 +17,12 @@ class SaveButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: () {
+        if (!enabled) {
+          return;
+        }
+        onTap();
+      },
       child: AspectRatio(
         aspectRatio: 8 / 1,
         child: Container(
