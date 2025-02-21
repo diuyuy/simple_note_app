@@ -46,8 +46,7 @@ class NoteCategoryPage extends StatelessWidget {
                       final noteCategory = categories[index];
                       final noteCount = notes
                           .where(
-                            (note) =>
-                                note.category == noteCategory.categoryName,
+                            (note) => note.category == noteCategory.id,
                           )
                           .length;
 

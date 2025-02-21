@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/note/presentation/widgets/selection/assign_category_bottom_sheet.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/previous_page.dart';
+import '../../../../../core/enum/selected_item.dart';
 import '../../../../../core/utils/show_alert_dialog.dart';
+import '../../../../../core/utils/show_selected_empty_dialog.dart';
 import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/my_menu_anchor.dart';
 import '../../../domain/entities/note.dart';
@@ -177,7 +180,45 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             ),
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showSelectedEmptyDialog(context);
+                showSelectedEmptyDialog(context, SelectedItem.note);
+                return;
+              }
+              final categorySet =
+                  selectedNotes.map((note) => note.category).toSet();
+              String? currentCategory;
+              if (categorySet.length == 1) {
+                currentCategory = categorySet.first;
+              }
+
+              final selectedCategory =
+                  await showAssignCategoryModal(context, currentCategory);
+
+              if (selectedCategory != null) {
+                if (context.mounted) {
+                  for (var selectedNote in selectedNotes) {
+                    context.read<NoteBloc>().add(
+                          NoteEvent.updateNote(
+                            id: selectedNote.id,
+                            category: selectedCategory,
+                          ),
+                        );
+                  }
+                  context.pop();
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.assignCategory'.tr()),
+          ),
+          MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showSelectedEmptyDialog(context, SelectedItem.note);
                 return;
               }
 
@@ -213,7 +254,45 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             ),
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showSelectedEmptyDialog(context);
+                showSelectedEmptyDialog(context, SelectedItem.note);
+                return;
+              }
+              final categorySet =
+                  selectedNotes.map((note) => note.category).toSet();
+              String? currentCategory;
+              if (categorySet.length == 1) {
+                currentCategory = categorySet.first;
+              }
+
+              final selectedCategory =
+                  await showAssignCategoryModal(context, currentCategory);
+
+              if (selectedCategory != null) {
+                if (context.mounted) {
+                  for (var selectedNote in selectedNotes) {
+                    context.read<NoteBloc>().add(
+                          NoteEvent.updateNote(
+                            id: selectedNote.id,
+                            category: selectedCategory,
+                          ),
+                        );
+                  }
+                  context.pop();
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.assignCategory'.tr()),
+          ),
+          MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showSelectedEmptyDialog(context, SelectedItem.note);
                 return;
               }
 
@@ -249,7 +328,45 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             ),
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showSelectedEmptyDialog(context);
+                showSelectedEmptyDialog(context, SelectedItem.note);
+                return;
+              }
+              final categorySet =
+                  selectedNotes.map((note) => note.category).toSet();
+              String? currentCategory;
+              if (categorySet.length == 1) {
+                currentCategory = categorySet.first;
+              }
+
+              final selectedCategory =
+                  await showAssignCategoryModal(context, currentCategory);
+
+              if (selectedCategory != null) {
+                if (context.mounted) {
+                  for (var selectedNote in selectedNotes) {
+                    context.read<NoteBloc>().add(
+                          NoteEvent.updateNote(
+                            id: selectedNote.id,
+                            category: selectedCategory,
+                          ),
+                        );
+                  }
+                  context.pop();
+                }
+              }
+            },
+            child: Text('NoteSelectionPage.assignCategory'.tr()),
+          ),
+          MenuItemButton(
+            style: MenuItemButton.styleFrom(
+              minimumSize: Size(
+                AppConstants.menuAnchorMinWidth.w,
+                AppConstants.menuAnchorMinHeight.w,
+              ),
+            ),
+            onPressed: () async {
+              if (selectedNotes.isEmpty) {
+                showSelectedEmptyDialog(context, SelectedItem.note);
                 return;
               }
 
@@ -289,7 +406,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
             ),
             onPressed: () {
               if (selectedNotes.isEmpty) {
-                showSelectedEmptyDialog(context);
+                showSelectedEmptyDialog(context, SelectedItem.note);
                 return;
               }
               for (var selectedNote in selectedNotes) {
@@ -307,7 +424,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
           MenuItemButton(
             onPressed: () async {
               if (selectedNotes.isEmpty) {
-                showSelectedEmptyDialog(context);
+                showSelectedEmptyDialog(context, SelectedItem.note);
                 return;
               }
               final isConfirm = await showAlertDialog(
@@ -337,21 +454,13 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
     };
   }
 
-  void showSelectedEmptyDialog(BuildContext context) {
-    showDialog(
+  Future<String?> showAssignCategoryModal(
+      BuildContext context, String? currentCategory) async {
+    return await showModalBottomSheet<String>(
       context: context,
-      builder: (context) {
-        return AlertDialog(
-          //title: Text('NoteSelectionPage.delete'.tr()),
-          content: Text('NoteSelectionPage.noNotesSelected'.tr()),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context),
-              child: Text('NoteSelectionPage.ok'.tr()),
-            ),
-          ],
-        );
-      },
+      builder: (context) => AssignCategoryBottomSheet(
+        currentCategory: currentCategory,
+      ),
     );
   }
 }

@@ -79,6 +79,7 @@
     "updateDate": "Last modified: {}"
   },
   "NoteSelectionPage": {
+    "assignCategory": "Assign Category",
     "delete": "Delete",
     "deleteDialogContent": "Are you sure you want to delete {} selected notes?",
     "deselectAll": "Deselect All",

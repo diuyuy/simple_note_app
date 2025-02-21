@@ -79,7 +79,7 @@ class _ReorderCategoryPageState extends State<ReorderCategoryPage> {
                     final category = categories
                         .firstWhere((category) => category.id == orders[index]);
                     final int noteCount = notes
-                        .where((note) => note.category == category.categoryName)
+                        .where((note) => note.category == category.id)
                         .length;
 
                     return NoteCategoryCardWidget(

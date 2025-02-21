@@ -39,7 +39,7 @@ class CategoryNotesPage extends StatelessWidget {
             builder: (context) {
               final notes = context
                   .select((NoteBloc bloc) => bloc.state.notes)
-                  .where((note) => note.category == categoryName)
+                  .where((note) => note.category == id)
                   .toList();
 
               return ListView.builder(

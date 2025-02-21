@@ -79,6 +79,7 @@
     "updateDate": "수정 날짜: {}"
   },
   "NoteSelectionPage": {
+    "assignCategory": "카테고리 지정",
     "delete": "삭제",
     "deleteDialogContent": "선택한 {}개의 노트를 삭제하시겠습니까?",
     "deselectAll": "선택 해제",

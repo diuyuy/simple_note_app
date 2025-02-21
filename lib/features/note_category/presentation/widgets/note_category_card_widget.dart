@@ -132,14 +132,14 @@ class NoteCategoryCardWidget extends StatelessWidget {
           ),
         ),
         onPressed: () async {
-          final confirm = await showAlertDialog(
+          final isConfirm = await showAlertDialog(
                 context: context,
                 title: 'NoteCategoryCardWidget.delete'.tr(),
                 content: 'NoteCategoryCardWidget.deleteDialogConent'.tr(),
               ) ??
               false;
 
-          if (confirm) {
+          if (isConfirm) {
             if (context.mounted) {
               context.read<NoteCategoryBloc>().add(
                     NoteCategoryEvent.categoryDeleted(
