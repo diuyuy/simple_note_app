@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/setting/presentation/bloc/app_setting_bloc.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
 import '../../features/note/presentation/pages/note_page_export.dart';
 import '../../features/note_category/presentation/pages/note_category_export.dart';
-import '../../features/setting/presentation/cubit/app_setting_cubit.dart';
 import '../enum/previous_page.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
@@ -22,7 +22,7 @@ final router = GoRouter(
       return null;
     }
     final isExitOnHome =
-        BlocProvider.of<AppSettingCubit>(context).state.isExitOnHome;
+        BlocProvider.of<AppSettingBloc>(context).state.appSetting.isExitOnHome;
     if (!isExitOnHome) {
       _isFirstRun = false;
       return RouterPath.noteCategoryPage;

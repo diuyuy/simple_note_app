@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../features/setting/presentation/cubit/app_setting_cubit.dart';
+import '../../../features/setting/presentation/bloc/app_setting_bloc.dart';
 import '../../router/router_path.dart';
 import 'drawer_tile.dart';
 
@@ -49,9 +49,9 @@ class NoteDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               context.go('/');
-              context
-                  .read<AppSettingCubit>()
-                  .updateAppSetting(isExitOnHome: true);
+              context.read<AppSettingBloc>().add(
+                    AppSettingEvent.appSettingUpdated(isExitOnHome: true),
+                  );
             },
           ),
           DrawerTile(
@@ -68,9 +68,11 @@ class NoteDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pop(context);
               context.go(RouterPath.noteCategoryPage);
-              context
-                  .read<AppSettingCubit>()
-                  .updateAppSetting(isExitOnHome: false);
+              context.read<AppSettingBloc>().add(
+                    AppSettingEvent.appSettingUpdated(
+                      isExitOnHome: false,
+                    ),
+                  );
             },
           ),
           DrawerTile(

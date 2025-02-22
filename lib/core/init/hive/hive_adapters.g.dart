@@ -104,21 +104,33 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
     };
     return AppSettingModel(
       isExitOnHome: fields[1] as bool,
+      isDarkMode: fields[3] as bool,
       themeColor: (fields[2] as num).toInt(),
       fontSize: (fields[0] as num).toInt(),
+      textHeight: (fields[4] as num).toDouble(),
+      isAutoSave: fields[5] as bool,
+      autoDeleteDays: (fields[6] as num).toInt(),
     );
   }
 
   @override
   void write(BinaryWriter writer, AppSettingModel obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(7)
       ..writeByte(0)
       ..write(obj.fontSize)
       ..writeByte(1)
       ..write(obj.isExitOnHome)
       ..writeByte(2)
-      ..write(obj.themeColor);
+      ..write(obj.themeColor)
+      ..writeByte(3)
+      ..write(obj.isDarkMode)
+      ..writeByte(4)
+      ..write(obj.textHeight)
+      ..writeByte(5)
+      ..write(obj.isAutoSave)
+      ..writeByte(6)
+      ..write(obj.autoDeleteDays);
   }
 
   @override

@@ -7,20 +7,12 @@ import 'package:get_it/get_it.dart';
 
 import 'core/init/initialize_app.dart';
 import 'core/router/router.dart';
-import 'features/note/domain/usecases/note_usecase/create_note_use_case.dart';
-import 'features/note/domain/usecases/note_usecase/delete_note_use_case.dart';
-import 'features/note/domain/usecases/note_usecase/load_notes_use_case.dart';
-import 'features/note/domain/usecases/note_usecase/reorder_notes_use_case.dart';
-import 'features/note/domain/usecases/note_usecase/update_note_use_case.dart';
+import 'features/note/domain/usecases/note_usecase/note_usecase_export.dart';
 import 'features/note/presentation/bloc/note_bloc/note_bloc.dart';
-import 'features/note_category/domain/usecases/create_note_category_use_case.dart';
-import 'features/note_category/domain/usecases/delete_note_category_use_case.dart';
-import 'features/note_category/domain/usecases/get_all_note_categories_use_case.dart';
-import 'features/note_category/domain/usecases/reorder_note_category_use_case.dart';
-import 'features/note_category/domain/usecases/update_note_category_use_case.dart';
+import 'features/note_category/domain/usecases/note_category_usecase_export.dart';
 import 'features/note_category/presentation/bloc/note_category_bloc.dart';
 import 'features/setting/domain/repositories/app_setting_repository.dart';
-import 'features/setting/presentation/cubit/app_setting_cubit.dart';
+import 'features/setting/presentation/bloc/app_setting_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,12 +35,12 @@ void main() async {
       fallbackLocale: Locale('en'),
       child: MultiBlocProvider(
         providers: [
-          BlocProvider<AppSettingCubit>(
+          BlocProvider<AppSettingBloc>(
             lazy: false,
             create: (context) {
               final appSettingRepository = getIt<AppSettingRepository>();
 
-              return AppSettingCubit(appSettingRepository);
+              return AppSettingBloc(appSettingRepository);
             },
           ),
           BlocProvider<NoteBloc>(
@@ -109,7 +101,7 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        final appSetting = context.watch<AppSettingCubit>().state;
+        final appSetting = context.watch<AppSettingBloc>().state.appSetting;
         final themeColor = Color(appSetting.themeColor);
 
         return MaterialApp.router(
@@ -122,6 +114,12 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: themeColor),
             useMaterial3: true,
           ),
+          darkTheme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: themeColor),
+            brightness: Brightness.dark,
+            useMaterial3: true,
+          ),
+          themeMode: appSetting.isDarkMode ? ThemeMode.dark : ThemeMode.light,
         );
       },
     );
