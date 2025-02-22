@@ -36,7 +36,8 @@ mixin _$NoteCategoryEvent {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> deletedNoteCategoryIds)
+        categoriesDeleted,
     required TResult Function(List<String> newOrders) categoryReordered,
   }) =>
       throw _privateConstructorUsedError;
@@ -60,7 +61,7 @@ mixin _$NoteCategoryEvent {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult? Function(List<String> newOrders)? categoryReordered,
   }) =>
       throw _privateConstructorUsedError;
@@ -84,7 +85,7 @@ mixin _$NoteCategoryEvent {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) =>
@@ -94,7 +95,7 @@ mixin _$NoteCategoryEvent {
     required TResult Function(_CategoryLoaded value) categoryLoaded,
     required TResult Function(_CategoryCreated value) categoryCreated,
     required TResult Function(_CategoryUpdated value) categoryUpdated,
-    required TResult Function(_CategoryDeleted value) categoryDeleted,
+    required TResult Function(_CategoriesDeleted value) categoriesDeleted,
     required TResult Function(_CategoryReordered value) categoryReordered,
   }) =>
       throw _privateConstructorUsedError;
@@ -103,7 +104,7 @@ mixin _$NoteCategoryEvent {
     TResult? Function(_CategoryLoaded value)? categoryLoaded,
     TResult? Function(_CategoryCreated value)? categoryCreated,
     TResult? Function(_CategoryUpdated value)? categoryUpdated,
-    TResult? Function(_CategoryDeleted value)? categoryDeleted,
+    TResult? Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult? Function(_CategoryReordered value)? categoryReordered,
   }) =>
       throw _privateConstructorUsedError;
@@ -112,7 +113,7 @@ mixin _$NoteCategoryEvent {
     TResult Function(_CategoryLoaded value)? categoryLoaded,
     TResult Function(_CategoryCreated value)? categoryCreated,
     TResult Function(_CategoryUpdated value)? categoryUpdated,
-    TResult Function(_CategoryDeleted value)? categoryDeleted,
+    TResult Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult Function(_CategoryReordered value)? categoryReordered,
     required TResult orElse(),
   }) =>
@@ -199,7 +200,8 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> deletedNoteCategoryIds)
+        categoriesDeleted,
     required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryLoaded();
@@ -226,7 +228,7 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryLoaded?.call();
@@ -253,7 +255,7 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -269,7 +271,7 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
     required TResult Function(_CategoryLoaded value) categoryLoaded,
     required TResult Function(_CategoryCreated value) categoryCreated,
     required TResult Function(_CategoryUpdated value) categoryUpdated,
-    required TResult Function(_CategoryDeleted value) categoryDeleted,
+    required TResult Function(_CategoriesDeleted value) categoriesDeleted,
     required TResult Function(_CategoryReordered value) categoryReordered,
   }) {
     return categoryLoaded(this);
@@ -281,7 +283,7 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
     TResult? Function(_CategoryLoaded value)? categoryLoaded,
     TResult? Function(_CategoryCreated value)? categoryCreated,
     TResult? Function(_CategoryUpdated value)? categoryUpdated,
-    TResult? Function(_CategoryDeleted value)? categoryDeleted,
+    TResult? Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult? Function(_CategoryReordered value)? categoryReordered,
   }) {
     return categoryLoaded?.call(this);
@@ -293,7 +295,7 @@ class _$CategoryLoadedImpl implements _CategoryLoaded {
     TResult Function(_CategoryLoaded value)? categoryLoaded,
     TResult Function(_CategoryCreated value)? categoryCreated,
     TResult Function(_CategoryUpdated value)? categoryUpdated,
-    TResult Function(_CategoryDeleted value)? categoryDeleted,
+    TResult Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult Function(_CategoryReordered value)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -454,7 +456,8 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> deletedNoteCategoryIds)
+        categoriesDeleted,
     required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryCreated(categoryName, iconCode, categoryColorA,
@@ -482,7 +485,7 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryCreated?.call(categoryName, iconCode, categoryColorA,
@@ -510,7 +513,7 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -527,7 +530,7 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
     required TResult Function(_CategoryLoaded value) categoryLoaded,
     required TResult Function(_CategoryCreated value) categoryCreated,
     required TResult Function(_CategoryUpdated value) categoryUpdated,
-    required TResult Function(_CategoryDeleted value) categoryDeleted,
+    required TResult Function(_CategoriesDeleted value) categoriesDeleted,
     required TResult Function(_CategoryReordered value) categoryReordered,
   }) {
     return categoryCreated(this);
@@ -539,7 +542,7 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
     TResult? Function(_CategoryLoaded value)? categoryLoaded,
     TResult? Function(_CategoryCreated value)? categoryCreated,
     TResult? Function(_CategoryUpdated value)? categoryUpdated,
-    TResult? Function(_CategoryDeleted value)? categoryDeleted,
+    TResult? Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult? Function(_CategoryReordered value)? categoryReordered,
   }) {
     return categoryCreated?.call(this);
@@ -551,7 +554,7 @@ class _$CategoryCreatedImpl implements _CategoryCreated {
     TResult Function(_CategoryLoaded value)? categoryLoaded,
     TResult Function(_CategoryCreated value)? categoryCreated,
     TResult Function(_CategoryUpdated value)? categoryUpdated,
-    TResult Function(_CategoryDeleted value)? categoryDeleted,
+    TResult Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult Function(_CategoryReordered value)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -741,7 +744,8 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> deletedNoteCategoryIds)
+        categoriesDeleted,
     required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryUpdated(id, categoryName, iconCode, categoryColorA,
@@ -769,7 +773,7 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryUpdated?.call(id, categoryName, iconCode, categoryColorA,
@@ -797,7 +801,7 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -814,7 +818,7 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
     required TResult Function(_CategoryLoaded value) categoryLoaded,
     required TResult Function(_CategoryCreated value) categoryCreated,
     required TResult Function(_CategoryUpdated value) categoryUpdated,
-    required TResult Function(_CategoryDeleted value) categoryDeleted,
+    required TResult Function(_CategoriesDeleted value) categoriesDeleted,
     required TResult Function(_CategoryReordered value) categoryReordered,
   }) {
     return categoryUpdated(this);
@@ -826,7 +830,7 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
     TResult? Function(_CategoryLoaded value)? categoryLoaded,
     TResult? Function(_CategoryCreated value)? categoryCreated,
     TResult? Function(_CategoryUpdated value)? categoryUpdated,
-    TResult? Function(_CategoryDeleted value)? categoryDeleted,
+    TResult? Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult? Function(_CategoryReordered value)? categoryReordered,
   }) {
     return categoryUpdated?.call(this);
@@ -838,7 +842,7 @@ class _$CategoryUpdatedImpl implements _CategoryUpdated {
     TResult Function(_CategoryLoaded value)? categoryLoaded,
     TResult Function(_CategoryCreated value)? categoryCreated,
     TResult Function(_CategoryUpdated value)? categoryUpdated,
-    TResult Function(_CategoryDeleted value)? categoryDeleted,
+    TResult Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult Function(_CategoryReordered value)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -875,20 +879,20 @@ abstract class _CategoryUpdated implements NoteCategoryEvent {
 }
 
 /// @nodoc
-abstract class _$$CategoryDeletedImplCopyWith<$Res> {
-  factory _$$CategoryDeletedImplCopyWith(_$CategoryDeletedImpl value,
-          $Res Function(_$CategoryDeletedImpl) then) =
-      __$$CategoryDeletedImplCopyWithImpl<$Res>;
+abstract class _$$CategoriesDeletedImplCopyWith<$Res> {
+  factory _$$CategoriesDeletedImplCopyWith(_$CategoriesDeletedImpl value,
+          $Res Function(_$CategoriesDeletedImpl) then) =
+      __$$CategoriesDeletedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String deletedNoteCategoryId});
+  $Res call({List<String> deletedNoteCategoryIds});
 }
 
 /// @nodoc
-class __$$CategoryDeletedImplCopyWithImpl<$Res>
-    extends _$NoteCategoryEventCopyWithImpl<$Res, _$CategoryDeletedImpl>
-    implements _$$CategoryDeletedImplCopyWith<$Res> {
-  __$$CategoryDeletedImplCopyWithImpl(
-      _$CategoryDeletedImpl _value, $Res Function(_$CategoryDeletedImpl) _then)
+class __$$CategoriesDeletedImplCopyWithImpl<$Res>
+    extends _$NoteCategoryEventCopyWithImpl<$Res, _$CategoriesDeletedImpl>
+    implements _$$CategoriesDeletedImplCopyWith<$Res> {
+  __$$CategoriesDeletedImplCopyWithImpl(_$CategoriesDeletedImpl _value,
+      $Res Function(_$CategoriesDeletedImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of NoteCategoryEvent
@@ -896,49 +900,58 @@ class __$$CategoryDeletedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? deletedNoteCategoryId = null,
+    Object? deletedNoteCategoryIds = null,
   }) {
-    return _then(_$CategoryDeletedImpl(
-      deletedNoteCategoryId: null == deletedNoteCategoryId
-          ? _value.deletedNoteCategoryId
-          : deletedNoteCategoryId // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$CategoriesDeletedImpl(
+      deletedNoteCategoryIds: null == deletedNoteCategoryIds
+          ? _value._deletedNoteCategoryIds
+          : deletedNoteCategoryIds // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$CategoryDeletedImpl implements _CategoryDeleted {
-  const _$CategoryDeletedImpl({required this.deletedNoteCategoryId});
+class _$CategoriesDeletedImpl implements _CategoriesDeleted {
+  const _$CategoriesDeletedImpl(
+      {required final List<String> deletedNoteCategoryIds})
+      : _deletedNoteCategoryIds = deletedNoteCategoryIds;
 
+  final List<String> _deletedNoteCategoryIds;
   @override
-  final String deletedNoteCategoryId;
+  List<String> get deletedNoteCategoryIds {
+    if (_deletedNoteCategoryIds is EqualUnmodifiableListView)
+      return _deletedNoteCategoryIds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deletedNoteCategoryIds);
+  }
 
   @override
   String toString() {
-    return 'NoteCategoryEvent.categoryDeleted(deletedNoteCategoryId: $deletedNoteCategoryId)';
+    return 'NoteCategoryEvent.categoriesDeleted(deletedNoteCategoryIds: $deletedNoteCategoryIds)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$CategoryDeletedImpl &&
-            (identical(other.deletedNoteCategoryId, deletedNoteCategoryId) ||
-                other.deletedNoteCategoryId == deletedNoteCategoryId));
+            other is _$CategoriesDeletedImpl &&
+            const DeepCollectionEquality().equals(
+                other._deletedNoteCategoryIds, _deletedNoteCategoryIds));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deletedNoteCategoryId);
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_deletedNoteCategoryIds));
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$CategoryDeletedImplCopyWith<_$CategoryDeletedImpl> get copyWith =>
-      __$$CategoryDeletedImplCopyWithImpl<_$CategoryDeletedImpl>(
+  _$$CategoriesDeletedImplCopyWith<_$CategoriesDeletedImpl> get copyWith =>
+      __$$CategoriesDeletedImplCopyWithImpl<_$CategoriesDeletedImpl>(
           this, _$identity);
 
   @override
@@ -962,10 +975,11 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> deletedNoteCategoryIds)
+        categoriesDeleted,
     required TResult Function(List<String> newOrders) categoryReordered,
   }) {
-    return categoryDeleted(deletedNoteCategoryId);
+    return categoriesDeleted(deletedNoteCategoryIds);
   }
 
   @override
@@ -989,10 +1003,10 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
-    return categoryDeleted?.call(deletedNoteCategoryId);
+    return categoriesDeleted?.call(deletedNoteCategoryIds);
   }
 
   @override
@@ -1016,12 +1030,12 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
-    if (categoryDeleted != null) {
-      return categoryDeleted(deletedNoteCategoryId);
+    if (categoriesDeleted != null) {
+      return categoriesDeleted(deletedNoteCategoryIds);
     }
     return orElse();
   }
@@ -1032,10 +1046,10 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
     required TResult Function(_CategoryLoaded value) categoryLoaded,
     required TResult Function(_CategoryCreated value) categoryCreated,
     required TResult Function(_CategoryUpdated value) categoryUpdated,
-    required TResult Function(_CategoryDeleted value) categoryDeleted,
+    required TResult Function(_CategoriesDeleted value) categoriesDeleted,
     required TResult Function(_CategoryReordered value) categoryReordered,
   }) {
-    return categoryDeleted(this);
+    return categoriesDeleted(this);
   }
 
   @override
@@ -1044,10 +1058,10 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
     TResult? Function(_CategoryLoaded value)? categoryLoaded,
     TResult? Function(_CategoryCreated value)? categoryCreated,
     TResult? Function(_CategoryUpdated value)? categoryUpdated,
-    TResult? Function(_CategoryDeleted value)? categoryDeleted,
+    TResult? Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult? Function(_CategoryReordered value)? categoryReordered,
   }) {
-    return categoryDeleted?.call(this);
+    return categoriesDeleted?.call(this);
   }
 
   @override
@@ -1056,27 +1070,28 @@ class _$CategoryDeletedImpl implements _CategoryDeleted {
     TResult Function(_CategoryLoaded value)? categoryLoaded,
     TResult Function(_CategoryCreated value)? categoryCreated,
     TResult Function(_CategoryUpdated value)? categoryUpdated,
-    TResult Function(_CategoryDeleted value)? categoryDeleted,
+    TResult Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult Function(_CategoryReordered value)? categoryReordered,
     required TResult orElse(),
   }) {
-    if (categoryDeleted != null) {
-      return categoryDeleted(this);
+    if (categoriesDeleted != null) {
+      return categoriesDeleted(this);
     }
     return orElse();
   }
 }
 
-abstract class _CategoryDeleted implements NoteCategoryEvent {
-  const factory _CategoryDeleted(
-      {required final String deletedNoteCategoryId}) = _$CategoryDeletedImpl;
+abstract class _CategoriesDeleted implements NoteCategoryEvent {
+  const factory _CategoriesDeleted(
+          {required final List<String> deletedNoteCategoryIds}) =
+      _$CategoriesDeletedImpl;
 
-  String get deletedNoteCategoryId;
+  List<String> get deletedNoteCategoryIds;
 
   /// Create a copy of NoteCategoryEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$CategoryDeletedImplCopyWith<_$CategoryDeletedImpl> get copyWith =>
+  _$$CategoriesDeletedImplCopyWith<_$CategoriesDeletedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1175,7 +1190,8 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
             double? categoryColorG,
             double? categoryColorB)
         categoryUpdated,
-    required TResult Function(String deletedNoteCategoryId) categoryDeleted,
+    required TResult Function(List<String> deletedNoteCategoryIds)
+        categoriesDeleted,
     required TResult Function(List<String> newOrders) categoryReordered,
   }) {
     return categoryReordered(newOrders);
@@ -1202,7 +1218,7 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult? Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult? Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult? Function(List<String> newOrders)? categoryReordered,
   }) {
     return categoryReordered?.call(newOrders);
@@ -1229,7 +1245,7 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
             double? categoryColorG,
             double? categoryColorB)?
         categoryUpdated,
-    TResult Function(String deletedNoteCategoryId)? categoryDeleted,
+    TResult Function(List<String> deletedNoteCategoryIds)? categoriesDeleted,
     TResult Function(List<String> newOrders)? categoryReordered,
     required TResult orElse(),
   }) {
@@ -1245,7 +1261,7 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
     required TResult Function(_CategoryLoaded value) categoryLoaded,
     required TResult Function(_CategoryCreated value) categoryCreated,
     required TResult Function(_CategoryUpdated value) categoryUpdated,
-    required TResult Function(_CategoryDeleted value) categoryDeleted,
+    required TResult Function(_CategoriesDeleted value) categoriesDeleted,
     required TResult Function(_CategoryReordered value) categoryReordered,
   }) {
     return categoryReordered(this);
@@ -1257,7 +1273,7 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
     TResult? Function(_CategoryLoaded value)? categoryLoaded,
     TResult? Function(_CategoryCreated value)? categoryCreated,
     TResult? Function(_CategoryUpdated value)? categoryUpdated,
-    TResult? Function(_CategoryDeleted value)? categoryDeleted,
+    TResult? Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult? Function(_CategoryReordered value)? categoryReordered,
   }) {
     return categoryReordered?.call(this);
@@ -1269,7 +1285,7 @@ class _$CategoryReorderedImpl implements _CategoryReordered {
     TResult Function(_CategoryLoaded value)? categoryLoaded,
     TResult Function(_CategoryCreated value)? categoryCreated,
     TResult Function(_CategoryUpdated value)? categoryUpdated,
-    TResult Function(_CategoryDeleted value)? categoryDeleted,
+    TResult Function(_CategoriesDeleted value)? categoriesDeleted,
     TResult Function(_CategoryReordered value)? categoryReordered,
     required TResult orElse(),
   }) {

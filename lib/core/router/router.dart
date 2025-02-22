@@ -4,21 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
-import '../../features/note/presentation/pages/favorite/favorites_page.dart';
-import '../../features/note/presentation/pages/home_page.dart';
-import '../../features/note/presentation/pages/note/create_note_page.dart';
-import '../../features/note/presentation/pages/note/read_note_page.dart';
-import '../../features/note/presentation/pages/note/update_note_page.dart';
-import '../../features/note/presentation/pages/reorder/reorder_note_page.dart';
-import '../../features/note/presentation/pages/search/search_note_page.dart';
-import '../../features/note/presentation/pages/selection/note_selection_page.dart';
-import '../../features/note/presentation/pages/wastebasket/wastebasket_page.dart';
-import '../../features/note_category/presentation/pages/category_notes/category_notes_page.dart';
-import '../../features/note_category/presentation/pages/create_note_category_page.dart';
-import '../../features/note_category/presentation/pages/note_category_page.dart';
-import '../../features/note_category/presentation/pages/reorder/reorder_category_page.dart';
-import '../../features/note_category/presentation/pages/selection/category_selection_page.dart';
-import '../../features/note_category/presentation/pages/update_note_category_page.dart';
+import '../../features/note/presentation/pages/note_page_export.dart';
+import '../../features/note_category/presentation/pages/note_category_export.dart';
 import '../../features/setting/presentation/cubit/app_setting_cubit.dart';
 import '../enum/previous_page.dart';
 import 'note_selection_args.dart';
@@ -195,6 +182,21 @@ final router = GoRouter(
               ),
             );
           },
+          routes: [
+            GoRoute(
+              path: RouterPath.addNoteTocategoryPage,
+              pageBuilder: (context, state) {
+                final paramsMap = state.extra as Map<String, String>;
+                final id = paramsMap['id']!;
+
+                return buildFadeTransitionPage(
+                  context: context,
+                  state: state,
+                  child: AddNoteToCategoryPage(id: id),
+                );
+              },
+            )
+          ],
         ),
         GoRoute(
           path: RouterPath.createNoteCategoryPage,

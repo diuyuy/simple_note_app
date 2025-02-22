@@ -92,13 +92,10 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
 
               if (confirm) {
                 if (context.mounted) {
-                  for (var id in selectedCategories) {
-                    context.read<NoteCategoryBloc>().add(
-                          NoteCategoryEvent.categoryDeleted(
-                            deletedNoteCategoryId: id,
-                          ),
-                        );
-                  }
+                  context.read<NoteCategoryBloc>().add(
+                        NoteCategoryEvent.categoriesDeleted(
+                            deletedNoteCategoryIds: selectedCategories),
+                      );
 
                   context.pop();
                 }

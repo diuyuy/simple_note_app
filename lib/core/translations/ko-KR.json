@@ -5,12 +5,21 @@
     "select": "선택",
     "selectAll": "모두 선택"
   },
+  "AddNoteToCategoryPage": {
+    "add": "추가",
+    "deselectAll": "선택 해제",
+    "select": "선택",
+    "selectAll": "모두 선택"
+  },
   "AppConstants": {
     "untitled": "제목 없음"
   },
+  "AssignCategoryBottomSheet": {
+    "save": "저장"
+  },
   "CategoryNotesPage": {
     "delete": "삭제",
-    "editCategory": "카테고리 수정"
+    "addNotes": "노트 추가"
   },
   "CategorySelectionPage": {
     "delete": "삭제",
@@ -56,7 +65,8 @@
   "InputCategoryInfoWidget": {
     "categoryIcon": "카테고리 아이콘",
     "categoryName": "카테고리 이름",
-    "iconColor": "아이콘 색상"
+    "iconColor": "아이콘 색상",
+    "save": "저장"
   },
   "NoteCardWidget": {
     "updateDate":"수정 날짜: {}"
@@ -108,7 +118,7 @@
     "done": "완료",
     "reorderNotes": "순서 변경"
   },
-  "SaveButton": {
+  "BottomActionButton": {
     "save": "저장"
   },
   "SearchNotePage": {
@@ -151,4 +161,5 @@
     "selectAll": "모두 선택",
     "trash": "휴지통"
   }
+  
 }

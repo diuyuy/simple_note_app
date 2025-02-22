@@ -142,8 +142,8 @@ class NoteCategoryCardWidget extends StatelessWidget {
           if (isConfirm) {
             if (context.mounted) {
               context.read<NoteCategoryBloc>().add(
-                    NoteCategoryEvent.categoryDeleted(
-                      deletedNoteCategoryId: id,
+                    NoteCategoryEvent.categoriesDeleted(
+                      deletedNoteCategoryIds: [id],
                     ),
                   );
             }

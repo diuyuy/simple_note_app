@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/features/note/presentation/widgets/selection/assign_category_bottom_sheet.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/previous_page.dart';
@@ -16,6 +15,7 @@ import '../../../domain/entities/note.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../bloc/wastebasket_bloc/waste_basket_bloc.dart';
+import '../../widgets/selection/assign_category_bottom_sheet.dart';
 import '../../widgets/selection/select_note_widget.dart';
 
 class NoteSelectionPage extends StatefulWidget {
@@ -195,14 +195,13 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
 
               if (selectedCategory != null) {
                 if (context.mounted) {
-                  for (var selectedNote in selectedNotes) {
-                    context.read<NoteBloc>().add(
-                          NoteEvent.updateNote(
-                            id: selectedNote.id,
-                            category: selectedCategory,
-                          ),
-                        );
-                  }
+                  final noteIds = selectedNotes.map((note) => note.id).toList();
+                  context.read<NoteBloc>().add(
+                        NoteEvent.updateMultipleNotesCategory(
+                          noteIds: noteIds,
+                          category: currentCategory!,
+                        ),
+                      );
                   context.pop();
                 }
               }
@@ -232,11 +231,12 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
 
               if (isConfirm) {
                 if (context.mounted) {
-                  for (var deletedNote in selectedNotes) {
-                    context
-                        .read<NoteBloc>()
-                        .add(NoteEvent.deleteNote(deletedNote: deletedNote));
-                  }
+                  context.read<NoteBloc>().add(
+                        NoteEvent.deleteMultipleNotes(
+                          deletedNotes: selectedNotes,
+                        ),
+                      );
+
                   context.pop();
                 }
               }
@@ -269,14 +269,13 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
 
               if (selectedCategory != null) {
                 if (context.mounted) {
-                  for (var selectedNote in selectedNotes) {
-                    context.read<NoteBloc>().add(
-                          NoteEvent.updateNote(
-                            id: selectedNote.id,
-                            category: selectedCategory,
-                          ),
-                        );
-                  }
+                  final noteIds = selectedNotes.map((note) => note.id).toList();
+                  context.read<NoteBloc>().add(
+                        NoteEvent.updateMultipleNotesCategory(
+                          noteIds: noteIds,
+                          category: currentCategory!,
+                        ),
+                      );
                   context.pop();
                 }
               }
@@ -306,11 +305,11 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
 
               if (isConfirm) {
                 if (context.mounted) {
-                  for (var deletedNote in selectedNotes) {
-                    context
-                        .read<NoteBloc>()
-                        .add(NoteEvent.deleteNote(deletedNote: deletedNote));
-                  }
+                  context.read<NoteBloc>().add(
+                        NoteEvent.deleteMultipleNotes(
+                          deletedNotes: selectedNotes,
+                        ),
+                      );
                   context.pop();
                 }
               }
@@ -343,14 +342,14 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
 
               if (selectedCategory != null) {
                 if (context.mounted) {
-                  for (var selectedNote in selectedNotes) {
-                    context.read<NoteBloc>().add(
-                          NoteEvent.updateNote(
-                            id: selectedNote.id,
-                            category: selectedCategory,
-                          ),
-                        );
-                  }
+                  final noteIds = selectedNotes.map((note) => note.id).toList();
+                  context.read<NoteBloc>().add(
+                        NoteEvent.updateMultipleNotesCategory(
+                          noteIds: noteIds,
+                          category: currentCategory!,
+                        ),
+                      );
+
                   context.pop();
                 }
               }
@@ -380,15 +379,12 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
 
               if (isConfirm) {
                 if (context.mounted) {
-                  for (var deletedNote in selectedNotes) {
-                    context.read<SearchNotesBloc>().add(
-                        SearchNotesBlocEvent.deleteNote(
-                            deletedNote: deletedNote));
+                  context.read<NoteBloc>().add(
+                        NoteEvent.deleteMultipleNotes(
+                          deletedNotes: selectedNotes,
+                        ),
+                      );
 
-                    context
-                        .read<NoteBloc>()
-                        .add(NoteEvent.deleteNote(deletedNote: deletedNote));
-                  }
                   context.pop();
                 }
               }
@@ -409,13 +405,12 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
                 showSelectedEmptyDialog(context, SelectedItem.note);
                 return;
               }
-              for (var selectedNote in selectedNotes) {
-                context.read<WasteBasketBloc>().add(
-                    WasteBasketEvent.restoreNote(restoredNote: selectedNote));
-                context
-                    .read<NoteBloc>()
-                    .add(NoteEvent.restoreNote(restoredNote: selectedNote));
-              }
+              context.read<WasteBasketBloc>().add(
+                    WasteBasketEvent.restoreNotes(restoredNotes: selectedNotes),
+                  );
+              context.read<NoteBloc>().add(
+                    NoteEvent.restoreNotes(restoredNotes: selectedNotes),
+                  );
 
               context.pop();
             },
@@ -436,15 +431,13 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
                   false;
               if (isConfirm) {
                 if (context.mounted) {
-                  for (var selectedNote in selectedNotes) {
-                    context.read<WasteBasketBloc>().add(
-                          WasteBasketEvent.deletePermanently(
-                            id: selectedNote.id,
-                          ),
-                        );
+                  final noteIds = selectedNotes.map((note) => note.id).toList();
 
-                    context.pop();
-                  }
+                  context.read<WasteBasketBloc>().add(
+                        WasteBasketEvent.deletePermanently(noteIds: noteIds),
+                      );
+
+                  context.pop();
                 }
               }
             },

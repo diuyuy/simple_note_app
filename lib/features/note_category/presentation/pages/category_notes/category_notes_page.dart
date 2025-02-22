@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/router/router_path.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/widgets/app_bar_back_button.dart';
@@ -29,7 +31,7 @@ class CategoryNotesPage extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
         ),
         actions: [
-          MyMenuAnchor(menuChildren: []),
+          MyMenuAnchor(menuChildren: buildMenuItemButtonList(context)),
         ],
       ),
       body: SafeArea(
@@ -69,7 +71,9 @@ class CategoryNotesPage extends StatelessWidget {
     );
   }
 
-  List<Widget> buildMenuItemButtonList(BuildContext context, String id) {
+  List<MenuItemButton> buildMenuItemButtonList(BuildContext context) {
+    final currentPath = GoRouterState.of(context).uri.path;
+
     return [
       MenuItemButton(
         style: MenuItemButton.styleFrom(
@@ -78,8 +82,16 @@ class CategoryNotesPage extends StatelessWidget {
             AppConstants.menuAnchorMinHeight.w,
           ),
         ),
-        onPressed: () {},
-        child: Text('CategoryNotesPage.editCategory'.tr()),
+        onPressed: () {
+          context.go(
+            '$currentPath/${RouterPath.addNoteTocategoryPage}',
+            extra: {
+              'id': id,
+              'categoryName': categoryName,
+            },
+          );
+        },
+        child: Text('CategoryNotesPage.addNotes'.tr()),
       ),
       MenuItemButton(
         style: MenuItemButton.styleFrom(

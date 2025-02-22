@@ -173,11 +173,11 @@ class WastebasketView extends StatelessWidget {
 
           if (isConfirm) {
             if (context.mounted) {
-              for (var waste in wastes) {
-                context
-                    .read<WasteBasketBloc>()
-                    .add(WasteBasketEvent.deletePermanently(id: waste.id));
-              }
+              final noteIds = wastes.map((waste) => waste.id).toList();
+
+              context.read<WasteBasketBloc>().add(
+                    WasteBasketEvent.deletePermanently(noteIds: noteIds),
+                  );
             }
           }
         },

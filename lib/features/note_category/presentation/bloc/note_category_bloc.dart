@@ -24,7 +24,7 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
     on<_CategoryLoaded>(_onCategoryLoaded);
     on<_CategoryCreated>(_onCategoryCreated);
     on<_CategoryUpdated>(_onCategoryUpdated);
-    on<_CategoryDeleted>(_onCategoryDeleted);
+    on<_CategoriesDeleted>(_onCategoriesDeleted);
     on<_CategoryReordered>(_onCategoryReordered);
   }
 
@@ -108,10 +108,12 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
     }
   }
 
-  void _onCategoryDeleted(
-      _CategoryDeleted event, Emitter<NoteCategoryState> emit) async {
+  void _onCategoriesDeleted(
+      _CategoriesDeleted event, Emitter<NoteCategoryState> emit) async {
     try {
-      await deleteNoteCategoryUseCase.execute(event.deletedNoteCategoryId);
+      for (var noteId in event.deletedNoteCategoryIds) {
+        await deleteNoteCategoryUseCase.execute(noteId);
+      }
 
       emit(_NoteCategoryLoadSuccess(
           categories: getAllNoteCategoriesUseCase.execute()));

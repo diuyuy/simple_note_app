@@ -13,10 +13,10 @@ class SelectNoteWidget extends StatelessWidget {
     required this.title,
     required this.date,
     required this.isFavorite,
-    required this.previousPage,
+    this.previousPage = PreviousPage.home,
     required this.onTapCheckIcon,
-    required this.content,
-    required this.query,
+    this.content = '',
+    this.query = '',
   });
 
   final bool isSelected;
@@ -57,7 +57,6 @@ class SelectNoteWidget extends StatelessWidget {
                     onTapTrailing: () {},
                   ),
           ),
-          //const Spacer(flex: 1),
           Flexible(
             flex: 1,
             child: Icon(

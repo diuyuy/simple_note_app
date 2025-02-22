@@ -33,26 +33,36 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
   final LoadNotesUseCase loadNotesUseCase;
 
   void _onLoadAllNotes(_LoadAllNotes event, Emitter<SearchNotesState> emit) {
-    final notes = loadNotesUseCase.execute();
+    try {
+      final notes = loadNotesUseCase.execute();
 
-    emit(_Loaded(query: '', notes: notes));
+      emit(_SearchNotesLoadSuccess(query: '', notes: notes));
+    } catch (e) {
+      addError(e);
+      emit(_SearchNotesLoadFailure(query: '', notes: []));
+    }
   }
 
   void _onSearched(_Searched event, Emitter<SearchNotesState> emit) {
-    final notes = loadNotesUseCase.execute();
+    try {
+      final notes = loadNotesUseCase.execute();
 
-    final filteredNotes = notes.where((note) {
-      String title =
-          note.title.isNotEmpty ? note.title : AppConstants.untitled.tr();
+      final filteredNotes = notes.where((note) {
+        String title =
+            note.title.isNotEmpty ? note.title : AppConstants.untitled.tr();
 
-      if (note.content == null) {
-        return containQuery(target: title, query: event.query);
-      }
-      return containQuery(target: note.content!, query: event.query) ||
-          containQuery(target: title, query: event.query);
-    }).toList();
+        if (note.content == null) {
+          return containQuery(target: title, query: event.query);
+        }
+        return containQuery(target: note.content!, query: event.query) ||
+            containQuery(target: title, query: event.query);
+      }).toList();
 
-    emit(_Loaded(query: event.query, notes: filteredNotes));
+      emit(_SearchNotesLoadSuccess(query: event.query, notes: filteredNotes));
+    } catch (e) {
+      addError(e);
+      emit(_SearchNotesLoadFailure(query: '', notes: []));
+    }
   }
 
   void _onTapFavorite(_TapFavorite event, Emitter<SearchNotesState> emit) {
@@ -86,5 +96,11 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
   void onChange(Change<SearchNotesState> change) {
     log('On change: $change');
     super.onChange(change);
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    log(error.toString());
+    super.onError(error, stackTrace);
   }
 }

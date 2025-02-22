@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../core/widgets/app_bar_back_button.dart';
-import '../bloc/note_category_bloc.dart';
-import '../widgets/note_category/input_category_info_widget.dart';
+import '../../../../../core/widgets/app_bar_back_button.dart';
+import '../../bloc/note_category_bloc.dart';
+import '../../widgets/note_category/input_category_info_widget.dart';
 
 class UpdateNoteCategoryPage extends StatelessWidget {
   const UpdateNoteCategoryPage({super.key, required this.id});

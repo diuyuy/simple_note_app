@@ -19,7 +19,7 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
     required this.deletePermanentlyUseCase,
   }) : super(_Initial(wastes: <Note>[])) {
     on<_LoadWastes>(_onLoadWastes);
-    on<_RestoreNote>(_onRestoreNote);
+    on<_RestoreNotes>(_onRestoreNote);
     on<_DeletePermanently>(_onDeletePermanently);
   }
 
@@ -28,23 +28,42 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
   final DeletePermanentlyUserCase deletePermanentlyUseCase;
 
   void _onLoadWastes(_LoadWastes event, Emitter<WasteBasketState> emit) {
-    final wastes = loadWastesUseCase.execute();
+    try {
+      final wastes = loadWastesUseCase.execute();
 
-    emit(_Loaded(wastes: wastes));
+      emit(_WasteBasketLoadSuccess(wastes: wastes));
+    } catch (e) {
+      addError(e);
+      emit(_WasteBasketLoadFailure(wastes: [], errorMessage: e.toString()));
+    }
   }
 
   Future<void> _onRestoreNote(
-      _RestoreNote event, Emitter<WasteBasketState> emit) async {
-    await restoreNoteUseCase.execute(event.restoredNote);
+      _RestoreNotes event, Emitter<WasteBasketState> emit) async {
+    try {
+      for (var restoredNote in event.restoredNotes) {
+        await restoreNoteUseCase.execute(restoredNote);
+      }
 
-    emit(_Loaded(wastes: loadWastesUseCase.execute()));
+      emit(_WasteBasketLoadSuccess(wastes: loadWastesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_WasteBasketLoadFailure(wastes: [], errorMessage: e.toString()));
+    }
   }
 
   Future<void> _onDeletePermanently(
       _DeletePermanently event, Emitter<WasteBasketState> emit) async {
-    await deletePermanentlyUseCase.execute(event.id);
+    try {
+      for (var noteId in event.noteIds) {
+        await deletePermanentlyUseCase.execute(noteId);
+      }
 
-    emit(_Loaded(wastes: loadWastesUseCase.execute()));
+      emit(_WasteBasketLoadSuccess(wastes: loadWastesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_WasteBasketLoadFailure(wastes: [], errorMessage: e.toString()));
+    }
   }
 
   @override

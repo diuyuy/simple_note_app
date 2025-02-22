@@ -696,38 +696,44 @@ mixin _$SearchNotesState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query, List<Note> notes) initial,
-    required TResult Function(String query, List<Note> notes) loaded,
+    required TResult Function(String query, List<Note> notes) success,
+    required TResult Function(String query, List<Note> notes) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query, List<Note> notes)? initial,
-    TResult? Function(String query, List<Note> notes)? loaded,
+    TResult? Function(String query, List<Note> notes)? success,
+    TResult? Function(String query, List<Note> notes)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, List<Note> notes)? initial,
-    TResult Function(String query, List<Note> notes)? loaded,
+    TResult Function(String query, List<Note> notes)? success,
+    TResult Function(String query, List<Note> notes)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_SearchNotesLoadSuccess value) success,
+    required TResult Function(_SearchNotesLoadFailure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_SearchNotesLoadSuccess value)? success,
+    TResult? Function(_SearchNotesLoadFailure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_SearchNotesLoadSuccess value)? success,
+    TResult Function(_SearchNotesLoadFailure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -865,7 +871,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query, List<Note> notes) initial,
-    required TResult Function(String query, List<Note> notes) loaded,
+    required TResult Function(String query, List<Note> notes) success,
+    required TResult Function(String query, List<Note> notes) failure,
   }) {
     return initial(query, notes);
   }
@@ -874,7 +881,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query, List<Note> notes)? initial,
-    TResult? Function(String query, List<Note> notes)? loaded,
+    TResult? Function(String query, List<Note> notes)? success,
+    TResult? Function(String query, List<Note> notes)? failure,
   }) {
     return initial?.call(query, notes);
   }
@@ -883,7 +891,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, List<Note> notes)? initial,
-    TResult Function(String query, List<Note> notes)? loaded,
+    TResult Function(String query, List<Note> notes)? success,
+    TResult Function(String query, List<Note> notes)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -896,7 +905,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_SearchNotesLoadSuccess value) success,
+    required TResult Function(_SearchNotesLoadFailure value) failure,
   }) {
     return initial(this);
   }
@@ -905,7 +915,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_SearchNotesLoadSuccess value)? success,
+    TResult? Function(_SearchNotesLoadFailure value)? failure,
   }) {
     return initial?.call(this);
   }
@@ -914,7 +925,8 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_SearchNotesLoadSuccess value)? success,
+    TResult Function(_SearchNotesLoadFailure value)? failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -943,22 +955,24 @@ abstract class _Initial implements SearchNotesState {
 }
 
 /// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res>
+abstract class _$$SearchNotesLoadSuccessImplCopyWith<$Res>
     implements $SearchNotesStateCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
+  factory _$$SearchNotesLoadSuccessImplCopyWith(
+          _$SearchNotesLoadSuccessImpl value,
+          $Res Function(_$SearchNotesLoadSuccessImpl) then) =
+      __$$SearchNotesLoadSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String query, List<Note> notes});
 }
 
 /// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$SearchNotesStateCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+class __$$SearchNotesLoadSuccessImplCopyWithImpl<$Res>
+    extends _$SearchNotesStateCopyWithImpl<$Res, _$SearchNotesLoadSuccessImpl>
+    implements _$$SearchNotesLoadSuccessImplCopyWith<$Res> {
+  __$$SearchNotesLoadSuccessImplCopyWithImpl(
+      _$SearchNotesLoadSuccessImpl _value,
+      $Res Function(_$SearchNotesLoadSuccessImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of SearchNotesState
@@ -969,7 +983,7 @@ class __$$LoadedImplCopyWithImpl<$Res>
     Object? query = null,
     Object? notes = null,
   }) {
-    return _then(_$LoadedImpl(
+    return _then(_$SearchNotesLoadSuccessImpl(
       query: null == query
           ? _value.query
           : query // ignore: cast_nullable_to_non_nullable
@@ -984,8 +998,9 @@ class __$$LoadedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl({required this.query, required final List<Note> notes})
+class _$SearchNotesLoadSuccessImpl implements _SearchNotesLoadSuccess {
+  const _$SearchNotesLoadSuccessImpl(
+      {required this.query, required final List<Note> notes})
       : _notes = notes;
 
   @override
@@ -1000,14 +1015,14 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'SearchNotesState.loaded(query: $query, notes: $notes)';
+    return 'SearchNotesState.success(query: $query, notes: $notes)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoadedImpl &&
+            other is _$SearchNotesLoadSuccessImpl &&
             (identical(other.query, query) || other.query == query) &&
             const DeepCollectionEquality().equals(other._notes, _notes));
   }
@@ -1021,36 +1036,40 @@ class _$LoadedImpl implements _Loaded {
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      __$$LoadedImplCopyWithImpl<_$LoadedImpl>(this, _$identity);
+  _$$SearchNotesLoadSuccessImplCopyWith<_$SearchNotesLoadSuccessImpl>
+      get copyWith => __$$SearchNotesLoadSuccessImplCopyWithImpl<
+          _$SearchNotesLoadSuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String query, List<Note> notes) initial,
-    required TResult Function(String query, List<Note> notes) loaded,
+    required TResult Function(String query, List<Note> notes) success,
+    required TResult Function(String query, List<Note> notes) failure,
   }) {
-    return loaded(query, notes);
+    return success(query, notes);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String query, List<Note> notes)? initial,
-    TResult? Function(String query, List<Note> notes)? loaded,
+    TResult? Function(String query, List<Note> notes)? success,
+    TResult? Function(String query, List<Note> notes)? failure,
   }) {
-    return loaded?.call(query, notes);
+    return success?.call(query, notes);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String query, List<Note> notes)? initial,
-    TResult Function(String query, List<Note> notes)? loaded,
+    TResult Function(String query, List<Note> notes)? success,
+    TResult Function(String query, List<Note> notes)? failure,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(query, notes);
+    if (success != null) {
+      return success(query, notes);
     }
     return orElse();
   }
@@ -1059,38 +1078,41 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_SearchNotesLoadSuccess value) success,
+    required TResult Function(_SearchNotesLoadFailure value) failure,
   }) {
-    return loaded(this);
+    return success(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_SearchNotesLoadSuccess value)? success,
+    TResult? Function(_SearchNotesLoadFailure value)? failure,
   }) {
-    return loaded?.call(this);
+    return success?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_Loaded value)? loaded,
+    TResult Function(_SearchNotesLoadSuccess value)? success,
+    TResult Function(_SearchNotesLoadFailure value)? failure,
     required TResult orElse(),
   }) {
-    if (loaded != null) {
-      return loaded(this);
+    if (success != null) {
+      return success(this);
     }
     return orElse();
   }
 }
 
-abstract class _Loaded implements SearchNotesState {
-  const factory _Loaded(
+abstract class _SearchNotesLoadSuccess implements SearchNotesState {
+  const factory _SearchNotesLoadSuccess(
       {required final String query,
-      required final List<Note> notes}) = _$LoadedImpl;
+      required final List<Note> notes}) = _$SearchNotesLoadSuccessImpl;
 
   @override
   String get query;
@@ -1101,6 +1123,179 @@ abstract class _Loaded implements SearchNotesState {
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$LoadedImplCopyWith<_$LoadedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SearchNotesLoadSuccessImplCopyWith<_$SearchNotesLoadSuccessImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchNotesLoadFailureImplCopyWith<$Res>
+    implements $SearchNotesStateCopyWith<$Res> {
+  factory _$$SearchNotesLoadFailureImplCopyWith(
+          _$SearchNotesLoadFailureImpl value,
+          $Res Function(_$SearchNotesLoadFailureImpl) then) =
+      __$$SearchNotesLoadFailureImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String query, List<Note> notes});
+}
+
+/// @nodoc
+class __$$SearchNotesLoadFailureImplCopyWithImpl<$Res>
+    extends _$SearchNotesStateCopyWithImpl<$Res, _$SearchNotesLoadFailureImpl>
+    implements _$$SearchNotesLoadFailureImplCopyWith<$Res> {
+  __$$SearchNotesLoadFailureImplCopyWithImpl(
+      _$SearchNotesLoadFailureImpl _value,
+      $Res Function(_$SearchNotesLoadFailureImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of SearchNotesState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? query = null,
+    Object? notes = null,
+  }) {
+    return _then(_$SearchNotesLoadFailureImpl(
+      query: null == query
+          ? _value.query
+          : query // ignore: cast_nullable_to_non_nullable
+              as String,
+      notes: null == notes
+          ? _value._notes
+          : notes // ignore: cast_nullable_to_non_nullable
+              as List<Note>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SearchNotesLoadFailureImpl implements _SearchNotesLoadFailure {
+  const _$SearchNotesLoadFailureImpl(
+      {required this.query, required final List<Note> notes})
+      : _notes = notes;
+
+  @override
+  final String query;
+  final List<Note> _notes;
+  @override
+  List<Note> get notes {
+    if (_notes is EqualUnmodifiableListView) return _notes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_notes);
+  }
+
+  @override
+  String toString() {
+    return 'SearchNotesState.failure(query: $query, notes: $notes)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SearchNotesLoadFailureImpl &&
+            (identical(other.query, query) || other.query == query) &&
+            const DeepCollectionEquality().equals(other._notes, _notes));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, query, const DeepCollectionEquality().hash(_notes));
+
+  /// Create a copy of SearchNotesState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SearchNotesLoadFailureImplCopyWith<_$SearchNotesLoadFailureImpl>
+      get copyWith => __$$SearchNotesLoadFailureImplCopyWithImpl<
+          _$SearchNotesLoadFailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String query, List<Note> notes) initial,
+    required TResult Function(String query, List<Note> notes) success,
+    required TResult Function(String query, List<Note> notes) failure,
+  }) {
+    return failure(query, notes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String query, List<Note> notes)? initial,
+    TResult? Function(String query, List<Note> notes)? success,
+    TResult? Function(String query, List<Note> notes)? failure,
+  }) {
+    return failure?.call(query, notes);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String query, List<Note> notes)? initial,
+    TResult Function(String query, List<Note> notes)? success,
+    TResult Function(String query, List<Note> notes)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(query, notes);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_SearchNotesLoadSuccess value) success,
+    required TResult Function(_SearchNotesLoadFailure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_SearchNotesLoadSuccess value)? success,
+    TResult? Function(_SearchNotesLoadFailure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_SearchNotesLoadSuccess value)? success,
+    TResult Function(_SearchNotesLoadFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchNotesLoadFailure implements SearchNotesState {
+  const factory _SearchNotesLoadFailure(
+      {required final String query,
+      required final List<Note> notes}) = _$SearchNotesLoadFailureImpl;
+
+  @override
+  String get query;
+  @override
+  List<Note> get notes;
+
+  /// Create a copy of SearchNotesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SearchNotesLoadFailureImplCopyWith<_$SearchNotesLoadFailureImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

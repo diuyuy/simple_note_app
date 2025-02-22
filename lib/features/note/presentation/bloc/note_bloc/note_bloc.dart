@@ -26,9 +26,11 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     on<_CreateNote>(_onCreateNote);
     on<_LoadNotes>(_onLoadNotes);
     on<_UpdateNote>(_onUpdateNote);
+    on<_UpdateMultipleNotesCategory>(_onUpdateMultipleNotesCategory);
     on<_DeleteNote>(_onDeleteNote);
+    on<_DeleteMultipleNotes>(_onDeleteMultipleNotes);
     on<_ReorderNotes>(_onReorderNotes);
-    on<_RestoreNote>(_onRestoreNote);
+    on<_RestoreNotes>(_onRestoreNotes);
   }
 
   final CreateNoteUseCase createNoteUseCase;
@@ -40,68 +42,128 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
   final Uuid _uuid = Uuid();
 
   Future<void> _onCreateNote(_CreateNote event, Emitter<NoteState> emit) async {
-    final id = _uuid.v4();
+    try {
+      final id = _uuid.v4();
 
-    final newNote = Note(
-      id: id,
-      title: event.title,
-      content: event.content,
-      createDate: event.createDate,
-      isFavorite: event.isFavorite ?? false,
-      category: event.category,
-    );
+      final newNote = Note(
+        id: id,
+        title: event.title,
+        content: event.content,
+        createDate: event.createDate,
+        isFavorite: event.isFavorite ?? false,
+        category: event.category,
+      );
 
-    await createNoteUseCase.execute(newNote);
+      await createNoteUseCase.execute(newNote);
 
-    emit(_Loaded(notes: loadNotesUseCase.execute()));
+      emit(_NoteLoadSuccess(notes: loadNotesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
   }
 
   void _onLoadNotes(_LoadNotes event, Emitter<NoteState> emit) {
-    final notes = loadNotesUseCase.execute();
+    try {
+      final notes = loadNotesUseCase.execute();
 
-    emit(_Loaded(notes: notes));
+      emit(_NoteLoadSuccess(notes: notes));
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
   }
 
   Future<void> _onUpdateNote(_UpdateNote event, Emitter<NoteState> emit) async {
-    final index = state.notes.indexWhere((note) => note.id == event.id);
-    final currentNote = state.notes[index];
+    try {
+      final index = state.notes.indexWhere((note) => note.id == event.id);
+      final currentNote = state.notes[index];
 
-    final updatedNote = currentNote.copyWith(
-      title: event.title ?? currentNote.title,
-      content: event.content ?? currentNote.content,
-      createDate: currentNote.createDate,
-      isFavorite: event.isFavorite ?? currentNote.isFavorite,
-      category: event.category ?? currentNote.category,
-    );
+      final updatedNote = currentNote.copyWith(
+        title: event.title ?? currentNote.title,
+        content: event.content ?? currentNote.content,
+        createDate: currentNote.createDate,
+        isFavorite: event.isFavorite ?? currentNote.isFavorite,
+        category: event.category ?? currentNote.category,
+      );
 
-    await updateNoteUseCase.execute(updatedNote);
+      await updateNoteUseCase.execute(updatedNote);
 
-    emit(_Loaded(notes: loadNotesUseCase.execute()));
+      emit(_NoteLoadSuccess(notes: loadNotesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> _onUpdateMultipleNotesCategory(
+      _UpdateMultipleNotesCategory event, Emitter<NoteState> emit) async {
+    try {
+      final noteIds = event.noteIds;
+      for (final noteId in noteIds) {
+        final currentNote = state.notes.firstWhere((note) => note.id == noteId);
+        final updatedNote = currentNote.copyWith(
+          category: event.category,
+        );
+        await updateNoteUseCase.execute(updatedNote);
+      }
+
+      emit(_NoteLoadSuccess(notes: loadNotesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
   }
 
   Future<void> _onDeleteNote(_DeleteNote event, Emitter<NoteState> emit) async {
-    await deleteNoteUseCase.execute(event.deletedNote);
+    try {
+      await deleteNoteUseCase.execute(event.deletedNote);
 
-    emit(_Loaded(notes: loadNotesUseCase.execute()));
+      emit(_NoteLoadSuccess(notes: loadNotesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
+  }
+
+  Future<void> _onDeleteMultipleNotes(
+      _DeleteMultipleNotes event, Emitter<NoteState> emit) async {
+    try {
+      final deletedNotes = event.deletedNotes;
+      for (var deletedNote in deletedNotes) {
+        await deleteNoteUseCase.execute(deletedNote);
+      }
+      emit(_NoteLoadSuccess(notes: loadNotesUseCase.execute()));
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
   }
 
   Future<void> _onReorderNotes(
       _ReorderNotes event, Emitter<NoteState> emit) async {
-    List<Note> orderdNotes = event.newOrder.map((id) {
-      final note = state.notes.firstWhere((note) => note.id == id);
+    try {
+      var orderdNotes = event.newOrder.map((id) {
+        final note = state.notes.firstWhere((note) => note.id == id);
 
-      return note;
-    }).toList();
+        return note;
+      }).toList();
 
-    emit(_Loaded(notes: orderdNotes));
-    await reorderNotesUseCase.execute(event.newOrder);
+      emit(_NoteLoadSuccess(notes: orderdNotes));
+      await reorderNotesUseCase.execute(event.newOrder);
+    } catch (e) {
+      addError(e);
+      emit(_NoteLoadFailure(notes: [], errorMessage: e.toString()));
+    }
   }
 
-  void _onRestoreNote(_RestoreNote event, Emitter<NoteState> emit) {
+  void _onRestoreNotes(_RestoreNotes event, Emitter<NoteState> emit) {
     var notes = [...state.notes];
-    notes.insert(0, event.restoredNote);
+    for (var restoredNote in event.restoredNotes) {
+      notes.insert(0, restoredNote);
+    }
 
-    emit(_Loaded(notes: notes));
+    emit(_NoteLoadSuccess(notes: notes));
   }
 
   @override
@@ -112,7 +174,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
 
   @override
   void onChange(Change<NoteState> change) {
-    log('${DateTime.now()}');
+    log(change.toString());
     super.onChange(change);
   }
 }
