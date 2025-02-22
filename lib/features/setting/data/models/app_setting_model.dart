@@ -6,7 +6,11 @@ part 'app_setting_model.freezed.dart';
 class AppSettingModel with _$AppSettingModel {
   const factory AppSettingModel({
     @Default(true) bool isExitOnHome,
+    @Default(false) bool isDarkMode,
     @Default(0xFF2196F3) int themeColor,
     @Default(4) int fontSize,
+    @Default(1.0) double textHeight,
+    @Default(false) bool isAutoSave,
+    @Default(0) int autoDeleteDays,
   }) = _AppSettingModel;
 }

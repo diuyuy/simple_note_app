@@ -17,8 +17,12 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppSetting {
   bool get isExitOnHome => throw _privateConstructorUsedError;
+  bool get isDarkMode => throw _privateConstructorUsedError;
   int get themeColor => throw _privateConstructorUsedError;
   int get fontSize => throw _privateConstructorUsedError;
+  double get textHeight => throw _privateConstructorUsedError;
+  bool get isAutoSave => throw _privateConstructorUsedError;
+  int get autoDeleteDays => throw _privateConstructorUsedError;
 
   /// Create a copy of AppSetting
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +37,14 @@ abstract class $AppSettingCopyWith<$Res> {
           AppSetting value, $Res Function(AppSetting) then) =
       _$AppSettingCopyWithImpl<$Res, AppSetting>;
   @useResult
-  $Res call({bool isExitOnHome, int themeColor, int fontSize});
+  $Res call(
+      {bool isExitOnHome,
+      bool isDarkMode,
+      int themeColor,
+      int fontSize,
+      double textHeight,
+      bool isAutoSave,
+      int autoDeleteDays});
 }
 
 /// @nodoc
@@ -52,13 +63,21 @@ class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
   @override
   $Res call({
     Object? isExitOnHome = null,
+    Object? isDarkMode = null,
     Object? themeColor = null,
     Object? fontSize = null,
+    Object? textHeight = null,
+    Object? isAutoSave = null,
+    Object? autoDeleteDays = null,
   }) {
     return _then(_value.copyWith(
       isExitOnHome: null == isExitOnHome
           ? _value.isExitOnHome
           : isExitOnHome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDarkMode: null == isDarkMode
+          ? _value.isDarkMode
+          : isDarkMode // ignore: cast_nullable_to_non_nullable
               as bool,
       themeColor: null == themeColor
           ? _value.themeColor
@@ -67,6 +86,18 @@ class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
       fontSize: null == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      textHeight: null == textHeight
+          ? _value.textHeight
+          : textHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      isAutoSave: null == isAutoSave
+          ? _value.isAutoSave
+          : isAutoSave // ignore: cast_nullable_to_non_nullable
+              as bool,
+      autoDeleteDays: null == autoDeleteDays
+          ? _value.autoDeleteDays
+          : autoDeleteDays // ignore: cast_nullable_to_non_nullable
               as int,
     ) as $Val);
   }
@@ -80,7 +111,14 @@ abstract class _$$AppSettingImplCopyWith<$Res>
       __$$AppSettingImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isExitOnHome, int themeColor, int fontSize});
+  $Res call(
+      {bool isExitOnHome,
+      bool isDarkMode,
+      int themeColor,
+      int fontSize,
+      double textHeight,
+      bool isAutoSave,
+      int autoDeleteDays});
 }
 
 /// @nodoc
@@ -97,13 +135,21 @@ class __$$AppSettingImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExitOnHome = null,
+    Object? isDarkMode = null,
     Object? themeColor = null,
     Object? fontSize = null,
+    Object? textHeight = null,
+    Object? isAutoSave = null,
+    Object? autoDeleteDays = null,
   }) {
     return _then(_$AppSettingImpl(
       isExitOnHome: null == isExitOnHome
           ? _value.isExitOnHome
           : isExitOnHome // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDarkMode: null == isDarkMode
+          ? _value.isDarkMode
+          : isDarkMode // ignore: cast_nullable_to_non_nullable
               as bool,
       themeColor: null == themeColor
           ? _value.themeColor
@@ -112,6 +158,18 @@ class __$$AppSettingImplCopyWithImpl<$Res>
       fontSize: null == fontSize
           ? _value.fontSize
           : fontSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      textHeight: null == textHeight
+          ? _value.textHeight
+          : textHeight // ignore: cast_nullable_to_non_nullable
+              as double,
+      isAutoSave: null == isAutoSave
+          ? _value.isAutoSave
+          : isAutoSave // ignore: cast_nullable_to_non_nullable
+              as bool,
+      autoDeleteDays: null == autoDeleteDays
+          ? _value.autoDeleteDays
+          : autoDeleteDays // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -122,22 +180,38 @@ class __$$AppSettingImplCopyWithImpl<$Res>
 class _$AppSettingImpl implements _AppSetting {
   const _$AppSettingImpl(
       {this.isExitOnHome = true,
+      this.isDarkMode = false,
       this.themeColor = 0xFF2196F3,
-      this.fontSize = 4});
+      this.fontSize = 4,
+      this.textHeight = 1.0,
+      this.isAutoSave = false,
+      this.autoDeleteDays = 0});
 
   @override
   @JsonKey()
   final bool isExitOnHome;
   @override
   @JsonKey()
+  final bool isDarkMode;
+  @override
+  @JsonKey()
   final int themeColor;
   @override
   @JsonKey()
   final int fontSize;
+  @override
+  @JsonKey()
+  final double textHeight;
+  @override
+  @JsonKey()
+  final bool isAutoSave;
+  @override
+  @JsonKey()
+  final int autoDeleteDays;
 
   @override
   String toString() {
-    return 'AppSetting(isExitOnHome: $isExitOnHome, themeColor: $themeColor, fontSize: $fontSize)';
+    return 'AppSetting(isExitOnHome: $isExitOnHome, isDarkMode: $isDarkMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
   }
 
   @override
@@ -147,15 +221,23 @@ class _$AppSettingImpl implements _AppSetting {
             other is _$AppSettingImpl &&
             (identical(other.isExitOnHome, isExitOnHome) ||
                 other.isExitOnHome == isExitOnHome) &&
+            (identical(other.isDarkMode, isDarkMode) ||
+                other.isDarkMode == isDarkMode) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
             (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize));
+                other.fontSize == fontSize) &&
+            (identical(other.textHeight, textHeight) ||
+                other.textHeight == textHeight) &&
+            (identical(other.isAutoSave, isAutoSave) ||
+                other.isAutoSave == isAutoSave) &&
+            (identical(other.autoDeleteDays, autoDeleteDays) ||
+                other.autoDeleteDays == autoDeleteDays));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, isExitOnHome, themeColor, fontSize);
+  int get hashCode => Object.hash(runtimeType, isExitOnHome, isDarkMode,
+      themeColor, fontSize, textHeight, isAutoSave, autoDeleteDays);
 
   /// Create a copy of AppSetting
   /// with the given fields replaced by the non-null parameter values.
@@ -169,15 +251,27 @@ class _$AppSettingImpl implements _AppSetting {
 abstract class _AppSetting implements AppSetting {
   const factory _AppSetting(
       {final bool isExitOnHome,
+      final bool isDarkMode,
       final int themeColor,
-      final int fontSize}) = _$AppSettingImpl;
+      final int fontSize,
+      final double textHeight,
+      final bool isAutoSave,
+      final int autoDeleteDays}) = _$AppSettingImpl;
 
   @override
   bool get isExitOnHome;
   @override
+  bool get isDarkMode;
+  @override
   int get themeColor;
   @override
   int get fontSize;
+  @override
+  double get textHeight;
+  @override
+  bool get isAutoSave;
+  @override
+  int get autoDeleteDays;
 
   /// Create a copy of AppSetting
   /// with the given fields replaced by the non-null parameter values.

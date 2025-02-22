@@ -24,6 +24,10 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
       isExitOnHome: appSetting.isExitOnHome,
       themeColor: appSetting.themeColor,
       fontSize: appSetting.fontSize,
+      isAutoSave: appSetting.isAutoSave,
+      isDarkMode: appSetting.isDarkMode,
+      textHeight: appSetting.textHeight,
+      autoDeleteDays: appSetting.autoDeleteDays,
     );
   }
 
@@ -32,6 +36,10 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
       isExitOnHome: appSetting.isExitOnHome,
       themeColor: appSetting.themeColor,
       fontSize: appSetting.fontSize,
+      isAutoSave: appSetting.isAutoSave,
+      isDarkMode: appSetting.isDarkMode,
+      textHeight: appSetting.textHeight,
+      autoDeleteDays: appSetting.autoDeleteDays,
     );
   }
 }
