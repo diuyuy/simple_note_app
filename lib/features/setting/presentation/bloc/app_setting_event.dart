@@ -6,7 +6,7 @@ class AppSettingEvent with _$AppSettingEvent {
   const factory AppSettingEvent.appSettingLoaded() = _AppSettingLoaded;
   const factory AppSettingEvent.appSettingUpdated({
     bool? isExitOnHome,
-    bool? isDarkMode,
+    int? themeMode,
     int? themeColor,
     int? fontSize,
     double? textHeight,

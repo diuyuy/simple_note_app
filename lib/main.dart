@@ -40,7 +40,8 @@ void main() async {
             create: (context) {
               final appSettingRepository = getIt<AppSettingRepository>();
 
-              return AppSettingBloc(appSettingRepository);
+              return AppSettingBloc(appSettingRepository)
+                ..add(AppSettingEvent.appSettingLoaded());
             },
           ),
           BlocProvider<NoteBloc>(
@@ -111,15 +112,26 @@ class MyApp extends StatelessWidget {
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: themeColor),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: themeColor,
+              brightness: Brightness.light,
+            ),
+            brightness: Brightness.light,
             useMaterial3: true,
           ),
           darkTheme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: themeColor),
+            colorScheme: ColorScheme.fromSeed(
+              seedColor: themeColor,
+              brightness: Brightness.dark,
+            ),
             brightness: Brightness.dark,
             useMaterial3: true,
           ),
-          themeMode: appSetting.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+          themeMode: switch (appSetting.themeMode) {
+            0 => ThemeMode.light,
+            1 => ThemeMode.dark,
+            _ => ThemeMode.system,
+          },
         );
       },
     );

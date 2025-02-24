@@ -14,6 +14,14 @@ class NoteLocalDatasource {
     await insertOrder(0, newNote.id);
   }
 
+  NoteModel getNote(String id) {
+    final note = _box.get(id);
+
+    if (note == null) throw Exception('Invalid note Id');
+
+    return note;
+  }
+
   List<NoteModel> getNoteList() {
     if (_orderBox.isEmpty) {
       _orderBox.add(NoteOrder());

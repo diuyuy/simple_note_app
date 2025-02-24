@@ -45,7 +45,12 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
         await restoreNoteUseCase.execute(restoredNote);
       }
 
-      emit(_WasteBasketLoadSuccess(wastes: loadWastesUseCase.execute()));
+      emit(
+        _WasteBasketLoadSuccess(
+          wastes: loadWastesUseCase.execute(),
+          isAfterRestore: true,
+        ),
+      );
     } catch (e) {
       addError(e);
       emit(_WasteBasketLoadFailure(wastes: [], errorMessage: e.toString()));

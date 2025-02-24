@@ -14,7 +14,7 @@ class SelectNoteWidget extends StatelessWidget {
     required this.date,
     required this.isFavorite,
     this.previousPage = PreviousPage.home,
-    required this.onTapCheckIcon,
+    required this.onTap,
     this.content = '',
     this.query = '',
   });
@@ -27,14 +27,14 @@ class SelectNoteWidget extends StatelessWidget {
   final String date;
   final bool isFavorite;
   final PreviousPage previousPage;
-  final void Function(String id) onTapCheckIcon;
+  final void Function(String id) onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTap: () {
-        onTapCheckIcon(id);
+        onTap(id);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

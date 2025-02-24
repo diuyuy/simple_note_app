@@ -43,66 +43,72 @@ class _ReorderCategoryPageState extends State<ReorderCategoryPage> {
         leading: const AppBarBackButton(),
         title: Text('ReorderCategoryPage.reorderCategories'.tr()),
         actions: [
-          TextButton(
-            onPressed: () {
-              context
-                  .read<NoteCategoryBloc>()
-                  .add(NoteCategoryEvent.categoryReordered(newOrders: orders));
+          BlocListener<NoteCategoryBloc, NoteCategoryState>(
+            listenWhen: (previous, current) {
+              return current.when(
+                initial: (categories) => true,
+                loadSuccess: (categories) => true,
+                failure: (categories, errorMessage) => false,
+              );
             },
-            child: Text('ReorderCategoryPage.done'.tr()),
+            listener: (context, state) {
+              context.pop();
+            },
+            child: TextButton(
+              onPressed: () {
+                context.read<NoteCategoryBloc>().add(
+                    NoteCategoryEvent.categoryReordered(newOrders: orders));
+              },
+              child: Text('ReorderCategoryPage.done'.tr()),
+            ),
           ),
         ],
       ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: BlocListener<NoteCategoryBloc, NoteCategoryState>(
-            listener: (context, state) {
-              context.pop();
+          child: Builder(
+            builder: (context) {
+              final categories =
+                  context.watch<NoteCategoryBloc>().state.categories;
+              final notes = context.watch<NoteBloc>().state.notes;
+
+              return ReorderableListView.builder(
+                proxyDecorator: (child, index, animation) {
+                  return Material(
+                    elevation: 4,
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.transparent,
+                    child: child,
+                  );
+                },
+                itemBuilder: (context, index) {
+                  final category = categories
+                      .firstWhere((category) => category.id == orders[index]);
+                  final int noteCount = notes
+                      .where((note) => note.category == category.id)
+                      .length;
+
+                  return NoteCategoryCardWidget(
+                    key: Key(category.id),
+                    id: category.id,
+                    categoryName: category.categoryName,
+                    categoryIconCodePoint: category.iconCode,
+                    noteCount: noteCount,
+                    index: index,
+                    color: Color.from(
+                      alpha: category.categoryColorA,
+                      red: category.categoryColorR,
+                      green: category.categoryColorG,
+                      blue: category.categoryColorB,
+                    ),
+                    enabledOrder: true,
+                  );
+                },
+                itemCount: orders.length,
+                onReorder: onReorder,
+              );
             },
-            child: Builder(
-              builder: (context) {
-                final categories =
-                    context.watch<NoteCategoryBloc>().state.categories;
-                final notes = context.watch<NoteBloc>().state.notes;
-
-                return ReorderableListView.builder(
-                  proxyDecorator: (child, index, animation) {
-                    return Material(
-                      elevation: 4,
-                      borderRadius: BorderRadius.circular(8),
-                      color: Colors.transparent,
-                      child: child,
-                    );
-                  },
-                  itemBuilder: (context, index) {
-                    final category = categories
-                        .firstWhere((category) => category.id == orders[index]);
-                    final int noteCount = notes
-                        .where((note) => note.category == category.id)
-                        .length;
-
-                    return NoteCategoryCardWidget(
-                      key: Key(category.id),
-                      id: category.id,
-                      categoryName: category.categoryName,
-                      categoryIconCodePoint: category.iconCode,
-                      noteCount: noteCount,
-                      index: index,
-                      color: Color.from(
-                        alpha: category.categoryColorA,
-                        red: category.categoryColorR,
-                        green: category.categoryColorG,
-                        blue: category.categoryColorB,
-                      ),
-                      enabledOrder: true,
-                    );
-                  },
-                  itemCount: orders.length,
-                  onReorder: onReorder,
-                );
-              },
-            ),
           ),
         ),
       ),

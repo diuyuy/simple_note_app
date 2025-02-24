@@ -10,14 +10,21 @@ class WastebasketRepositoryImpl implements WastebasketRepository {
   WastebasketRepositoryImpl(this._localDatasource);
 
   @override
-  List<Note> loadAllWastes() {
-    final notes = _localDatasource.loadAllWastes();
-    return notes.map((note) => noteModelToEntity(note)).toList();
+  Future<void> addDeletedNote(Note deletedNote) async {
+    await _localDatasource.addDeletedNote(noteToModel(deletedNote));
   }
 
   @override
-  Future<void> addDeletedNote(Note deletedNote) async {
-    await _localDatasource.addDeletedNote(noteToModel(deletedNote));
+  Note getWaste(String id) {
+    final waste = _localDatasource.getWaste(id);
+
+    return noteModelToEntity(waste);
+  }
+
+  @override
+  List<Note> loadAllWastes() {
+    final notes = _localDatasource.loadAllWastes();
+    return notes.map((note) => noteModelToEntity(note)).toList();
   }
 
   @override

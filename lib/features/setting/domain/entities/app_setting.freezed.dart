@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AppSetting {
   bool get isExitOnHome => throw _privateConstructorUsedError;
-  bool get isDarkMode => throw _privateConstructorUsedError;
+  int get themeMode => throw _privateConstructorUsedError;
   int get themeColor => throw _privateConstructorUsedError;
   int get fontSize => throw _privateConstructorUsedError;
   double get textHeight => throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ abstract class $AppSettingCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isExitOnHome,
-      bool isDarkMode,
+      int themeMode,
       int themeColor,
       int fontSize,
       double textHeight,
@@ -63,7 +63,7 @@ class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
   @override
   $Res call({
     Object? isExitOnHome = null,
-    Object? isDarkMode = null,
+    Object? themeMode = null,
     Object? themeColor = null,
     Object? fontSize = null,
     Object? textHeight = null,
@@ -75,10 +75,10 @@ class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
           ? _value.isExitOnHome
           : isExitOnHome // ignore: cast_nullable_to_non_nullable
               as bool,
-      isDarkMode: null == isDarkMode
-          ? _value.isDarkMode
-          : isDarkMode // ignore: cast_nullable_to_non_nullable
-              as bool,
+      themeMode: null == themeMode
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as int,
       themeColor: null == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$AppSettingImplCopyWith<$Res>
   @useResult
   $Res call(
       {bool isExitOnHome,
-      bool isDarkMode,
+      int themeMode,
       int themeColor,
       int fontSize,
       double textHeight,
@@ -135,7 +135,7 @@ class __$$AppSettingImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExitOnHome = null,
-    Object? isDarkMode = null,
+    Object? themeMode = null,
     Object? themeColor = null,
     Object? fontSize = null,
     Object? textHeight = null,
@@ -147,10 +147,10 @@ class __$$AppSettingImplCopyWithImpl<$Res>
           ? _value.isExitOnHome
           : isExitOnHome // ignore: cast_nullable_to_non_nullable
               as bool,
-      isDarkMode: null == isDarkMode
-          ? _value.isDarkMode
-          : isDarkMode // ignore: cast_nullable_to_non_nullable
-              as bool,
+      themeMode: null == themeMode
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as int,
       themeColor: null == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -180,7 +180,7 @@ class __$$AppSettingImplCopyWithImpl<$Res>
 class _$AppSettingImpl implements _AppSetting {
   const _$AppSettingImpl(
       {this.isExitOnHome = true,
-      this.isDarkMode = false,
+      this.themeMode = 0,
       this.themeColor = 0xFF2196F3,
       this.fontSize = 4,
       this.textHeight = 1.0,
@@ -192,7 +192,7 @@ class _$AppSettingImpl implements _AppSetting {
   final bool isExitOnHome;
   @override
   @JsonKey()
-  final bool isDarkMode;
+  final int themeMode;
   @override
   @JsonKey()
   final int themeColor;
@@ -211,7 +211,7 @@ class _$AppSettingImpl implements _AppSetting {
 
   @override
   String toString() {
-    return 'AppSetting(isExitOnHome: $isExitOnHome, isDarkMode: $isDarkMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
+    return 'AppSetting(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
   }
 
   @override
@@ -221,8 +221,8 @@ class _$AppSettingImpl implements _AppSetting {
             other is _$AppSettingImpl &&
             (identical(other.isExitOnHome, isExitOnHome) ||
                 other.isExitOnHome == isExitOnHome) &&
-            (identical(other.isDarkMode, isDarkMode) ||
-                other.isDarkMode == isDarkMode) &&
+            (identical(other.themeMode, themeMode) ||
+                other.themeMode == themeMode) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
             (identical(other.fontSize, fontSize) ||
@@ -236,7 +236,7 @@ class _$AppSettingImpl implements _AppSetting {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExitOnHome, isDarkMode,
+  int get hashCode => Object.hash(runtimeType, isExitOnHome, themeMode,
       themeColor, fontSize, textHeight, isAutoSave, autoDeleteDays);
 
   /// Create a copy of AppSetting
@@ -251,7 +251,7 @@ class _$AppSettingImpl implements _AppSetting {
 abstract class _AppSetting implements AppSetting {
   const factory _AppSetting(
       {final bool isExitOnHome,
-      final bool isDarkMode,
+      final int themeMode,
       final int themeColor,
       final int fontSize,
       final double textHeight,
@@ -261,7 +261,7 @@ abstract class _AppSetting implements AppSetting {
   @override
   bool get isExitOnHome;
   @override
-  bool get isDarkMode;
+  int get themeMode;
   @override
   int get themeColor;
   @override

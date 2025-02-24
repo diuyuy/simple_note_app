@@ -30,7 +30,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     on<_DeleteNote>(_onDeleteNote);
     on<_DeleteMultipleNotes>(_onDeleteMultipleNotes);
     on<_ReorderNotes>(_onReorderNotes);
-    on<_RestoreNotes>(_onRestoreNotes);
+    //on<_RestoreNotes>(_onRestoreNotes);
   }
 
   final CreateNoteUseCase createNoteUseCase;
@@ -157,14 +157,14 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     }
   }
 
-  void _onRestoreNotes(_RestoreNotes event, Emitter<NoteState> emit) {
-    var notes = [...state.notes];
-    for (var restoredNote in event.restoredNotes) {
-      notes.insert(0, restoredNote);
-    }
+  // void _onRestoreNotes(_RestoreNotes event, Emitter<NoteState> emit) {
+  //   var notes = [...state.notes];
+  //   for (var restoredNote in event.restoredNotes) {
+  //     notes.insert(0, restoredNote);
+  //   }
 
-    emit(_NoteLoadSuccess(notes: notes));
-  }
+  //   emit(_NoteLoadSuccess(notes: notes));
+  // }
 
   @override
   void onError(Object error, StackTrace stackTrace) {

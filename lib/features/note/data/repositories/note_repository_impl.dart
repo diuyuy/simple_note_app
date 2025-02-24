@@ -10,6 +10,13 @@ class NoteRepositoryImpl implements NoteRepository {
   final NoteLocalDatasource _localDatasource;
 
   @override
+  Note getNote(String id) {
+    final noteModel = _localDatasource.getNote(id);
+
+    return noteModelToEntity(noteModel);
+  }
+
+  @override
   List<Note> loadNoteList() {
     final noteList = _localDatasource.getNoteList();
     return noteList.map((note) => noteModelToEntity(note)).toList();

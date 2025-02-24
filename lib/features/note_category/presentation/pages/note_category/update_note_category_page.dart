@@ -1,10 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 import '../../../../../core/widgets/app_bar_back_button.dart';
-import '../../bloc/note_category_bloc.dart';
 import '../../widgets/note_category/input_category_info_widget.dart';
 
 class UpdateNoteCategoryPage extends StatelessWidget {
@@ -23,12 +20,7 @@ class UpdateNoteCategoryPage extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8.0),
-          child: BlocListener<NoteCategoryBloc, NoteCategoryState>(
-            listener: (context, state) {
-              context.pop();
-            },
-            child: InputCategoryInfoWidget(id: id),
-          ),
+          child: InputCategoryInfoWidget(id: id),
         ),
       ),
       resizeToAvoidBottomInset: false,

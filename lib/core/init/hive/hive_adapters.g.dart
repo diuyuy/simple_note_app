@@ -104,7 +104,7 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
     };
     return AppSettingModel(
       isExitOnHome: fields[1] as bool,
-      isDarkMode: fields[3] as bool,
+      themeMode: (fields[7] as num).toInt(),
       themeColor: (fields[2] as num).toInt(),
       fontSize: (fields[0] as num).toInt(),
       textHeight: (fields[4] as num).toDouble(),
@@ -123,14 +123,14 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
       ..write(obj.isExitOnHome)
       ..writeByte(2)
       ..write(obj.themeColor)
-      ..writeByte(3)
-      ..write(obj.isDarkMode)
       ..writeByte(4)
       ..write(obj.textHeight)
       ..writeByte(5)
       ..write(obj.isAutoSave)
       ..writeByte(6)
-      ..write(obj.autoDeleteDays);
+      ..write(obj.autoDeleteDays)
+      ..writeByte(7)
+      ..write(obj.themeMode);
   }
 
   @override

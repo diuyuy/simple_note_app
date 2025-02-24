@@ -38,7 +38,7 @@ class AppSettingBloc extends Bloc<AppSettingEvent, AppSettingState> {
 
       final updatedAppSetting = currentSetting.copyWith(
         isExitOnHome: event.isExitOnHome ?? currentSetting.isExitOnHome,
-        isDarkMode: event.isDarkMode ?? currentSetting.isDarkMode,
+        themeMode: event.themeMode ?? currentSetting.themeMode,
         themeColor: event.themeColor ?? currentSetting.themeColor,
         fontSize: event.fontSize ?? currentSetting.fontSize,
         isAutoSave: event.isAutoSave ?? currentSetting.isAutoSave,
@@ -60,5 +60,11 @@ class AppSettingBloc extends Bloc<AppSettingEvent, AppSettingState> {
   void onError(Object error, StackTrace stackTrace) {
     log(error.toString());
     super.onError(error, stackTrace);
+  }
+
+  @override
+  void onChange(Change<AppSettingState> change) {
+    log(change.toString());
+    super.onChange(change);
   }
 }

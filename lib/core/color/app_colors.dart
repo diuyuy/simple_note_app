@@ -23,16 +23,35 @@ class AppColors {
     0xFF9C27B0, // Colors.purple
   ];
 
-  static const List<int> colorPalette = [
-    0xFFF44336, //red
-    0xFFFF9800, //orange
-    0xFFFFEB3B, //yellow
-    0xFF4CAF50, //green
-    0xFF2095F3, //blue
-    0xFF3F51B5, //
-    0xFF5B2A86, //purple
-    0xFF9C27B0, //midDarkGrey
+  static const List<int> seedColors = [
+    0xFFF44336, // Colors.red
+    0xFFFF5722, // Colors.deepOrange
+    0xFFFF9800, // Colors.orange
+    0xFFFFC107, // Colors.amber
+
+    0xFFFFEB3B, // Colors.yellow
+    0xFFCDDC39, // Colors.lime
+    0xFF4CAF50, // Colors.green
+    0xFF009688, // Colors.teal
+
+    0xFF00BCD4, // Colors.cyan
+    0xFF2196F3, // Colors.blue
+    0xFF3F51B5, // Colors.indigo
+    0xFF9C27B0, // Colors.purple
+    0xFF673AB7, // Colors.deepPurple
+    0xFFE91E63, // Colors.pink
   ];
+
+  // static const List<int> colorPalette = [
+  //   0xFFF44336, //red
+  //   0xFFFF9800, //orange
+  //   0xFFFFEB3B, //yellow
+  //   0xFF4CAF50, //green
+  //   0xFF2095F3, //blue
+  //   0xFF3F51B5, //
+  //   0xFF5B2A86, //purple
+  //   0xFF9C27B0, //midDarkGrey
+  // ];
   // static const List<int> colorPalette = [
   //   0xFFEF233C, //red
   //   0xFFEFA00B, //orange

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MyMenuAnchor extends StatelessWidget {
   const MyMenuAnchor({super.key, required this.menuChildren});
 
-  final List<MenuItemButton> menuChildren;
+  final List<Widget> menuChildren;
 
   @override
   Widget build(BuildContext context) {

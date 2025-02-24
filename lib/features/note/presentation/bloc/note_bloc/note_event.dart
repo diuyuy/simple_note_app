@@ -27,11 +27,11 @@ class NoteEvent with _$NoteEvent {
   }) = _UpdateMultipleNotesCategory;
 
   const factory NoteEvent.deleteNote({
-    required Note deletedNote,
+    required String deletedNote,
   }) = _DeleteNote;
 
   const factory NoteEvent.deleteMultipleNotes({
-    required List<Note> deletedNotes,
+    required List<String> deletedNotes,
   }) = _DeleteMultipleNotes;
 
   const factory NoteEvent.reorderNotes({
@@ -39,6 +39,6 @@ class NoteEvent with _$NoteEvent {
   }) = _ReorderNotes;
 
   const factory NoteEvent.restoreNotes({
-    required List<Note> restoredNotes,
+    required List<String> restoredNotes,
   }) = _RestoreNotes;
 }
