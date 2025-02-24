@@ -7,7 +7,7 @@ import 'package:simple_note_app/core/router/router_path.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/widgets/app_bar_back_button.dart';
-import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../../../../note/presentation/widgets/note_card_widget.dart';
 

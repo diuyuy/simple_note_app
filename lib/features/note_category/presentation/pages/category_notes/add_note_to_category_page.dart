@@ -87,7 +87,7 @@ class _AddNoteToCategoryPageState extends State<AddNoteToCategoryPage> {
                           date: note.updateDate ?? note.createDate,
                           isFavorite: note.isFavorite,
                           previousPage: PreviousPage.home,
-                          onTapCheckIcon: tapCheckIcon,
+                          onTap: tapCheckIcon,
                         );
                       },
                     ),

@@ -87,6 +87,10 @@ class NoteDrawer extends StatelessWidget {
           DrawerTile(
             leading: Icon(Icons.settings_outlined),
             title: Text('Drawer.settings'.tr()),
+            onTap: () {
+              Navigator.pop(context);
+              context.push(RouterPath.appSettingPage);
+            },
           ),
           DrawerTile(
             leading: Icon(Icons.description_outlined),

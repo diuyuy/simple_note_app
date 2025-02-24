@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:gap/gap.dart';
 
 import '../color/app_colors.dart';
 
@@ -7,10 +8,12 @@ class PickColorContainer extends StatelessWidget {
   const PickColorContainer({
     super.key,
     this.selectedColor,
+    this.isPickSeed = false,
     required this.selectColor,
   });
 
   final Color? selectedColor;
+  final bool isPickSeed;
   final void Function(Color color) selectColor;
 
   @override
@@ -24,9 +27,9 @@ class PickColorContainer extends StatelessWidget {
       ),
       child: Column(
         children: [
-          buildColorsRow(0, 7),
-          //Gap(8),
-          //buildColorsRow(8, AppColors.colorPalette.length),
+          isPickSeed ? buildSeedColorRow(0, 7) : buildColorsRow(0, 7),
+          if (isPickSeed) Gap(8),
+          if (isPickSeed) buildSeedColorRow(8, AppColors.seedColors.length),
         ],
       ),
     );
@@ -45,6 +48,26 @@ class PickColorContainer extends StatelessWidget {
                   size: 32.w,
                 ),
               ))
+          .toList(),
+    );
+  }
+
+  Widget buildSeedColorRow(int start, int end) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: AppColors.seedColors
+          .map(
+            (colorHex) => GestureDetector(
+              onTap: () => selectColor(Color(colorHex)),
+              child: Icon(
+                Color(colorHex) == selectedColor
+                    ? Icons.check_circle
+                    : Icons.circle,
+                color: Color(colorHex),
+                size: 32.w,
+              ),
+            ),
+          )
           .toList(),
     );
   }

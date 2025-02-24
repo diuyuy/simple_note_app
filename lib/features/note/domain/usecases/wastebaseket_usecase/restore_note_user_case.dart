@@ -1,4 +1,3 @@
-import '../../entities/note.dart';
 import '../../repositories/note_repository.dart';
 import '../../repositories/wastebasket_repository.dart';
 
@@ -11,8 +10,10 @@ class RestoreNoteUserCase {
   final NoteRepository noteRepository;
   final WastebasketRepository wastebasketRepository;
 
-  Future<void> execute(Note restoredNote) async {
+  Future<void> execute(String restoredId) async {
+    final restoredNote = wastebasketRepository.getWaste(restoredId);
+
     await noteRepository.restoreNote(restoredNote);
-    await wastebasketRepository.restoreNote(restoredNote.id);
+    await wastebasketRepository.restoreNote(restoredId);
   }
 }

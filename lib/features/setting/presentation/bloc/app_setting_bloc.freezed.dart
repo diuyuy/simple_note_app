@@ -22,7 +22,7 @@ mixin _$AppSettingEvent {
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -37,7 +37,7 @@ mixin _$AppSettingEvent {
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -52,7 +52,7 @@ mixin _$AppSettingEvent {
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -152,7 +152,7 @@ class _$StartedImpl implements _Started {
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -170,7 +170,7 @@ class _$StartedImpl implements _Started {
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -188,7 +188,7 @@ class _$StartedImpl implements _Started {
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -287,7 +287,7 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -305,7 +305,7 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -323,7 +323,7 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -385,7 +385,7 @@ abstract class _$$AppSettingUpdatedImplCopyWith<$Res> {
   @useResult
   $Res call(
       {bool? isExitOnHome,
-      bool? isDarkMode,
+      int? themeMode,
       int? themeColor,
       int? fontSize,
       double? textHeight,
@@ -407,7 +407,7 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isExitOnHome = freezed,
-    Object? isDarkMode = freezed,
+    Object? themeMode = freezed,
     Object? themeColor = freezed,
     Object? fontSize = freezed,
     Object? textHeight = freezed,
@@ -419,10 +419,10 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
           ? _value.isExitOnHome
           : isExitOnHome // ignore: cast_nullable_to_non_nullable
               as bool?,
-      isDarkMode: freezed == isDarkMode
-          ? _value.isDarkMode
-          : isDarkMode // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      themeMode: freezed == themeMode
+          ? _value.themeMode
+          : themeMode // ignore: cast_nullable_to_non_nullable
+              as int?,
       themeColor: freezed == themeColor
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
@@ -452,7 +452,7 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
 class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   const _$AppSettingUpdatedImpl(
       {this.isExitOnHome,
-      this.isDarkMode,
+      this.themeMode,
       this.themeColor,
       this.fontSize,
       this.textHeight,
@@ -462,7 +462,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   final bool? isExitOnHome;
   @override
-  final bool? isDarkMode;
+  final int? themeMode;
   @override
   final int? themeColor;
   @override
@@ -476,7 +476,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
 
   @override
   String toString() {
-    return 'AppSettingEvent.appSettingUpdated(isExitOnHome: $isExitOnHome, isDarkMode: $isDarkMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
+    return 'AppSettingEvent.appSettingUpdated(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
   }
 
   @override
@@ -486,8 +486,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             other is _$AppSettingUpdatedImpl &&
             (identical(other.isExitOnHome, isExitOnHome) ||
                 other.isExitOnHome == isExitOnHome) &&
-            (identical(other.isDarkMode, isDarkMode) ||
-                other.isDarkMode == isDarkMode) &&
+            (identical(other.themeMode, themeMode) ||
+                other.themeMode == themeMode) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
             (identical(other.fontSize, fontSize) ||
@@ -501,7 +501,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExitOnHome, isDarkMode,
+  int get hashCode => Object.hash(runtimeType, isExitOnHome, themeMode,
       themeColor, fontSize, textHeight, isAutoSave, autoDeleteDays);
 
   /// Create a copy of AppSettingEvent
@@ -520,7 +520,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -528,7 +528,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             int? autoDeleteDays)
         appSettingUpdated,
   }) {
-    return appSettingUpdated(isExitOnHome, isDarkMode, themeColor, fontSize,
+    return appSettingUpdated(isExitOnHome, themeMode, themeColor, fontSize,
         textHeight, isAutoSave, autoDeleteDays);
   }
 
@@ -539,7 +539,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -547,7 +547,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             int? autoDeleteDays)?
         appSettingUpdated,
   }) {
-    return appSettingUpdated?.call(isExitOnHome, isDarkMode, themeColor,
+    return appSettingUpdated?.call(isExitOnHome, themeMode, themeColor,
         fontSize, textHeight, isAutoSave, autoDeleteDays);
   }
 
@@ -558,7 +558,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
-            bool? isDarkMode,
+            int? themeMode,
             int? themeColor,
             int? fontSize,
             double? textHeight,
@@ -568,7 +568,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
     required TResult orElse(),
   }) {
     if (appSettingUpdated != null) {
-      return appSettingUpdated(isExitOnHome, isDarkMode, themeColor, fontSize,
+      return appSettingUpdated(isExitOnHome, themeMode, themeColor, fontSize,
           textHeight, isAutoSave, autoDeleteDays);
     }
     return orElse();
@@ -612,7 +612,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
 abstract class _AppSettingUpdated implements AppSettingEvent {
   const factory _AppSettingUpdated(
       {final bool? isExitOnHome,
-      final bool? isDarkMode,
+      final int? themeMode,
       final int? themeColor,
       final int? fontSize,
       final double? textHeight,
@@ -620,7 +620,7 @@ abstract class _AppSettingUpdated implements AppSettingEvent {
       final int? autoDeleteDays}) = _$AppSettingUpdatedImpl;
 
   bool? get isExitOnHome;
-  bool? get isDarkMode;
+  int? get themeMode;
   int? get themeColor;
   int? get fontSize;
   double? get textHeight;

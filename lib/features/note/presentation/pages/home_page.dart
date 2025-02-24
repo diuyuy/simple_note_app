@@ -5,12 +5,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
-import '../../../../core/enum/previous_page.dart';
 import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
 import '../../../../core/utils/show_no_note_to_select_dialog.dart';
 import '../../../../core/widgets/drawer/note_drawer.dart';
-import '../../../../core/widgets/my_menu_anchor.dart';
+import '../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../bloc/note_bloc/note_bloc.dart';
 import '../widgets/notes_list_widget.dart';
 
@@ -66,9 +65,8 @@ class HomePage extends StatelessWidget {
           }
           context.push(
             RouterPath.noteSelectionPage,
-            extra: NoteSelectionArgs(
+            extra: SelectionPageArgs(
               selectedNotes: <String>[],
-              previousPage: PreviousPage.home,
             ),
           );
         },
@@ -82,9 +80,8 @@ class HomePage extends StatelessWidget {
           }
           context.push(
             RouterPath.noteSelectionPage,
-            extra: NoteSelectionArgs(
+            extra: SelectionPageArgs(
               selectedNotes: notes.map((note) => note.id).toList(),
-              previousPage: PreviousPage.home,
             ),
           );
         },

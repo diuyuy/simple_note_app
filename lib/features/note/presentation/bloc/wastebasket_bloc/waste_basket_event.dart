@@ -5,7 +5,7 @@ class WasteBasketEvent with _$WasteBasketEvent {
   const factory WasteBasketEvent.loadWastes() = _LoadWastes;
 
   const factory WasteBasketEvent.restoreNotes(
-      {required List<Note> restoredNotes}) = _RestoreNotes;
+      {required List<String> restoredNotes}) = _RestoreNotes;
 
   const factory WasteBasketEvent.deletePermanently(
       {required List<String> noteIds}) = _DeletePermanently;

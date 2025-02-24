@@ -25,7 +25,7 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
       themeColor: appSetting.themeColor,
       fontSize: appSetting.fontSize,
       isAutoSave: appSetting.isAutoSave,
-      isDarkMode: appSetting.isDarkMode,
+      themeMode: appSetting.themeMode,
       textHeight: appSetting.textHeight,
       autoDeleteDays: appSetting.autoDeleteDays,
     );
@@ -37,7 +37,7 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
       themeColor: appSetting.themeColor,
       fontSize: appSetting.fontSize,
       isAutoSave: appSetting.isAutoSave,
-      isDarkMode: appSetting.isDarkMode,
+      themeMode: appSetting.themeMode,
       textHeight: appSetting.textHeight,
       autoDeleteDays: appSetting.autoDeleteDays,
     );

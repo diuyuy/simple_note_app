@@ -6,13 +6,12 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/constants/app_constants.dart';
-import '../../../../../core/enum/previous_page.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/show_alert_dialog.dart';
 import '../../../../../core/utils/show_no_note_to_select_dialog.dart';
 import '../../../../../core/widgets/app_bar_back_button.dart';
-import '../../../../../core/widgets/my_menu_anchor.dart';
+import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../domain/usecases/wastebaseket_usecase/delete_permanently_user_case.dart';
 import '../../../domain/usecases/wastebaseket_usecase/load_wastes_use_case.dart';
 import '../../../domain/usecases/wastebaseket_usecase/restore_note_user_case.dart';
@@ -72,10 +71,9 @@ class WastebasketView extends StatelessWidget {
                         return GestureDetector(
                           onLongPress: () {
                             context.push(
-                              RouterPath.noteSelectionPage,
-                              extra: NoteSelectionArgs(
+                              RouterPath.wastebasketSelectionPage,
+                              extra: SelectionPageArgs(
                                 selectedNotes: [waste.id],
-                                previousPage: PreviousPage.trash,
                                 bloc: context.read<WasteBasketBloc>(),
                               ),
                             );
@@ -91,7 +89,8 @@ class WastebasketView extends StatelessWidget {
                       itemCount: wastes.length,
                     )
                   : EmptyNoteTextWidget(
-                      content: 'WastebasketPage.trashIsEmpty'.tr());
+                      content: 'WastebasketPage.trashIsEmpty'.tr(),
+                    );
             },
           ),
         ),
@@ -116,10 +115,9 @@ class WastebasketView extends StatelessWidget {
             return;
           }
           context.push(
-            RouterPath.noteSelectionPage,
-            extra: NoteSelectionArgs(
+            RouterPath.wastebasketSelectionPage,
+            extra: SelectionPageArgs(
               selectedNotes: <String>[],
-              previousPage: PreviousPage.trash,
               bloc: context.read<WasteBasketBloc>(),
             ),
           );
@@ -134,10 +132,9 @@ class WastebasketView extends StatelessWidget {
           }
 
           context.push(
-            RouterPath.noteSelectionPage,
-            extra: NoteSelectionArgs(
+            RouterPath.wastebasketSelectionPage,
+            extra: SelectionPageArgs(
               selectedNotes: wastes.map((waste) => waste.id).toList(),
-              previousPage: PreviousPage.trash,
               bloc: context.read<WasteBasketBloc>(),
             ),
           );

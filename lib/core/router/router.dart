@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/features/setting/presentation/bloc/app_setting_bloc.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
+import '../../features/note/presentation/pages/favorite/favorite_selection_page.dart';
 import '../../features/note/presentation/pages/note_page_export.dart';
+import '../../features/note/presentation/pages/search/search_note_selection_page.dart';
+import '../../features/note/presentation/pages/wastebasket/wastebasket_selection_page.dart';
 import '../../features/note_category/presentation/pages/note_category_export.dart';
-import '../enum/previous_page.dart';
+import '../../features/setting/presentation/bloc/app_setting_bloc.dart';
+import '../../features/setting/presentation/pages/app_setting_page.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
 
@@ -107,53 +110,66 @@ final router = GoRouter(
       },
     ),
     GoRoute(
+      path: RouterPath.noteSelectionPage,
+      pageBuilder: (context, state) {
+        final args = state.extra as SelectionPageArgs;
+
+        return NoTransitionPage(
+          child: NoteSelectionPage(
+            selectedNotes: args.selectedNotes,
+          ),
+        );
+      },
+    ),
+    GoRoute(
+      path: RouterPath.searchNoteSelectionPage,
+      pageBuilder: (context, state) {
+        final args = state.extra as SelectionPageArgs;
+
+        return NoTransitionPage(
+          child: BlocProvider.value(
+            value: args.bloc as SearchNotesBloc,
+            child: SearchNoteSelectionPage(
+              selectedNotes: args.selectedNotes,
+            ),
+          ),
+        );
+      },
+    ),
+    GoRoute(
+      path: RouterPath.favoritesSelectionPage,
+      pageBuilder: (context, state) {
+        final args = state.extra as SelectionPageArgs;
+
+        return NoTransitionPage(
+          child: FavoriteSelectionPage(
+            selectedFavorites: args.selectedNotes,
+          ),
+        );
+      },
+    ),
+    GoRoute(
+      path: RouterPath.wastebasketSelectionPage,
+      pageBuilder: (context, state) {
+        final args = state.extra as SelectionPageArgs;
+
+        return NoTransitionPage(
+          child: BlocProvider.value(
+            value: args.bloc as WasteBasketBloc,
+            child: WastebasketSelectionPage(
+              selectedWastes: args.selectedNotes,
+            ),
+          ),
+        );
+      },
+    ),
+    GoRoute(
       path: RouterPath.wastebasketPage,
       pageBuilder: (context, state) => buildFadeTransitionPage(
         context: context,
         state: state,
         child: const WastebasketPage(),
       ),
-    ),
-    GoRoute(
-      path: RouterPath.noteSelectionPage,
-      pageBuilder: (context, state) {
-        final args = state.extra as NoteSelectionArgs;
-
-        if (args.previousPage == PreviousPage.trash) {
-          final bloc = args.bloc as WasteBasketBloc;
-
-          return NoTransitionPage(
-            child: BlocProvider<WasteBasketBloc>.value(
-              value: bloc,
-              child: NoteSelectionPage(
-                selectedNotes: args.selectedNotes,
-                previousPage: args.previousPage,
-              ),
-            ),
-          );
-        }
-
-        if (args.previousPage == PreviousPage.search) {
-          final bloc = args.bloc as SearchNotesBloc;
-
-          return NoTransitionPage(
-            child: BlocProvider<SearchNotesBloc>.value(
-              value: bloc,
-              child: NoteSelectionPage(
-                selectedNotes: args.selectedNotes,
-                previousPage: args.previousPage,
-              ),
-            ),
-          );
-        }
-
-        return NoTransitionPage(
-          child: NoteSelectionPage(
-            selectedNotes: args.selectedNotes,
-            previousPage: args.previousPage,
-          ),
-        );
-      },
     ),
     GoRoute(
       path: RouterPath.noteCategoryPage,
@@ -243,6 +259,14 @@ final router = GoRouter(
           },
         )
       ],
+    ),
+    GoRoute(
+      path: RouterPath.appSettingPage,
+      pageBuilder: (context, state) => buildFadeTransitionPage(
+        context: context,
+        state: state,
+        child: const AppSettingPage(),
+      ),
     ),
   ],
 );

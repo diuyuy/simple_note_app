@@ -1,4 +1,3 @@
-import '../../entities/note.dart';
 import '../../repositories/note_repository.dart';
 import '../../repositories/wastebasket_repository.dart';
 
@@ -11,8 +10,10 @@ class DeleteNoteUseCase {
     required this.wastebasketRepository,
   });
 
-  Future<void> execute(Note deletedNote) async {
-    await noteRepository.deleteNote(deletedNote.id);
+  Future<void> execute(String id) async {
+    final deletedNote = noteRepository.getNote(id);
+
+    await noteRepository.deleteNote(id);
     await wastebasketRepository.addDeletedNote(deletedNote);
   }
 }

@@ -19,21 +19,21 @@ mixin _$WasteBasketEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadWastes,
-    required TResult Function(List<Note> restoredNotes) restoreNotes,
+    required TResult Function(List<String> restoredNotes) restoreNotes,
     required TResult Function(List<String> noteIds) deletePermanently,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadWastes,
-    TResult? Function(List<Note> restoredNotes)? restoreNotes,
+    TResult? Function(List<String> restoredNotes)? restoreNotes,
     TResult? Function(List<String> noteIds)? deletePermanently,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadWastes,
-    TResult Function(List<Note> restoredNotes)? restoreNotes,
+    TResult Function(List<String> restoredNotes)? restoreNotes,
     TResult Function(List<String> noteIds)? deletePermanently,
     required TResult orElse(),
   }) =>
@@ -125,7 +125,7 @@ class _$LoadWastesImpl implements _LoadWastes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadWastes,
-    required TResult Function(List<Note> restoredNotes) restoreNotes,
+    required TResult Function(List<String> restoredNotes) restoreNotes,
     required TResult Function(List<String> noteIds) deletePermanently,
   }) {
     return loadWastes();
@@ -135,7 +135,7 @@ class _$LoadWastesImpl implements _LoadWastes {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadWastes,
-    TResult? Function(List<Note> restoredNotes)? restoreNotes,
+    TResult? Function(List<String> restoredNotes)? restoreNotes,
     TResult? Function(List<String> noteIds)? deletePermanently,
   }) {
     return loadWastes?.call();
@@ -145,7 +145,7 @@ class _$LoadWastesImpl implements _LoadWastes {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadWastes,
-    TResult Function(List<Note> restoredNotes)? restoreNotes,
+    TResult Function(List<String> restoredNotes)? restoreNotes,
     TResult Function(List<String> noteIds)? deletePermanently,
     required TResult orElse(),
   }) {
@@ -200,7 +200,7 @@ abstract class _$$RestoreNotesImplCopyWith<$Res> {
           _$RestoreNotesImpl value, $Res Function(_$RestoreNotesImpl) then) =
       __$$RestoreNotesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Note> restoredNotes});
+  $Res call({List<String> restoredNotes});
 }
 
 /// @nodoc
@@ -222,7 +222,7 @@ class __$$RestoreNotesImplCopyWithImpl<$Res>
       restoredNotes: null == restoredNotes
           ? _value._restoredNotes
           : restoredNotes // ignore: cast_nullable_to_non_nullable
-              as List<Note>,
+              as List<String>,
     ));
   }
 }
@@ -230,12 +230,12 @@ class __$$RestoreNotesImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$RestoreNotesImpl implements _RestoreNotes {
-  const _$RestoreNotesImpl({required final List<Note> restoredNotes})
+  const _$RestoreNotesImpl({required final List<String> restoredNotes})
       : _restoredNotes = restoredNotes;
 
-  final List<Note> _restoredNotes;
+  final List<String> _restoredNotes;
   @override
-  List<Note> get restoredNotes {
+  List<String> get restoredNotes {
     if (_restoredNotes is EqualUnmodifiableListView) return _restoredNotes;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_restoredNotes);
@@ -271,7 +271,7 @@ class _$RestoreNotesImpl implements _RestoreNotes {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadWastes,
-    required TResult Function(List<Note> restoredNotes) restoreNotes,
+    required TResult Function(List<String> restoredNotes) restoreNotes,
     required TResult Function(List<String> noteIds) deletePermanently,
   }) {
     return restoreNotes(restoredNotes);
@@ -281,7 +281,7 @@ class _$RestoreNotesImpl implements _RestoreNotes {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadWastes,
-    TResult? Function(List<Note> restoredNotes)? restoreNotes,
+    TResult? Function(List<String> restoredNotes)? restoreNotes,
     TResult? Function(List<String> noteIds)? deletePermanently,
   }) {
     return restoreNotes?.call(restoredNotes);
@@ -291,7 +291,7 @@ class _$RestoreNotesImpl implements _RestoreNotes {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadWastes,
-    TResult Function(List<Note> restoredNotes)? restoreNotes,
+    TResult Function(List<String> restoredNotes)? restoreNotes,
     TResult Function(List<String> noteIds)? deletePermanently,
     required TResult orElse(),
   }) {
@@ -337,10 +337,10 @@ class _$RestoreNotesImpl implements _RestoreNotes {
 }
 
 abstract class _RestoreNotes implements WasteBasketEvent {
-  const factory _RestoreNotes({required final List<Note> restoredNotes}) =
+  const factory _RestoreNotes({required final List<String> restoredNotes}) =
       _$RestoreNotesImpl;
 
-  List<Note> get restoredNotes;
+  List<String> get restoredNotes;
 
   /// Create a copy of WasteBasketEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -426,7 +426,7 @@ class _$DeletePermanentlyImpl implements _DeletePermanently {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loadWastes,
-    required TResult Function(List<Note> restoredNotes) restoreNotes,
+    required TResult Function(List<String> restoredNotes) restoreNotes,
     required TResult Function(List<String> noteIds) deletePermanently,
   }) {
     return deletePermanently(noteIds);
@@ -436,7 +436,7 @@ class _$DeletePermanentlyImpl implements _DeletePermanently {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loadWastes,
-    TResult? Function(List<Note> restoredNotes)? restoreNotes,
+    TResult? Function(List<String> restoredNotes)? restoreNotes,
     TResult? Function(List<String> noteIds)? deletePermanently,
   }) {
     return deletePermanently?.call(noteIds);
@@ -446,7 +446,7 @@ class _$DeletePermanentlyImpl implements _DeletePermanently {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loadWastes,
-    TResult Function(List<Note> restoredNotes)? restoreNotes,
+    TResult Function(List<String> restoredNotes)? restoreNotes,
     TResult Function(List<String> noteIds)? deletePermanently,
     required TResult orElse(),
   }) {
@@ -507,25 +507,32 @@ abstract class _DeletePermanently implements WasteBasketEvent {
 /// @nodoc
 mixin _$WasteBasketState {
   List<Note> get wastes => throw _privateConstructorUsedError;
+  bool get isAfterRestore => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> wastes) initial,
-    required TResult Function(List<Note> wastes) success,
-    required TResult Function(List<Note> wastes, String errorMessage) failure,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) initial,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) success,
+    required TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)
+        failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> wastes)? initial,
-    TResult? Function(List<Note> wastes)? success,
-    TResult? Function(List<Note> wastes, String errorMessage)? failure,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult? Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> wastes)? initial,
-    TResult Function(List<Note> wastes)? success,
-    TResult Function(List<Note> wastes, String errorMessage)? failure,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -565,7 +572,7 @@ abstract class $WasteBasketStateCopyWith<$Res> {
           WasteBasketState value, $Res Function(WasteBasketState) then) =
       _$WasteBasketStateCopyWithImpl<$Res, WasteBasketState>;
   @useResult
-  $Res call({List<Note> wastes});
+  $Res call({List<Note> wastes, bool isAfterRestore});
 }
 
 /// @nodoc
@@ -584,12 +591,17 @@ class _$WasteBasketStateCopyWithImpl<$Res, $Val extends WasteBasketState>
   @override
   $Res call({
     Object? wastes = null,
+    Object? isAfterRestore = null,
   }) {
     return _then(_value.copyWith(
       wastes: null == wastes
           ? _value.wastes
           : wastes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
+      isAfterRestore: null == isAfterRestore
+          ? _value.isAfterRestore
+          : isAfterRestore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -602,7 +614,7 @@ abstract class _$$InitialImplCopyWith<$Res>
       __$$InitialImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> wastes});
+  $Res call({List<Note> wastes, bool isAfterRestore});
 }
 
 /// @nodoc
@@ -619,12 +631,17 @@ class __$$InitialImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wastes = null,
+    Object? isAfterRestore = null,
   }) {
     return _then(_$InitialImpl(
       wastes: null == wastes
           ? _value._wastes
           : wastes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
+      isAfterRestore: null == isAfterRestore
+          ? _value.isAfterRestore
+          : isAfterRestore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -632,7 +649,9 @@ class __$$InitialImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$InitialImpl implements _Initial {
-  const _$InitialImpl({required final List<Note> wastes}) : _wastes = wastes;
+  const _$InitialImpl(
+      {required final List<Note> wastes, this.isAfterRestore = false})
+      : _wastes = wastes;
 
   final List<Note> _wastes;
   @override
@@ -643,8 +662,12 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  @JsonKey()
+  final bool isAfterRestore;
+
+  @override
   String toString() {
-    return 'WasteBasketState.initial(wastes: $wastes)';
+    return 'WasteBasketState.initial(wastes: $wastes, isAfterRestore: $isAfterRestore)';
   }
 
   @override
@@ -652,12 +675,14 @@ class _$InitialImpl implements _Initial {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InitialImpl &&
-            const DeepCollectionEquality().equals(other._wastes, _wastes));
+            const DeepCollectionEquality().equals(other._wastes, _wastes) &&
+            (identical(other.isAfterRestore, isAfterRestore) ||
+                other.isAfterRestore == isAfterRestore));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_wastes));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_wastes), isAfterRestore);
 
   /// Create a copy of WasteBasketState
   /// with the given fields replaced by the non-null parameter values.
@@ -670,33 +695,39 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> wastes) initial,
-    required TResult Function(List<Note> wastes) success,
-    required TResult Function(List<Note> wastes, String errorMessage) failure,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) initial,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) success,
+    required TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)
+        failure,
   }) {
-    return initial(wastes);
+    return initial(wastes, isAfterRestore);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> wastes)? initial,
-    TResult? Function(List<Note> wastes)? success,
-    TResult? Function(List<Note> wastes, String errorMessage)? failure,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult? Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
   }) {
-    return initial?.call(wastes);
+    return initial?.call(wastes, isAfterRestore);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> wastes)? initial,
-    TResult Function(List<Note> wastes)? success,
-    TResult Function(List<Note> wastes, String errorMessage)? failure,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
     required TResult orElse(),
   }) {
     if (initial != null) {
-      return initial(wastes);
+      return initial(wastes, isAfterRestore);
     }
     return orElse();
   }
@@ -737,10 +768,14 @@ class _$InitialImpl implements _Initial {
 }
 
 abstract class _Initial implements WasteBasketState {
-  const factory _Initial({required final List<Note> wastes}) = _$InitialImpl;
+  const factory _Initial(
+      {required final List<Note> wastes,
+      final bool isAfterRestore}) = _$InitialImpl;
 
   @override
   List<Note> get wastes;
+  @override
+  bool get isAfterRestore;
 
   /// Create a copy of WasteBasketState
   /// with the given fields replaced by the non-null parameter values.
@@ -759,7 +794,7 @@ abstract class _$$WasteBasketLoadSuccessImplCopyWith<$Res>
       __$$WasteBasketLoadSuccessImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> wastes});
+  $Res call({List<Note> wastes, bool isAfterRestore});
 }
 
 /// @nodoc
@@ -777,12 +812,17 @@ class __$$WasteBasketLoadSuccessImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wastes = null,
+    Object? isAfterRestore = null,
   }) {
     return _then(_$WasteBasketLoadSuccessImpl(
       wastes: null == wastes
           ? _value._wastes
           : wastes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
+      isAfterRestore: null == isAfterRestore
+          ? _value.isAfterRestore
+          : isAfterRestore // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -790,7 +830,8 @@ class __$$WasteBasketLoadSuccessImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$WasteBasketLoadSuccessImpl implements _WasteBasketLoadSuccess {
-  const _$WasteBasketLoadSuccessImpl({required final List<Note> wastes})
+  const _$WasteBasketLoadSuccessImpl(
+      {required final List<Note> wastes, this.isAfterRestore = false})
       : _wastes = wastes;
 
   final List<Note> _wastes;
@@ -802,8 +843,12 @@ class _$WasteBasketLoadSuccessImpl implements _WasteBasketLoadSuccess {
   }
 
   @override
+  @JsonKey()
+  final bool isAfterRestore;
+
+  @override
   String toString() {
-    return 'WasteBasketState.success(wastes: $wastes)';
+    return 'WasteBasketState.success(wastes: $wastes, isAfterRestore: $isAfterRestore)';
   }
 
   @override
@@ -811,12 +856,14 @@ class _$WasteBasketLoadSuccessImpl implements _WasteBasketLoadSuccess {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$WasteBasketLoadSuccessImpl &&
-            const DeepCollectionEquality().equals(other._wastes, _wastes));
+            const DeepCollectionEquality().equals(other._wastes, _wastes) &&
+            (identical(other.isAfterRestore, isAfterRestore) ||
+                other.isAfterRestore == isAfterRestore));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_wastes));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_wastes), isAfterRestore);
 
   /// Create a copy of WasteBasketState
   /// with the given fields replaced by the non-null parameter values.
@@ -830,33 +877,39 @@ class _$WasteBasketLoadSuccessImpl implements _WasteBasketLoadSuccess {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> wastes) initial,
-    required TResult Function(List<Note> wastes) success,
-    required TResult Function(List<Note> wastes, String errorMessage) failure,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) initial,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) success,
+    required TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)
+        failure,
   }) {
-    return success(wastes);
+    return success(wastes, isAfterRestore);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> wastes)? initial,
-    TResult? Function(List<Note> wastes)? success,
-    TResult? Function(List<Note> wastes, String errorMessage)? failure,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult? Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
   }) {
-    return success?.call(wastes);
+    return success?.call(wastes, isAfterRestore);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> wastes)? initial,
-    TResult Function(List<Note> wastes)? success,
-    TResult Function(List<Note> wastes, String errorMessage)? failure,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(wastes);
+      return success(wastes, isAfterRestore);
     }
     return orElse();
   }
@@ -897,11 +950,14 @@ class _$WasteBasketLoadSuccessImpl implements _WasteBasketLoadSuccess {
 }
 
 abstract class _WasteBasketLoadSuccess implements WasteBasketState {
-  const factory _WasteBasketLoadSuccess({required final List<Note> wastes}) =
-      _$WasteBasketLoadSuccessImpl;
+  const factory _WasteBasketLoadSuccess(
+      {required final List<Note> wastes,
+      final bool isAfterRestore}) = _$WasteBasketLoadSuccessImpl;
 
   @override
   List<Note> get wastes;
+  @override
+  bool get isAfterRestore;
 
   /// Create a copy of WasteBasketState
   /// with the given fields replaced by the non-null parameter values.
@@ -920,7 +976,7 @@ abstract class _$$WasteBasketLoadFailureImplCopyWith<$Res>
       __$$WasteBasketLoadFailureImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Note> wastes, String errorMessage});
+  $Res call({List<Note> wastes, bool isAfterRestore, String errorMessage});
 }
 
 /// @nodoc
@@ -938,6 +994,7 @@ class __$$WasteBasketLoadFailureImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? wastes = null,
+    Object? isAfterRestore = null,
     Object? errorMessage = null,
   }) {
     return _then(_$WasteBasketLoadFailureImpl(
@@ -945,6 +1002,10 @@ class __$$WasteBasketLoadFailureImplCopyWithImpl<$Res>
           ? _value._wastes
           : wastes // ignore: cast_nullable_to_non_nullable
               as List<Note>,
+      isAfterRestore: null == isAfterRestore
+          ? _value.isAfterRestore
+          : isAfterRestore // ignore: cast_nullable_to_non_nullable
+              as bool,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -957,7 +1018,9 @@ class __$$WasteBasketLoadFailureImplCopyWithImpl<$Res>
 
 class _$WasteBasketLoadFailureImpl implements _WasteBasketLoadFailure {
   const _$WasteBasketLoadFailureImpl(
-      {required final List<Note> wastes, required this.errorMessage})
+      {required final List<Note> wastes,
+      this.isAfterRestore = false,
+      required this.errorMessage})
       : _wastes = wastes;
 
   final List<Note> _wastes;
@@ -969,11 +1032,14 @@ class _$WasteBasketLoadFailureImpl implements _WasteBasketLoadFailure {
   }
 
   @override
+  @JsonKey()
+  final bool isAfterRestore;
+  @override
   final String errorMessage;
 
   @override
   String toString() {
-    return 'WasteBasketState.failure(wastes: $wastes, errorMessage: $errorMessage)';
+    return 'WasteBasketState.failure(wastes: $wastes, isAfterRestore: $isAfterRestore, errorMessage: $errorMessage)';
   }
 
   @override
@@ -982,13 +1048,18 @@ class _$WasteBasketLoadFailureImpl implements _WasteBasketLoadFailure {
         (other.runtimeType == runtimeType &&
             other is _$WasteBasketLoadFailureImpl &&
             const DeepCollectionEquality().equals(other._wastes, _wastes) &&
+            (identical(other.isAfterRestore, isAfterRestore) ||
+                other.isAfterRestore == isAfterRestore) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_wastes), errorMessage);
+      runtimeType,
+      const DeepCollectionEquality().hash(_wastes),
+      isAfterRestore,
+      errorMessage);
 
   /// Create a copy of WasteBasketState
   /// with the given fields replaced by the non-null parameter values.
@@ -1002,33 +1073,39 @@ class _$WasteBasketLoadFailureImpl implements _WasteBasketLoadFailure {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<Note> wastes) initial,
-    required TResult Function(List<Note> wastes) success,
-    required TResult Function(List<Note> wastes, String errorMessage) failure,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) initial,
+    required TResult Function(List<Note> wastes, bool isAfterRestore) success,
+    required TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)
+        failure,
   }) {
-    return failure(wastes, errorMessage);
+    return failure(wastes, isAfterRestore, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<Note> wastes)? initial,
-    TResult? Function(List<Note> wastes)? success,
-    TResult? Function(List<Note> wastes, String errorMessage)? failure,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult? Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult? Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
   }) {
-    return failure?.call(wastes, errorMessage);
+    return failure?.call(wastes, isAfterRestore, errorMessage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<Note> wastes)? initial,
-    TResult Function(List<Note> wastes)? success,
-    TResult Function(List<Note> wastes, String errorMessage)? failure,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? initial,
+    TResult Function(List<Note> wastes, bool isAfterRestore)? success,
+    TResult Function(
+            List<Note> wastes, bool isAfterRestore, String errorMessage)?
+        failure,
     required TResult orElse(),
   }) {
     if (failure != null) {
-      return failure(wastes, errorMessage);
+      return failure(wastes, isAfterRestore, errorMessage);
     }
     return orElse();
   }
@@ -1071,10 +1148,13 @@ class _$WasteBasketLoadFailureImpl implements _WasteBasketLoadFailure {
 abstract class _WasteBasketLoadFailure implements WasteBasketState {
   const factory _WasteBasketLoadFailure(
       {required final List<Note> wastes,
+      final bool isAfterRestore,
       required final String errorMessage}) = _$WasteBasketLoadFailureImpl;
 
   @override
   List<Note> get wastes;
+  @override
+  bool get isAfterRestore;
   String get errorMessage;
 
   /// Create a copy of WasteBasketState

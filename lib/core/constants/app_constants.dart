@@ -1,6 +1,14 @@
 class AppConstants {
   static const String untitled = 'AppConstants.untitled';
 
+  static const List<String> themeMode = [
+    'Light Mode',
+    'Dark Mode',
+    'System Default',
+  ];
+
+  static const double appSettingTitleFontSize = 16.0;
+  static const double appSettingTileSubTitleFontSize = 12.0;
   static const double emptyNoteTextFontSize = 18.0;
   static const double noteCardTitleFontSize = 16.0;
   static const double noteCardDateFontSize = 14.0;

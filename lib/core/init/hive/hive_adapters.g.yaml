@@ -29,7 +29,7 @@ types:
         index: 0
   AppSettingModel:
     typeId: 2
-    nextIndex: 7
+    nextIndex: 8
     fields:
       fontSize:
         index: 0
@@ -37,14 +37,14 @@ types:
         index: 1
       themeColor:
         index: 2
-      isDarkMode:
-        index: 3
       textHeight:
         index: 4
       isAutoSave:
         index: 5
       autoDeleteDays:
         index: 6
+      themeMode:
+        index: 7
   NoteCategoryModel:
     typeId: 3
     nextIndex: 8

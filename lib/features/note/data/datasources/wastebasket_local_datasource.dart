@@ -7,6 +7,13 @@ class WastebasketLocalDatasource {
 
   final Box<NoteModel> _wasteBasketBox;
 
+  NoteModel getWaste(String id) {
+    final waste = _wasteBasketBox.get(id);
+    if (waste == null) throw Exception('Invalid waste Id');
+
+    return waste;
+  }
+
   List<NoteModel> loadAllWastes() {
     return _wasteBasketBox.values.toList().reversed.toList();
   }

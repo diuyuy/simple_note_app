@@ -182,7 +182,7 @@ class ReadNotePage extends StatelessWidget {
             if (context.mounted) {
               context
                   .read<NoteBloc>()
-                  .add(NoteEvent.deleteNote(deletedNote: selectedNote));
+                  .add(NoteEvent.deleteNote(deletedNote: selectedNote.id));
 
               context.pop();
             }

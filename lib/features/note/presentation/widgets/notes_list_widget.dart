@@ -2,9 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/router/note_selection_args.dart';
 
-import '../../../../core/enum/previous_page.dart';
-import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
 import '../bloc/note_bloc/note_bloc.dart';
 import 'empty_note_text_widget.dart';
@@ -28,9 +27,8 @@ class NotesListWidget extends StatelessWidget {
                     onLongPress: () {
                       context.push(
                         RouterPath.noteSelectionPage,
-                        extra: NoteSelectionArgs(
+                        extra: SelectionPageArgs(
                           selectedNotes: [note.id],
-                          previousPage: PreviousPage.home,
                         ),
                       );
                     },
