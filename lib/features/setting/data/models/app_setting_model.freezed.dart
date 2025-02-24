@@ -180,7 +180,7 @@ class __$$AppSettingModelImplCopyWithImpl<$Res>
 class _$AppSettingModelImpl implements _AppSettingModel {
   const _$AppSettingModelImpl(
       {this.isExitOnHome = true,
-      this.themeMode = 0,
+      this.themeMode = 2,
       this.themeColor = 0xFF2196F3,
       this.fontSize = 4,
       this.textHeight = 1.0,

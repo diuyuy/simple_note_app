@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:simple_note_app/core/constants/app_constants.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/widgets/bottom_action_button.dart';
@@ -104,6 +105,7 @@ class _InputCategoryInfoWidgetState extends State<InputCategoryInfoWidget> {
                 onChanged: (value) {
                   _categoryNameSubect.add(value);
                 },
+                maxLength: AppConstants.titleMaxLength,
                 decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8.0),

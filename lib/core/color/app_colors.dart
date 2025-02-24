@@ -24,6 +24,7 @@ class AppColors {
   ];
 
   static const List<int> seedColors = [
+    0xFFE91E63, // Colors.pink
     0xFFF44336, // Colors.red
     0xFFFF5722, // Colors.deepOrange
     0xFFFF9800, // Colors.orange
@@ -39,7 +40,6 @@ class AppColors {
     0xFF3F51B5, // Colors.indigo
     0xFF9C27B0, // Colors.purple
     0xFF673AB7, // Colors.deepPurple
-    0xFFE91E63, // Colors.pink
   ];
 
   // static const List<int> colorPalette = [

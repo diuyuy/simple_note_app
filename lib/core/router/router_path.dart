@@ -27,4 +27,7 @@ class RouterPath {
 
   //App Settings
   static const String appSettingPage = '/appSetting';
+  static const String themeModeSettingPage = 'themeMode';
+  static const String seedColorSettingPage = 'seedColor';
+  static const String deleteIntervalSettingPage = 'deleteInterval';
 }

@@ -31,8 +31,9 @@ class BottomActionButton extends StatelessWidget {
           child: Container(
             width: 1.sw,
             decoration: BoxDecoration(
-              color:
-                  enabled ? Theme.of(context).primaryColor : Colors.grey[400],
+              color: enabled
+                  ? Theme.of(context).colorScheme.primary
+                  : Colors.grey[400],
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Center(

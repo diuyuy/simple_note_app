@@ -161,23 +161,40 @@
     "selectAll": "모두 선택",
     "trash": "휴지통"
   },
+
+  "1 day": "1 일",
+  "3 days": "3 일",
+  "7 days": "7 일",
+  "14 days": "14 일",
+  "30 days": "30 일",
+  "60 days": "60 일",
+
   "Assign Category": "카테고리 지정",
   "Auto-Delete Interval": "자동 삭제 주기",
+
   "Dark Mode": "다크 모드",
   "Delete": "삭제",
   "deleteInterval": "{} 일",
   "Deselect All": "선택 해제",
+
   "Enable Auto-Save for Notes": "노트 자동 저장",
+
   "Light Mode": "라이트 모드",
+
+  "None": "없음",
   "Note Settings": "노트 설정",
   "Note Text Settings": "노트 텍스트 설정",
+
   "Permanently Delete": "영구 삭제",
+
   "Restore": "복원",
+
   "Select": "선택",
   "Select All": "모두 선택",
   "Select how often old notes will be deleted": "오래된 노트의 삭제 주기를 선택하세요.",
   "Settings": "설정",
   "System Default": "시스템 설정",
+
   "Theme": "테마",
   "Theme Color": "테마 색상",
   "Theme Mode": "테마 모드" 

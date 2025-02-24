@@ -47,7 +47,7 @@ class SelectCategoryWidget extends StatelessWidget {
             child: Icon(
               isSelected ? Icons.check_circle : Icons.circle_outlined,
               color: isSelected
-                  ? Theme.of(context).primaryColor
+                  ? Theme.of(context).colorScheme.primary
                   : AppColors.midDarkGrey,
             ),
           ),

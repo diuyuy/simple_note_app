@@ -164,7 +164,7 @@ class _NoteSelectionPageState extends State<NoteSelectionPage> {
               context.read<NoteBloc>().add(
                     NoteEvent.updateMultipleNotesCategory(
                       noteIds: selectedNotes,
-                      category: currentCategory!,
+                      category: selectedCategory,
                     ),
                   );
               context.pop();

@@ -6,7 +6,7 @@ part 'app_setting.freezed.dart';
 class AppSetting with _$AppSetting {
   const factory AppSetting({
     @Default(true) bool isExitOnHome,
-    @Default(0) int themeMode,
+    @Default(2) int themeMode,
     @Default(0xFF2196F3) int themeColor,
     @Default(4) int fontSize,
     @Default(1.0) double textHeight,

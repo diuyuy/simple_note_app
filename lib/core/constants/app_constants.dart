@@ -7,16 +7,31 @@ class AppConstants {
     'System Default',
   ];
 
-  static const double appSettingTitleFontSize = 16.0;
-  static const double appSettingTileSubTitleFontSize = 12.0;
+  static const List<String> autoDeleteIntervals = [
+    'None',
+    '1 day',
+    '3 days',
+    '7 days',
+    '14 days',
+    '30 days',
+    '60 days',
+  ];
+
+  static const List<int> autoDeleteIntervalsNum = [
+    0,
+    1,
+    3,
+    7,
+    14,
+    30,
+    60,
+  ];
+
   static const double emptyNoteTextFontSize = 18.0;
-  static const double noteCardTitleFontSize = 16.0;
-  static const double noteCardDateFontSize = 14.0;
-  static const double noteCategoryCardTitleFontSize = 16.0;
 
   static const double menuAnchorMinWidth = 64.0;
   static const double menuAnchorMinHeight = 36.0;
 
   static const int searchMaxLength = 100;
-  static const int titleMaxLength = 100;
+  static const int titleMaxLength = 50;
 }

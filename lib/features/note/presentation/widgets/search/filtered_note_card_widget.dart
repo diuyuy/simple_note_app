@@ -92,7 +92,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
                 'NoteCardWidget.updateDate'.tr(args: [date]),
                 style: TextStyle(
                   color: AppColors.midDarkGrey,
-                  fontSize: AppConstants.noteCardDateFontSize,
+                  fontSize: Theme.of(context).textTheme.bodyMedium?.fontSize,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
@@ -128,7 +128,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
         spans.add(
           TextSpan(
             text: t.substring(lastIndex, match.start),
-            style: titleTextStyle,
+            style: getTitleTextStyle(context),
           ),
         );
       }
@@ -136,7 +136,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
       spans.add(
         TextSpan(
           text: t.substring(match.start, match.end),
-          style: titleTextStyle.copyWith(
+          style: getTitleTextStyle(context).copyWith(
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
           ),
         ),
@@ -149,7 +149,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
       spans.add(
         TextSpan(
           text: t.substring(lastIndex),
-          style: titleTextStyle,
+          style: getTitleTextStyle(context),
         ),
       );
     }
@@ -179,7 +179,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
           TextSpan(
             text:
                 "$prefix${content.substring(lastIndex, match.start).trimLeft()}",
-            style: contentTextStyle,
+            style: getContentTextStyle(context),
           ),
         );
       }
@@ -187,7 +187,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
       spans.add(
         TextSpan(
           text: content.substring(match.start, match.end),
-          style: contentTextStyle.copyWith(
+          style: getContentTextStyle(context).copyWith(
             backgroundColor: Theme.of(context).colorScheme.primaryContainer,
           ),
         ),
@@ -205,7 +205,7 @@ class FilteredNoteCardWidget extends StatelessWidget {
       spans.add(
         TextSpan(
           text: '${content.substring(lastIndex, lastIndex + scope)}$suffix',
-          style: contentTextStyle,
+          style: getContentTextStyle(context),
         ),
       );
     }
@@ -213,13 +213,13 @@ class FilteredNoteCardWidget extends StatelessWidget {
     return RichText(text: TextSpan(children: spans));
   }
 
-  TextStyle get titleTextStyle => TextStyle(
+  TextStyle getTitleTextStyle(BuildContext context) => TextStyle(
         color: Colors.black,
-        fontSize: AppConstants.noteCardTitleFontSize,
+        fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
       );
 
-  TextStyle get contentTextStyle => TextStyle(
+  TextStyle getContentTextStyle(BuildContext context) => TextStyle(
         color: AppColors.midDarkGrey,
-        fontSize: AppConstants.noteCardTitleFontSize,
+        fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
       );
 }
