@@ -11,6 +11,9 @@ import '../../features/note/presentation/pages/wastebasket/wastebasket_selection
 import '../../features/note_category/presentation/pages/note_category_export.dart';
 import '../../features/setting/presentation/bloc/app_setting_bloc.dart';
 import '../../features/setting/presentation/pages/app_setting_page.dart';
+import '../../features/setting/presentation/pages/app_theme/app_seed_color_setting_page.dart';
+import '../../features/setting/presentation/pages/app_theme/theme_mode_setting_page.dart';
+import '../../features/setting/presentation/pages/note_setting/delete_interval_setting_page.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
 
@@ -267,6 +270,32 @@ final router = GoRouter(
         state: state,
         child: const AppSettingPage(),
       ),
+      routes: [
+        GoRoute(
+          path: RouterPath.themeModeSettingPage,
+          pageBuilder: (context, state) => buildFadeTransitionPage(
+            context: context,
+            state: state,
+            child: const ThemeModeSettingPage(),
+          ),
+        ),
+        GoRoute(
+          path: RouterPath.seedColorSettingPage,
+          pageBuilder: (context, state) => buildFadeTransitionPage(
+            context: context,
+            state: state,
+            child: const AppSeedColorSettingPage(),
+          ),
+        ),
+        GoRoute(
+          path: RouterPath.deleteIntervalSettingPage,
+          pageBuilder: (context, state) => buildFadeTransitionPage(
+            context: context,
+            state: state,
+            child: const DeleteIntervalSettingPage(),
+          ),
+        ),
+      ],
     ),
   ],
 );

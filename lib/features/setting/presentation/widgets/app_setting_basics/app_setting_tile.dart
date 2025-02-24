@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/color/app_colors.dart';
-import '../../../../../core/constants/app_constants.dart';
 
 class AppSettingTile extends StatelessWidget {
   const AppSettingTile({
@@ -20,13 +19,13 @@ class AppSettingTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
+      color: Theme.of(context).colorScheme.onSecondary,
       child: InkWell(
         onTap: onTap,
         highlightColor: Colors.black.withAlpha(25),
         splashColor: Colors.transparent,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
+          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
           child: AspectRatio(
             aspectRatio: 8 / 1,
             child: Row(
@@ -42,18 +41,18 @@ class AppSettingTile extends StatelessWidget {
                       Text(
                         title,
                         style: TextStyle(
-                          //fontSize: AppConstants.appSettingTileFontSize,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
                       if (subTitle != null)
                         Text(
                           subTitle!,
-                          style: TextStyle(
-                            color: AppColors.midDarkGrey,
-                            fontSize:
-                                AppConstants.appSettingTileSubTitleFontSize,
-                          ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall
+                              ?.copyWith(
+                                color: Theme.of(context).colorScheme.outline,
+                              ),
                         ),
                     ],
                   ),

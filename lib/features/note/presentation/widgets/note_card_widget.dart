@@ -54,7 +54,7 @@ class NoteCardWidget extends StatelessWidget {
                   Text(
                     title.isNotEmpty ? title : AppConstants.untitled.tr(),
                     style: TextStyle(
-                      fontSize: AppConstants.noteCardTitleFontSize,
+                      fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
@@ -62,7 +62,8 @@ class NoteCardWidget extends StatelessWidget {
                     'NoteCardWidget.updateDate'.tr(args: [date]),
                     style: TextStyle(
                       color: AppColors.midDarkGrey,
-                      fontSize: AppConstants.noteCardDateFontSize,
+                      fontSize:
+                          Theme.of(context).textTheme.bodyMedium?.fontSize,
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),

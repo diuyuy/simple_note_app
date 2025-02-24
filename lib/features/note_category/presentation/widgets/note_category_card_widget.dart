@@ -50,7 +50,7 @@ class NoteCategoryCardWidget extends StatelessWidget {
               child: Text(
                 categoryName,
                 style: TextStyle(
-                  fontSize: AppConstants.noteCategoryCardTitleFontSize,
+                  fontSize: Theme.of(context).textTheme.bodyLarge?.fontSize,
                   //fontWeight: FontWeight.w500,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -61,7 +61,7 @@ class NoteCategoryCardWidget extends StatelessWidget {
                 text: '$noteCount ',
                 style: TextStyle(
                   fontSize: 18,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 children: [
                   TextSpan(
@@ -70,7 +70,7 @@ class NoteCategoryCardWidget extends StatelessWidget {
                         : 'NoteCategoryCardWidget.notesCount'.tr(),
                     style: TextStyle(
                       fontSize: 16,
-                      color: Colors.black,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
                 ],

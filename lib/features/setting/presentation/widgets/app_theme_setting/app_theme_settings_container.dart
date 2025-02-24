@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/router/router_path.dart';
 
-import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../bloc/app_setting_bloc.dart';
 import '../app_setting_basics/app_setting_container.dart';
@@ -15,6 +16,8 @@ class AppThemeSettingsContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final appSettingState = context.watch<AppSettingBloc>().state;
+    final currentPath = GoRouterState.of(context).uri.path;
+
     return appSettingState.when(
       initial: (appSetting) => const SizedBox.shrink(),
       success: (appSetting) {
@@ -26,10 +29,13 @@ class AppThemeSettingsContainer extends StatelessWidget {
                 selectedWidget: Text(
                   AppConstants.themeMode[appSetting.themeMode].tr(),
                   style: TextStyle(
-                    color: AppColors.darkGrey,
+                    color: Theme.of(context).colorScheme.outline,
                   ),
                 ),
-                onTap: () {},
+                onTap: () {
+                  context
+                      .push('$currentPath/${RouterPath.themeModeSettingPage}');
+                },
               ),
               const AppSettingDivider(),
               AppSettingTile(
@@ -38,7 +44,10 @@ class AppThemeSettingsContainer extends StatelessWidget {
                   Icons.circle,
                   color: Color(appSetting.themeColor),
                 ),
-                onTap: () {},
+                onTap: () {
+                  context
+                      .push('$currentPath/${RouterPath.seedColorSettingPage}');
+                },
               ),
             ],
           ),

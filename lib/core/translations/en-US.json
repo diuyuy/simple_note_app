@@ -162,22 +162,40 @@
     "selectAll": "Select All",
     "trash": "Trash"
   },
+
+  "1 day": "1 day",
+  "3 days": "3 days",
+  "7 days": "7 days",
+  "14 days": "14 days",
+  "30 days": "30 days",
+  "60 days": "60 days",
+
   "Assign Category": "Assign Category",
   "Auto-Delete Interval": "Auto-Delete Interval",
+
   "Dark Mode": "Dark Mode",
   "Delete": "Delete",
   "deleteInterval": "{} days",
   "Deselect All": "Deselect All",
+
   "Enable Auto-Save for Notes": "Enable Auto-Save for Notes",
+
   "Light Mode": "Light Mode",
+
+  "None": "None",
   "Note Settings": "Note Settings",
+  "Note Text Settings": "Note Text Settings",
+
   "Permanently Delete": "Permanently Delete",
+
   "Restore": "Restore",
+
   "Select": "Select",
   "Select All": "Select All",
   "Select how often old notes will be deleted": "Select how often old notes will be deleted.",
   "Settings": "Settings",
   "System Default": "System Default",
+  
   "Theme": "Theme",
   "Theme Color": "Theme Color",
   "Theme Mode": "Theme Mode" 

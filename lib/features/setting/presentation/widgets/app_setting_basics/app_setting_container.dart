@@ -14,12 +14,14 @@ class AppSettingContainer extends StatelessWidget {
         width: 1.sw,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onSecondary,
         ),
-        child: ClipRRect(
-          clipBehavior: Clip.hardEdge,
-          borderRadius: BorderRadius.circular(8.0),
-          child: child,
+        child: Center(
+          child: ClipRRect(
+            clipBehavior: Clip.hardEdge,
+            borderRadius: BorderRadius.circular(8.0),
+            child: child,
+          ),
         ),
       ),
     );

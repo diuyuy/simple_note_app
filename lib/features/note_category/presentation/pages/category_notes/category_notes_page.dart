@@ -30,6 +30,7 @@ class CategoryNotesPage extends StatelessWidget {
           categoryName,
           overflow: TextOverflow.ellipsis,
         ),
+        centerTitle: true,
         actions: [
           MyMenuAnchor(menuChildren: buildMenuItemButtonList(context)),
         ],

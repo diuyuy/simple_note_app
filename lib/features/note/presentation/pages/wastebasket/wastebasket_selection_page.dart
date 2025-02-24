@@ -168,6 +168,7 @@ class _WastebasketSelectionPageState extends State<WastebasketSelectionPage> {
               context.read<WasteBasketBloc>().add(
                     WasteBasketEvent.deletePermanently(noteIds: selectedWastes),
                   );
+              context.pop();
             }
           }
         },

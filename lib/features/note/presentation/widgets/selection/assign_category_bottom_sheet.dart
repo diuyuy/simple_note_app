@@ -77,7 +77,7 @@ class _AssignCategoryBottomSheetState extends State<AssignCategoryBottomSheet> {
                                     ? Icons.check_circle
                                     : Icons.circle_outlined,
                                 color: category.id == selectedId
-                                    ? Theme.of(context).primaryColor
+                                    ? Theme.of(context).colorScheme.primary
                                     : AppColors.midDarkGrey,
                               ),
                             ),
