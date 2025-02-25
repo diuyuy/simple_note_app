@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/enum/router_params_key.dart';
-import 'package:simple_note_app/features/note_category/presentation/pages/category_notes/category_notes_selection_page.dart';
-import 'package:simple_note_app/features/setting/presentation/pages/note_setting/note_text_setting_page.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
@@ -11,12 +8,16 @@ import '../../features/note/presentation/pages/favorite/favorite_selection_page.
 import '../../features/note/presentation/pages/note_page_export.dart';
 import '../../features/note/presentation/pages/search/search_note_selection_page.dart';
 import '../../features/note/presentation/pages/wastebasket/wastebasket_selection_page.dart';
+import '../../features/note_category/presentation/pages/category_notes/category_notes_selection_page.dart';
 import '../../features/note_category/presentation/pages/note_category_export.dart';
 import '../../features/setting/presentation/bloc/app_setting_bloc.dart';
+import '../../features/setting/presentation/pages/app_license_page.dart';
 import '../../features/setting/presentation/pages/app_setting_page.dart';
 import '../../features/setting/presentation/pages/app_theme/app_seed_color_setting_page.dart';
 import '../../features/setting/presentation/pages/app_theme/theme_mode_setting_page.dart';
 import '../../features/setting/presentation/pages/note_setting/delete_interval_setting_page.dart';
+import '../../features/setting/presentation/pages/note_setting/note_text_setting_page.dart';
+import '../enum/router_params_key.dart';
 import 'note_selection_args.dart';
 import 'router_path.dart';
 
@@ -319,6 +320,14 @@ final router = GoRouter(
         context: context,
         state: state,
         child: const NoteTextSettingPage(),
+      ),
+    ),
+    GoRoute(
+      path: RouterPath.appLicensePage,
+      pageBuilder: (context, state) => buildFadeTransitionPage(
+        context: context,
+        state: state,
+        child: const AppLicensePage(),
       ),
     ),
   ],

@@ -5,6 +5,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/setting/presentation/bloc/app_setting_bloc.dart';
 import '../../router/router_path.dart';
+import '../../utils/review_helper/review_helper.dart';
+import '../../utils/show_snack_bar.dart';
 import 'drawer_tile.dart';
 
 class NoteDrawer extends StatelessWidget {
@@ -95,6 +97,14 @@ class NoteDrawer extends StatelessWidget {
           DrawerTile(
             leading: Icon(Icons.description_outlined),
             title: Text('Drawer.openSourceLicence'.tr()),
+            onTap: () {
+              context.push(RouterPath.appLicensePage);
+              // showLicensePage(
+              //   context: context,
+              //   applicationName: 'License.applicationName'.tr(),
+              //   applicationVersion: '1.0.0',
+              // );
+            },
           ),
           DrawerTile(
             leading: Icon(Icons.privacy_tip_outlined),
@@ -103,6 +113,14 @@ class NoteDrawer extends StatelessWidget {
           DrawerTile(
             leading: Icon(Icons.rate_review_outlined),
             title: Text('Drawer.appReview'.tr()),
+            onTap: () async {
+              try {
+                ReviewHelper.openStoreReview();
+              } catch (e) {
+                showSnackBar(
+                    context, 'An error occurred. Please try again.'.tr());
+              }
+            },
           ),
         ],
       ),

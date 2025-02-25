@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../widgets/note_category/input_category_info_widget.dart';
 
 class CreateNoteCategoryPage extends StatelessWidget {
@@ -16,7 +15,7 @@ class CreateNoteCategoryPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          leading: const AppBarBackButton(),
+          // leading: const AppBarBackButton(),
           title: Text('CreateNoteCategoryPage.newCategory'.tr()),
           centerTitle: true,
           actions: [],

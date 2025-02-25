@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../widgets/reorder/reorderable_note_widget.dart';
 
@@ -39,7 +38,7 @@ class _ReorderNotePageState extends State<ReorderNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('ReorderNotePage.reorderNotes'.tr()),
         actions: [
           TextButton(

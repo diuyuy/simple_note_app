@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:simple_note_app/core/widgets/my_ink_well.dart';
 
 import '../../../../../core/constants/app_constants.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../bloc/app_setting_bloc.dart';
 import '../../widgets/app_setting_basics/app_setting_container.dart';
 import '../../widgets/app_setting_basics/app_setting_tile_with_button.dart';
@@ -16,7 +15,7 @@ class ThemeModeSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // // leading: const AppBarBackButton(),
         title: Text('Theme Mode'.tr()),
         centerTitle: true,
       ),

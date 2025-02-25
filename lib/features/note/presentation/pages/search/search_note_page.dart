@@ -10,7 +10,6 @@ import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/show_no_note_to_select_dialog.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../domain/usecases/note_usecase/load_notes_use_case.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
@@ -54,7 +53,7 @@ class _SearchNotePageState extends State<SearchNoteView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Padding(
           padding: const EdgeInsets.symmetric(vertical: 4.0),
           child: TextField(

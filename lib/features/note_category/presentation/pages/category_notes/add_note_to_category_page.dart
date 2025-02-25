@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/enum/previous_page.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/bottom_action_button.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../../../../note/presentation/widgets/selection/select_note_widget.dart';
@@ -50,7 +49,7 @@ class _AddNoteToCategoryPageState extends State<AddNoteToCategoryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('AddNoteToCategoryPage.select'.tr()),
         actions: [
           TextButton(

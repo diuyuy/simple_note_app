@@ -6,7 +6,6 @@ import 'package:simple_note_app/features/setting/presentation/bloc/app_setting_b
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../widgets/note_text_field.dart';
 
@@ -32,7 +31,7 @@ class _CreateNotePageState extends State<CreateNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('CreateNotePage.newNote'.tr()),
         centerTitle: true,
         actions: [

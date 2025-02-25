@@ -8,7 +8,6 @@ import 'package:simple_note_app/core/widgets/menu_anchor/my_menu_item_button.dar
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/router/router_path.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../setting/presentation/bloc/app_setting_bloc.dart';
 import '../../../domain/entities/note.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
@@ -24,7 +23,7 @@ class ReadNotePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('ReadNotePage.note'.tr()),
         centerTitle: true,
         actions: [

@@ -7,7 +7,6 @@ import 'package:simple_note_app/features/note_category/presentation/widgets/sele
 import '../../../../../core/enum/selected_item.dart';
 import '../../../../../core/utils/show_alert_dialog.dart';
 import '../../../../../core/utils/show_selected_empty_dialog.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_item_button.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
@@ -65,7 +64,7 @@ class _CategoryNotesSelectionPageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('Select'.tr()),
         actions: [
           Builder(builder: (context) {
