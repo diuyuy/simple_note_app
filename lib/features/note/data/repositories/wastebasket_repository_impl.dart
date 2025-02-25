@@ -28,8 +28,8 @@ class WastebasketRepositoryImpl implements WastebasketRepository {
   }
 
   @override
-  Future<void> restoreNote(String id) async {
-    await _localDatasource.restoreNote(id);
+  Future<void> deleteRestoredNote(String id) async {
+    await _localDatasource.deleteRestoredNote(id);
   }
 
   @override

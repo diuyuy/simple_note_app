@@ -23,7 +23,7 @@ class NoteEvent with _$NoteEvent {
 
   const factory NoteEvent.updateMultipleNotesCategory({
     required List<String> noteIds,
-    required String category,
+    required String? category,
   }) = _UpdateMultipleNotesCategory;
 
   const factory NoteEvent.deleteNote({

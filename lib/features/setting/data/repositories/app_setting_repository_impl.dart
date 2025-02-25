@@ -23,7 +23,8 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
     return AppSetting(
       isExitOnHome: appSetting.isExitOnHome,
       themeColor: appSetting.themeColor,
-      fontSize: appSetting.fontSize,
+      titleFontSize: appSetting.titleFontSize,
+      contentFontSize: appSetting.contentFontSize,
       isAutoSave: appSetting.isAutoSave,
       themeMode: appSetting.themeMode,
       textHeight: appSetting.textHeight,
@@ -35,7 +36,8 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
     return AppSettingModel(
       isExitOnHome: appSetting.isExitOnHome,
       themeColor: appSetting.themeColor,
-      fontSize: appSetting.fontSize,
+      titleFontSize: appSetting.titleFontSize,
+      contentFontSize: appSetting.contentFontSize,
       isAutoSave: appSetting.isAutoSave,
       themeMode: appSetting.themeMode,
       textHeight: appSetting.textHeight,

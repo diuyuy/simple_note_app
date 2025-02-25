@@ -27,9 +27,9 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
   final RestoreNoteUserCase restoreNoteUseCase;
   final DeletePermanentlyUserCase deletePermanentlyUseCase;
 
-  void _onLoadWastes(_LoadWastes event, Emitter<WasteBasketState> emit) {
+  void _onLoadWastes(_LoadWastes event, Emitter<WasteBasketState> emit) async {
     try {
-      final wastes = loadWastesUseCase.execute();
+      final wastes = await loadWastesUseCase.execute();
 
       emit(_WasteBasketLoadSuccess(wastes: wastes));
     } catch (e) {
@@ -47,7 +47,7 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
 
       emit(
         _WasteBasketLoadSuccess(
-          wastes: loadWastesUseCase.execute(),
+          wastes: await loadWastesUseCase.execute(),
           isAfterRestore: true,
         ),
       );
@@ -64,7 +64,7 @@ class WasteBasketBloc extends Bloc<WasteBasketEvent, WasteBasketState> {
         await deletePermanentlyUseCase.execute(noteId);
       }
 
-      emit(_WasteBasketLoadSuccess(wastes: loadWastesUseCase.execute()));
+      emit(_WasteBasketLoadSuccess(wastes: await loadWastesUseCase.execute()));
     } catch (e) {
       addError(e);
       emit(_WasteBasketLoadFailure(wastes: [], errorMessage: e.toString()));

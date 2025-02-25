@@ -8,6 +8,7 @@ Note noteModelToEntity(NoteModel note) {
     content: note.content,
     createDate: note.createDate,
     updateDate: note.updateDate,
+    deleteDate: note.deleteDate,
     isFavorite: note.isFavorite,
     category: note.category,
   );

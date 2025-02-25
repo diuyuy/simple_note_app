@@ -129,7 +129,7 @@ class _SearchNotePageState extends State<SearchNoteView> {
                                 },
                                 onTap: () {
                                   context.push(
-                                    '/${RouterPath.readNotePage}',
+                                    RouterPath.readNotePage,
                                     extra: note.id,
                                   );
                                 },

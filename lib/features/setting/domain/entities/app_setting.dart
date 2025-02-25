@@ -8,8 +8,9 @@ class AppSetting with _$AppSetting {
     @Default(true) bool isExitOnHome,
     @Default(2) int themeMode,
     @Default(0xFF2196F3) int themeColor,
-    @Default(4) int fontSize,
-    @Default(1.0) double textHeight,
+    @Default(22) int titleFontSize,
+    @Default(16) int contentFontSize,
+    @Default(1.2) double textHeight,
     @Default(false) bool isAutoSave,
     @Default(0) int autoDeleteDays,
   }) = _AppSetting;

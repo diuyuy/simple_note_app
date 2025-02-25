@@ -24,7 +24,8 @@ mixin _$AppSettingEvent {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)
@@ -39,7 +40,8 @@ mixin _$AppSettingEvent {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -54,7 +56,8 @@ mixin _$AppSettingEvent {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -154,7 +157,8 @@ class _$StartedImpl implements _Started {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)
@@ -172,7 +176,8 @@ class _$StartedImpl implements _Started {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -190,7 +195,8 @@ class _$StartedImpl implements _Started {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -289,7 +295,8 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)
@@ -307,7 +314,8 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -325,7 +333,8 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -387,7 +396,8 @@ abstract class _$$AppSettingUpdatedImplCopyWith<$Res> {
       {bool? isExitOnHome,
       int? themeMode,
       int? themeColor,
-      int? fontSize,
+      int? titleFontSize,
+      int? contentFontSize,
       double? textHeight,
       bool? isAutoSave,
       int? autoDeleteDays});
@@ -409,7 +419,8 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
     Object? isExitOnHome = freezed,
     Object? themeMode = freezed,
     Object? themeColor = freezed,
-    Object? fontSize = freezed,
+    Object? titleFontSize = freezed,
+    Object? contentFontSize = freezed,
     Object? textHeight = freezed,
     Object? isAutoSave = freezed,
     Object? autoDeleteDays = freezed,
@@ -427,9 +438,13 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
               as int?,
-      fontSize: freezed == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
+      titleFontSize: freezed == titleFontSize
+          ? _value.titleFontSize
+          : titleFontSize // ignore: cast_nullable_to_non_nullable
+              as int?,
+      contentFontSize: freezed == contentFontSize
+          ? _value.contentFontSize
+          : contentFontSize // ignore: cast_nullable_to_non_nullable
               as int?,
       textHeight: freezed == textHeight
           ? _value.textHeight
@@ -454,7 +469,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
       {this.isExitOnHome,
       this.themeMode,
       this.themeColor,
-      this.fontSize,
+      this.titleFontSize,
+      this.contentFontSize,
       this.textHeight,
       this.isAutoSave,
       this.autoDeleteDays});
@@ -466,7 +482,9 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   final int? themeColor;
   @override
-  final int? fontSize;
+  final int? titleFontSize;
+  @override
+  final int? contentFontSize;
   @override
   final double? textHeight;
   @override
@@ -476,7 +494,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
 
   @override
   String toString() {
-    return 'AppSettingEvent.appSettingUpdated(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
+    return 'AppSettingEvent.appSettingUpdated(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, titleFontSize: $titleFontSize, contentFontSize: $contentFontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
   }
 
   @override
@@ -490,8 +508,10 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
                 other.themeMode == themeMode) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
+            (identical(other.titleFontSize, titleFontSize) ||
+                other.titleFontSize == titleFontSize) &&
+            (identical(other.contentFontSize, contentFontSize) ||
+                other.contentFontSize == contentFontSize) &&
             (identical(other.textHeight, textHeight) ||
                 other.textHeight == textHeight) &&
             (identical(other.isAutoSave, isAutoSave) ||
@@ -501,8 +521,16 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExitOnHome, themeMode,
-      themeColor, fontSize, textHeight, isAutoSave, autoDeleteDays);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isExitOnHome,
+      themeMode,
+      themeColor,
+      titleFontSize,
+      contentFontSize,
+      textHeight,
+      isAutoSave,
+      autoDeleteDays);
 
   /// Create a copy of AppSettingEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -522,14 +550,15 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)
         appSettingUpdated,
   }) {
-    return appSettingUpdated(isExitOnHome, themeMode, themeColor, fontSize,
-        textHeight, isAutoSave, autoDeleteDays);
+    return appSettingUpdated(isExitOnHome, themeMode, themeColor, titleFontSize,
+        contentFontSize, textHeight, isAutoSave, autoDeleteDays);
   }
 
   @override
@@ -541,14 +570,15 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
   }) {
     return appSettingUpdated?.call(isExitOnHome, themeMode, themeColor,
-        fontSize, textHeight, isAutoSave, autoDeleteDays);
+        titleFontSize, contentFontSize, textHeight, isAutoSave, autoDeleteDays);
   }
 
   @override
@@ -560,7 +590,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             bool? isExitOnHome,
             int? themeMode,
             int? themeColor,
-            int? fontSize,
+            int? titleFontSize,
+            int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
             int? autoDeleteDays)?
@@ -568,8 +599,15 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
     required TResult orElse(),
   }) {
     if (appSettingUpdated != null) {
-      return appSettingUpdated(isExitOnHome, themeMode, themeColor, fontSize,
-          textHeight, isAutoSave, autoDeleteDays);
+      return appSettingUpdated(
+          isExitOnHome,
+          themeMode,
+          themeColor,
+          titleFontSize,
+          contentFontSize,
+          textHeight,
+          isAutoSave,
+          autoDeleteDays);
     }
     return orElse();
   }
@@ -614,7 +652,8 @@ abstract class _AppSettingUpdated implements AppSettingEvent {
       {final bool? isExitOnHome,
       final int? themeMode,
       final int? themeColor,
-      final int? fontSize,
+      final int? titleFontSize,
+      final int? contentFontSize,
       final double? textHeight,
       final bool? isAutoSave,
       final int? autoDeleteDays}) = _$AppSettingUpdatedImpl;
@@ -622,7 +661,8 @@ abstract class _AppSettingUpdated implements AppSettingEvent {
   bool? get isExitOnHome;
   int? get themeMode;
   int? get themeColor;
-  int? get fontSize;
+  int? get titleFontSize;
+  int? get contentFontSize;
   double? get textHeight;
   bool? get isAutoSave;
   int? get autoDeleteDays;

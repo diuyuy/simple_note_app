@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/enum/router_params_key.dart';
+import 'package:simple_note_app/features/note_category/presentation/pages/category_notes/category_notes_selection_page.dart';
+import 'package:simple_note_app/features/setting/presentation/pages/note_setting/note_text_setting_page.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
@@ -55,32 +58,6 @@ final router = GoRouter(
           ),
         ),
         GoRoute(
-          path: RouterPath.readNotePage,
-          pageBuilder: (context, state) {
-            final noteId = state.extra as String;
-
-            return buildFadeTransitionPage(
-              context: context,
-              state: state,
-              child: ReadNotePage(noteId: noteId),
-            );
-          },
-          routes: [
-            GoRoute(
-              path: RouterPath.updateNotePage,
-              pageBuilder: (context, state) {
-                final noteId = state.extra as String;
-
-                return buildFadeTransitionPage(
-                  context: context,
-                  state: state,
-                  child: UpdateNotePage(id: noteId),
-                );
-              },
-            ),
-          ],
-        ),
-        GoRoute(
           path: RouterPath.searchNotePage,
           pageBuilder: (context, state) => buildFadeTransitionPage(
             context: context,
@@ -97,6 +74,32 @@ final router = GoRouter(
               context: context,
               state: state,
               child: ReorderNotePage(currentOrder: currentOrder),
+            );
+          },
+        ),
+      ],
+    ),
+    GoRoute(
+      path: RouterPath.readNotePage,
+      pageBuilder: (context, state) {
+        final noteId = state.extra as String;
+
+        return buildFadeTransitionPage(
+          context: context,
+          state: state,
+          child: ReadNotePage(noteId: noteId),
+        );
+      },
+      routes: [
+        GoRoute(
+          path: RouterPath.updateNotePage,
+          pageBuilder: (context, state) {
+            final noteId = state.extra as String;
+
+            return buildFadeTransitionPage(
+              context: context,
+              state: state,
+              child: UpdateNotePage(id: noteId),
             );
           },
         ),
@@ -196,7 +199,7 @@ final router = GoRouter(
               context: context,
               state: state,
               child: CategoryNotesPage(
-                id: id,
+                categoryId: id,
                 categoryName: categoryName,
               ),
             );
@@ -214,7 +217,20 @@ final router = GoRouter(
                   child: AddNoteToCategoryPage(id: id),
                 );
               },
-            )
+            ),
+            GoRoute(
+              path: RouterPath.categoryNotesSelectionPage,
+              pageBuilder: (context, state) {
+                final args = state.extra as Map<RouterParamsKey, List<String>>;
+
+                return NoTransitionPage(
+                  child: CategoryNotesSelectionPage(
+                    categoryId: args[RouterParamsKey.categoryId]!.first,
+                    selectedNotes: args[RouterParamsKey.selectedNotes] ?? [],
+                  ),
+                );
+              },
+            ),
           ],
         ),
         GoRoute(
@@ -296,6 +312,14 @@ final router = GoRouter(
           ),
         ),
       ],
+    ),
+    GoRoute(
+      path: RouterPath.noteTextSettingPage,
+      pageBuilder: (context, state) => buildFadeTransitionPage(
+        context: context,
+        state: state,
+        child: const NoteTextSettingPage(),
+      ),
     ),
   ],
 );

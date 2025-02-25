@@ -40,7 +40,9 @@ class AppSettingBloc extends Bloc<AppSettingEvent, AppSettingState> {
         isExitOnHome: event.isExitOnHome ?? currentSetting.isExitOnHome,
         themeMode: event.themeMode ?? currentSetting.themeMode,
         themeColor: event.themeColor ?? currentSetting.themeColor,
-        fontSize: event.fontSize ?? currentSetting.fontSize,
+        titleFontSize: event.titleFontSize ?? currentSetting.titleFontSize,
+        contentFontSize:
+            event.contentFontSize ?? currentSetting.contentFontSize,
         isAutoSave: event.isAutoSave ?? currentSetting.isAutoSave,
         textHeight: event.textHeight ?? currentSetting.textHeight,
         autoDeleteDays: event.autoDeleteDays ?? currentSetting.autoDeleteDays,

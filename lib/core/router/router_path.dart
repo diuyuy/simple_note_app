@@ -3,7 +3,7 @@ class RouterPath {
   static const String createNotePage = 'create';
 
   static const String noteSelectionPage = '/selection';
-  static const String readNotePage = 'read';
+  static const String readNotePage = '/read';
   static const String reorderNotePage = 'reorder';
   static const String updateNotePage = 'update';
 
@@ -19,7 +19,10 @@ class RouterPath {
   //Note Category paths
   static const String noteCategoryPage = '/noteCategory';
   static const String addNoteTocategoryPage = 'addNoteToCategory';
+
   static const String categoryNotesPage = 'categoryNotes';
+  static const String categoryNotesSelectionPage = 'categoryNotesSelection';
+
   static const String createNoteCategoryPage = 'createCategory';
   static const String noteCategorySelectionPage = 'noteCategorySelection';
   static const String reorderNoteCategoryPage = 'reorderNoteCategory';
@@ -30,4 +33,5 @@ class RouterPath {
   static const String themeModeSettingPage = 'themeMode';
   static const String seedColorSettingPage = 'seedColor';
   static const String deleteIntervalSettingPage = 'deleteInterval';
+  static const String noteTextSettingPage = '/noteTextSetting';
 }

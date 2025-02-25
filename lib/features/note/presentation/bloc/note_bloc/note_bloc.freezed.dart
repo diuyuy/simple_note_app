@@ -25,7 +25,7 @@ mixin _$NoteEvent {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -42,7 +42,7 @@ mixin _$NoteEvent {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -59,7 +59,7 @@ mixin _$NoteEvent {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -251,7 +251,7 @@ class _$CreateNoteImpl implements _CreateNote {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -271,7 +271,7 @@ class _$CreateNoteImpl implements _CreateNote {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -291,7 +291,7 @@ class _$CreateNoteImpl implements _CreateNote {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -427,7 +427,7 @@ class _$LoadNotesImpl implements _LoadNotes {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -447,7 +447,7 @@ class _$LoadNotesImpl implements _LoadNotes {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -467,7 +467,7 @@ class _$LoadNotesImpl implements _LoadNotes {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -669,7 +669,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -689,7 +689,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -710,7 +710,7 @@ class _$UpdateNoteImpl implements _UpdateNote {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -807,7 +807,7 @@ abstract class _$$UpdateMultipleNotesCategoryImplCopyWith<$Res> {
           $Res Function(_$UpdateMultipleNotesCategoryImpl) then) =
       __$$UpdateMultipleNotesCategoryImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<String> noteIds, String category});
+  $Res call({List<String> noteIds, String? category});
 }
 
 /// @nodoc
@@ -825,17 +825,17 @@ class __$$UpdateMultipleNotesCategoryImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? noteIds = null,
-    Object? category = null,
+    Object? category = freezed,
   }) {
     return _then(_$UpdateMultipleNotesCategoryImpl(
       noteIds: null == noteIds
           ? _value._noteIds
           : noteIds // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      category: null == category
+      category: freezed == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -857,7 +857,7 @@ class _$UpdateMultipleNotesCategoryImpl
   }
 
   @override
-  final String category;
+  final String? category;
 
   @override
   String toString() {
@@ -897,7 +897,7 @@ class _$UpdateMultipleNotesCategoryImpl
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -917,7 +917,7 @@ class _$UpdateMultipleNotesCategoryImpl
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -937,7 +937,7 @@ class _$UpdateMultipleNotesCategoryImpl
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1007,10 +1007,10 @@ class _$UpdateMultipleNotesCategoryImpl
 abstract class _UpdateMultipleNotesCategory implements NoteEvent {
   const factory _UpdateMultipleNotesCategory(
       {required final List<String> noteIds,
-      required final String category}) = _$UpdateMultipleNotesCategoryImpl;
+      required final String? category}) = _$UpdateMultipleNotesCategoryImpl;
 
   List<String> get noteIds;
-  String get category;
+  String? get category;
 
   /// Create a copy of NoteEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -1095,7 +1095,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -1115,7 +1115,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1135,7 +1135,7 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1299,7 +1299,7 @@ class _$DeleteMultipleNotesImpl implements _DeleteMultipleNotes {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -1319,7 +1319,7 @@ class _$DeleteMultipleNotesImpl implements _DeleteMultipleNotes {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1339,7 +1339,7 @@ class _$DeleteMultipleNotesImpl implements _DeleteMultipleNotes {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1501,7 +1501,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -1521,7 +1521,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1541,7 +1541,7 @@ class _$ReorderNotesImpl implements _ReorderNotes {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1704,7 +1704,7 @@ class _$RestoreNotesImpl implements _RestoreNotes {
     required TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)
         updateNote,
-    required TResult Function(List<String> noteIds, String category)
+    required TResult Function(List<String> noteIds, String? category)
         updateMultipleNotesCategory,
     required TResult Function(String deletedNote) deleteNote,
     required TResult Function(List<String> deletedNotes) deleteMultipleNotes,
@@ -1724,7 +1724,7 @@ class _$RestoreNotesImpl implements _RestoreNotes {
     TResult? Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult? Function(List<String> noteIds, String category)?
+    TResult? Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult? Function(String deletedNote)? deleteNote,
     TResult? Function(List<String> deletedNotes)? deleteMultipleNotes,
@@ -1744,7 +1744,7 @@ class _$RestoreNotesImpl implements _RestoreNotes {
     TResult Function(String id, String? title, String? content,
             String? updateDate, bool? isFavorite, String? category)?
         updateNote,
-    TResult Function(List<String> noteIds, String category)?
+    TResult Function(List<String> noteIds, String? category)?
         updateMultipleNotesCategory,
     TResult Function(String deletedNote)? deleteNote,
     TResult Function(List<String> deletedNotes)? deleteMultipleNotes,
