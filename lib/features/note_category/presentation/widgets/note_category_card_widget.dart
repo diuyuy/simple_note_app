@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/router/router_path.dart';
-import '../../../../core/utils/show_alert_dialog.dart';
+import '../../../../core/utils/dialog_and_snackbar/show_alert_dialog.dart';
 import '../../../../core/widgets/code_point_icon.dart';
 import '../bloc/note_category_bloc.dart';
 
