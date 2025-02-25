@@ -5,7 +5,6 @@ import 'package:gap/gap.dart';
 import 'package:simple_note_app/features/setting/presentation/widgets/app_note_setting/app_note_setting_container.dart';
 import 'package:simple_note_app/features/setting/presentation/widgets/app_setting_basics/app_setting_title_text.dart';
 
-import '../../../../core/widgets/app_bar_back_button.dart';
 import '../bloc/app_setting_bloc.dart';
 import '../widgets/app_theme_setting/app_theme_settings_container.dart';
 
@@ -16,7 +15,7 @@ class AppSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // // leading: const AppBarBackButton(),
         title: Text('Settings'.tr()),
         centerTitle: true,
       ),

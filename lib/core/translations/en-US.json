@@ -1,4 +1,8 @@
 {
+  "License": {
+    "applicationName": "Simple Note"
+  },
+
   "HomePage": {
     "note": "Note",
     "reorderNotes": "Reorder notes",
@@ -172,6 +176,7 @@
   "60 days": "60 days",
 
   "Adjusting text height changes readability.\nCheck the line spacing below.": "Adjusting text height changes readability.\nCheck the line spacing below.",
+  "An error occurred. Please try again.": "An error occurred. Please try again.",
   "Assign Category": "Assign Category",
   "Auto-Delete Interval": "Auto-Delete Interval",
 

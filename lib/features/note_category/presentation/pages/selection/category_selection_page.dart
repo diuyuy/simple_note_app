@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/enum/selected_item.dart';
 import '../../../../../core/utils/show_alert_dialog.dart';
 import '../../../../../core/utils/show_selected_empty_dialog.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../../bloc/note_category_bloc.dart';
 import '../../widgets/selection/select_category_widget.dart';
@@ -55,7 +54,7 @@ class _CategorySelectionPageState extends State<CategorySelectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('CategorySelectionPage.select'.tr()),
         actions: [
           TextButton(

@@ -10,7 +10,6 @@ import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/show_alert_dialog.dart';
 import '../../../../../core/utils/show_no_note_to_select_dialog.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../domain/usecases/wastebaseket_usecase/delete_permanently_user_case.dart';
 import '../../../domain/usecases/wastebaseket_usecase/load_wastes_use_case.dart';
@@ -49,7 +48,7 @@ class WastebasketView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('WastebasketPage.trash'.tr()),
         centerTitle: true,
         actions: [

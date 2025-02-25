@@ -34,4 +34,7 @@ class RouterPath {
   static const String seedColorSettingPage = 'seedColor';
   static const String deleteIntervalSettingPage = 'deleteInterval';
   static const String noteTextSettingPage = '/noteTextSetting';
+
+  //App License
+  static const String appLicensePage = '/appLicense';
 }

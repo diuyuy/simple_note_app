@@ -7,7 +7,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/router_params_key.dart';
 import '../../../../../core/router/router_path.dart';
-import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_item_button.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
@@ -29,7 +28,7 @@ class CategoryNotesPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text(
           categoryName,
           overflow: TextOverflow.ellipsis,
