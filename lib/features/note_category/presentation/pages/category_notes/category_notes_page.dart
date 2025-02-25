@@ -3,26 +3,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/router/router_path.dart';
 
 import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/enum/router_params_key.dart';
+import '../../../../../core/router/router_path.dart';
 import '../../../../../core/widgets/app_bar_back_button.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
+import '../../../../../core/widgets/menu_anchor/my_menu_item_button.dart';
 import '../../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../../../../note/presentation/widgets/note_card_widget.dart';
 
 class CategoryNotesPage extends StatelessWidget {
   const CategoryNotesPage({
     super.key,
-    required this.id,
+    required this.categoryId,
     required this.categoryName,
   });
 
-  final String id;
+  final String categoryId;
   final String categoryName;
 
   @override
   Widget build(BuildContext context) {
+    final currentPath = GoRouterState.of(context).uri.path;
+
     return Scaffold(
       appBar: AppBar(
         leading: const AppBarBackButton(),
@@ -42,7 +46,7 @@ class CategoryNotesPage extends StatelessWidget {
             builder: (context) {
               final notes = context
                   .select((NoteBloc bloc) => bloc.state.notes)
-                  .where((note) => note.category == id)
+                  .where((note) => note.category == categoryId)
                   .toList();
 
               return ListView.builder(
@@ -50,18 +54,32 @@ class CategoryNotesPage extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final note = notes[index];
 
-                  return NoteCardWidget(
-                    title: note.title,
-                    date: note.updateDate ?? note.createDate,
-                    isFavorite: note.isFavorite,
-                    onTapTrailing: () {
-                      context.read<NoteBloc>().add(
-                            NoteEvent.updateNote(
-                              id: note.id,
-                              isFavorite: !note.isFavorite,
-                            ),
-                          );
+                  return GestureDetector(
+                    onLongPress: () {
+                      context.push(
+                        '$currentPath/${RouterPath.categoryNotesSelectionPage}',
+                        extra: <RouterParamsKey, List<String>>{
+                          RouterParamsKey.categoryId: [categoryId],
+                          RouterParamsKey.selectedNotes: [note.id],
+                        },
+                      );
                     },
+                    onTap: () {
+                      context.push(RouterPath.readNotePage, extra: note.id);
+                    },
+                    child: NoteCardWidget(
+                      title: note.title,
+                      date: note.updateDate ?? note.createDate,
+                      isFavorite: note.isFavorite,
+                      onTapTrailing: () {
+                        context.read<NoteBloc>().add(
+                              NoteEvent.updateNote(
+                                id: note.id,
+                                isFavorite: !note.isFavorite,
+                              ),
+                            );
+                      },
+                    ),
                   );
                 },
               );
@@ -72,8 +90,14 @@ class CategoryNotesPage extends StatelessWidget {
     );
   }
 
-  List<MenuItemButton> buildMenuItemButtonList(BuildContext context) {
+  List<Widget> buildMenuItemButtonList(BuildContext context) {
     final currentPath = GoRouterState.of(context).uri.path;
+    final notes = context.watch<NoteBloc>().state.notes;
+
+    final categoryNotes = notes
+        .where((note) => note.category == categoryId)
+        .map((note) => note.id)
+        .toList();
 
     return [
       MenuItemButton(
@@ -87,23 +111,37 @@ class CategoryNotesPage extends StatelessWidget {
           context.go(
             '$currentPath/${RouterPath.addNoteTocategoryPage}',
             extra: {
-              'id': id,
+              'id': categoryId,
               'categoryName': categoryName,
             },
           );
         },
         child: Text('CategoryNotesPage.addNotes'.tr()),
       ),
-      MenuItemButton(
-        style: MenuItemButton.styleFrom(
-          minimumSize: Size(
-            AppConstants.menuAnchorMinWidth.w,
-            AppConstants.menuAnchorMinHeight.w,
-          ),
-        ),
-        onPressed: () async {},
-        child: Text('CategoryNotesPage.delete'.tr()),
+      MyMenuItemButton(
+        onPressed: () {
+          context.push(
+            '$currentPath/${RouterPath.categoryNotesSelectionPage}',
+            extra: <RouterParamsKey, List<String>>{
+              RouterParamsKey.categoryId: [categoryId],
+              RouterParamsKey.selectedNotes: [],
+            },
+          );
+        },
+        child: Text('Select'.tr()),
       ),
+      MyMenuItemButton(
+        onPressed: () {
+          context.push(
+            '$currentPath/${RouterPath.categoryNotesSelectionPage}',
+            extra: <RouterParamsKey, List<String>>{
+              RouterParamsKey.categoryId: [categoryId],
+              RouterParamsKey.selectedNotes: categoryNotes,
+            },
+          );
+        },
+        child: Text('Select All'.tr()),
+      )
     ];
   }
 }

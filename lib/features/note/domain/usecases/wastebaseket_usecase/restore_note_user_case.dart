@@ -11,9 +11,10 @@ class RestoreNoteUserCase {
   final WastebasketRepository wastebasketRepository;
 
   Future<void> execute(String restoredId) async {
-    final restoredNote = wastebasketRepository.getWaste(restoredId);
+    final restored = wastebasketRepository.getWaste(restoredId);
+    final restoredNote = restored.copyWith(deleteDate: null);
 
     await noteRepository.restoreNote(restoredNote);
-    await wastebasketRepository.restoreNote(restoredId);
+    await wastebasketRepository.deleteRestoredNote(restoredId);
   }
 }

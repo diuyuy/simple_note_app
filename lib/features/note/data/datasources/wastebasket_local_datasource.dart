@@ -22,7 +22,7 @@ class WastebasketLocalDatasource {
     await _wasteBasketBox.put(deletedNote.id, deletedNote);
   }
 
-  Future<void> restoreNote(String id) async {
+  Future<void> deleteRestoredNote(String id) async {
     await _wasteBasketBox.delete(id);
   }
 

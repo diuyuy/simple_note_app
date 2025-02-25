@@ -12,11 +12,15 @@ class MyInkWell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTap,
-      highlightColor: Colors.black.withAlpha(25),
-      splashColor: Colors.transparent,
-      child: child,
+    return Material(
+      color: Theme.of(context).colorScheme.onSecondary,
+      child: InkWell(
+        onTap: onTap,
+        highlightColor:
+            Theme.of(context).colorScheme.onSurfaceVariant.withAlpha(40),
+        splashColor: Colors.transparent,
+        child: child,
+      ),
     );
   }
 }

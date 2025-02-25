@@ -22,6 +22,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       content: fields[2] as String?,
       createDate: fields[3] as String,
       updateDate: fields[4] as String?,
+      deleteDate: fields[7] as DateTime?,
       isFavorite: fields[5] as bool,
       category: fields[6] as String?,
     );
@@ -30,7 +31,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
   @override
   void write(BinaryWriter writer, NoteModel obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(8)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -44,7 +45,9 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..writeByte(5)
       ..write(obj.isFavorite)
       ..writeByte(6)
-      ..write(obj.category);
+      ..write(obj.category)
+      ..writeByte(7)
+      ..write(obj.deleteDate);
   }
 
   @override
@@ -106,7 +109,8 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
       isExitOnHome: fields[1] as bool,
       themeMode: (fields[7] as num).toInt(),
       themeColor: (fields[2] as num).toInt(),
-      fontSize: (fields[0] as num).toInt(),
+      titleFontSize: (fields[8] as num).toInt(),
+      contentFontSize: (fields[9] as num).toInt(),
       textHeight: (fields[4] as num).toDouble(),
       isAutoSave: fields[5] as bool,
       autoDeleteDays: (fields[6] as num).toInt(),
@@ -116,9 +120,7 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
   @override
   void write(BinaryWriter writer, AppSettingModel obj) {
     writer
-      ..writeByte(7)
-      ..writeByte(0)
-      ..write(obj.fontSize)
+      ..writeByte(8)
       ..writeByte(1)
       ..write(obj.isExitOnHome)
       ..writeByte(2)
@@ -130,7 +132,11 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
       ..writeByte(6)
       ..write(obj.autoDeleteDays)
       ..writeByte(7)
-      ..write(obj.themeMode);
+      ..write(obj.themeMode)
+      ..writeByte(8)
+      ..write(obj.titleFontSize)
+      ..writeByte(9)
+      ..write(obj.contentFontSize);
   }
 
   @override

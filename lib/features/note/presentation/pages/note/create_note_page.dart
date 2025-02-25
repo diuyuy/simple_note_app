@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/setting/presentation/bloc/app_setting_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
@@ -53,26 +54,44 @@ class _CreateNotePageState extends State<CreateNotePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                NoteTextField(
-                  controller: _titleController,
-                  maxLines: 1,
-                  maxLength: AppConstants.titleMaxLength,
-                  hintText: 'CreateNotePage.title'.tr(),
-                  textStyle: Theme.of(context).textTheme.bodyLarge,
-                ),
-                const Divider(),
-                NoteTextField(
-                  controller: _contentController,
-                  hintText: 'CreateNotePage.inputContent'.tr(),
-                  maxLines: null,
-                  textStyle: Theme.of(context).textTheme.bodyMedium,
-                ),
-              ],
-            ),
-          ),
+          child: Builder(builder: (context) {
+            final appSettingState = context.watch<AppSettingBloc>().state;
+
+            return appSettingState.when(
+              initial: (appSetting) => const SizedBox.shrink(),
+              success: (appSetting) {
+                return SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      NoteTextField(
+                        controller: _titleController,
+                        maxLines: 2,
+                        minLines: 1,
+                        maxLength: AppConstants.titleMaxLength,
+                        hintText: 'CreateNotePage.title'.tr(),
+                        textStyle: TextStyle(
+                          fontSize: appSetting.titleFontSize.toDouble(),
+                        ),
+                      ),
+                      const Divider(),
+                      NoteTextField(
+                        controller: _contentController,
+                        hintText: 'CreateNotePage.inputContent'.tr(),
+                        maxLines: null,
+                        textStyle: TextStyle(
+                          fontSize: appSetting.contentFontSize.toDouble(),
+                          height: appSetting.textHeight,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+              failure: (appSetting, errorMessage) => Center(
+                child: Text(errorMessage),
+              ),
+            );
+          }),
         ),
       ),
     );

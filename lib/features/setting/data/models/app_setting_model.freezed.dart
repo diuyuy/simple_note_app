@@ -19,7 +19,8 @@ mixin _$AppSettingModel {
   bool get isExitOnHome => throw _privateConstructorUsedError;
   int get themeMode => throw _privateConstructorUsedError;
   int get themeColor => throw _privateConstructorUsedError;
-  int get fontSize => throw _privateConstructorUsedError;
+  int get titleFontSize => throw _privateConstructorUsedError;
+  int get contentFontSize => throw _privateConstructorUsedError;
   double get textHeight => throw _privateConstructorUsedError;
   bool get isAutoSave => throw _privateConstructorUsedError;
   int get autoDeleteDays => throw _privateConstructorUsedError;
@@ -41,7 +42,8 @@ abstract class $AppSettingModelCopyWith<$Res> {
       {bool isExitOnHome,
       int themeMode,
       int themeColor,
-      int fontSize,
+      int titleFontSize,
+      int contentFontSize,
       double textHeight,
       bool isAutoSave,
       int autoDeleteDays});
@@ -65,7 +67,8 @@ class _$AppSettingModelCopyWithImpl<$Res, $Val extends AppSettingModel>
     Object? isExitOnHome = null,
     Object? themeMode = null,
     Object? themeColor = null,
-    Object? fontSize = null,
+    Object? titleFontSize = null,
+    Object? contentFontSize = null,
     Object? textHeight = null,
     Object? isAutoSave = null,
     Object? autoDeleteDays = null,
@@ -83,9 +86,13 @@ class _$AppSettingModelCopyWithImpl<$Res, $Val extends AppSettingModel>
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
               as int,
-      fontSize: null == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
+      titleFontSize: null == titleFontSize
+          ? _value.titleFontSize
+          : titleFontSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      contentFontSize: null == contentFontSize
+          ? _value.contentFontSize
+          : contentFontSize // ignore: cast_nullable_to_non_nullable
               as int,
       textHeight: null == textHeight
           ? _value.textHeight
@@ -115,7 +122,8 @@ abstract class _$$AppSettingModelImplCopyWith<$Res>
       {bool isExitOnHome,
       int themeMode,
       int themeColor,
-      int fontSize,
+      int titleFontSize,
+      int contentFontSize,
       double textHeight,
       bool isAutoSave,
       int autoDeleteDays});
@@ -137,7 +145,8 @@ class __$$AppSettingModelImplCopyWithImpl<$Res>
     Object? isExitOnHome = null,
     Object? themeMode = null,
     Object? themeColor = null,
-    Object? fontSize = null,
+    Object? titleFontSize = null,
+    Object? contentFontSize = null,
     Object? textHeight = null,
     Object? isAutoSave = null,
     Object? autoDeleteDays = null,
@@ -155,9 +164,13 @@ class __$$AppSettingModelImplCopyWithImpl<$Res>
           ? _value.themeColor
           : themeColor // ignore: cast_nullable_to_non_nullable
               as int,
-      fontSize: null == fontSize
-          ? _value.fontSize
-          : fontSize // ignore: cast_nullable_to_non_nullable
+      titleFontSize: null == titleFontSize
+          ? _value.titleFontSize
+          : titleFontSize // ignore: cast_nullable_to_non_nullable
+              as int,
+      contentFontSize: null == contentFontSize
+          ? _value.contentFontSize
+          : contentFontSize // ignore: cast_nullable_to_non_nullable
               as int,
       textHeight: null == textHeight
           ? _value.textHeight
@@ -182,8 +195,9 @@ class _$AppSettingModelImpl implements _AppSettingModel {
       {this.isExitOnHome = true,
       this.themeMode = 2,
       this.themeColor = 0xFF2196F3,
-      this.fontSize = 4,
-      this.textHeight = 1.0,
+      this.titleFontSize = 22,
+      this.contentFontSize = 16,
+      this.textHeight = 1.2,
       this.isAutoSave = false,
       this.autoDeleteDays = 0});
 
@@ -198,7 +212,10 @@ class _$AppSettingModelImpl implements _AppSettingModel {
   final int themeColor;
   @override
   @JsonKey()
-  final int fontSize;
+  final int titleFontSize;
+  @override
+  @JsonKey()
+  final int contentFontSize;
   @override
   @JsonKey()
   final double textHeight;
@@ -211,7 +228,7 @@ class _$AppSettingModelImpl implements _AppSettingModel {
 
   @override
   String toString() {
-    return 'AppSettingModel(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, fontSize: $fontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
+    return 'AppSettingModel(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, titleFontSize: $titleFontSize, contentFontSize: $contentFontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
   }
 
   @override
@@ -225,8 +242,10 @@ class _$AppSettingModelImpl implements _AppSettingModel {
                 other.themeMode == themeMode) &&
             (identical(other.themeColor, themeColor) ||
                 other.themeColor == themeColor) &&
-            (identical(other.fontSize, fontSize) ||
-                other.fontSize == fontSize) &&
+            (identical(other.titleFontSize, titleFontSize) ||
+                other.titleFontSize == titleFontSize) &&
+            (identical(other.contentFontSize, contentFontSize) ||
+                other.contentFontSize == contentFontSize) &&
             (identical(other.textHeight, textHeight) ||
                 other.textHeight == textHeight) &&
             (identical(other.isAutoSave, isAutoSave) ||
@@ -236,8 +255,16 @@ class _$AppSettingModelImpl implements _AppSettingModel {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isExitOnHome, themeMode,
-      themeColor, fontSize, textHeight, isAutoSave, autoDeleteDays);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isExitOnHome,
+      themeMode,
+      themeColor,
+      titleFontSize,
+      contentFontSize,
+      textHeight,
+      isAutoSave,
+      autoDeleteDays);
 
   /// Create a copy of AppSettingModel
   /// with the given fields replaced by the non-null parameter values.
@@ -254,7 +281,8 @@ abstract class _AppSettingModel implements AppSettingModel {
       {final bool isExitOnHome,
       final int themeMode,
       final int themeColor,
-      final int fontSize,
+      final int titleFontSize,
+      final int contentFontSize,
       final double textHeight,
       final bool isAutoSave,
       final int autoDeleteDays}) = _$AppSettingModelImpl;
@@ -266,7 +294,9 @@ abstract class _AppSettingModel implements AppSettingModel {
   @override
   int get themeColor;
   @override
-  int get fontSize;
+  int get titleFontSize;
+  @override
+  int get contentFontSize;
   @override
   double get textHeight;
   @override

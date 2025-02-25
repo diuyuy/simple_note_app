@@ -21,6 +21,7 @@ mixin _$Note {
   String? get content => throw _privateConstructorUsedError;
   String get createDate => throw _privateConstructorUsedError;
   String? get updateDate => throw _privateConstructorUsedError;
+  DateTime? get deleteDate => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
 
@@ -41,6 +42,7 @@ abstract class $NoteCopyWith<$Res> {
       String? content,
       String createDate,
       String? updateDate,
+      DateTime? deleteDate,
       bool isFavorite,
       String? category});
 }
@@ -65,6 +67,7 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
     Object? content = freezed,
     Object? createDate = null,
     Object? updateDate = freezed,
+    Object? deleteDate = freezed,
     Object? isFavorite = null,
     Object? category = freezed,
   }) {
@@ -89,6 +92,10 @@ class _$NoteCopyWithImpl<$Res, $Val extends Note>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
+      deleteDate: freezed == deleteDate
+          ? _value.deleteDate
+          : deleteDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -114,6 +121,7 @@ abstract class _$$NoteImplCopyWith<$Res> implements $NoteCopyWith<$Res> {
       String? content,
       String createDate,
       String? updateDate,
+      DateTime? deleteDate,
       bool isFavorite,
       String? category});
 }
@@ -135,6 +143,7 @@ class __$$NoteImplCopyWithImpl<$Res>
     Object? content = freezed,
     Object? createDate = null,
     Object? updateDate = freezed,
+    Object? deleteDate = freezed,
     Object? isFavorite = null,
     Object? category = freezed,
   }) {
@@ -159,6 +168,10 @@ class __$$NoteImplCopyWithImpl<$Res>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
+      deleteDate: freezed == deleteDate
+          ? _value.deleteDate
+          : deleteDate // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
@@ -180,6 +193,7 @@ class _$NoteImpl implements _Note {
       this.content,
       required this.createDate,
       this.updateDate,
+      this.deleteDate,
       this.isFavorite = false,
       this.category});
 
@@ -194,6 +208,8 @@ class _$NoteImpl implements _Note {
   @override
   final String? updateDate;
   @override
+  final DateTime? deleteDate;
+  @override
   @JsonKey()
   final bool isFavorite;
   @override
@@ -201,7 +217,7 @@ class _$NoteImpl implements _Note {
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, isFavorite: $isFavorite, category: $category)';
+    return 'Note(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, deleteDate: $deleteDate, isFavorite: $isFavorite, category: $category)';
   }
 
   @override
@@ -216,6 +232,8 @@ class _$NoteImpl implements _Note {
                 other.createDate == createDate) &&
             (identical(other.updateDate, updateDate) ||
                 other.updateDate == updateDate) &&
+            (identical(other.deleteDate, deleteDate) ||
+                other.deleteDate == deleteDate) &&
             (identical(other.isFavorite, isFavorite) ||
                 other.isFavorite == isFavorite) &&
             (identical(other.category, category) ||
@@ -224,7 +242,7 @@ class _$NoteImpl implements _Note {
 
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, createDate,
-      updateDate, isFavorite, category);
+      updateDate, deleteDate, isFavorite, category);
 
   /// Create a copy of Note
   /// with the given fields replaced by the non-null parameter values.
@@ -242,6 +260,7 @@ abstract class _Note implements Note {
       final String? content,
       required final String createDate,
       final String? updateDate,
+      final DateTime? deleteDate,
       final bool isFavorite,
       final String? category}) = _$NoteImpl;
 
@@ -255,6 +274,8 @@ abstract class _Note implements Note {
   String get createDate;
   @override
   String? get updateDate;
+  @override
+  DateTime? get deleteDate;
   @override
   bool get isFavorite;
   @override

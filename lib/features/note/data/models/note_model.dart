@@ -10,6 +10,7 @@ class NoteModel with _$NoteModel {
     String? content,
     required String createDate,
     String? updateDate,
+    DateTime? deleteDate,
     @Default(false) bool isFavorite,
     String? category,
   }) = _NoteModel;

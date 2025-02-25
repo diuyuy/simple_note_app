@@ -54,7 +54,7 @@ class FavoritesPage extends StatelessWidget {
                           },
                           onTap: () {
                             context.push(
-                              '/${RouterPath.readNotePage}',
+                              RouterPath.readNotePage,
                               extra: favortes[index].id,
                             );
                           },

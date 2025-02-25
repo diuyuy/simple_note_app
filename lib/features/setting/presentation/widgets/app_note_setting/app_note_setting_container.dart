@@ -28,7 +28,9 @@ class AppNoteSettingContainer extends StatelessWidget {
             children: [
               AppSettingTile(
                 title: 'Note Text Settings'.tr(),
-                onTap: () {},
+                onTap: () {
+                  context.push(RouterPath.noteTextSettingPage);
+                },
               ),
               const AppSettingDivider(),
               AppSettingTile(

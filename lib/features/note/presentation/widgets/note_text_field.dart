@@ -6,6 +6,7 @@ class NoteTextField extends StatelessWidget {
     required this.controller,
     this.maxLength,
     this.maxLines,
+    this.minLines,
     this.textStyle,
     required this.hintText,
   });
@@ -13,6 +14,7 @@ class NoteTextField extends StatelessWidget {
   final TextEditingController controller;
   final int? maxLength;
   final int? maxLines;
+  final int? minLines;
   final TextStyle? textStyle;
   final String hintText;
 
@@ -22,6 +24,7 @@ class NoteTextField extends StatelessWidget {
       controller: controller,
       maxLength: maxLength,
       maxLines: maxLines,
+      minLines: minLines,
       style: textStyle,
       decoration: InputDecoration(
         isDense: true,

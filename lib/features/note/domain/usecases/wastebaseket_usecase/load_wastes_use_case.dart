@@ -1,12 +1,37 @@
+import '../../../../setting/domain/repositories/app_setting_repository.dart';
 import '../../entities/note.dart';
 import '../../repositories/wastebasket_repository.dart';
 
 class LoadWastesUseCase {
   final WastebasketRepository wastebasketRepository;
+  final AppSettingRepository appSettingRepository;
 
-  LoadWastesUseCase({required this.wastebasketRepository});
+  LoadWastesUseCase({
+    required this.wastebasketRepository,
+    required this.appSettingRepository,
+  });
 
-  List<Note> execute() {
-    return wastebasketRepository.loadAllWastes();
+  Future<List<Note>> execute() async {
+    final wasteList = wastebasketRepository.loadAllWastes();
+    final autoDeleteInterval =
+        appSettingRepository.getAppSetting().autoDeleteDays;
+
+    if (autoDeleteInterval == 0) {
+      return wasteList;
+    }
+
+    List<Note> wastes = [];
+    final currentDate = DateTime.now();
+
+    for (var waste in wasteList) {
+      if (currentDate
+          .isAfter(waste.deleteDate!.add(Duration(days: autoDeleteInterval)))) {
+        await wastebasketRepository.deleteNotePermanently(waste.id);
+      } else {
+        wastes.add(waste);
+      }
+    }
+
+    return wastes;
   }
 }

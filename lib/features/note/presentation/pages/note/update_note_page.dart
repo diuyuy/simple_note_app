@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/setting/presentation/bloc/app_setting_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
@@ -78,6 +79,9 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
                 ),
               );
 
+              final appSetting = context
+                  .select((AppSettingBloc bloc) => bloc.state.appSetting);
+
               _titleController.text = selectedNote.title.isNotEmpty
                   ? selectedNote.title
                   : AppConstants.untitled.tr();
@@ -87,17 +91,23 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
                 children: [
                   NoteTextField(
                     controller: _titleController,
-                    maxLines: 1,
+                    maxLines: 2,
+                    minLines: 1,
                     maxLength: AppConstants.titleMaxLength,
                     hintText: 'UpdateNotePage.title'.tr(),
-                    textStyle: Theme.of(context).textTheme.bodyLarge,
+                    textStyle: TextStyle(
+                      fontSize: appSetting.titleFontSize.toDouble(),
+                    ),
                   ),
                   const Divider(),
                   NoteTextField(
                     controller: _contentController,
                     hintText: 'UpdateNotePage.inputContent'.tr(),
                     maxLines: null,
-                    textStyle: Theme.of(context).textTheme.bodyMedium,
+                    textStyle: TextStyle(
+                      fontSize: appSetting.contentFontSize.toDouble(),
+                      height: appSetting.textHeight,
+                    ),
                   ),
                 ],
               );
