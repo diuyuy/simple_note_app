@@ -5,8 +5,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../features/setting/presentation/bloc/app_setting_bloc.dart';
 import '../../router/router_path.dart';
-import '../../utils/review_helper/review_helper.dart';
-import '../../utils/show_snack_bar.dart';
+import '../../utils/dialog_and_snackbar/show_snack_bar.dart';
+import '../../utils/helper/review_helper/review_helper.dart';
+import '../../utils/helper/url_launcher_helper/url_launcher_helper.dart';
 import 'drawer_tile.dart';
 
 class NoteDrawer extends StatelessWidget {
@@ -109,6 +110,16 @@ class NoteDrawer extends StatelessWidget {
           DrawerTile(
             leading: Icon(Icons.privacy_tip_outlined),
             title: Text('Drawer.privacyPolicy'.tr()),
+            onTap: () async {
+              try {
+                await UrlLauncherHelper.launchPrivacyPolicyUrl();
+              } catch (e) {
+                if (context.mounted) {
+                  showSnackBar(
+                      context, 'An error occurred. Please try again.'.tr());
+                }
+              }
+            },
           ),
           DrawerTile(
             leading: Icon(Icons.rate_review_outlined),

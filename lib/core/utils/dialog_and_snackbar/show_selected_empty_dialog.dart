@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-import '../enum/selected_item.dart';
+import '../../enum/selected_item.dart';
 
 void showSelectedEmptyDialog(BuildContext context, SelectedItem item) {
   showDialog(

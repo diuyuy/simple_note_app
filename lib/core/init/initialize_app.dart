@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:path_provider/path_provider.dart';
@@ -44,6 +45,9 @@ Future<void> initializeApp() async {
       await Hive.openBox<NoteCategoryModel>(BoxName.noteCategoryBoxName);
   final noteCategoryOrderBox =
       await Hive.openBox<List<String>>(BoxName.noteCategoryOrderBoxName);
+
+  // Load .env File
+  await dotenv.load(fileName: ".env");
 
   // Register repositories
   final GetIt getIt = GetIt.instance;

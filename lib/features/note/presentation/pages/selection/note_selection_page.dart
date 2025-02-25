@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../core/enum/selected_item.dart';
-import '../../../../../core/utils/show_alert_dialog.dart';
-import '../../../../../core/utils/show_selected_empty_dialog.dart';
+import '../../../../../core/utils/dialog_and_snackbar/show_alert_dialog.dart';
+import '../../../../../core/utils/dialog_and_snackbar/show_selected_empty_dialog.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_item_button.dart';
 import '../../bloc/note_bloc/note_bloc.dart';

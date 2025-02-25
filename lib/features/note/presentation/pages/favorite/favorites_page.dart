@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
-import '../../../../../core/utils/show_no_note_to_select_dialog.dart';
+import '../../../../../core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../widgets/empty_note_text_widget.dart';
