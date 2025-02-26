@@ -153,7 +153,7 @@ class NoteCategoryPage extends StatelessWidget {
         ),
         onPressed: () {
           context.go(
-            '$currentPath/${RouterPath.reorderNoteCategoryPage}',
+            RouterPath.reorderNoteCategoryPage,
             extra: categories.map((category) => category.id).toList(),
           );
         },
