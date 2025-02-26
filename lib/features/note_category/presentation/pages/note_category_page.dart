@@ -8,6 +8,7 @@ import '../../../../core/constants/app_constants.dart';
 import '../../../../core/router/router_path.dart';
 import '../../../../core/widgets/drawer/note_drawer.dart';
 import '../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
+import '../../../../core/widgets/tirigger_haptick_feedback.dart';
 import '../../../note/presentation/bloc/note_bloc/note_bloc.dart';
 import '../bloc/note_category_bloc.dart';
 import '../widgets/note_category_card_widget.dart';
@@ -52,11 +53,14 @@ class NoteCategoryPage extends StatelessWidget {
 
                       return GestureDetector(
                         key: Key(noteCategory.id),
-                        onLongPress: () {
-                          context.go(
-                            '$currentPath/${RouterPath.noteCategorySelectionPage}',
-                            extra: [noteCategory.id],
-                          );
+                        onLongPress: () async {
+                          await triggerHaptickFeedBack();
+                          if (context.mounted) {
+                            context.go(
+                              '$currentPath/${RouterPath.noteCategorySelectionPage}',
+                              extra: [noteCategory.id],
+                            );
+                          }
                         },
                         onTap: () {
                           context.go(

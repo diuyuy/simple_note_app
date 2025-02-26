@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
+import '../../../../core/widgets/tirigger_haptick_feedback.dart';
 import '../bloc/note_bloc/note_bloc.dart';
 import 'empty_note_text_widget.dart';
 import 'note_card_widget.dart';
@@ -24,13 +25,16 @@ class NotesListWidget extends StatelessWidget {
                   final note = notes[index];
 
                   return GestureDetector(
-                    onLongPress: () {
-                      context.push(
-                        RouterPath.noteSelectionPage,
-                        extra: SelectionPageArgs(
-                          selectedNotes: [note.id],
-                        ),
-                      );
+                    onLongPress: () async {
+                      await triggerHaptickFeedBack();
+                      if (context.mounted) {
+                        context.push(
+                          RouterPath.noteSelectionPage,
+                          extra: SelectionPageArgs(
+                            selectedNotes: [note.id],
+                          ),
+                        );
+                      }
                     },
                     onTap: () {
                       context.push(

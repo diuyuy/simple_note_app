@@ -13,7 +13,7 @@ class AppSettingTileWithButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
       child: AspectRatio(
         aspectRatio: 8 / 1,
         child: Row(

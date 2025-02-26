@@ -11,6 +11,7 @@ import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/dialog_and_snackbar/show_alert_dialog.dart';
 import '../../../../../core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
+import '../../../../../core/widgets/tirigger_haptick_feedback.dart';
 import '../../../domain/usecases/wastebaseket_usecase/delete_permanently_user_case.dart';
 import '../../../domain/usecases/wastebaseket_usecase/load_wastes_use_case.dart';
 import '../../../domain/usecases/wastebaseket_usecase/restore_note_user_case.dart';
@@ -68,14 +69,17 @@ class WastebasketView extends StatelessWidget {
                         final waste = wastes[index];
 
                         return GestureDetector(
-                          onLongPress: () {
-                            context.push(
-                              RouterPath.wastebasketSelectionPage,
-                              extra: SelectionPageArgs(
-                                selectedNotes: [waste.id],
-                                bloc: context.read<WasteBasketBloc>(),
-                              ),
-                            );
+                          onLongPress: () async {
+                            await triggerHaptickFeedBack();
+                            if (context.mounted) {
+                              context.push(
+                                RouterPath.wastebasketSelectionPage,
+                                extra: SelectionPageArgs(
+                                  selectedNotes: [waste.id],
+                                  bloc: context.read<WasteBasketBloc>(),
+                                ),
+                              );
+                            }
                           },
                           child: NoteCardWidget(
                             title: waste.title,

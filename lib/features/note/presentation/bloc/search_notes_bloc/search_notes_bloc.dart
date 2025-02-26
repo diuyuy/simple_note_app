@@ -27,7 +27,7 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
     on<_Searched>(_onSearched,
         transformer: debounce(const Duration(milliseconds: 300)));
     on<_TapFavorite>(_onTapFavorite);
-    on<_DeleteNote>(_onDeleteNote);
+    on<_DeleteNotes>(_onDeleteNotes);
   }
 
   final LoadNotesUseCase loadNotesUseCase;
@@ -78,10 +78,14 @@ class SearchNotesBloc extends Bloc<SearchNotesBlocEvent, SearchNotesState> {
     emit(state.copyWith(notes: notes));
   }
 
-  void _onDeleteNote(_DeleteNote event, Emitter<SearchNotesState> emit) {
+  void _onDeleteNotes(_DeleteNotes event, Emitter<SearchNotesState> emit) {
     List<Note> notes = [...state.notes];
 
-    notes.removeWhere((note) => note.id == event.deletedNote.id);
+    for (var deletedId in event.deletedNotes) {
+      notes.removeWhere((note) => note.id == deletedId);
+    }
+
+    //notes.removeWhere((note) => note.id == event.deletedNote.id);
 
     emit(state.copyWith(notes: notes));
   }

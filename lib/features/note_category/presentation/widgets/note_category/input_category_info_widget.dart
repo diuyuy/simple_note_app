@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:simple_note_app/core/constants/app_constants.dart';
 
 import '../../../../../core/color/app_colors.dart';
+import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/widgets/bottom_action_button.dart';
 import '../../../../../core/widgets/pick_color_container.dart';
 import '../../bloc/note_category_bloc.dart';
@@ -146,51 +146,40 @@ class _InputCategoryInfoWidgetState extends State<InputCategoryInfoWidget> {
             ],
           ),
         ),
-        BlocListener<NoteCategoryBloc, NoteCategoryState>(
-          listenWhen: (previous, current) {
-            return current.when(
-              initial: (categories) => true,
-              loadSuccess: (categories) => true,
-              failure: (categories, errorMessage) => false,
-            );
-          },
-          listener: (context, state) {
+        BottomActionButton(
+          enabled: _categoryNameController.text.isNotEmpty && iconCode != null,
+          text: 'InputCategoryInfoWidget.save'.tr(),
+          onTap: () {
+            if (widget.id == null) {
+              if (_categoryNameController.text.isEmpty || iconCode == null) {
+                return;
+              }
+              context.read<NoteCategoryBloc>().add(
+                    NoteCategoryEvent.categoryCreated(
+                      categoryName: _categoryNameController.text,
+                      iconCode: iconCode!,
+                      categoryColorA: categoryColor.a,
+                      categoryColorR: categoryColor.r,
+                      categoryColorG: categoryColor.g,
+                      categoryColorB: categoryColor.b,
+                    ),
+                  );
+            } else {
+              context.read<NoteCategoryBloc>().add(
+                    NoteCategoryEvent.categoryUpdated(
+                      id: widget.id!,
+                      categoryName: _categoryNameController.text,
+                      iconCode: iconCode,
+                      categoryColorA: categoryColor.a,
+                      categoryColorR: categoryColor.r,
+                      categoryColorG: categoryColor.g,
+                      categoryColorB: categoryColor.b,
+                    ),
+                  );
+            }
+
             context.pop();
           },
-          child: BottomActionButton(
-            enabled:
-                _categoryNameController.text.isNotEmpty && iconCode != null,
-            text: 'InputCategoryInfoWidget.save'.tr(),
-            onTap: () {
-              if (widget.id == null) {
-                if (_categoryNameController.text.isEmpty || iconCode == null) {
-                  return;
-                }
-                context.read<NoteCategoryBloc>().add(
-                      NoteCategoryEvent.categoryCreated(
-                        categoryName: _categoryNameController.text,
-                        iconCode: iconCode!,
-                        categoryColorA: categoryColor.a,
-                        categoryColorR: categoryColor.r,
-                        categoryColorG: categoryColor.g,
-                        categoryColorB: categoryColor.b,
-                      ),
-                    );
-              } else {
-                context.read<NoteCategoryBloc>().add(
-                      NoteCategoryEvent.categoryUpdated(
-                        id: widget.id!,
-                        categoryName: _categoryNameController.text,
-                        iconCode: iconCode,
-                        categoryColorA: categoryColor.a,
-                        categoryColorR: categoryColor.r,
-                        categoryColorG: categoryColor.g,
-                        categoryColorB: categoryColor.b,
-                      ),
-                    );
-              }
-            },
-          ),
         ),
       ],
     );

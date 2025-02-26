@@ -29,7 +29,7 @@ class AppConstants {
 
   static const double emptyNoteTextFontSize = 18.0;
 
-  static const double menuAnchorMinWidth = 64.0;
+  static const double menuAnchorMinWidth = 72.0;
   static const double menuAnchorMinHeight = 36.0;
 
   static const int searchMaxLength = 100;

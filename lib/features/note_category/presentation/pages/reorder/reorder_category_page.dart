@@ -42,24 +42,15 @@ class _ReorderCategoryPageState extends State<ReorderCategoryPage> {
         // leading: const AppBarBackButton(),
         title: Text('ReorderCategoryPage.reorderCategories'.tr()),
         actions: [
-          BlocListener<NoteCategoryBloc, NoteCategoryState>(
-            listenWhen: (previous, current) {
-              return current.when(
-                initial: (categories) => true,
-                loadSuccess: (categories) => true,
-                failure: (categories, errorMessage) => false,
-              );
-            },
-            listener: (context, state) {
+          TextButton(
+            onPressed: () {
+              context
+                  .read<NoteCategoryBloc>()
+                  .add(NoteCategoryEvent.categoryReordered(newOrders: orders));
+
               context.pop();
             },
-            child: TextButton(
-              onPressed: () {
-                context.read<NoteCategoryBloc>().add(
-                    NoteCategoryEvent.categoryReordered(newOrders: orders));
-              },
-              child: Text('ReorderCategoryPage.done'.tr()),
-            ),
+            child: Text('ReorderCategoryPage.done'.tr()),
           ),
         ],
       ),

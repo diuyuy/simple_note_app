@@ -21,7 +21,7 @@ mixin _$SearchNotesBlocEvent {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
-    required TResult Function(Note deletedNote) deleteNote,
+    required TResult Function(List<String> deletedNotes) deleteNotes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$SearchNotesBlocEvent {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
-    TResult? Function(Note deletedNote)? deleteNote,
+    TResult? Function(List<String> deletedNotes)? deleteNotes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$SearchNotesBlocEvent {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
-    TResult Function(Note deletedNote)? deleteNote,
+    TResult Function(List<String> deletedNotes)? deleteNotes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,7 +46,7 @@ mixin _$SearchNotesBlocEvent {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
-    required TResult Function(_DeleteNote value) deleteNote,
+    required TResult Function(_DeleteNotes value) deleteNotes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,7 +54,7 @@ mixin _$SearchNotesBlocEvent {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
-    TResult? Function(_DeleteNote value)? deleteNote,
+    TResult? Function(_DeleteNotes value)? deleteNotes,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -62,7 +62,7 @@ mixin _$SearchNotesBlocEvent {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
-    TResult Function(_DeleteNote value)? deleteNote,
+    TResult Function(_DeleteNotes value)? deleteNotes,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -134,7 +134,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
-    required TResult Function(Note deletedNote) deleteNote,
+    required TResult Function(List<String> deletedNotes) deleteNotes,
   }) {
     return loadAllNotes();
   }
@@ -145,7 +145,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
-    TResult? Function(Note deletedNote)? deleteNote,
+    TResult? Function(List<String> deletedNotes)? deleteNotes,
   }) {
     return loadAllNotes?.call();
   }
@@ -156,7 +156,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
-    TResult Function(Note deletedNote)? deleteNote,
+    TResult Function(List<String> deletedNotes)? deleteNotes,
     required TResult orElse(),
   }) {
     if (loadAllNotes != null) {
@@ -171,7 +171,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
-    required TResult Function(_DeleteNote value) deleteNote,
+    required TResult Function(_DeleteNotes value) deleteNotes,
   }) {
     return loadAllNotes(this);
   }
@@ -182,7 +182,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
-    TResult? Function(_DeleteNote value)? deleteNote,
+    TResult? Function(_DeleteNotes value)? deleteNotes,
   }) {
     return loadAllNotes?.call(this);
   }
@@ -193,7 +193,7 @@ class _$LoadAllNotesImpl implements _LoadAllNotes {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
-    TResult Function(_DeleteNote value)? deleteNote,
+    TResult Function(_DeleteNotes value)? deleteNotes,
     required TResult orElse(),
   }) {
     if (loadAllNotes != null) {
@@ -278,7 +278,7 @@ class _$SearchedImpl implements _Searched {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
-    required TResult Function(Note deletedNote) deleteNote,
+    required TResult Function(List<String> deletedNotes) deleteNotes,
   }) {
     return searched(query);
   }
@@ -289,7 +289,7 @@ class _$SearchedImpl implements _Searched {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
-    TResult? Function(Note deletedNote)? deleteNote,
+    TResult? Function(List<String> deletedNotes)? deleteNotes,
   }) {
     return searched?.call(query);
   }
@@ -300,7 +300,7 @@ class _$SearchedImpl implements _Searched {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
-    TResult Function(Note deletedNote)? deleteNote,
+    TResult Function(List<String> deletedNotes)? deleteNotes,
     required TResult orElse(),
   }) {
     if (searched != null) {
@@ -315,7 +315,7 @@ class _$SearchedImpl implements _Searched {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
-    required TResult Function(_DeleteNote value) deleteNote,
+    required TResult Function(_DeleteNotes value) deleteNotes,
   }) {
     return searched(this);
   }
@@ -326,7 +326,7 @@ class _$SearchedImpl implements _Searched {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
-    TResult? Function(_DeleteNote value)? deleteNote,
+    TResult? Function(_DeleteNotes value)? deleteNotes,
   }) {
     return searched?.call(this);
   }
@@ -337,7 +337,7 @@ class _$SearchedImpl implements _Searched {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
-    TResult Function(_DeleteNote value)? deleteNote,
+    TResult Function(_DeleteNotes value)? deleteNotes,
     required TResult orElse(),
   }) {
     if (searched != null) {
@@ -439,7 +439,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
-    required TResult Function(Note deletedNote) deleteNote,
+    required TResult Function(List<String> deletedNotes) deleteNotes,
   }) {
     return tapFavorite(id, isFavorite);
   }
@@ -450,7 +450,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
-    TResult? Function(Note deletedNote)? deleteNote,
+    TResult? Function(List<String> deletedNotes)? deleteNotes,
   }) {
     return tapFavorite?.call(id, isFavorite);
   }
@@ -461,7 +461,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
-    TResult Function(Note deletedNote)? deleteNote,
+    TResult Function(List<String> deletedNotes)? deleteNotes,
     required TResult orElse(),
   }) {
     if (tapFavorite != null) {
@@ -476,7 +476,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
-    required TResult Function(_DeleteNote value) deleteNote,
+    required TResult Function(_DeleteNotes value) deleteNotes,
   }) {
     return tapFavorite(this);
   }
@@ -487,7 +487,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
-    TResult? Function(_DeleteNote value)? deleteNote,
+    TResult? Function(_DeleteNotes value)? deleteNotes,
   }) {
     return tapFavorite?.call(this);
   }
@@ -498,7 +498,7 @@ class _$TapFavoriteImpl implements _TapFavorite {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
-    TResult Function(_DeleteNote value)? deleteNote,
+    TResult Function(_DeleteNotes value)? deleteNotes,
     required TResult orElse(),
   }) {
     if (tapFavorite != null) {
@@ -524,22 +524,20 @@ abstract class _TapFavorite implements SearchNotesBlocEvent {
 }
 
 /// @nodoc
-abstract class _$$DeleteNoteImplCopyWith<$Res> {
-  factory _$$DeleteNoteImplCopyWith(
-          _$DeleteNoteImpl value, $Res Function(_$DeleteNoteImpl) then) =
-      __$$DeleteNoteImplCopyWithImpl<$Res>;
+abstract class _$$DeleteNotesImplCopyWith<$Res> {
+  factory _$$DeleteNotesImplCopyWith(
+          _$DeleteNotesImpl value, $Res Function(_$DeleteNotesImpl) then) =
+      __$$DeleteNotesImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({Note deletedNote});
-
-  $NoteCopyWith<$Res> get deletedNote;
+  $Res call({List<String> deletedNotes});
 }
 
 /// @nodoc
-class __$$DeleteNoteImplCopyWithImpl<$Res>
-    extends _$SearchNotesBlocEventCopyWithImpl<$Res, _$DeleteNoteImpl>
-    implements _$$DeleteNoteImplCopyWith<$Res> {
-  __$$DeleteNoteImplCopyWithImpl(
-      _$DeleteNoteImpl _value, $Res Function(_$DeleteNoteImpl) _then)
+class __$$DeleteNotesImplCopyWithImpl<$Res>
+    extends _$SearchNotesBlocEventCopyWithImpl<$Res, _$DeleteNotesImpl>
+    implements _$$DeleteNotesImplCopyWith<$Res> {
+  __$$DeleteNotesImplCopyWithImpl(
+      _$DeleteNotesImpl _value, $Res Function(_$DeleteNotesImpl) _then)
       : super(_value, _then);
 
   /// Create a copy of SearchNotesBlocEvent
@@ -547,59 +545,56 @@ class __$$DeleteNoteImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? deletedNote = null,
+    Object? deletedNotes = null,
   }) {
-    return _then(_$DeleteNoteImpl(
-      deletedNote: null == deletedNote
-          ? _value.deletedNote
-          : deletedNote // ignore: cast_nullable_to_non_nullable
-              as Note,
+    return _then(_$DeleteNotesImpl(
+      deletedNotes: null == deletedNotes
+          ? _value._deletedNotes
+          : deletedNotes // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
-  }
-
-  /// Create a copy of SearchNotesBlocEvent
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @pragma('vm:prefer-inline')
-  $NoteCopyWith<$Res> get deletedNote {
-    return $NoteCopyWith<$Res>(_value.deletedNote, (value) {
-      return _then(_value.copyWith(deletedNote: value));
-    });
   }
 }
 
 /// @nodoc
 
-class _$DeleteNoteImpl implements _DeleteNote {
-  const _$DeleteNoteImpl({required this.deletedNote});
+class _$DeleteNotesImpl implements _DeleteNotes {
+  const _$DeleteNotesImpl({required final List<String> deletedNotes})
+      : _deletedNotes = deletedNotes;
 
+  final List<String> _deletedNotes;
   @override
-  final Note deletedNote;
+  List<String> get deletedNotes {
+    if (_deletedNotes is EqualUnmodifiableListView) return _deletedNotes;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_deletedNotes);
+  }
 
   @override
   String toString() {
-    return 'SearchNotesBlocEvent.deleteNote(deletedNote: $deletedNote)';
+    return 'SearchNotesBlocEvent.deleteNotes(deletedNotes: $deletedNotes)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DeleteNoteImpl &&
-            (identical(other.deletedNote, deletedNote) ||
-                other.deletedNote == deletedNote));
+            other is _$DeleteNotesImpl &&
+            const DeepCollectionEquality()
+                .equals(other._deletedNotes, _deletedNotes));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, deletedNote);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_deletedNotes));
 
   /// Create a copy of SearchNotesBlocEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
-  _$$DeleteNoteImplCopyWith<_$DeleteNoteImpl> get copyWith =>
-      __$$DeleteNoteImplCopyWithImpl<_$DeleteNoteImpl>(this, _$identity);
+  _$$DeleteNotesImplCopyWith<_$DeleteNotesImpl> get copyWith =>
+      __$$DeleteNotesImplCopyWithImpl<_$DeleteNotesImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -607,9 +602,9 @@ class _$DeleteNoteImpl implements _DeleteNote {
     required TResult Function() loadAllNotes,
     required TResult Function(String query) searched,
     required TResult Function(String id, bool isFavorite) tapFavorite,
-    required TResult Function(Note deletedNote) deleteNote,
+    required TResult Function(List<String> deletedNotes) deleteNotes,
   }) {
-    return deleteNote(deletedNote);
+    return deleteNotes(deletedNotes);
   }
 
   @override
@@ -618,9 +613,9 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult? Function()? loadAllNotes,
     TResult? Function(String query)? searched,
     TResult? Function(String id, bool isFavorite)? tapFavorite,
-    TResult? Function(Note deletedNote)? deleteNote,
+    TResult? Function(List<String> deletedNotes)? deleteNotes,
   }) {
-    return deleteNote?.call(deletedNote);
+    return deleteNotes?.call(deletedNotes);
   }
 
   @override
@@ -629,11 +624,11 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult Function()? loadAllNotes,
     TResult Function(String query)? searched,
     TResult Function(String id, bool isFavorite)? tapFavorite,
-    TResult Function(Note deletedNote)? deleteNote,
+    TResult Function(List<String> deletedNotes)? deleteNotes,
     required TResult orElse(),
   }) {
-    if (deleteNote != null) {
-      return deleteNote(deletedNote);
+    if (deleteNotes != null) {
+      return deleteNotes(deletedNotes);
     }
     return orElse();
   }
@@ -644,9 +639,9 @@ class _$DeleteNoteImpl implements _DeleteNote {
     required TResult Function(_LoadAllNotes value) loadAllNotes,
     required TResult Function(_Searched value) searched,
     required TResult Function(_TapFavorite value) tapFavorite,
-    required TResult Function(_DeleteNote value) deleteNote,
+    required TResult Function(_DeleteNotes value) deleteNotes,
   }) {
-    return deleteNote(this);
+    return deleteNotes(this);
   }
 
   @override
@@ -655,9 +650,9 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult? Function(_LoadAllNotes value)? loadAllNotes,
     TResult? Function(_Searched value)? searched,
     TResult? Function(_TapFavorite value)? tapFavorite,
-    TResult? Function(_DeleteNote value)? deleteNote,
+    TResult? Function(_DeleteNotes value)? deleteNotes,
   }) {
-    return deleteNote?.call(this);
+    return deleteNotes?.call(this);
   }
 
   @override
@@ -666,26 +661,26 @@ class _$DeleteNoteImpl implements _DeleteNote {
     TResult Function(_LoadAllNotes value)? loadAllNotes,
     TResult Function(_Searched value)? searched,
     TResult Function(_TapFavorite value)? tapFavorite,
-    TResult Function(_DeleteNote value)? deleteNote,
+    TResult Function(_DeleteNotes value)? deleteNotes,
     required TResult orElse(),
   }) {
-    if (deleteNote != null) {
-      return deleteNote(this);
+    if (deleteNotes != null) {
+      return deleteNotes(this);
     }
     return orElse();
   }
 }
 
-abstract class _DeleteNote implements SearchNotesBlocEvent {
-  const factory _DeleteNote({required final Note deletedNote}) =
-      _$DeleteNoteImpl;
+abstract class _DeleteNotes implements SearchNotesBlocEvent {
+  const factory _DeleteNotes({required final List<String> deletedNotes}) =
+      _$DeleteNotesImpl;
 
-  Note get deletedNote;
+  List<String> get deletedNotes;
 
   /// Create a copy of SearchNotesBlocEvent
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$DeleteNoteImplCopyWith<_$DeleteNoteImpl> get copyWith =>
+  _$$DeleteNotesImplCopyWith<_$DeleteNotesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

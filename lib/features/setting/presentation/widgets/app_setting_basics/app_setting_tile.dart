@@ -22,7 +22,7 @@ class AppSettingTile extends StatelessWidget {
     return MyInkWell(
       onTap: onTap,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 12.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
         child: AspectRatio(
           aspectRatio: 8 / 1,
           child: Row(
