@@ -12,6 +12,8 @@ class NoteTextSettingPage extends StatelessWidget {
         // leading: const AppBarBackButton(),
         title: Text('Note Text Settings'.tr()),
         centerTitle: true,
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        scrolledUnderElevation: 0,
       ),
       body: const SafeArea(
         child: Padding(

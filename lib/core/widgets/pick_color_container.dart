@@ -64,7 +64,7 @@ class PickColorContainer extends StatelessWidget {
                     ? Icons.check_circle
                     : Icons.circle,
                 color: Color(colorHex),
-                size: 32.w,
+                size: 36.w,
               ),
             ),
           )

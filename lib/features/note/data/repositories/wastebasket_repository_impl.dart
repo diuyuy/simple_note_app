@@ -36,4 +36,9 @@ class WastebasketRepositoryImpl implements WastebasketRepository {
   Future<void> deleteNotePermanently(String id) async {
     await _localDatasource.deleteNotePermanently(id);
   }
+
+  @override
+  Future<void> updateWaste(Note updatedWaste) async {
+    await _localDatasource.updateWaste(noteToModel(updatedWaste));
+  }
 }

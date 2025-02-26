@@ -12,7 +12,7 @@ class DeleteNoteUseCase {
 
   Future<void> execute(String id) async {
     final deleted = noteRepository.getNote(id);
-    final deletedNote = deleted.copyWith(deleteDate: DateTime.now());
+    final deletedNote = deleted.copyWith(deletedDate: DateTime.now());
 
     await noteRepository.deleteNote(id);
     await wastebasketRepository.addDeletedNote(deletedNote);

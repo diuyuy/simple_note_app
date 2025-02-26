@@ -130,7 +130,8 @@ class NoteCategoryBloc extends Bloc<NoteCategoryEvent, NoteCategoryState> {
   void _onCategoryReordered(
       _CategoryReordered event, Emitter<NoteCategoryState> emit) async {
     try {
-      await reorderNoteCategoryUseCase.execute(event.newOrders);
+      var newOrders = [...event.newOrders];
+      await reorderNoteCategoryUseCase.execute(newOrders);
 
       emit(_NoteCategoryLoadSuccess(
           categories: getAllNoteCategoriesUseCase.execute()));

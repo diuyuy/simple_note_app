@@ -24,6 +24,8 @@ mixin _$AppSetting {
   double get textHeight => throw _privateConstructorUsedError;
   bool get isAutoSave => throw _privateConstructorUsedError;
   int get autoDeleteDays => throw _privateConstructorUsedError;
+  bool get isAutoDelete => throw _privateConstructorUsedError;
+  DateTime? get autoDeleteActiveAt => throw _privateConstructorUsedError;
 
   /// Create a copy of AppSetting
   /// with the given fields replaced by the non-null parameter values.
@@ -46,7 +48,9 @@ abstract class $AppSettingCopyWith<$Res> {
       int contentFontSize,
       double textHeight,
       bool isAutoSave,
-      int autoDeleteDays});
+      int autoDeleteDays,
+      bool isAutoDelete,
+      DateTime? autoDeleteActiveAt});
 }
 
 /// @nodoc
@@ -72,6 +76,8 @@ class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
     Object? textHeight = null,
     Object? isAutoSave = null,
     Object? autoDeleteDays = null,
+    Object? isAutoDelete = null,
+    Object? autoDeleteActiveAt = freezed,
   }) {
     return _then(_value.copyWith(
       isExitOnHome: null == isExitOnHome
@@ -106,6 +112,14 @@ class _$AppSettingCopyWithImpl<$Res, $Val extends AppSetting>
           ? _value.autoDeleteDays
           : autoDeleteDays // ignore: cast_nullable_to_non_nullable
               as int,
+      isAutoDelete: null == isAutoDelete
+          ? _value.isAutoDelete
+          : isAutoDelete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      autoDeleteActiveAt: freezed == autoDeleteActiveAt
+          ? _value.autoDeleteActiveAt
+          : autoDeleteActiveAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -126,7 +140,9 @@ abstract class _$$AppSettingImplCopyWith<$Res>
       int contentFontSize,
       double textHeight,
       bool isAutoSave,
-      int autoDeleteDays});
+      int autoDeleteDays,
+      bool isAutoDelete,
+      DateTime? autoDeleteActiveAt});
 }
 
 /// @nodoc
@@ -150,6 +166,8 @@ class __$$AppSettingImplCopyWithImpl<$Res>
     Object? textHeight = null,
     Object? isAutoSave = null,
     Object? autoDeleteDays = null,
+    Object? isAutoDelete = null,
+    Object? autoDeleteActiveAt = freezed,
   }) {
     return _then(_$AppSettingImpl(
       isExitOnHome: null == isExitOnHome
@@ -184,6 +202,14 @@ class __$$AppSettingImplCopyWithImpl<$Res>
           ? _value.autoDeleteDays
           : autoDeleteDays // ignore: cast_nullable_to_non_nullable
               as int,
+      isAutoDelete: null == isAutoDelete
+          ? _value.isAutoDelete
+          : isAutoDelete // ignore: cast_nullable_to_non_nullable
+              as bool,
+      autoDeleteActiveAt: freezed == autoDeleteActiveAt
+          ? _value.autoDeleteActiveAt
+          : autoDeleteActiveAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -199,7 +225,9 @@ class _$AppSettingImpl implements _AppSetting {
       this.contentFontSize = 16,
       this.textHeight = 1.2,
       this.isAutoSave = false,
-      this.autoDeleteDays = 0});
+      this.autoDeleteDays = 0,
+      this.isAutoDelete = false,
+      this.autoDeleteActiveAt});
 
   @override
   @JsonKey()
@@ -225,10 +253,15 @@ class _$AppSettingImpl implements _AppSetting {
   @override
   @JsonKey()
   final int autoDeleteDays;
+  @override
+  @JsonKey()
+  final bool isAutoDelete;
+  @override
+  final DateTime? autoDeleteActiveAt;
 
   @override
   String toString() {
-    return 'AppSetting(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, titleFontSize: $titleFontSize, contentFontSize: $contentFontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
+    return 'AppSetting(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, titleFontSize: $titleFontSize, contentFontSize: $contentFontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays, isAutoDelete: $isAutoDelete, autoDeleteActiveAt: $autoDeleteActiveAt)';
   }
 
   @override
@@ -251,7 +284,11 @@ class _$AppSettingImpl implements _AppSetting {
             (identical(other.isAutoSave, isAutoSave) ||
                 other.isAutoSave == isAutoSave) &&
             (identical(other.autoDeleteDays, autoDeleteDays) ||
-                other.autoDeleteDays == autoDeleteDays));
+                other.autoDeleteDays == autoDeleteDays) &&
+            (identical(other.isAutoDelete, isAutoDelete) ||
+                other.isAutoDelete == isAutoDelete) &&
+            (identical(other.autoDeleteActiveAt, autoDeleteActiveAt) ||
+                other.autoDeleteActiveAt == autoDeleteActiveAt));
   }
 
   @override
@@ -264,7 +301,9 @@ class _$AppSettingImpl implements _AppSetting {
       contentFontSize,
       textHeight,
       isAutoSave,
-      autoDeleteDays);
+      autoDeleteDays,
+      isAutoDelete,
+      autoDeleteActiveAt);
 
   /// Create a copy of AppSetting
   /// with the given fields replaced by the non-null parameter values.
@@ -284,7 +323,9 @@ abstract class _AppSetting implements AppSetting {
       final int contentFontSize,
       final double textHeight,
       final bool isAutoSave,
-      final int autoDeleteDays}) = _$AppSettingImpl;
+      final int autoDeleteDays,
+      final bool isAutoDelete,
+      final DateTime? autoDeleteActiveAt}) = _$AppSettingImpl;
 
   @override
   bool get isExitOnHome;
@@ -302,6 +343,10 @@ abstract class _AppSetting implements AppSetting {
   bool get isAutoSave;
   @override
   int get autoDeleteDays;
+  @override
+  bool get isAutoDelete;
+  @override
+  DateTime? get autoDeleteActiveAt;
 
   /// Create a copy of AppSetting
   /// with the given fields replaced by the non-null parameter values.

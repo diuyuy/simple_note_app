@@ -21,7 +21,7 @@ mixin _$NoteModel {
   String? get content => throw _privateConstructorUsedError;
   String get createDate => throw _privateConstructorUsedError;
   String? get updateDate => throw _privateConstructorUsedError;
-  DateTime? get deleteDate => throw _privateConstructorUsedError;
+  DateTime? get deletedDate => throw _privateConstructorUsedError;
   bool get isFavorite => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
 
@@ -43,7 +43,7 @@ abstract class $NoteModelCopyWith<$Res> {
       String? content,
       String createDate,
       String? updateDate,
-      DateTime? deleteDate,
+      DateTime? deletedDate,
       bool isFavorite,
       String? category});
 }
@@ -68,7 +68,7 @@ class _$NoteModelCopyWithImpl<$Res, $Val extends NoteModel>
     Object? content = freezed,
     Object? createDate = null,
     Object? updateDate = freezed,
-    Object? deleteDate = freezed,
+    Object? deletedDate = freezed,
     Object? isFavorite = null,
     Object? category = freezed,
   }) {
@@ -93,9 +93,9 @@ class _$NoteModelCopyWithImpl<$Res, $Val extends NoteModel>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      deleteDate: freezed == deleteDate
-          ? _value.deleteDate
-          : deleteDate // ignore: cast_nullable_to_non_nullable
+      deletedDate: freezed == deletedDate
+          ? _value.deletedDate
+          : deletedDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       isFavorite: null == isFavorite
           ? _value.isFavorite
@@ -123,7 +123,7 @@ abstract class _$$NoteModelImplCopyWith<$Res>
       String? content,
       String createDate,
       String? updateDate,
-      DateTime? deleteDate,
+      DateTime? deletedDate,
       bool isFavorite,
       String? category});
 }
@@ -146,7 +146,7 @@ class __$$NoteModelImplCopyWithImpl<$Res>
     Object? content = freezed,
     Object? createDate = null,
     Object? updateDate = freezed,
-    Object? deleteDate = freezed,
+    Object? deletedDate = freezed,
     Object? isFavorite = null,
     Object? category = freezed,
   }) {
@@ -171,9 +171,9 @@ class __$$NoteModelImplCopyWithImpl<$Res>
           ? _value.updateDate
           : updateDate // ignore: cast_nullable_to_non_nullable
               as String?,
-      deleteDate: freezed == deleteDate
-          ? _value.deleteDate
-          : deleteDate // ignore: cast_nullable_to_non_nullable
+      deletedDate: freezed == deletedDate
+          ? _value.deletedDate
+          : deletedDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
       isFavorite: null == isFavorite
           ? _value.isFavorite
@@ -196,7 +196,7 @@ class _$NoteModelImpl implements _NoteModel {
       this.content,
       required this.createDate,
       this.updateDate,
-      this.deleteDate,
+      this.deletedDate,
       this.isFavorite = false,
       this.category});
 
@@ -211,7 +211,7 @@ class _$NoteModelImpl implements _NoteModel {
   @override
   final String? updateDate;
   @override
-  final DateTime? deleteDate;
+  final DateTime? deletedDate;
   @override
   @JsonKey()
   final bool isFavorite;
@@ -220,7 +220,7 @@ class _$NoteModelImpl implements _NoteModel {
 
   @override
   String toString() {
-    return 'NoteModel(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, deleteDate: $deleteDate, isFavorite: $isFavorite, category: $category)';
+    return 'NoteModel(id: $id, title: $title, content: $content, createDate: $createDate, updateDate: $updateDate, deletedDate: $deletedDate, isFavorite: $isFavorite, category: $category)';
   }
 
   @override
@@ -235,8 +235,8 @@ class _$NoteModelImpl implements _NoteModel {
                 other.createDate == createDate) &&
             (identical(other.updateDate, updateDate) ||
                 other.updateDate == updateDate) &&
-            (identical(other.deleteDate, deleteDate) ||
-                other.deleteDate == deleteDate) &&
+            (identical(other.deletedDate, deletedDate) ||
+                other.deletedDate == deletedDate) &&
             (identical(other.isFavorite, isFavorite) ||
                 other.isFavorite == isFavorite) &&
             (identical(other.category, category) ||
@@ -245,7 +245,7 @@ class _$NoteModelImpl implements _NoteModel {
 
   @override
   int get hashCode => Object.hash(runtimeType, id, title, content, createDate,
-      updateDate, deleteDate, isFavorite, category);
+      updateDate, deletedDate, isFavorite, category);
 
   /// Create a copy of NoteModel
   /// with the given fields replaced by the non-null parameter values.
@@ -263,7 +263,7 @@ abstract class _NoteModel implements NoteModel {
       final String? content,
       required final String createDate,
       final String? updateDate,
-      final DateTime? deleteDate,
+      final DateTime? deletedDate,
       final bool isFavorite,
       final String? category}) = _$NoteModelImpl;
 
@@ -278,7 +278,7 @@ abstract class _NoteModel implements NoteModel {
   @override
   String? get updateDate;
   @override
-  DateTime? get deleteDate;
+  DateTime? get deletedDate;
   @override
   bool get isFavorite;
   @override

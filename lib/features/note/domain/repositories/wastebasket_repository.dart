@@ -6,4 +6,5 @@ abstract interface class WastebasketRepository {
   Future<void> addDeletedNote(Note deletedNote);
   Future<void> deleteRestoredNote(String id);
   Future<void> deleteNotePermanently(String id);
+  Future<void> updateWaste(Note updatedWaste);
 }

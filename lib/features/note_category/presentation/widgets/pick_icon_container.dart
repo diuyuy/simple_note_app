@@ -53,7 +53,7 @@ class PickIconContainer extends StatelessWidget {
                 onTap: () => selectIcon(codePoint),
                 child: CodePointIcon(
                   codePoint: codePoint,
-                  size: selectedCode == codePoint ? 28.w : 24.w,
+                  size: selectedCode == codePoint ? 32.w : 28.w,
                   color: selectedCode == codePoint ? color : Colors.grey,
                 ),
               ),

@@ -15,6 +15,7 @@ class AppSettingBloc extends Bloc<AppSettingEvent, AppSettingState> {
       : super(_Initial(appSetting: _repository.getAppSetting())) {
     on<_AppSettingLoaded>(_onAppSettingLoaded);
     on<_AppSettingUpdated>(_onAppSettingUpdated);
+    on<_AppSettingAutoDeleteOptionChanged>(_onAppSettingAutoDeleteChanged);
   }
 
   final AppSettingRepository _repository;
@@ -49,6 +50,29 @@ class AppSettingBloc extends Bloc<AppSettingEvent, AppSettingState> {
       );
 
       await _repository.updateAppSetting(updatedAppSetting);
+
+      emit(_AppSettingLoadSuccess(appSetting: _repository.getAppSetting()));
+    } catch (e) {
+      addError(e);
+      emit(_AppSettingLoadFailure(
+          appSetting: AppSetting(), errorMessage: e.toString()));
+    }
+  }
+
+  void _onAppSettingAutoDeleteChanged(
+      _AppSettingAutoDeleteOptionChanged event, Emitter<AppSettingState> emit) {
+    try {
+      final currentAppSetting = _repository.getAppSetting();
+
+      if (event.interval == 0) {
+        _repository.updateAppSetting(
+            currentAppSetting.copyWith(autoDeleteActiveAt: null));
+
+        return;
+      }
+
+      _repository.updateAppSetting(
+          currentAppSetting.copyWith(autoDeleteActiveAt: DateTime.now()));
 
       emit(_AppSettingLoadSuccess(appSetting: _repository.getAppSetting()));
     } catch (e) {

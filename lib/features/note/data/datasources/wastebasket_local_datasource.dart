@@ -29,4 +29,8 @@ class WastebasketLocalDatasource {
   Future<void> deleteNotePermanently(String id) async {
     await _wasteBasketBox.delete(id);
   }
+
+  Future<void> updateWaste(NoteModel updatedWaste) async {
+    await _wasteBasketBox.put(updatedWaste.id, updatedWaste);
+  }
 }

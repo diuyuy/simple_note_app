@@ -42,3 +42,4 @@ flutter:
     - lib/core/translations/
     - lib/core/img/note.png
     - .env
+    - lib/core/font/NotoSansKR-Regular.ttf

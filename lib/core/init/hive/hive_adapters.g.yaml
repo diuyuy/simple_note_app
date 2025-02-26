@@ -5,7 +5,7 @@ nextTypeId: 4
 types:
   NoteModel:
     typeId: 0
-    nextIndex: 8
+    nextIndex: 9
     fields:
       id:
         index: 0
@@ -21,8 +21,8 @@ types:
         index: 5
       category:
         index: 6
-      deleteDate:
-        index: 7
+      deletedDate:
+        index: 8
   NoteOrder:
     typeId: 1
     nextIndex: 1
@@ -31,7 +31,7 @@ types:
         index: 0
   AppSettingModel:
     typeId: 2
-    nextIndex: 10
+    nextIndex: 12
     fields:
       isExitOnHome:
         index: 1
@@ -49,6 +49,8 @@ types:
         index: 8
       contentFontSize:
         index: 9
+      autoDeleteActiveAt:
+        index: 11
   NoteCategoryModel:
     typeId: 3
     nextIndex: 8

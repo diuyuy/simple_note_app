@@ -42,7 +42,7 @@ class PickSeedColorContainer extends StatelessWidget {
           child: Icon(
             currentColor == hex ? Icons.check_circle : Icons.circle,
             color: Color(hex),
-            size: 32.w,
+            size: 36.w,
           ),
         );
       }).toList(),
