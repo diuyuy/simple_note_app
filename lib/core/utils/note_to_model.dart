@@ -8,7 +8,7 @@ NoteModel noteToModel(Note note) {
     content: note.content,
     createDate: note.createDate,
     updateDate: note.updateDate,
-    deleteDate: note.deleteDate,
+    deletedDate: note.deletedDate,
     isFavorite: note.isFavorite,
     category: note.category,
   );

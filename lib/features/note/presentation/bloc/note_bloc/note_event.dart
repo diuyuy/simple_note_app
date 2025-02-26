@@ -41,4 +41,22 @@ class NoteEvent with _$NoteEvent {
   const factory NoteEvent.restoreNotes({
     required List<String> restoredNotes,
   }) = _RestoreNotes;
+
+  const factory NoteEvent.autoCreateNote({
+    required String id,
+    required String title,
+    String? content,
+    required String createDate,
+    bool? isFavorite,
+    String? category,
+  }) = _AutoCreateNote;
+
+  const factory NoteEvent.autoUpdateNote({
+    required String id,
+    String? title,
+    String? content,
+    String? updateDate,
+    bool? isFavorite,
+    String? category,
+  }) = _AutoUpdateNote;
 }

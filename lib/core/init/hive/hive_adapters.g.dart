@@ -22,7 +22,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       content: fields[2] as String?,
       createDate: fields[3] as String,
       updateDate: fields[4] as String?,
-      deleteDate: fields[7] as DateTime?,
+      deletedDate: fields[8] as DateTime?,
       isFavorite: fields[5] as bool,
       category: fields[6] as String?,
     );
@@ -46,8 +46,8 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       ..write(obj.isFavorite)
       ..writeByte(6)
       ..write(obj.category)
-      ..writeByte(7)
-      ..write(obj.deleteDate);
+      ..writeByte(8)
+      ..write(obj.deletedDate);
   }
 
   @override
@@ -114,13 +114,14 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
       textHeight: (fields[4] as num).toDouble(),
       isAutoSave: fields[5] as bool,
       autoDeleteDays: (fields[6] as num).toInt(),
+      autoDeleteActiveAt: fields[11] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, AppSettingModel obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(9)
       ..writeByte(1)
       ..write(obj.isExitOnHome)
       ..writeByte(2)
@@ -136,7 +137,9 @@ class AppSettingModelAdapter extends TypeAdapter<AppSettingModel> {
       ..writeByte(8)
       ..write(obj.titleFontSize)
       ..writeByte(9)
-      ..write(obj.contentFontSize);
+      ..write(obj.contentFontSize)
+      ..writeByte(11)
+      ..write(obj.autoDeleteActiveAt);
   }
 
   @override

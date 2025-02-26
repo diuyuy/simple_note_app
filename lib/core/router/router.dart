@@ -235,14 +235,6 @@ final router = GoRouter(
           ],
         ),
         GoRoute(
-          path: RouterPath.createNoteCategoryPage,
-          pageBuilder: (context, state) => buildFadeTransitionPage(
-            context: context,
-            state: state,
-            child: const CreateNoteCategoryPage(),
-          ),
-        ),
-        GoRoute(
           path: RouterPath.updateNoteCategoryPage,
           pageBuilder: (context, state) {
             final id = state.extra as String;
@@ -279,6 +271,14 @@ final router = GoRouter(
           },
         )
       ],
+    ),
+    GoRoute(
+      path: RouterPath.createNoteCategoryPage,
+      pageBuilder: (context, state) => buildFadeTransitionPage(
+        context: context,
+        state: state,
+        child: const CreateNoteCategoryPage(),
+      ),
     ),
     GoRoute(
       path: RouterPath.appSettingPage,

@@ -2,8 +2,8 @@ part of 'app_setting_bloc.dart';
 
 @freezed
 class AppSettingEvent with _$AppSettingEvent {
-  const factory AppSettingEvent.started() = _Started;
   const factory AppSettingEvent.appSettingLoaded() = _AppSettingLoaded;
+
   const factory AppSettingEvent.appSettingUpdated({
     bool? isExitOnHome,
     int? themeMode,
@@ -14,4 +14,8 @@ class AppSettingEvent with _$AppSettingEvent {
     bool? isAutoSave,
     int? autoDeleteDays,
   }) = _AppSettingUpdated;
+
+  const factory AppSettingEvent.appSettingAutoDeleteOptionChanged({
+    required int interval,
+  }) = _AppSettingAutoDeleteOptionChanged;
 }

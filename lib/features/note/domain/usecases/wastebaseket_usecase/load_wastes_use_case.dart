@@ -15,8 +15,10 @@ class LoadWastesUseCase {
     final wasteList = wastebasketRepository.loadAllWastes();
     final autoDeleteInterval =
         appSettingRepository.getAppSetting().autoDeleteDays;
+    final autoDeleteActiveAt =
+        appSettingRepository.getAppSetting().autoDeleteActiveAt;
 
-    if (autoDeleteInterval == 0) {
+    if (autoDeleteActiveAt == null) {
       return wasteList;
     }
 
@@ -24,8 +26,13 @@ class LoadWastesUseCase {
     final currentDate = DateTime.now();
 
     for (var waste in wasteList) {
-      if (currentDate
-          .isAfter(waste.deleteDate!.add(Duration(days: autoDeleteInterval)))) {
+      if (waste.deletedDate!.isAfter(autoDeleteActiveAt)) {
+        waste = waste.copyWith(deletedDate: autoDeleteActiveAt);
+        wastebasketRepository.updateWaste(waste);
+      }
+
+      if (currentDate.isAfter(
+          waste.deletedDate!.add(Duration(days: autoDeleteInterval)))) {
         await wastebasketRepository.deleteNotePermanently(waste.id);
       } else {
         wastes.add(waste);

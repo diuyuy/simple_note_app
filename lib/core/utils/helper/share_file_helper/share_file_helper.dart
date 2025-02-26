@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_plus/share_plus.dart';
 
@@ -15,9 +17,14 @@ class ShareFileHelper {
     double contentFontSize,
   ) async {
     final pdf = pw.Document();
+    final fontData =
+        await rootBundle.load("lib/core/font/NotoSansKR-Regular.ttf");
+    final fontBytes = fontData.buffer.asByteData();
+    final ttf = pw.Font.ttf(fontBytes.buffer.asByteData());
 
     pdf.addPage(
       pw.Page(
+        pageFormat: PdfPageFormat.a4,
         build: (context) {
           return pw.Padding(
             padding: const pw.EdgeInsets.symmetric(vertical: 8, horizontal: 16),
@@ -26,12 +33,14 @@ class ShareFileHelper {
                 pw.Text(
                   title,
                   style: pw.TextStyle(
+                    font: ttf,
                     fontSize: titleFontSize,
                   ),
                 ),
                 pw.Text(
                   '\n\n$content',
                   style: pw.TextStyle(
+                    font: ttf,
                     fontSize: contentFontSize,
                   ),
                 ),

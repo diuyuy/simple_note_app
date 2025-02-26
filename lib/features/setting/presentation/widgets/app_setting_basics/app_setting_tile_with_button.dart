@@ -18,14 +18,15 @@ class AppSettingTileWithButton extends StatelessWidget {
         aspectRatio: 8 / 1,
         child: Row(
           children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontFeatures: [FontFeature.tabularFigures()],
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontFeatures: [FontFeature.tabularFigures()],
+                ),
               ),
             ),
-            const Spacer(),
             button,
           ],
         ),

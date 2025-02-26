@@ -29,6 +29,7 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
       themeMode: appSetting.themeMode,
       textHeight: appSetting.textHeight,
       autoDeleteDays: appSetting.autoDeleteDays,
+      autoDeleteActiveAt: appSetting.autoDeleteActiveAt,
     );
   }
 
@@ -42,6 +43,7 @@ class AppSettingRepositoryImpl implements AppSettingRepository {
       themeMode: appSetting.themeMode,
       textHeight: appSetting.textHeight,
       autoDeleteDays: appSetting.autoDeleteDays,
+      autoDeleteActiveAt: appSetting.autoDeleteActiveAt,
     );
   }
 }

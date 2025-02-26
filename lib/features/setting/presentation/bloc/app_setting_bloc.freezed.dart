@@ -18,7 +18,6 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AppSettingEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
@@ -30,11 +29,11 @@ mixin _$AppSettingEvent {
             bool? isAutoSave,
             int? autoDeleteDays)
         appSettingUpdated,
+    required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
@@ -46,11 +45,11 @@ mixin _$AppSettingEvent {
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
+    TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
@@ -62,28 +61,32 @@ mixin _$AppSettingEvent {
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
+    TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AppSettingLoaded value) appSettingLoaded,
     required TResult Function(_AppSettingUpdated value) appSettingUpdated,
+    required TResult Function(_AppSettingAutoDeleteOptionChanged value)
+        appSettingAutoDeleteOptionChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AppSettingLoaded value)? appSettingLoaded,
     TResult? Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult? Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AppSettingLoaded value)? appSettingLoaded,
     TResult Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -108,144 +111,6 @@ class _$AppSettingEventCopyWithImpl<$Res, $Val extends AppSettingEvent>
 
   /// Create a copy of AppSettingEvent
   /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AppSettingEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of AppSettingEvent
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$StartedImpl implements _Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'AppSettingEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() appSettingLoaded,
-    required TResult Function(
-            bool? isExitOnHome,
-            int? themeMode,
-            int? themeColor,
-            int? titleFontSize,
-            int? contentFontSize,
-            double? textHeight,
-            bool? isAutoSave,
-            int? autoDeleteDays)
-        appSettingUpdated,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? appSettingLoaded,
-    TResult? Function(
-            bool? isExitOnHome,
-            int? themeMode,
-            int? themeColor,
-            int? titleFontSize,
-            int? contentFontSize,
-            double? textHeight,
-            bool? isAutoSave,
-            int? autoDeleteDays)?
-        appSettingUpdated,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? appSettingLoaded,
-    TResult Function(
-            bool? isExitOnHome,
-            int? themeMode,
-            int? themeColor,
-            int? titleFontSize,
-            int? contentFontSize,
-            double? textHeight,
-            bool? isAutoSave,
-            int? autoDeleteDays)?
-        appSettingUpdated,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_AppSettingLoaded value) appSettingLoaded,
-    required TResult Function(_AppSettingUpdated value) appSettingUpdated,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_AppSettingLoaded value)? appSettingLoaded,
-    TResult? Function(_AppSettingUpdated value)? appSettingUpdated,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_AppSettingLoaded value)? appSettingLoaded,
-    TResult Function(_AppSettingUpdated value)? appSettingUpdated,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Started implements AppSettingEvent {
-  const factory _Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -289,7 +154,6 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
@@ -301,6 +165,7 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             bool? isAutoSave,
             int? autoDeleteDays)
         appSettingUpdated,
+    required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingLoaded();
   }
@@ -308,7 +173,6 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
@@ -320,6 +184,7 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
+    TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingLoaded?.call();
   }
@@ -327,7 +192,6 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
@@ -339,6 +203,7 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
+    TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
   }) {
     if (appSettingLoaded != null) {
@@ -350,9 +215,10 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AppSettingLoaded value) appSettingLoaded,
     required TResult Function(_AppSettingUpdated value) appSettingUpdated,
+    required TResult Function(_AppSettingAutoDeleteOptionChanged value)
+        appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingLoaded(this);
   }
@@ -360,9 +226,10 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AppSettingLoaded value)? appSettingLoaded,
     TResult? Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult? Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingLoaded?.call(this);
   }
@@ -370,9 +237,10 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AppSettingLoaded value)? appSettingLoaded,
     TResult Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
   }) {
     if (appSettingLoaded != null) {
@@ -544,7 +412,6 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() appSettingLoaded,
     required TResult Function(
             bool? isExitOnHome,
@@ -556,6 +423,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             bool? isAutoSave,
             int? autoDeleteDays)
         appSettingUpdated,
+    required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingUpdated(isExitOnHome, themeMode, themeColor, titleFontSize,
         contentFontSize, textHeight, isAutoSave, autoDeleteDays);
@@ -564,7 +432,6 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? appSettingLoaded,
     TResult? Function(
             bool? isExitOnHome,
@@ -576,6 +443,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
+    TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingUpdated?.call(isExitOnHome, themeMode, themeColor,
         titleFontSize, contentFontSize, textHeight, isAutoSave, autoDeleteDays);
@@ -584,7 +452,6 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? appSettingLoaded,
     TResult Function(
             bool? isExitOnHome,
@@ -596,6 +463,7 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             bool? isAutoSave,
             int? autoDeleteDays)?
         appSettingUpdated,
+    TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
   }) {
     if (appSettingUpdated != null) {
@@ -615,9 +483,10 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
     required TResult Function(_AppSettingLoaded value) appSettingLoaded,
     required TResult Function(_AppSettingUpdated value) appSettingUpdated,
+    required TResult Function(_AppSettingAutoDeleteOptionChanged value)
+        appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingUpdated(this);
   }
@@ -625,9 +494,10 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
     TResult? Function(_AppSettingLoaded value)? appSettingLoaded,
     TResult? Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult? Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
   }) {
     return appSettingUpdated?.call(this);
   }
@@ -635,9 +505,10 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
     TResult Function(_AppSettingLoaded value)? appSettingLoaded,
     TResult Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
   }) {
     if (appSettingUpdated != null) {
@@ -672,6 +543,191 @@ abstract class _AppSettingUpdated implements AppSettingEvent {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AppSettingUpdatedImplCopyWith<_$AppSettingUpdatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AppSettingAutoDeleteOptionChangedImplCopyWith<$Res> {
+  factory _$$AppSettingAutoDeleteOptionChangedImplCopyWith(
+          _$AppSettingAutoDeleteOptionChangedImpl value,
+          $Res Function(_$AppSettingAutoDeleteOptionChangedImpl) then) =
+      __$$AppSettingAutoDeleteOptionChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int interval});
+}
+
+/// @nodoc
+class __$$AppSettingAutoDeleteOptionChangedImplCopyWithImpl<$Res>
+    extends _$AppSettingEventCopyWithImpl<$Res,
+        _$AppSettingAutoDeleteOptionChangedImpl>
+    implements _$$AppSettingAutoDeleteOptionChangedImplCopyWith<$Res> {
+  __$$AppSettingAutoDeleteOptionChangedImplCopyWithImpl(
+      _$AppSettingAutoDeleteOptionChangedImpl _value,
+      $Res Function(_$AppSettingAutoDeleteOptionChangedImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppSettingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? interval = null,
+  }) {
+    return _then(_$AppSettingAutoDeleteOptionChangedImpl(
+      interval: null == interval
+          ? _value.interval
+          : interval // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AppSettingAutoDeleteOptionChangedImpl
+    implements _AppSettingAutoDeleteOptionChanged {
+  const _$AppSettingAutoDeleteOptionChangedImpl({required this.interval});
+
+  @override
+  final int interval;
+
+  @override
+  String toString() {
+    return 'AppSettingEvent.appSettingAutoDeleteOptionChanged(interval: $interval)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AppSettingAutoDeleteOptionChangedImpl &&
+            (identical(other.interval, interval) ||
+                other.interval == interval));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, interval);
+
+  /// Create a copy of AppSettingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AppSettingAutoDeleteOptionChangedImplCopyWith<
+          _$AppSettingAutoDeleteOptionChangedImpl>
+      get copyWith => __$$AppSettingAutoDeleteOptionChangedImplCopyWithImpl<
+          _$AppSettingAutoDeleteOptionChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() appSettingLoaded,
+    required TResult Function(
+            bool? isExitOnHome,
+            int? themeMode,
+            int? themeColor,
+            int? titleFontSize,
+            int? contentFontSize,
+            double? textHeight,
+            bool? isAutoSave,
+            int? autoDeleteDays)
+        appSettingUpdated,
+    required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
+  }) {
+    return appSettingAutoDeleteOptionChanged(interval);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? appSettingLoaded,
+    TResult? Function(
+            bool? isExitOnHome,
+            int? themeMode,
+            int? themeColor,
+            int? titleFontSize,
+            int? contentFontSize,
+            double? textHeight,
+            bool? isAutoSave,
+            int? autoDeleteDays)?
+        appSettingUpdated,
+    TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
+  }) {
+    return appSettingAutoDeleteOptionChanged?.call(interval);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? appSettingLoaded,
+    TResult Function(
+            bool? isExitOnHome,
+            int? themeMode,
+            int? themeColor,
+            int? titleFontSize,
+            int? contentFontSize,
+            double? textHeight,
+            bool? isAutoSave,
+            int? autoDeleteDays)?
+        appSettingUpdated,
+    TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
+    required TResult orElse(),
+  }) {
+    if (appSettingAutoDeleteOptionChanged != null) {
+      return appSettingAutoDeleteOptionChanged(interval);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_AppSettingLoaded value) appSettingLoaded,
+    required TResult Function(_AppSettingUpdated value) appSettingUpdated,
+    required TResult Function(_AppSettingAutoDeleteOptionChanged value)
+        appSettingAutoDeleteOptionChanged,
+  }) {
+    return appSettingAutoDeleteOptionChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_AppSettingLoaded value)? appSettingLoaded,
+    TResult? Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult? Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
+  }) {
+    return appSettingAutoDeleteOptionChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_AppSettingLoaded value)? appSettingLoaded,
+    TResult Function(_AppSettingUpdated value)? appSettingUpdated,
+    TResult Function(_AppSettingAutoDeleteOptionChanged value)?
+        appSettingAutoDeleteOptionChanged,
+    required TResult orElse(),
+  }) {
+    if (appSettingAutoDeleteOptionChanged != null) {
+      return appSettingAutoDeleteOptionChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _AppSettingAutoDeleteOptionChanged implements AppSettingEvent {
+  const factory _AppSettingAutoDeleteOptionChanged(
+      {required final int interval}) = _$AppSettingAutoDeleteOptionChangedImpl;
+
+  int get interval;
+
+  /// Create a copy of AppSettingEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$AppSettingAutoDeleteOptionChangedImplCopyWith<
+          _$AppSettingAutoDeleteOptionChangedImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

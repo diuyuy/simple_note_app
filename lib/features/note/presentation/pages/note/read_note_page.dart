@@ -26,8 +26,6 @@ class ReadNotePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // leading: const AppBarBackButton(),
-        title: Text('ReadNotePage.note'.tr()),
-        centerTitle: true,
         actions: [
           BlocBuilder<NoteBloc, NoteState>(
             builder: (context, state) {

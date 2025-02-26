@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/router/router_path.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/utils/get_category_color.dart';
@@ -65,8 +67,9 @@ class _AssignCategoryBottomSheetState extends State<AssignCategoryBottomSheet> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           GestureDetector(
-                            onTap: () => tapCheckBox(category.id),
+                            //onTap: () => tapCheckBox(category.id),
                             child: ListTile(
+                              onTap: () => tapCheckBox(category.id),
                               leading: CodePointIcon(
                                 codePoint: category.iconCode,
                                 color: getCategoryColor(category),
@@ -82,10 +85,38 @@ class _AssignCategoryBottomSheetState extends State<AssignCategoryBottomSheet> {
                               ),
                             ),
                           ),
-                          const Divider(),
+                          //const Divider(),
                         ],
                       ),
                     ),
+                    Gap(8),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 8.0),
+                      child: AspectRatio(
+                        aspectRatio: 8 / 1,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          )),
+                          onPressed: () {
+                            context.push(RouterPath.createNoteCategoryPage);
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.add),
+                              Gap(8),
+                              Text(
+                                "Create a new category".tr(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Divider(),
                   ],
                 ),
               ),

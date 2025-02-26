@@ -96,9 +96,11 @@ class _SearchNoteSelectionPageState extends State<SearchNoteSelectionPage> {
                         isSelected: selectedNotes.contains(note.id),
                         id: note.id,
                         title: note.title,
+                        content: note.content ?? '',
                         date: note.updateDate ?? note.createDate,
                         isFavorite: note.isFavorite,
                         previousPage: PreviousPage.search,
+                        query: query,
                         onTap: onTapSelectNoteWidget,
                       );
                     }).toList(),
@@ -174,12 +176,17 @@ class _SearchNoteSelectionPageState extends State<SearchNoteSelectionPage> {
                       deletedNotes: selectedNotes,
                     ),
                   );
+              context.read<SearchNotesBloc>().add(
+                    SearchNotesBlocEvent.deleteNotes(
+                      deletedNotes: selectedNotes,
+                    ),
+                  );
 
               context.pop();
             }
           }
         },
-        child: Text('Delete'),
+        child: Text('Delete'.tr()),
       ),
     ];
   }

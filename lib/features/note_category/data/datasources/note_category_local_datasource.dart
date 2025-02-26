@@ -44,6 +44,10 @@ class NoteCategoryLocalDatasource {
 
   Future<void> deleteCategoryOrder(String id) async {
     var orders = _orderBox.get(_orderBoxKey) ?? <String>[];
+    if (orders.isEmpty) {
+      throw Exception('존재하지 않는 카테고리 ID');
+    }
+
     orders.remove(id);
     await _orderBox.put(_orderBoxKey, orders);
   }

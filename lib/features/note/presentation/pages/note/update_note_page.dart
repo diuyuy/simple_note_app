@@ -22,11 +22,23 @@ class UpdateNotePage extends StatefulWidget {
 class _UpdateNotePageState extends State<UpdateNotePage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _contentController = TextEditingController();
+  final FocusNode _titleFocusNode = FocusNode();
+  final FocusNode _contentFocusNode = FocusNode();
+  late final bool isAutoSave;
+
+  @override
+  void initState() {
+    super.initState();
+    isAutoSave = context.read<AppSettingBloc>().state.appSetting.isAutoSave;
+  }
 
   @override
   void dispose() {
     _titleController.dispose();
     _contentController.dispose();
+    _titleFocusNode.dispose();
+    _contentFocusNode.dispose();
+
     super.dispose();
   }
 
@@ -34,13 +46,15 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.pop(),
-          icon: Icon(
-            Icons.close,
-            size: 28,
-          ),
-        ),
+        leading: isAutoSave
+            ? null
+            : IconButton(
+                onPressed: () => context.pop(),
+                icon: Icon(
+                  Icons.close,
+                  size: 28,
+                ),
+              ),
         title: Text('UpdateNotePage.edit'.tr()),
         centerTitle: true,
         actions: [
@@ -66,53 +80,90 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-          child: SingleChildScrollView(
-            child: Builder(builder: (context) {
-              final selectedNote = context.select(
-                (NoteBloc bloc) => bloc.state.notes.firstWhere(
-                  (note) => note.id == widget.id,
-                  orElse: () => Note(
-                    id: '',
-                    title: '',
-                    createDate: '',
-                  ),
+          child: Builder(builder: (context) {
+            final selectedNote = context.select(
+              (NoteBloc bloc) => bloc.state.notes.firstWhere(
+                (note) => note.id == widget.id,
+                orElse: () => Note(
+                  id: '',
+                  title: '',
+                  createDate: '',
                 ),
-              );
+              ),
+            );
 
-              final appSetting = context
-                  .select((AppSettingBloc bloc) => bloc.state.appSetting);
+            final appSetting =
+                context.select((AppSettingBloc bloc) => bloc.state.appSetting);
 
-              _titleController.text = selectedNote.title.isNotEmpty
-                  ? selectedNote.title
-                  : AppConstants.untitled.tr();
-              _contentController.text = selectedNote.content ?? '';
+            _titleController.text = selectedNote.title.isNotEmpty
+                ? selectedNote.title
+                : AppConstants.untitled.tr();
+            _contentController.text = selectedNote.content ?? '';
 
-              return Column(
+            return GestureDetector(
+              onTap: () {
+                if (!_contentFocusNode.hasFocus) {
+                  _contentFocusNode.requestFocus();
+                }
+              },
+              child: Column(
                 children: [
                   NoteTextField(
                     controller: _titleController,
+                    focusNode: _titleFocusNode,
                     maxLines: 2,
                     minLines: 1,
                     maxLength: AppConstants.titleMaxLength,
+                    onChanged: (title) {
+                      if (isAutoSave) {
+                        context.read<NoteBloc>().add(
+                              NoteEvent.autoUpdateNote(
+                                id: widget.id,
+                                title: title,
+                              ),
+                            );
+                      }
+                    },
                     hintText: 'UpdateNotePage.title'.tr(),
                     textStyle: TextStyle(
                       fontSize: appSetting.titleFontSize.toDouble(),
                     ),
                   ),
                   const Divider(),
-                  NoteTextField(
-                    controller: _contentController,
-                    hintText: 'UpdateNotePage.inputContent'.tr(),
-                    maxLines: null,
-                    textStyle: TextStyle(
-                      fontSize: appSetting.contentFontSize.toDouble(),
-                      height: appSetting.textHeight,
+                  Expanded(
+                    child: GestureDetector(
+                      onTap: () {
+                        if (!_contentFocusNode.hasFocus) {
+                          _contentFocusNode.requestFocus();
+                        }
+                      },
+                      child: NoteTextField(
+                        controller: _contentController,
+                        focusNode: _contentFocusNode,
+                        hintText: 'UpdateNotePage.inputContent'.tr(),
+                        maxLines: null,
+                        maxLength: AppConstants.contentMaxLength,
+                        onChanged: (content) {
+                          if (isAutoSave) {
+                            context.read<NoteBloc>().add(
+                                  NoteEvent.autoUpdateNote(
+                                    id: widget.id,
+                                    content: content,
+                                  ),
+                                );
+                          }
+                        },
+                        textStyle: TextStyle(
+                          fontSize: appSetting.contentFontSize.toDouble(),
+                          height: appSetting.textHeight,
+                        ),
+                      ),
                     ),
                   ),
                 ],
-              );
-            }),
-          ),
+              ),
+            );
+          }),
         ),
       ),
     );

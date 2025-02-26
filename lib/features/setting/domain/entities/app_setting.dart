@@ -13,5 +13,7 @@ class AppSetting with _$AppSetting {
     @Default(1.2) double textHeight,
     @Default(false) bool isAutoSave,
     @Default(0) int autoDeleteDays,
+    @Default(false) bool isAutoDelete,
+    DateTime? autoDeleteActiveAt,
   }) = _AppSetting;
 }
