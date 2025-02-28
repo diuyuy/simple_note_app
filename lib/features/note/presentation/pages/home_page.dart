@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              context.go('/${RouterPath.searchNotePage}');
+              context.push('/${RouterPath.searchNotePage}');
             },
             icon: Icon(Icons.search),
           ),
@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => context.go('/${RouterPath.createNotePage}'),
+        onPressed: () => context.push('/${RouterPath.createNotePage}'),
         child: Icon(Icons.add),
       ),
     );
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
         ),
         onPressed: () {
           if (notes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
           context.push(
@@ -75,7 +75,7 @@ class HomePage extends StatelessWidget {
       MenuItemButton(
         onPressed: () {
           if (notes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
           context.push(
@@ -90,10 +90,10 @@ class HomePage extends StatelessWidget {
       MenuItemButton(
         onPressed: () {
           if (notes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
-          context.go(
+          context.push(
             '/${RouterPath.reorderNotePage}',
             extra: notes.map((note) => note.id).toList(),
           );

@@ -2,10 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/features/setting/presentation/bloc/app_setting_bloc.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
+import '../../../../setting/presentation/bloc/app_setting_bloc.dart';
 import '../../../domain/entities/note.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
 import '../../widgets/note_text_field.dart';

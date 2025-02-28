@@ -15,7 +15,7 @@ class AppSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // // leading: const AppBarBackButton(),
+        // leading: const AppBarBackButton(),
         title: Text('Settings'.tr()),
         centerTitle: true,
       ),
@@ -29,15 +29,17 @@ class AppSettingPage extends StatelessWidget {
               return appSettingState.when(
                 initial: (appSetting) => SizedBox.shrink(),
                 success: (appSetting) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppSettingTitleText(title: "Theme".tr()),
-                      const AppThemeSettingsContainer(),
-                      Gap(8),
-                      AppSettingTitleText(title: "Note Settings".tr()),
-                      const AppNoteSettingContainer(),
-                    ],
+                  return SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AppSettingTitleText(title: "Theme".tr()),
+                        const AppThemeSettingsContainer(),
+                        Gap(8),
+                        AppSettingTitleText(title: "Note Settings".tr()),
+                        const AppNoteSettingContainer(),
+                      ],
+                    ),
                   );
                 },
                 failure: (appSetting, errorMessage) => Center(

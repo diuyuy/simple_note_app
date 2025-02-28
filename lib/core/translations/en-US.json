@@ -138,9 +138,9 @@
     "cancel": "Cancel",
     "ok": "OK"
   },
-  "showNoNoteToSelectDialog": {
+  "showNoItemToSelectDialog": {
     "noNoteToSelect": "There are no notes to select.",
-    "ok": "확인"
+    "ok": "OK"
   },
   "showSelectedEmptyDialog": {
     "categories": "categories",
@@ -216,5 +216,6 @@
   "Theme": "Theme",
   "Theme Color": "Theme Color",
   "Theme Mode": "Theme Mode",
+  "There are no categories to select.": "There are no categories to select.",
   "Title Text Size": "Title Text Size"
 }

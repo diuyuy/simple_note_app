@@ -117,7 +117,7 @@ class NoteCategoryCardWidget extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          context.go(
+          context.push(
             '$currentPath/${RouterPath.updateNoteCategoryPage}',
             extra: id,
           );

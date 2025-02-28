@@ -105,7 +105,7 @@ class FavoritesPage extends StatelessWidget {
         ),
         onPressed: () {
           if (favoritesNotes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
 
@@ -121,7 +121,7 @@ class FavoritesPage extends StatelessWidget {
       MenuItemButton(
         onPressed: () {
           if (favoritesNotes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
 

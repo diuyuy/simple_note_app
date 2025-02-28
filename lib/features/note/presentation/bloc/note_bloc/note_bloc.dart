@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:simple_note_app/core/utils/format_date.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../domain/entities/note.dart';
@@ -91,6 +92,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
         title: event.title ?? currentNote.title,
         content: event.content ?? currentNote.content,
         createDate: currentNote.createDate,
+        updateDate: event.updateDate ?? currentNote.updateDate,
         isFavorite: event.isFavorite ?? currentNote.isFavorite,
         category: event.category ?? currentNote.category,
       );
@@ -112,6 +114,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
         final currentNote = state.notes.firstWhere((note) => note.id == noteId);
         final updatedNote = currentNote.copyWith(
           category: event.category,
+          updateDate: formatDate(DateTime.now()),
         );
         await updateNoteUseCase.execute(updatedNote);
       }
@@ -198,6 +201,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
         title: event.title ?? currentNote.title,
         content: event.content ?? currentNote.content,
         createDate: currentNote.createDate,
+        updateDate: event.updateDate ?? currentNote.updateDate,
         isFavorite: event.isFavorite ?? currentNote.isFavorite,
         category: event.category ?? currentNote.category,
       );

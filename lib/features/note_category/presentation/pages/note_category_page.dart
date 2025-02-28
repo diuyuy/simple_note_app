@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/enum/selected_item.dart';
+import 'package:simple_note_app/core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
 
 import '../../../../core/constants/app_constants.dart';
 import '../../../../core/router/router_path.dart';
@@ -56,14 +58,14 @@ class NoteCategoryPage extends StatelessWidget {
                         onLongPress: () async {
                           await triggerHaptickFeedBack();
                           if (context.mounted) {
-                            context.go(
+                            context.push(
                               '$currentPath/${RouterPath.noteCategorySelectionPage}',
                               extra: [noteCategory.id],
                             );
                           }
                         },
                         onTap: () {
-                          context.go(
+                          context.push(
                             '$currentPath/${RouterPath.categoryNotesPage}',
                             extra: {
                               'id': noteCategory.id,
@@ -98,7 +100,7 @@ class NoteCategoryPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.go('$currentPath/${RouterPath.createNoteCategoryPage}');
+          context.push(RouterPath.createNoteCategoryPage);
         },
         child: Icon(
           Icons.create_new_folder_outlined,
@@ -122,7 +124,11 @@ class NoteCategoryPage extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          context.go(
+          if (categories.isEmpty) {
+            showNoItemToSelectDialog(context, SelectedItem.category);
+            return;
+          }
+          context.push(
             '$currentPath/${RouterPath.noteCategorySelectionPage}',
             extra: <String>[],
           );
@@ -137,7 +143,11 @@ class NoteCategoryPage extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          context.go(
+          if (categories.isEmpty) {
+            showNoItemToSelectDialog(context, SelectedItem.category);
+            return;
+          }
+          context.push(
             '$currentPath/${RouterPath.noteCategorySelectionPage}',
             extra: allCategoryIds,
           );
@@ -152,7 +162,11 @@ class NoteCategoryPage extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          context.go(
+          if (categories.isEmpty) {
+            showNoItemToSelectDialog(context, SelectedItem.category);
+            return;
+          }
+          context.push(
             RouterPath.reorderNoteCategoryPage,
             extra: categories.map((category) => category.id).toList(),
           );

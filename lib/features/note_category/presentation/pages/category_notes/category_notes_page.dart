@@ -111,7 +111,7 @@ class CategoryNotesPage extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          context.go(
+          context.push(
             '$currentPath/${RouterPath.addNoteTocategoryPage}',
             extra: {
               'id': categoryId,

@@ -114,7 +114,7 @@ class WastebasketView extends StatelessWidget {
         ),
         onPressed: () {
           if (wastes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
           context.push(
@@ -130,7 +130,7 @@ class WastebasketView extends StatelessWidget {
       MenuItemButton(
         onPressed: () {
           if (wastes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
 

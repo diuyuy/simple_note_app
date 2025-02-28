@@ -197,7 +197,7 @@ class _SearchNotePageState extends State<SearchNoteView> {
         ),
         onPressed: () {
           if (filteredNotes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
 
@@ -214,7 +214,7 @@ class _SearchNotePageState extends State<SearchNoteView> {
       MenuItemButton(
         onPressed: () {
           if (filteredNotes.isEmpty) {
-            showNoNoteToSelectDialog(context);
+            showNoItemToSelectDialog(context);
             return;
           }
 

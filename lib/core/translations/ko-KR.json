@@ -137,7 +137,7 @@
     "cancel": "취소",
     "ok": "확인"
   },
-  "showNoNoteToSelectDialog": {
+  "showNoItemToSelectDialog": {
     "noNoteToSelect": "선택할 수 있는 노트가 없습니다.",
     "ok": "확인"
   },
@@ -214,6 +214,7 @@
   "Theme": "테마",
   "Theme Color": "테마 색상",
   "Theme Mode": "테마 모드", 
+  "There are no categories to select.": "선택할 수 있는 카테고리가 없습니다.",
   "Title": "타이틀",
   "Title Text Size": "제목 글자 크기"
 }

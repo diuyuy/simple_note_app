@@ -38,7 +38,7 @@ class ShareFileHelper {
                   ),
                 ),
                 pw.Text(
-                  '\n\n$content',
+                  '\n$content',
                   style: pw.TextStyle(
                     font: ttf,
                     fontSize: contentFontSize,
