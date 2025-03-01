@@ -175,6 +175,7 @@
   "30 days": "30 days",
   "60 days": "60 days",
 
+  "Add the notes you want!": "Add the notes you want!",
   "Adjusting text height changes readability.\nCheck the line spacing below.": "Adjusting text height changes readability.\nCheck the line spacing below.",
   "An error occurred. Please try again.": "An error occurred. Please try again.",
   "Assign Category": "Assign Category",
@@ -199,6 +200,7 @@
   "Note Settings": "Note Settings",
   "Note Text Settings": "Note Text Settings",
 
+  "PDF": "PDF",
   "Permanently Delete": "Permanently Delete",
   "Preview Screen": "Preview Screen",
 
@@ -212,10 +214,15 @@
   "Settings": "Settings",
   "System Default": "System Default",
   
+  "Text": "Text",
   "Title": "Title",
   "Theme": "Theme",
   "Theme Color": "Theme Color",
   "Theme Mode": "Theme Mode",
   "There are no categories to select.": "There are no categories to select.",
-  "Title Text Size": "Title Text Size"
+  "There are no notes to choose from.": "There are no notes to choose from.",
+  "Title Text Size": "Title Text Size",
+  "Try creating a new category!": "Try creating a new category!",
+  "TXT": "TXT"
+
 }

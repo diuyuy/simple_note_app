@@ -71,9 +71,7 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             final currentOrder = state.extra as List<String>;
 
-            return buildFadeTransitionPage(
-              context: context,
-              state: state,
+            return NoTransitionPage(
               child: ReorderNotePage(currentOrder: currentOrder),
             );
           },
@@ -178,6 +176,7 @@ final router = GoRouter(
         child: const WastebasketPage(),
       ),
     ),
+    // category
     GoRoute(
       path: RouterPath.noteCategoryPage,
       pageBuilder: (context, state) {
@@ -263,9 +262,7 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             final currentOrders = state.extra as List<String>;
 
-            return buildFadeTransitionPage(
-              context: context,
-              state: state,
+            return NoTransitionPage(
               child: ReorderCategoryPage(currentOrders: currentOrders),
             );
           },

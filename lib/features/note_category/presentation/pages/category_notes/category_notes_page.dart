@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
+import 'package:simple_note_app/core/widgets/empty_note_text_widget.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/router_params_key.dart';
@@ -49,43 +51,47 @@ class CategoryNotesPage extends StatelessWidget {
                   .where((note) => note.category == categoryId)
                   .toList();
 
-              return ListView.builder(
-                itemCount: notes.length,
-                itemBuilder: (context, index) {
-                  final note = notes[index];
+              return notes.isNotEmpty
+                  ? ListView.builder(
+                      itemCount: notes.length,
+                      itemBuilder: (context, index) {
+                        final note = notes[index];
 
-                  return GestureDetector(
-                    onLongPress: () async {
-                      await triggerHaptickFeedBack();
-                      if (context.mounted) {
-                        context.push(
-                          '$currentPath/${RouterPath.categoryNotesSelectionPage}',
-                          extra: <RouterParamsKey, List<String>>{
-                            RouterParamsKey.categoryId: [categoryId],
-                            RouterParamsKey.selectedNotes: [note.id],
+                        return GestureDetector(
+                          onLongPress: () async {
+                            await triggerHaptickFeedBack();
+                            if (context.mounted) {
+                              context.push(
+                                '$currentPath/${RouterPath.categoryNotesSelectionPage}',
+                                extra: <RouterParamsKey, List<String>>{
+                                  RouterParamsKey.categoryId: [categoryId],
+                                  RouterParamsKey.selectedNotes: [note.id],
+                                },
+                              );
+                            }
                           },
+                          onTap: () {
+                            context.push(RouterPath.readNotePage,
+                                extra: note.id);
+                          },
+                          child: NoteCardWidget(
+                            title: note.title,
+                            date: note.updateDate ?? note.createDate,
+                            isFavorite: note.isFavorite,
+                            onTapTrailing: () {
+                              context.read<NoteBloc>().add(
+                                    NoteEvent.updateNote(
+                                      id: note.id,
+                                      isFavorite: !note.isFavorite,
+                                    ),
+                                  );
+                            },
+                          ),
                         );
-                      }
-                    },
-                    onTap: () {
-                      context.push(RouterPath.readNotePage, extra: note.id);
-                    },
-                    child: NoteCardWidget(
-                      title: note.title,
-                      date: note.updateDate ?? note.createDate,
-                      isFavorite: note.isFavorite,
-                      onTapTrailing: () {
-                        context.read<NoteBloc>().add(
-                              NoteEvent.updateNote(
-                                id: note.id,
-                                isFavorite: !note.isFavorite,
-                              ),
-                            );
                       },
-                    ),
-                  );
-                },
-              );
+                    )
+                  : EmptyNoteTextWidget(
+                      content: 'Add the notes you want!'.tr());
             },
           ),
         ),
@@ -123,6 +129,10 @@ class CategoryNotesPage extends StatelessWidget {
       ),
       MyMenuItemButton(
         onPressed: () {
+          if (categoryNotes.isEmpty) {
+            showNoItemToSelectDialog(context);
+            return;
+          }
           context.push(
             '$currentPath/${RouterPath.categoryNotesSelectionPage}',
             extra: <RouterParamsKey, List<String>>{
@@ -135,6 +145,10 @@ class CategoryNotesPage extends StatelessWidget {
       ),
       MyMenuItemButton(
         onPressed: () {
+          if (categoryNotes.isEmpty) {
+            showNoItemToSelectDialog(context);
+            return;
+          }
           context.push(
             '$currentPath/${RouterPath.categoryNotesSelectionPage}',
             extra: <RouterParamsKey, List<String>>{

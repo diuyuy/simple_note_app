@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/enum/selected_item.dart';
-import 'package:simple_note_app/core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
+import 'package:simple_note_app/core/widgets/empty_note_text_widget.dart';
 
 import '../../../../core/constants/app_constants.dart';
+import '../../../../core/enum/selected_item.dart';
 import '../../../../core/router/router_path.dart';
+import '../../../../core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
 import '../../../../core/widgets/drawer/note_drawer.dart';
 import '../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../core/widgets/tirigger_haptick_feedback.dart';
@@ -43,52 +44,55 @@ class NoteCategoryPage extends StatelessWidget {
               return noteCategoryStatus.when(
                 initial: (categories) => SizedBox.shrink(),
                 loadSuccess: (categories) {
-                  return ListView.builder(
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) {
-                      final noteCategory = categories[index];
-                      final noteCount = notes
-                          .where(
-                            (note) => note.category == noteCategory.id,
-                          )
-                          .length;
+                  return categories.isNotEmpty
+                      ? ListView.builder(
+                          itemCount: categories.length,
+                          itemBuilder: (context, index) {
+                            final noteCategory = categories[index];
+                            final noteCount = notes
+                                .where(
+                                  (note) => note.category == noteCategory.id,
+                                )
+                                .length;
 
-                      return GestureDetector(
-                        key: Key(noteCategory.id),
-                        onLongPress: () async {
-                          await triggerHaptickFeedBack();
-                          if (context.mounted) {
-                            context.push(
-                              '$currentPath/${RouterPath.noteCategorySelectionPage}',
-                              extra: [noteCategory.id],
+                            return GestureDetector(
+                              key: Key(noteCategory.id),
+                              onLongPress: () async {
+                                await triggerHaptickFeedBack();
+                                if (context.mounted) {
+                                  context.push(
+                                    '$currentPath/${RouterPath.noteCategorySelectionPage}',
+                                    extra: [noteCategory.id],
+                                  );
+                                }
+                              },
+                              onTap: () {
+                                context.push(
+                                  '$currentPath/${RouterPath.categoryNotesPage}',
+                                  extra: {
+                                    'id': noteCategory.id,
+                                    'categoryName': noteCategory.categoryName
+                                  },
+                                );
+                              },
+                              child: NoteCategoryCardWidget(
+                                id: noteCategory.id,
+                                categoryName: noteCategory.categoryName,
+                                categoryIconCodePoint: noteCategory.iconCode,
+                                noteCount: noteCount,
+                                index: index,
+                                color: Color.from(
+                                  alpha: noteCategory.categoryColorA,
+                                  red: noteCategory.categoryColorR,
+                                  green: noteCategory.categoryColorG,
+                                  blue: noteCategory.categoryColorB,
+                                ),
+                              ),
                             );
-                          }
-                        },
-                        onTap: () {
-                          context.push(
-                            '$currentPath/${RouterPath.categoryNotesPage}',
-                            extra: {
-                              'id': noteCategory.id,
-                              'categoryName': noteCategory.categoryName
-                            },
-                          );
-                        },
-                        child: NoteCategoryCardWidget(
-                          id: noteCategory.id,
-                          categoryName: noteCategory.categoryName,
-                          categoryIconCodePoint: noteCategory.iconCode,
-                          noteCount: noteCount,
-                          index: index,
-                          color: Color.from(
-                            alpha: noteCategory.categoryColorA,
-                            red: noteCategory.categoryColorR,
-                            green: noteCategory.categoryColorG,
-                            blue: noteCategory.categoryColorB,
-                          ),
-                        ),
-                      );
-                    },
-                  );
+                          },
+                        )
+                      : EmptyNoteTextWidget(
+                          content: 'Try creating a new category!'.tr());
                 },
                 failure: (categories, errorMessage) => Center(
                   child: Text(errorMessage),
@@ -167,7 +171,7 @@ class NoteCategoryPage extends StatelessWidget {
             return;
           }
           context.push(
-            RouterPath.reorderNoteCategoryPage,
+            '$currentPath/${RouterPath.reorderNoteCategoryPage}',
             extra: categories.map((category) => category.id).toList(),
           );
         },

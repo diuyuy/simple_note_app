@@ -29,6 +29,7 @@ class ShareFileHelper {
           return pw.Padding(
             padding: const pw.EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             child: pw.Column(
+              crossAxisAlignment: pw.CrossAxisAlignment.start,
               children: [
                 pw.Text(
                   title,

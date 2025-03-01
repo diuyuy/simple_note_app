@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/core/widgets/empty_note_text_widget.dart';
 
 import '../../../../../core/enum/previous_page.dart';
 import '../../../../../core/widgets/bottom_action_button.dart';
@@ -75,22 +76,25 @@ class _AddNoteToCategoryPageState extends State<AddNoteToCategoryPage> {
               return Column(
                 children: [
                   Expanded(
-                    child: ListView.builder(
-                      itemCount: notInCategoryNotes.length,
-                      itemBuilder: (context, index) {
-                        final note = notInCategoryNotes[index];
+                    child: notInCategoryNotes.isNotEmpty
+                        ? ListView.builder(
+                            itemCount: notInCategoryNotes.length,
+                            itemBuilder: (context, index) {
+                              final note = notInCategoryNotes[index];
 
-                        return SelectNoteWidget(
-                          isSelected: selectedNotes.contains(note.id),
-                          id: note.id,
-                          title: note.title,
-                          date: note.updateDate ?? note.createDate,
-                          isFavorite: note.isFavorite,
-                          previousPage: PreviousPage.home,
-                          onTap: tapCheckIcon,
-                        );
-                      },
-                    ),
+                              return SelectNoteWidget(
+                                isSelected: selectedNotes.contains(note.id),
+                                id: note.id,
+                                title: note.title,
+                                date: note.updateDate ?? note.createDate,
+                                isFavorite: note.isFavorite,
+                                previousPage: PreviousPage.home,
+                                onTap: tapCheckIcon,
+                              );
+                            },
+                          )
+                        : EmptyNoteTextWidget(
+                            content: 'There are no notes to choose from.'.tr()),
                   ),
                   BottomActionButton(
                     enabled: selectedNotes.isNotEmpty,

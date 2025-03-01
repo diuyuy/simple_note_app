@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_constants.dart';
+import '../constants/app_constants.dart';
 
 class EmptyNoteTextWidget extends StatelessWidget {
   const EmptyNoteTextWidget({

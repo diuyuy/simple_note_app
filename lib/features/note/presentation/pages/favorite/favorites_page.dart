@@ -8,10 +8,10 @@ import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
+import '../../../../../core/widgets/empty_note_text_widget.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../../core/widgets/tirigger_haptick_feedback.dart';
 import '../../bloc/note_bloc/note_bloc.dart';
-import '../../widgets/empty_note_text_widget.dart';
 import '../../widgets/note_card_widget.dart';
 
 class FavoritesPage extends StatelessWidget {

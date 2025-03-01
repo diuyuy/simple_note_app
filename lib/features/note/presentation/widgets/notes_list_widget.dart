@@ -5,9 +5,9 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../core/router/note_selection_args.dart';
 import '../../../../core/router/router_path.dart';
+import '../../../../core/widgets/empty_note_text_widget.dart';
 import '../../../../core/widgets/tirigger_haptick_feedback.dart';
 import '../bloc/note_bloc/note_bloc.dart';
-import 'empty_note_text_widget.dart';
 import 'note_card_widget.dart';
 
 class NotesListWidget extends StatelessWidget {

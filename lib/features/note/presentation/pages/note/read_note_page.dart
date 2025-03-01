@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/enum/share_option.dart';
-import 'package:simple_note_app/core/utils/dialog_and_snackbar/show_snack_bar.dart';
-import 'package:simple_note_app/core/utils/helper/share_file_helper/share_file_helper.dart';
 
 import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/enum/share_option.dart';
 import '../../../../../core/router/router_path.dart';
+import '../../../../../core/utils/dialog_and_snackbar/show_snack_bar.dart';
+import '../../../../../core/utils/helper/share_file_helper/share_file_helper.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_item_button.dart';
 import '../../../../setting/presentation/bloc/app_setting_bloc.dart';
 import '../../../domain/entities/note.dart';
@@ -207,7 +207,7 @@ class ReadNotePage extends StatelessWidget {
               }
             },
             child: Text(
-              'Text',
+              'Text'.tr(),
             ),
           ),
           MyMenuItemButton(
@@ -226,7 +226,7 @@ class ReadNotePage extends StatelessWidget {
               }
             },
             child: Text(
-              'TXT',
+              'TXT'.tr(),
             ),
           ),
           MyMenuItemButton(
@@ -247,7 +247,7 @@ class ReadNotePage extends StatelessWidget {
               }
             },
             child: Text(
-              'PDF',
+              'PDF'.tr(),
             ),
           ),
         ],
