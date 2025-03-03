@@ -10,7 +10,7 @@ class NoteTextField extends StatelessWidget {
     this.minLines,
     this.textStyle,
     required this.hintText,
-    required this.onChanged,
+    this.onChanged,
   });
 
   final TextEditingController controller;
@@ -20,7 +20,7 @@ class NoteTextField extends StatelessWidget {
   final int? minLines;
   final TextStyle? textStyle;
   final String hintText;
-  final void Function(String) onChanged;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +33,7 @@ class NoteTextField extends StatelessWidget {
       style: textStyle,
       onChanged: onChanged,
       decoration: InputDecoration(
+        //contentPadding: EdgeInsets.zero,
         isDense: true,
         hintText: hintText,
         border: InputBorder.none,

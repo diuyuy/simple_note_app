@@ -47,6 +47,8 @@ class AppSettingBloc extends Bloc<AppSettingEvent, AppSettingState> {
         isAutoSave: event.isAutoSave ?? currentSetting.isAutoSave,
         textHeight: event.textHeight ?? currentSetting.textHeight,
         autoDeleteDays: event.autoDeleteDays ?? currentSetting.autoDeleteDays,
+        autoDeleteActiveAt:
+            event.autoDeleteActiveAt ?? currentSetting.autoDeleteActiveAt,
       );
 
       await _repository.updateAppSetting(updatedAppSetting);

@@ -19,6 +19,7 @@ class RouterPath {
   //Note Category paths
   static const String noteCategoryPage = '/noteCategory';
   static const String addNoteTocategoryPage = 'addNoteToCategory';
+  static const String createNoteFromCategory = 'createNoteFromCategory';
 
   static const String categoryNotesPage = 'categoryNotes';
   static const String categoryNotesSelectionPage = 'categoryNotesSelection';

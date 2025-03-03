@@ -30,9 +30,13 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: [Locale('en', 'US'), Locale('ko', 'KR')],
+      supportedLocales: [
+        Locale('en', 'US'),
+        Locale('ko', 'KR'),
+        //Locale('zh', 'CN'), //TODO: 계속 고려 필요
+      ],
       path: 'lib/core/translations',
-      fallbackLocale: Locale('en'),
+      fallbackLocale: Locale('en', 'US'),
       child: MultiBlocProvider(
         providers: [
           BlocProvider<AppSettingBloc>(

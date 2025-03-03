@@ -170,18 +170,38 @@ class FilteredNoteCardWidget extends StatelessWidget {
       String prefix = '';
 
       if (match.start >= lastIndex + scope) {
-        lastIndex = match.start - scope;
+        spans.add(
+          TextSpan(
+            text:
+                '$prefix${content.substring(lastIndex, lastIndex + scope)}...',
+            style: getContentTextStyle(context),
+          ),
+        );
+        lastIndex = match.start - scope >= lastIndex + scope
+            ? match.start - scope
+            : lastIndex + scope;
         prefix = match == matches.first ? '...' : '\n...';
       }
 
       if (match.start > lastIndex) {
-        spans.add(
-          TextSpan(
-            text:
-                "$prefix${content.substring(lastIndex, match.start).trimLeft()}",
-            style: getContentTextStyle(context),
-          ),
-        );
+        final subString = content.substring(lastIndex, match.start);
+        if (!subString.contains('\n')) {
+          spans.add(
+            TextSpan(
+              text:
+                  "$prefix${content.substring(lastIndex, match.start).trimLeft()}",
+              style: getContentTextStyle(context),
+            ),
+          );
+        } else {
+          final index = subString.indexOf('\n');
+          spans.add(
+            TextSpan(
+              text: subString.substring(index),
+              style: getContentTextStyle(context),
+            ),
+          );
+        }
       }
 
       spans.add(

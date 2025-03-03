@@ -26,7 +26,7 @@ class AppSettingTile extends StatelessWidget {
     return MyInkWell(
       onTap: onTap,
       child: SizedBox(
-        height: 1.sw * 0.125 * scale,
+        height: 1.sw * 0.125 * scale + 8,
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
           child: Row(
@@ -41,6 +41,8 @@ class AppSettingTile extends StatelessWidget {
                   children: [
                     Text(
                       title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w500,
                       ),

@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
-import 'package:simple_note_app/core/widgets/empty_note_text_widget.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/enum/router_params_key.dart';
 import '../../../../../core/router/router_path.dart';
+import '../../../../../core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
+import '../../../../../core/widgets/empty_note_text_widget.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_item_button.dart';
 import '../../../../../core/widgets/tirigger_haptick_feedback.dart';
@@ -94,6 +94,19 @@ class CategoryNotesPage extends StatelessWidget {
                       content: 'Add the notes you want!'.tr());
             },
           ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          context.push(
+            '$currentPath/${RouterPath.createNoteFromCategory}',
+            extra: categoryId,
+          );
+        },
+        child: Icon(
+          Icons.edit_document,
+          color: Theme.of(context).colorScheme.primary,
         ),
       ),
     );

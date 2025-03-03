@@ -24,7 +24,7 @@
   },
   "CategoryNotesPage": {
     "delete": "삭제",
-    "addNotes": "노트 추가"
+    "addNotes": "노트 추가 (기존 목록에서)"
   },
   "CategorySelectionPage": {
     "delete": "삭제",

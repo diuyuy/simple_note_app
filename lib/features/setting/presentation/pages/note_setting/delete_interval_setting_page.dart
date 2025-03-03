@@ -83,7 +83,10 @@ class DeleteIntervalSettingPage extends StatelessWidget {
     return MyInkWell(
       onTap: () {
         context.read<AppSettingBloc>().add(
-              AppSettingEvent.appSettingUpdated(autoDeleteDays: value),
+              AppSettingEvent.appSettingUpdated(
+                autoDeleteDays: value,
+                autoDeleteActiveAt: DateTime.now(),
+              ),
             );
       },
       child: AppSettingTileWithButton(

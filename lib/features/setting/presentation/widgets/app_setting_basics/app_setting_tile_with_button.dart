@@ -17,7 +17,7 @@ class AppSettingTileWithButton extends StatelessWidget {
     final double scale = textScaler.scale(14) / 14;
 
     return SizedBox(
-      height: 1.sw * 0.125 * scale,
+      height: 1.sw * 0.125 * scale + 8,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
         child: Row(

@@ -39,7 +39,7 @@ class ShareFileHelper {
                   ),
                 ),
                 pw.Text(
-                  '\n$content',
+                  '\n\n$content',
                   style: pw.TextStyle(
                     font: ttf,
                     fontSize: contentFontSize,
@@ -80,7 +80,7 @@ class ShareFileHelper {
     final directory = await getTemporaryDirectory();
 
     if (option == ShareOption.text) {
-      Share.share('$title\n$content');
+      Share.share('$title\n\n$content');
       return;
     }
 

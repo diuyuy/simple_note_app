@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:simple_note_app/features/note_category/presentation/pages/category_notes/create_note_from_category_page.dart';
 
 import '../../features/note/presentation/bloc/search_notes_bloc/search_notes_bloc.dart';
 import '../../features/note/presentation/bloc/wastebasket_bloc/waste_basket_bloc.dart';
@@ -95,9 +96,7 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             final noteId = state.extra as String;
 
-            return buildFadeTransitionPage(
-              context: context,
-              state: state,
+            return NoTransitionPage(
               child: UpdateNotePage(id: noteId),
             );
           },
@@ -215,6 +214,20 @@ final router = GoRouter(
                   context: context,
                   state: state,
                   child: AddNoteToCategoryPage(id: id),
+                );
+              },
+            ),
+            GoRoute(
+              path: RouterPath.createNoteFromCategory,
+              pageBuilder: (context, state) {
+                final categoryId = state.extra as String;
+
+                return buildFadeTransitionPage(
+                  context: context,
+                  state: state,
+                  child: CreateNoteFromCategoryPage(
+                    categoryId: categoryId,
+                  ),
                 );
               },
             ),

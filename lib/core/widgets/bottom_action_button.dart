@@ -27,7 +27,7 @@ class BottomActionButton extends StatelessWidget {
           onTap();
         },
         child: AspectRatio(
-          aspectRatio: 8 / 1,
+          aspectRatio: 7 / 1,
           child: Container(
             width: 1.sw,
             decoration: BoxDecoration(

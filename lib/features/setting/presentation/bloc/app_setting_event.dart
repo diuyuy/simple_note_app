@@ -13,6 +13,7 @@ class AppSettingEvent with _$AppSettingEvent {
     double? textHeight,
     bool? isAutoSave,
     int? autoDeleteDays,
+    DateTime? autoDeleteActiveAt,
   }) = _AppSettingUpdated;
 
   const factory AppSettingEvent.appSettingAutoDeleteOptionChanged({

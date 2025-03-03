@@ -1,0 +1,227 @@
+{
+  "License": {
+    "applicationName": "简易笔记"
+  },
+
+  "HomePage": {
+    "note": "笔记",
+    "reorderNotes": "重新排序笔记",
+    "select": "选择",
+    "selectAll": "全选"
+  },
+  "AddNoteToCategoryPage": {
+    "add": "添加",
+    "deselectAll": "取消全选",
+    "select": "选择",
+    "selectAll": "全选"
+  },
+  "AppConstants": {
+    "untitled": "未命名"
+  },
+  "AssignCategoryBottomSheet": {
+    "change": "更改",
+    "save": "保存"
+  },
+  "CategoryNotesPage": {
+    "delete": "删除",
+    "addNotes": "添加笔记"
+  },
+  "CategorySelectionPage": {
+    "delete": "删除",
+    "deleteDialogContent": "您确定要删除所选的 {} 个分类吗？此操作无法撤销。",
+    "deselectAll": "取消全选",
+    "noCategoriesSelected": "未选择任何分类。",
+    "select": "选择",
+    "selectAll": "全选"
+  },
+  "CreateNoteCategoryPage": {
+    "categoryName": "分类名称",
+    "categoryIcon": "分类图标",
+    "fillInAllFields": "请填写所有字段。",
+    "iconColor": "图标颜色",
+    "newCategory": "新建分类",
+    "save": "保存"
+  },
+  "CreateNotePage": {
+    "newNote": "新建笔记",
+    "save": "保存",
+    "title": "标题",
+    "inputContent": "写点什么..."
+  },
+  "Drawer": {
+    "appReview": "应用评价",
+    "category": "分类",
+    "favorites": "收藏夹",
+    "home": "主页",
+    "manageCategory": "管理分类",
+    "menu": "菜单",
+    "openSourceLicence": "开源许可",
+    "privacyPolicy": "隐私政策",
+    "settings": "设置",
+    "trash": "回收站"
+  },
+  "FavoritesPage": {
+    "addFavoriteNote": "将您喜欢的笔记\n\n添加到收藏夹！",
+    "favorites": "收藏夹",
+    "select": "选择",
+    "selectAll": "全选",
+    "updateDate": "最后修改时间：{}"
+  },
+  "InputCategoryInfoWidget": {
+    "categoryIcon": "分类图标",
+    "categoryName": "分类名称",
+    "iconColor": "图标颜色",
+    "save": "保存"
+  },
+  "NoteCardWidget": {
+    "updateDate": "最后修改时间：{}"
+  },
+  "NoteCategoryCardWidget": {
+    "delete": "删除",
+    "deleteDialogConent": "您确定要删除此项吗？此操作无法撤销。",
+    "edit": "编辑",
+    "noteCount": "条笔记",
+    "notesCount": "条笔记"
+  },
+  "NoteCategoryPage": {
+    "category": "分类",
+    "reorderCategories": "重新排序分类",
+    "select": "选择",
+    "selectAll": "全选"
+  },
+  "NotesListWidget": {
+    "tryCreateNote": "试着创建一条新笔记吧！",
+    "updateDate": "最后修改时间：{}"
+  },
+  "NoteSelectionPage": {
+    "assignCategory": "分配分类",
+    "delete": "删除",
+    "deleteDialogContent": "您确定要删除所选的 {} 条笔记吗？",
+    "deselectAll": "取消全选",
+    "noNotesSelected": "未选择任何笔记。",
+    "ok": "确定",
+    "permanentlyDelete": "永久删除",
+    "permanentlyDeleteDialogContent": "您确定要永久删除所选的 {} 条笔记吗？此操作无法撤销。",
+    "restore": "恢复",
+    "select": "选择",
+    "selectAll": "全选"
+  },
+
+  "ReadNotePage": {
+    "delete": "删除",
+    "cancel": "取消",
+    "deleteDialogConent": "您确定要删除此项吗？",
+    "edit": "编辑",
+    "note": "笔记",
+    "ok": "确定",
+    "share": "分享"
+  },
+  "ReorderCategoryPage": {
+    "done": "完成",
+    "reorderCategories": "重新排序分类"
+  },
+  "ReorderNotePage": {
+    "done": "完成",
+    "reorderNotes": "重新排序笔记"
+  },
+  "BottomActionButton": {
+    "save": "保存"
+  },
+  "SearchNotePage": {
+    "hintText": "搜索笔记...",
+    "noNoteToSearch": "您还没有任何笔记。",
+    "noResultsFound": "未找到结果。",
+    "select": "选择",
+    "selectAll": "全选"
+  },
+  "showAlertDialog": {
+    "cancel": "取消",
+    "ok": "确定"
+  },
+  "showNoItemToSelectDialog": {
+    "noNoteToSelect": "没有可选择的笔记。",
+    "ok": "确定"
+  },
+  "showSelectedEmptyDialog": {
+    "categories": "分类",
+    "noItemsSelected": "未选择任何 {}。",
+    "notes": "笔记",
+    "ok": "确定"
+  },
+  "UpdateNoteCategoryPage": {
+    "editCategory": "编辑分类"
+  },
+  "UpdateNotePage": {
+    "edit": "编辑",
+    "done": "完成",
+    "title": "标题",
+    "inputContent": "写点什么..."
+  },
+  "WastebasketPage": {
+    "emptyTrash": "清空回收站",
+    "emptyTrashDialogContent": "您确定要永久删除回收站中的所有项目吗？此操作无法撤销。",
+    "ok": "确定",
+    "trashIsAlreadyEmpty": "回收站已经是空的",
+    "trashIsEmpty": "回收站是空的。",
+    "select": "选择",
+    "selectAll": "全选",
+    "trash": "回收站"
+  },
+
+  "1 day": "1天",
+  "3 days": "3天",
+  "7 days": "7天",
+  "14 days": "14天",
+  "30 days": "30天",
+  "60 days": "60天",
+
+  "Add the notes you want!": "添加您想要的笔记！",
+  "Adjusting text height changes readability.\nCheck the line spacing below.": "调整文本高度会改变可读性。\n请查看下面的行间距。",
+  "An error occurred. Please try again.": "发生错误，请重试。",
+  "Assign Category": "分配分类",
+  "Auto-Delete Interval": "自动删除间隔",
+
+  "Body Text Size": "正文文本大小",
+
+  "Change Category": "更改分类",
+  "Create a new category": "创建新分类",
+
+  "Dark Mode": "暗黑模式",
+  "Delete": "删除",
+  "deleteInterval": "{} 天",
+  "Deselect All": "取消全选",
+
+  "Enable Auto-Save for Notes": "启用笔记自动保存",
+
+  "Light Mode": "明亮模式",
+  "Line Height": "行高",
+
+  "None": "无",
+  "Note Settings": "笔记设置",
+  "Note Text Settings": "笔记文本设置",
+
+  "PDF": "PDF",
+  "Permanently Delete": "永久删除",
+  "Preview Screen": "预览屏幕",
+
+  "Remove from Category": "从分类中移除",
+  "Restore": "恢复",
+
+  "Save": "保存",
+  "Select": "选择",
+  "Select All": "全选",
+  "Select how often old notes will be deleted": "选择旧笔记的删除频率。",
+  "Settings": "设置",
+  "System Default": "系统默认",
+
+  "Text": "文本",
+  "Title": "标题",
+  "Theme": "主题",
+  "Theme Color": "主题颜色",
+  "Theme Mode": "主题模式",
+  "There are no categories to select.": "没有可选择的分类。",
+  "There are no notes to choose from.": "没有可选择的笔记。",
+  "Title Text Size": "标题文本大小",
+  "Try creating a new category!": "试着创建一个新分类吧！",
+  "TXT": "TXT"
+}

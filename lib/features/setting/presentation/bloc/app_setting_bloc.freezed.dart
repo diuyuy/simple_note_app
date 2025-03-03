@@ -27,7 +27,8 @@ mixin _$AppSettingEvent {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)
         appSettingUpdated,
     required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) =>
@@ -43,7 +44,8 @@ mixin _$AppSettingEvent {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) =>
@@ -59,7 +61,8 @@ mixin _$AppSettingEvent {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
@@ -163,7 +166,8 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)
         appSettingUpdated,
     required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) {
@@ -182,7 +186,8 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) {
@@ -201,7 +206,8 @@ class _$AppSettingLoadedImpl implements _AppSettingLoaded {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
@@ -268,7 +274,8 @@ abstract class _$$AppSettingUpdatedImplCopyWith<$Res> {
       int? contentFontSize,
       double? textHeight,
       bool? isAutoSave,
-      int? autoDeleteDays});
+      int? autoDeleteDays,
+      DateTime? autoDeleteActiveAt});
 }
 
 /// @nodoc
@@ -292,6 +299,7 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
     Object? textHeight = freezed,
     Object? isAutoSave = freezed,
     Object? autoDeleteDays = freezed,
+    Object? autoDeleteActiveAt = freezed,
   }) {
     return _then(_$AppSettingUpdatedImpl(
       isExitOnHome: freezed == isExitOnHome
@@ -326,6 +334,10 @@ class __$$AppSettingUpdatedImplCopyWithImpl<$Res>
           ? _value.autoDeleteDays
           : autoDeleteDays // ignore: cast_nullable_to_non_nullable
               as int?,
+      autoDeleteActiveAt: freezed == autoDeleteActiveAt
+          ? _value.autoDeleteActiveAt
+          : autoDeleteActiveAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -341,7 +353,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
       this.contentFontSize,
       this.textHeight,
       this.isAutoSave,
-      this.autoDeleteDays});
+      this.autoDeleteDays,
+      this.autoDeleteActiveAt});
 
   @override
   final bool? isExitOnHome;
@@ -359,10 +372,12 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
   final bool? isAutoSave;
   @override
   final int? autoDeleteDays;
+  @override
+  final DateTime? autoDeleteActiveAt;
 
   @override
   String toString() {
-    return 'AppSettingEvent.appSettingUpdated(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, titleFontSize: $titleFontSize, contentFontSize: $contentFontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays)';
+    return 'AppSettingEvent.appSettingUpdated(isExitOnHome: $isExitOnHome, themeMode: $themeMode, themeColor: $themeColor, titleFontSize: $titleFontSize, contentFontSize: $contentFontSize, textHeight: $textHeight, isAutoSave: $isAutoSave, autoDeleteDays: $autoDeleteDays, autoDeleteActiveAt: $autoDeleteActiveAt)';
   }
 
   @override
@@ -385,7 +400,9 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             (identical(other.isAutoSave, isAutoSave) ||
                 other.isAutoSave == isAutoSave) &&
             (identical(other.autoDeleteDays, autoDeleteDays) ||
-                other.autoDeleteDays == autoDeleteDays));
+                other.autoDeleteDays == autoDeleteDays) &&
+            (identical(other.autoDeleteActiveAt, autoDeleteActiveAt) ||
+                other.autoDeleteActiveAt == autoDeleteActiveAt));
   }
 
   @override
@@ -398,7 +415,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
       contentFontSize,
       textHeight,
       isAutoSave,
-      autoDeleteDays);
+      autoDeleteDays,
+      autoDeleteActiveAt);
 
   /// Create a copy of AppSettingEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -421,12 +439,21 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)
         appSettingUpdated,
     required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) {
-    return appSettingUpdated(isExitOnHome, themeMode, themeColor, titleFontSize,
-        contentFontSize, textHeight, isAutoSave, autoDeleteDays);
+    return appSettingUpdated(
+        isExitOnHome,
+        themeMode,
+        themeColor,
+        titleFontSize,
+        contentFontSize,
+        textHeight,
+        isAutoSave,
+        autoDeleteDays,
+        autoDeleteActiveAt);
   }
 
   @override
@@ -441,12 +468,21 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) {
-    return appSettingUpdated?.call(isExitOnHome, themeMode, themeColor,
-        titleFontSize, contentFontSize, textHeight, isAutoSave, autoDeleteDays);
+    return appSettingUpdated?.call(
+        isExitOnHome,
+        themeMode,
+        themeColor,
+        titleFontSize,
+        contentFontSize,
+        textHeight,
+        isAutoSave,
+        autoDeleteDays,
+        autoDeleteActiveAt);
   }
 
   @override
@@ -461,7 +497,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),
@@ -475,7 +512,8 @@ class _$AppSettingUpdatedImpl implements _AppSettingUpdated {
           contentFontSize,
           textHeight,
           isAutoSave,
-          autoDeleteDays);
+          autoDeleteDays,
+          autoDeleteActiveAt);
     }
     return orElse();
   }
@@ -527,7 +565,8 @@ abstract class _AppSettingUpdated implements AppSettingEvent {
       final int? contentFontSize,
       final double? textHeight,
       final bool? isAutoSave,
-      final int? autoDeleteDays}) = _$AppSettingUpdatedImpl;
+      final int? autoDeleteDays,
+      final DateTime? autoDeleteActiveAt}) = _$AppSettingUpdatedImpl;
 
   bool? get isExitOnHome;
   int? get themeMode;
@@ -537,6 +576,7 @@ abstract class _AppSettingUpdated implements AppSettingEvent {
   double? get textHeight;
   bool? get isAutoSave;
   int? get autoDeleteDays;
+  DateTime? get autoDeleteActiveAt;
 
   /// Create a copy of AppSettingEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -629,7 +669,8 @@ class _$AppSettingAutoDeleteOptionChangedImpl
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)
         appSettingUpdated,
     required TResult Function(int interval) appSettingAutoDeleteOptionChanged,
   }) {
@@ -648,7 +689,8 @@ class _$AppSettingAutoDeleteOptionChangedImpl
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult? Function(int interval)? appSettingAutoDeleteOptionChanged,
   }) {
@@ -667,7 +709,8 @@ class _$AppSettingAutoDeleteOptionChangedImpl
             int? contentFontSize,
             double? textHeight,
             bool? isAutoSave,
-            int? autoDeleteDays)?
+            int? autoDeleteDays,
+            DateTime? autoDeleteActiveAt)?
         appSettingUpdated,
     TResult Function(int interval)? appSettingAutoDeleteOptionChanged,
     required TResult orElse(),

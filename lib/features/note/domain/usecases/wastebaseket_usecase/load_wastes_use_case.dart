@@ -26,7 +26,7 @@ class LoadWastesUseCase {
     final currentDate = DateTime.now();
 
     for (var waste in wasteList) {
-      if (waste.deletedDate!.isAfter(autoDeleteActiveAt)) {
+      if (waste.deletedDate!.isBefore(autoDeleteActiveAt)) {
         waste = waste.copyWith(deletedDate: autoDeleteActiveAt);
         wastebasketRepository.updateWaste(waste);
       }
