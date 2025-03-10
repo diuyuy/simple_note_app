@@ -39,7 +39,7 @@ class NoteBloc extends Bloc<NoteEvent, NoteState> {
     //on<_RestoreNotes>(_onRestoreNotes);
     on<_AutoCreateNote>(_onAutoCreateNote);
     on<_AutoUpdateNote>(_onAutoUpdateNote,
-        transformer: debounce(const Duration(seconds: 1)));
+        transformer: debounce(const Duration(milliseconds: 500)));
   }
 
   final CreateNoteUseCase createNoteUseCase;

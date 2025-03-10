@@ -170,13 +170,16 @@ class FilteredNoteCardWidget extends StatelessWidget {
       String prefix = '';
 
       if (match.start >= lastIndex + scope) {
-        spans.add(
-          TextSpan(
-            text:
-                '$prefix${content.substring(lastIndex, lastIndex + scope)}...',
-            style: getContentTextStyle(context),
-          ),
-        );
+        if (lastIndex != 0) {
+          spans.add(
+            TextSpan(
+              text:
+                  '$prefix${content.substring(lastIndex, lastIndex + scope)}...',
+              style: getContentTextStyle(context),
+            ),
+          );
+        }
+
         lastIndex = match.start - scope >= lastIndex + scope
             ? match.start - scope
             : lastIndex + scope;

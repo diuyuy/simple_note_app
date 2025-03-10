@@ -4,10 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
-import 'package:simple_note_app/core/router/note_selection_args.dart';
 
 import '../../../../../core/color/app_colors.dart';
 import '../../../../../core/constants/app_constants.dart';
+import '../../../../../core/router/note_selection_args.dart';
 import '../../../../../core/router/router_path.dart';
 import '../../../../../core/utils/dialog_and_snackbar/show_no_note_to_select_dialog.dart';
 import '../../../../../core/widgets/menu_anchor/my_menu_anchor.dart';

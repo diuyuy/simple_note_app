@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../../../core/constants/app_constants.dart';
 import '../../../../../core/utils/format_date.dart';
@@ -26,6 +27,34 @@ class _CreateNoteFromCategoryPageState
   final FocusNode _titleFocusNode = FocusNode();
   final FocusNode _contentFocusNode = FocusNode();
   String? noteId;
+  late bool isAutoSave;
+
+  @override
+  void initState() {
+    super.initState();
+    isAutoSave = context.read<AppSettingBloc>().state.appSetting.isAutoSave;
+    if (isAutoSave) {
+      final id = Uuid().v4();
+      final createDate = formatDate(DateTime.now());
+      Future.delayed(
+        const Duration(seconds: 1),
+        () {
+          if (mounted) {
+            context.read<NoteBloc>().add(
+                  NoteEvent.autoCreateNote(
+                    id: id,
+                    title: '',
+                    createDate: createDate,
+                    category: widget.categoryId,
+                  ),
+                );
+          }
+        },
+      );
+
+      noteId = id;
+    }
+  }
 
   @override
   void dispose() {
@@ -49,14 +78,14 @@ class _CreateNoteFromCategoryPageState
         actions: [
           TextButton(
             onPressed: () {
-              context.read<NoteBloc>().add(
-                    NoteEvent.createNote(
-                      title: _titleController.text,
-                      content: _contentController.text,
-                      createDate: formatDate(DateTime.now()),
-                      category: widget.categoryId,
-                    ),
-                  );
+              // context.read<NoteBloc>().add(
+              //       NoteEvent.createNote(
+              //         title: _titleController.text,
+              //         content: _contentController.text,
+              //         createDate: formatDate(DateTime.now()),
+              //         category: widget.categoryId,
+              //       ),
+              //     );
 
               context.pop();
             },
@@ -85,6 +114,16 @@ class _CreateNoteFromCategoryPageState
                       textStyle: TextStyle(
                         fontSize: appSetting.titleFontSize.toDouble(),
                       ),
+                      onChanged: (title) {
+                        if (isAutoSave && noteId != null) {
+                          context.read<NoteBloc>().add(
+                                NoteEvent.autoUpdateNote(
+                                  id: noteId!,
+                                  title: title,
+                                ),
+                              );
+                        }
+                      },
                     ),
                     const Divider(),
                     Expanded(
@@ -104,6 +143,16 @@ class _CreateNoteFromCategoryPageState
                             fontSize: appSetting.contentFontSize.toDouble(),
                             height: appSetting.textHeight,
                           ),
+                          onChanged: (content) {
+                            if (isAutoSave && noteId != null) {
+                              context.read<NoteBloc>().add(
+                                    NoteEvent.autoUpdateNote(
+                                      id: noteId!,
+                                      content: content,
+                                    ),
+                                  );
+                            }
+                          },
                         ),
                       ),
                     ),
