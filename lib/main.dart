@@ -56,8 +56,6 @@ void main() async {
               final updateNoteUseCase = getIt<UpdateNoteUseCase>();
               final deleteNoteUseCase = getIt<DeleteNoteUseCase>();
               final reorderNotesUseCase = getIt<ReorderNotesUseCase>();
-              //final noteRepository = getIt<NoteRepository>();
-              //return NoteBloc(noteRepository)..add(NoteEvent.loadNotes());
 
               return NoteBloc(
                 createNoteUseCase: createNoteUseCase,
